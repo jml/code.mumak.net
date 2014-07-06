@@ -1,7 +1,7 @@
 Title: Trying Haskell again
 Date: 2013-07-15 10:56
 Author: Jonathan Lange (noreply@blogger.com)
-Slug: tag:blogger.com,1999:blog-5733547231775030285
+Status: draft
 
 I've been wanting to muck-around with Haskell again for ages and ages
 now. My recent trip to the UK gave me a chance to do that. Here are some

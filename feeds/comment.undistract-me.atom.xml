@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Undistract me</title><link href="http://code.mumak.net/2012/01/undistract-me.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.undistract-me.atom.xml" rel="self"></link><id>http://code.mumak.net/2012/01/undistract-me.html/</id><updated>2012-01-25T14:56:00+00:00</updated><entry><title>Posted by: Martin Lindhe (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-1252040256722822943.md" rel="alternate"></link><updated>2012-01-25T14:53:00+00:00</updated><author><name>Martin Lindhe (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-25:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;FYI, you could also try the "beep" command to sound the pc speaker from
+your shell script&lt;/p&gt;</summary></entry><entry><title>Posted by: jam (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-1686798819138016675.md" rel="alternate"></link><updated>2012-01-24T08:44:00+00:00</updated><author><name>jam (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-24:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;Why not just have it blacklist specific commands. For example
+"vi/emacs/less". I don't know specifically how you are looking at text
+for a long time, but it seems the commands that run are going to be
+fairly different.  &lt;/p&gt;
+&lt;p&gt;There are also easy things if you know a command is going to be slow,
+like setting up a shell command to run a sound file/pop up a
+notification, and alias it to something short like 'n' and then just  &lt;/p&gt;
+&lt;p&gt;command; n  &lt;/p&gt;
+&lt;p&gt;It isn't quite as auto-magical, but it does avoid false positives.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-1711552249004199268.md" rel="alternate"></link><updated>2012-01-23T18:11:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-23:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;@Daniel_Bo: No reason, just a simple matter of patching GNOME Terminal
+a DBUS API that lets you ask if the current shell has focus, and getting
+that patch upstream.  &lt;/p&gt;
+&lt;p&gt;@glyph: Updated.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-1999947875949458828.md" rel="alternate"></link><updated>2012-01-24T09:18:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-24:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;@jam A blacklist might not be a bad idea. As it is, I'm not minding the
+pop ups when focused though.  &lt;/p&gt;
+&lt;p&gt;As for the '; n' thing. I've tried it before. What happens is I tend to
+forget to put it on, then feel lazy &lt;em&gt;and&lt;/em&gt; stupid when I get distracted
+again.&lt;/p&gt;</summary></entry><entry><title>Posted by: Daniel Bo (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-2543669125005054719.md" rel="alternate"></link><updated>2012-01-23T16:00:00+00:00</updated><author><name>Daniel Bo (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-23:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;Wonderful and extremely useful. Why can't this be modified so the focus
+issue is solved for GNOME Terminal and then be shipped by default?  &lt;/p&gt;
+&lt;p&gt;It seems like one of those polish features that Ubuntu needs and wants.&lt;/p&gt;</summary></entry><entry><title>Posted by: Martin Lindhe (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-4475359635352539952.md" rel="alternate"></link><updated>2012-01-25T14:56:00+00:00</updated><author><name>Martin Lindhe (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-25:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;there is also a util called "zenity" that creates gnome dialogs from the
+shell&lt;/p&gt;</summary></entry><entry><title>Posted by: Steve McInerney (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-5849038104588459398.md" rel="alternate"></link><updated>2012-01-23T22:04:00+00:00</updated><author><name>Steve McInerney (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-23:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;Hmm. I'm a loooong time konsole fan, and that functionality is built in.
+"View; Monitor for Silence" or "Monitor for Activity".&lt;br /&gt;
+Use it quite a lot for long running commands/rollouts etc.&lt;br /&gt;
+Used to be better in previous versions, that you could adjust the time
+before alert; but alas, that's been removed.  &lt;/p&gt;
+&lt;p&gt;I have my layout setup such that the konsole tab bar (at the bottom
+where it belongs) is *always* visible, so when something changes, it
+flashes, I see it instantly.&lt;/p&gt;</summary></entry><entry><title>Posted by: glyph (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-6198012248500709847.md" rel="alternate"></link><updated>2012-01-23T17:37:00+00:00</updated><author><name>glyph (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-23:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;Interesting application!  &lt;/p&gt;
+&lt;p&gt;Please update your links, though: &lt;a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html"&gt;that post now lives
+here&lt;/a&gt;.
+(LiveJournal is dead to me.)&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-6571505211216979398.md" rel="alternate"></link><updated>2012-01-24T00:22:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-24:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;@Steve Terminator has plugins that do that. However, what I wanted was
+something that I didn't have to enable or disable at all, and something
+that wouldn't do false positives even if the command spewed stuff all
+the time.  &lt;/p&gt;
+&lt;p&gt;@Tuure Good point. My hunch is that problem is best solved at the
+notify-send level.&lt;/p&gt;</summary></entry><entry><title>Posted by: Tuure Laurinolli (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/01/undistract-me.html/#comment-8377016586601209041.md" rel="alternate"></link><updated>2012-01-23T22:39:00+00:00</updated><author><name>Tuure Laurinolli (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-01-23:2012/01/undistract-me.html/</id><summary type="html">&lt;p&gt;This seems like it would only work on local machine. Something similar
+for remote machine would have to have a back-channel to your local
+machine, e.g. with ssh -R. I think I'll hack on something along these
+lines tomorrow night.&lt;/p&gt;</summary></entry></feed>

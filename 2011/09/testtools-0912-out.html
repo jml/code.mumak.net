@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>testtools 0.9.12 out - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="testtools 0.9.12 out"/>
+            <meta property="og:url" content="http://code.mumak.net/2011/09/testtools-0912-out.html"/>
+            <meta property="og:description" content="testtools 0.9.12 has just been released! It's a huge release, this one. We normally try to release much more frequently, but for this release I wanted to wait until all of our known unicode handling bugs were fixed. Today, Martin [gz] finished off his heroic branch to ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2011/09/testtools-0912-out.html"
+                       rel="bookmark"
+                       title="Permalink to testtools 0.9.12 out">
+                        testtools 0.9.12 out
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2011-09-14T11:01:00"> Wed 14 September 2011</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="http://pypi.python.org/pypi/testtools">testtools</a> 0.9.12 has just been
+released!  </p>
+<p>It's a huge release, this one. We normally try to release much more
+frequently, but for this release I wanted to wait until <a href="https://bugs.launchpad.net/testtools/+bugs?field.tag=unicode&amp;field.status=Fix+Released">all of our
+known unicode handling bugs were
+fixed</a>.
+Today, <a href="https://launchpad.net/~gz">Martin [gz]</a> finished off his <a href="https://code.launchpad.net/~gz/testtools/unprintable-assertThat-804127/+merge/72641">heroic
+branch</a>
+to fix up
+<a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers"><code>assertThat</code></a>,
+and I figured it was time to release.  </p>
+<p>In addition to all of the unicode fixes, we've really cleaned up the way
+test failures are displayed. A lot of the boilerplate around the
+traceback has been removed, a lot of levels of the stack are gone
+(although you can get them back if you want), and <code>assertThat</code> is way
+less repetitive. This all really adds up. If you're using an old
+release, you want to upgrade right now. Honest.  </p>
+<p>For me, this release is the one where using
+<a href="http://testtools.readthedocs.org/en/latest/for-test-authors.html#matchers">matchers</a>
+becomes really and properly fun. As such, all of our <code>assertFoo</code> methods
+are now implemented in terms of matchers.  </p>
+<p>Of course, we have our usual raft of fixes, helpers and new matchers
+too. The <a href="https://launchpad.net/testtools/0.9/0.9.12">full changelog</a> is
+on Launchpad.  </p>
+<p>In addition to Martin [gz], thanks to <a href="https://launchpad.net/~kampka">Christian
+Kampka</a>, <a href="https://launchpad.net/~lifeless">Robert
+Collins</a> and
+<a href="http://canonical.com/">Canonical</a> for making this release what it is.  </p>
+<p>If you're new to testtools, it's basically a way to do serious,
+<a href="http://testtools.readthedocs.org/en/latest/overview.html">tasteful unit testing in
+Python</a>.  </p>
+<p>Documentation lives at <a href="http://testtools.readthedocs.org/en/latest/">http://testtools.readthedocs.org/en/latest/</a>.<br />
+PyPI: <a href="http://pypi.python.org/pypi/testtools">http://pypi.python.org/pypi/testtools</a><br />
+All development takes place on
+Launchpad: <a href="https://launchpad.net/testtools">https://launchpad.net/testtools</a><br />
+Join us on #python-testing on Freenode  </p>
+<p>We don't currently have a release PPA, but we do have a <a href="https://launchpad.net/~testing-cabal/+archive/archive">daily builds
+PPA</a>. The trunk
+is kept stable using <a href="http://mumak.net:8080/job/testtools/">Jenkins</a>, so
+it's fairly safe to use.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-3750035820725800585.md">
+                <a href="http://code.mumak.net/2011/09/testtools-0912-out.html#comment-3750035820725800585.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>gz (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-09-14T20:52:00">Wed 14 September 2011</abbr></p>
+                
+                <p>Good work jml! And thanks for the mention. :)</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

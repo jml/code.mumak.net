@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Python Testing: A review - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Python Testing: A review"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/04/python-testing-review.html"/>
+            <meta property="og:description" content="Quite a few weeks ago, perhaps even months, I was asked by Packt Publishing to review a new book: "Python Testing: Beginner's Guide" by Daniel Arbuckle. They were very nice and even sent me a physical copy of the book, and have been moderately tolerant of the long delay ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/04/python-testing-review.html"
+                       rel="bookmark"
+                       title="Permalink to Python Testing: A review">
+                        Python Testing: A review
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-04-24T12:23:00"> Sat 24 April 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s1600/Python+Testing.jpg"><img alt="" src="http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s200/Python+Testing.jpg" /></a>Quite
+a few weeks ago, perhaps even months, I was asked by <a href="http://www.packtpub.com/">Packt
+Publishing</a> to review a new book: "<a href="http://www.packtpub.com/python-testing-beginners-guide/book?utm_source=code.mumak.net&amp;utm_medium=bookrev&amp;utm_content=blog&amp;utm_campaign=mdb_002509">Python
+Testing: Beginner's
+Guide</a>"
+by Daniel Arbuckle. They were very nice and even sent me a physical copy
+of the book, and have been moderately tolerant of the long delay between
+me receiving the book and writing this blog post.</p>
+<div>
+
+Python Testing promises "an easy and convenient approach to testing your
+Python projects". The book takes a tool-based approach to introducing
+the reader to testing in Python. It starts with
+[doctests](http://bemusement.org/diary/2008/October/24/more-doctest-problems),
+goes on to [mocker](https://edge.launchpad.net/mocker), then
+[unittest](http://docs.python.org/library/unittest.html), then
+[nose](http://somethingaboutorange.com/mrl/projects/nose/0.11.3/). Then
+I stopped reading.
+
+</div>
+
+<div>
+
+It's not a bad book by any stretch, I just don't know who it's for. Bear
+in mind that I'm not a beginner to Python testing so I'm probably not
+the best judge.
+
+</div>
+
+<div>
+
+Taking a tool-based approach seems like an odd decision to me,
+especially for a printed book. The tools change all of the time, and
+there is a reasonable amount of documentation for each of the tools
+mentioned. A motivated beginner could probably make do with a blog post
+listing each of the tools.
+
+</div>
+
+<div>
+
+Many of the examples in the book are based on quite complex real-world
+problems. In some ways, this is great, since it could help to convince
+testing sceptics that testing is relevant to their project and it could
+help along those who have trouble applying theory. On the other hand, I
+think anyone who is up to following an AVL tree implementation is
+capable of googling for "[python testing
+tools](http://www.google.co.uk/search?hl=en&source=hp&q=python+testing+tools&meta=&aq=f&aqi=&aql=&oq=&gs_rfai=)".
+
+</div>
+
+<div>
+
+Reading through, I found myself wishing for advice on the principles of
+testing. How should I organize my tests on a Python project? How much
+code should I cover in each test? What are the risks in using mock
+objects? I sense that the author has never engaged with Gerald Meszaros'
+excellent work on [xUnit Test Patterns](http://xunitpatterns.com/),
+which is a must for everyone who isn't [Robert
+Collins](http://rbtcollins.wordpress.com/).
+
+</div>
+
+<div>
+
+I don't like writing such a negative review. It's hard work writing a
+technical book – I tried writing one for Bazaar and gave up. Daniel
+Arbuckle deserves credit for tackling such an important topic, for
+working so hard to avoid being dry and for his obvious concern for
+actually helping developers with their testing situation.
+
+</div>
+
+<div>
+
+That said, if you are new to automated testing altogether, then you
+would be much better off reading Kent Beck's [Test Driven Development by
+Example](http://www.amazon.com/dp/0321146530/?tag=hashemian-20). If you
+know testing well, but don't know Python so well, then I guess you might
+get something out of Python Testing.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-148868968707025194.md">
+                <a href="http://code.mumak.net/2010/04/python-testing-review.html#comment-148868968707025194.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michael Hudson-Doyle (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-04-24T23:44:00">Sat 24 April 2010</abbr></p>
+                
+                <p>Thinking of which, can someone take the first 100 pages or so of xUnit
+Test Patterns and publish just that? That part of the book is awesome
+and the rest is somewhat boring.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

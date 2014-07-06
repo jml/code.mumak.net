@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>How to disconnect in Twisted, really - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="How to disconnect in Twisted, really"/>
+            <meta property="og:url" content="http://code.mumak.net/pages/how-to-disconnect-in-twisted-really.html"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content" class="body">
+        <h1 class="entry-title">How to disconnect in Twisted, really</h1>
+        
+        <div class="entry-content">
+            <p>Twisted's unit testing framework Trial is quite strict on tests that
+don't clean up after themselves. In particular, any test that doesn't
+properly close all of its connections is fails with ugly errors.</p>
+<p>If you are already glazing over with apathy towards unit tests, unglaze
+now. Disconnecting is a little more involved than you might expect, and
+there's every chance you aren't doing it correctly.</p>
+<p>Thanks to <a href="http://moshez.livejournal.com">moshez</a> and teratorn for
+reviewing this document. Any errors are still my fault.</p>
+<h2>How to Disconnect in Twisted, Really</h2>
+<p>You are writing a test for some network code. You have already written
+many unit tests for the protocol and the protocol factories, and you
+assume that the lower level socket calls all work. You have deep
+confidence in your code, but you need more.</p>
+<p>You yearn to write an end-to-end test. To set up the server, have it
+<em>really</em> listen, have the client <em>really</em> connect. You want data to zoom
+back and forth over the wire like luxury sportscars on the Autobahn.</p>
+<p>Fine.</p>
+<p>You start with a server and a client.</p>
+<p>You want the client to connect to the server. You want things to happen.
+When things have happened, you want to assert stuff.</p>
+<p>After the assertions, you want to disconnect the client and you want the
+server to go away.</p>
+<p>Good.</p>
+<p>I'm not going to help you set things up, I'm not going to help you make
+things happen. I <em>am</em> going to help you make all your connections just
+go away.</p>
+<p>Let me lay down the law:</p>
+<ol>
+<li>The server must stop listening.</li>
+<li>The client connection must disconnect.</li>
+<li>The server connection must disconnect.</li>
+</ol>
+<p>You have to make each of these things happen. That's easy. Here's the
+tricky part: <strong>you have to <em>wait</em> for each of these things to happen.</strong></p>
+<p>To make the server stop listening:</p>
+<div class="highlight"><pre>    <span class="n">port</span> <span class="o">=</span> <span class="n">reactor</span><span class="p">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="n">portNumber</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span>    <span class="p">...</span>    <span class="n">port</span><span class="p">.</span><span class="n">stopListening</span><span class="p">()</span>
+</pre></div>
+
+
+<p>You can effect the last two with one stroke, using either of the
+following commands:</p>
+<div class="highlight"><pre>    <span class="n">protocol</span><span class="p">.</span><span class="n">transport</span><span class="p">.</span><span class="n">loseConnection</span><span class="p">()</span>
+</pre></div>
+
+
+<p>OR</p>
+<div class="highlight"><pre>    <span class="n">connector</span> <span class="o">=</span> <span class="n">reactor</span><span class="p">.</span><span class="n">connectTCP</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span>    <span class="p">...</span>    <span class="n">connector</span><span class="p">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Now, just running these commands is <em>not</em> enough. Twisted is
+asynchronous: you have to wait for it to call you.</p>
+<p>The way to wait for something in a Trial test is to return a <code>Deferred</code>
+from the test method.</p>
+<p><code>stopListening</code> is easy. It returns a <code>Deferred</code> if it is going to take
+a while. The others are harder. There is only one way to know when the
+connection has truly been lost: override <code>connectionLost</code> on a
+<code>Protocol</code> instance. Pass a <code>Deferred</code> to your <code>Protocol</code> and have
+<code>connectionLost</code> call <code>callback</code> on that <code>Deferred</code>. You will need to do
+this for <em>both</em> the client <em>and</em> the server protocols. Once you have
+your three <code>Deferred</code>s, return them in a <code>DeferredList</code>.</p>
+<p>Simple.</p>
+<p><strong>UPDATE:</strong> <a href="http://jcalderone.livejournal.com">exarkun</a> tells me that
+there are two ways to know when the connection has truly been lost on
+the client side. ClientFactory.clientConnectionLost is the other one.</p>
+<h3>Summary</h3>
+<p><strong>In order to clean up a test that connects a client to a server, you
+need to wait on three <code>Deferred</code>s: one for the listening port, one for
+the server protocol and one for the client protocol.</strong></p>
+<p>Below is an example demonstrating how to disconnect. As you can see, it
+is quite verbose. Trial does not provide any shortcuts, even though it
+should.</p>
+<div class="highlight"><pre><span class="n">from</span> <span class="n">twisted</span><span class="p">.</span><span class="n">internet</span> <span class="n">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">protocolfrom</span> <span class="n">twisted</span><span class="p">.</span><span class="n">trial</span> <span class="n">import</span> <span class="n">unittestclass</span> <span class="n">ServerProtocol</span><span class="p">(</span><span class="n">protocol</span><span class="p">.</span><span class="n">Protocol</span><span class="p">)</span><span class="o">:</span>    <span class="n">def</span> <span class="n">connectionLost</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">:</span>        <span class="n">self</span><span class="p">.</span><span class="n">factory</span><span class="p">.</span><span class="n">onConnectionLost</span><span class="p">.</span><span class="n">callback</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="n">class</span> <span class="n">ClientProtocol</span><span class="p">(</span><span class="n">protocol</span><span class="p">.</span><span class="n">Protocol</span><span class="p">)</span><span class="o">:</span>    <span class="n">def</span> <span class="n">connectionMade</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>        <span class="n">self</span><span class="p">.</span><span class="n">factory</span><span class="p">.</span><span class="n">onConnectionMade</span><span class="p">.</span><span class="n">callback</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>    <span class="n">def</span> <span class="n">connectionLost</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">:</span>        <span class="n">self</span><span class="p">.</span><span class="n">factory</span><span class="p">.</span><span class="n">onConnectionLost</span><span class="p">.</span><span class="n">callback</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="n">class</span> <span class="n">TestDisconnect</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestCase</span><span class="p">)</span><span class="o">:</span>    <span class="n">def</span> <span class="n">setUp</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>        <span class="n">self</span><span class="p">.</span><span class="n">serverDisconnected</span> <span class="o">=</span> <span class="n">defer</span><span class="p">.</span><span class="n">Deferred</span><span class="p">()</span>        <span class="n">self</span><span class="p">.</span><span class="n">serverPort</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_listenServer</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">serverDisconnected</span><span class="p">)</span>        <span class="n">connected</span> <span class="o">=</span> <span class="n">defer</span><span class="p">.</span><span class="n">Deferred</span><span class="p">()</span>        <span class="n">self</span><span class="p">.</span><span class="n">clientDisconnected</span> <span class="o">=</span> <span class="n">defer</span><span class="p">.</span><span class="n">Deferred</span><span class="p">()</span>        <span class="n">self</span><span class="p">.</span><span class="n">clientConnection</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_connectClient</span><span class="p">(</span><span class="n">connected</span><span class="p">,</span>                                                    <span class="n">self</span><span class="p">.</span><span class="n">clientDisconnected</span><span class="p">)</span>        <span class="k">return</span> <span class="n">connected</span>    <span class="n">def</span> <span class="n">_listenServer</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span>        <span class="n">from</span> <span class="n">twisted</span><span class="p">.</span><span class="n">internet</span> <span class="n">import</span> <span class="n">reactor</span>        <span class="n">f</span> <span class="o">=</span> <span class="n">protocol</span><span class="p">.</span><span class="n">Factory</span><span class="p">()</span>        <span class="n">f</span><span class="p">.</span><span class="n">onConnectionLost</span> <span class="o">=</span> <span class="n">d</span>        <span class="n">f</span><span class="p">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="n">ServerProtocol</span>        <span class="k">return</span> <span class="n">reactor</span><span class="p">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>    <span class="n">def</span> <span class="n">_connectClient</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span><span class="o">:</span>        <span class="n">from</span> <span class="n">twisted</span><span class="p">.</span><span class="n">internet</span> <span class="n">import</span> <span class="n">reactor</span>        <span class="n">factory</span> <span class="o">=</span> <span class="n">protocol</span><span class="p">.</span><span class="n">ClientFactory</span><span class="p">()</span>        <span class="n">factory</span><span class="p">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="n">ClientProtocol</span>        <span class="n">factory</span><span class="p">.</span><span class="n">onConnectionMade</span> <span class="o">=</span> <span class="n">d1</span>        <span class="n">factory</span><span class="p">.</span><span class="n">onConnectionLost</span> <span class="o">=</span> <span class="n">d2</span>        <span class="k">return</span> <span class="n">reactor</span><span class="p">.</span><span class="n">connectTCP</span><span class="p">(</span><span class="err">&#39;</span><span class="n">localhost</span><span class="err">&#39;</span><span class="p">,</span>                                  <span class="n">self</span><span class="p">.</span><span class="n">serverPort</span><span class="p">.</span><span class="n">getHost</span><span class="p">().</span><span class="n">port</span><span class="p">,</span>                                  <span class="n">factory</span><span class="p">)</span>    <span class="n">def</span> <span class="n">tearDown</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>        <span class="n">d</span> <span class="o">=</span> <span class="n">defer</span><span class="p">.</span><span class="n">maybeDeferred</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">serverPort</span><span class="p">.</span><span class="n">stopListening</span><span class="p">)</span>        <span class="n">self</span><span class="p">.</span><span class="n">clientConnection</span><span class="p">.</span><span class="n">disconnect</span><span class="p">()</span>        <span class="k">return</span> <span class="n">defer</span><span class="p">.</span><span class="n">gatherResults</span><span class="p">([</span><span class="n">d</span><span class="p">,</span>                                    <span class="n">self</span><span class="p">.</span><span class="n">clientDisconnected</span><span class="p">,</span>                                    <span class="n">self</span><span class="p">.</span><span class="n">serverDisconnected</span><span class="p">])</span>    <span class="n">def</span> <span class="n">test_disconnect</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>        <span class="n">pass</span>
+</pre></div>
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Layers are terrible - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Layers are terrible"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/09/layers-are-terrible.html"/>
+            <meta property="og:description" content="When I talk about testing frameworks, I often mention Zope layers and say they are terrible. Some people have asked me for details on their terror and for justification of my opinion. Here's all I've got. It's based on my experiences using layers with Zope 3.2 ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/09/layers-are-terrible.html"
+                       rel="bookmark"
+                       title="Permalink to Layers are terrible">
+                        Layers are terrible
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-09-14T09:03:00"> Mon 14 September 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>When I talk about testing frameworks, I often mention Zope layers and
+say they are terrible. Some people have asked me for details on their
+terror and for justification of my opinion.  </p>
+<p>Here's all I've got. It's based on my experiences using layers with Zope
+3.2 in Launchpad.  </p>
+<p><strong>1. Layers have unnecessary magic</strong>  </p>
+<p>A layer can subclass another layer, which is fine. Subclassing means
+that your new, derived layer rests on top of the old, base layer.  </p>
+<p>When you define a derived layer though, you don't call the base layer's
+methods yourself, like you would for any other Python subclass. Why not?
+Because zope.testing magically up-calls the base layer's methods for
+you.  </p>
+<p>Yuck.  </p>
+<p>The upshot is that you write non-standard Python that confuses people
+not familiar with zope.testing. Also, you have no way of
+<span>not</span> calling the base methods, which is unfairly
+restrictive.  </p>
+<p><strong>2. Layers are combined through inheritance</strong>  </p>
+<p>Each unit test is in a single layer. If you want a unit test to have the
+set up and tear down provided by layer A <em>and</em> the set up and tear down
+of layer B, you have to define a wholly new layer C that subclasses both
+A and B.  </p>
+<p>The layer C doesn't really mean anything other than "A and B". It
+doesn't really deserve a name, but it has to have one, since it has to
+be a new class.  </p>
+<p>Since layers are often used to share expensive resources between tests,
+you end up with a binary explosion of layer subclasses, as you move
+toward needing one for every subset of available resources.  </p>
+<p>This adds code and thus maintenance work, and is actually less clear
+than simply declaring that a test uses layers A and B.  </p>
+<p><strong>3. Layers are implemented badly</strong>  </p>
+<p>Layers are all about changing the way a test is run. They supplement the
+run with extra work to establish a known base state for the test.  </p>
+<p>If you think about it, the stuff that's required to run a test is a
+property of the test.  </p>
+<p>Python's <code>unittest</code> module recognizes this. One of the few public
+methods of a <code>TestCase</code> object is its <code>run()</code> method. <code>run()</code> is also a
+method of <code>TestSuite</code>. This means that if you want to customize the way
+a test or a group of tests is run, you should override / re-implement
+the <code>run()</code> method.  </p>
+<p>Layers don't do this. Instead they change the way tests are gathered,
+the way they are reported <em>and</em> the way they are run. This means tests
+that rely on layers can only be run with the Zope test runner, and not
+with nose or trial or what have you.  </p>
+<p><strong>4. Layers solve too many problems</strong>  </p>
+<p>Layers are not simply a way of sharing expensive resources between
+tests, they are also a way of using resources that cannot be torn down.  </p>
+<p>The implementation does this by detecting that a layer cannot be torn
+down, then spawning a new process to run the rest of the tests in.  </p>
+<p>It kind of sucks to have things that cannot be torn down in process, and
+it definitely sucks to conflate resource sharing with odd subprocess
+management.  </p>
+<p><strong>5. Layers are not Zopish</strong>  </p>
+<p>As far as I can tell, one of the themes of Zope 3 is small,
+interchangeable pieces loosely joined together.  </p>
+<p>Layers seem to be something that could have been done much better using
+the Zope component architecture. Perhaps they could give <code>getUtility</code>
+some practical purpose in life.  </p>
+<p><strong>What then?</strong>  </p>
+<p>As much as I hate to say so, I don't think there's much hope for layers
+as a concept. One is probably better served by replacing one's existing
+layers with <a href="https://launchpad.net/testresources">testresources</a>. It
+looks like it takes <a href="https://bugs.edge.launchpad.net/launchpad-foundations/+bug/419691/comments/2">quite a lot of work to do
+so</a>.  </p>
+<p>That's it. Five reasons and a lot of paragraphs. Please let me know if
+I've made mistakes, or if newer versions of zope.testing are better.
+Also, please gently correct me if I've left the path of <a href="http://jcalderone.livejournal.com/47657.html">civility and
+common courtesy</a>.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-6278239678061902501.md">
+                <a href="http://code.mumak.net/2009/09/layers-are-terrible.html#comment-6278239678061902501.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jcalderone (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-09-14T22:52:00">Mon 14 September 2009</abbr></p>
+                
+                <p>Hi jml,  </p>
+<p>I've never used Layers, but these points seem right. One thing that I
+find missing from this post is a discussion of some of the alternatives.
+For example, I know I am sometimes tempted to add new methods to
+TestCase and require the runner to find them. It's not always obvious
+how to add features without expanding the interface. When I started
+writing this post, I had an example of this, but then it slipped away
+from me. Oops.</p>
+            </article>
+            <article id="comment-1777572030400674616.md">
+                <a href="http://code.mumak.net/2009/09/layers-are-terrible.html#comment-1777572030400674616.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>ChrisW (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-01-11T09:58:00">Mon 11 January 2010</abbr></p>
+                
+                <p>The punted alternative right now is:  </p>
+<p>http://pypi.python.org/pypi/testresources  </p>
+<p>...which sadly seems to be lacking on the docs and examples front.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

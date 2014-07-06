@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Unfiltered reflections on my first Juju charm - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Unfiltered reflections on my first Juju charm"/>
+            <meta property="og:url" content="http://code.mumak.net/2012/06/unfiltered-reflections-on-my-first-juju.html"/>
+            <meta property="og:description" content="I just finished up my first [Juju](https://juju.ubuntu.com/) charm, designed to deploy the tiny and not-yet-useful [libdep-service](https://launchpad.net/libdep-service/), which is going to become a micro-service used by [pkgme-service](https://launchpad.net/pkgme-service), which exists to automatically package submissions by application developers to [developer.ubuntu ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2012/06/unfiltered-reflections-on-my-first-juju.html"
+                       rel="bookmark"
+                       title="Permalink to Unfiltered reflections on my first Juju charm">
+                        Unfiltered reflections on my first Juju charm
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-06-22T13:03:00"> Fri 22 June 2012</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <div>
+
+I just finished up my first [Juju](https://juju.ubuntu.com/) charm,
+designed to deploy the tiny and not-yet-useful
+[libdep-service](https://launchpad.net/libdep-service/), which is going
+to become a micro-service used by
+[pkgme-service](https://launchpad.net/pkgme-service), which exists to
+automatically package submissions by application developers to
+[developer.ubuntu.com](http://developer.ubuntu.com/).
+
+</div>
+
+<div>
+
+The charm works, insofar as it brings up a Django service that
+implements the API. It's not really ready for others to use, as it
+doesn't provide any interfaces and doesn't make good use of Juju's
+configuration system.
+
+</div>
+
+<div>
+
+It's very early days for me as a Juju user. The notes below are largely
+about problems, but I'm actually fairly optimistic that having a charm
+for my service will be very useful. Two big benefits so far:
+
+</div>
+
+<div>
+
+1.  There's less code than in my equivalent fabric task for deploying to
+    EC2
+2.  I can deploy to LXC on my laptop, which means a fast, clean, local,
+    production-like environment
+
+<div>
+
+Anyway, on with the notes.
+
+</div>
+
+</div>
+
+<ul>
+<li>
+<span>\#juju is heaps better when America is awake</span>
+
+</li>
+<li>
+<span>upgrading with apt requires a lot of options, but this is quite a
+standard</span><span> action</span>
+
+</li>
+-   <span>e.g.
+    `sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -q -y`</span>
+-   You get this by default if you don't use sudo, and you don't have to
+    use sudo
+
+<li>
+<span>so many [things that are just warnings are marked
+as` ERROR`](https://bugs.launchpad.net/juju/+bug/955209), makes
+debugging </span><span>much harder</span>
+
+</li>
+<li>
+<span>perhaps this is intrinsic, but there are almost always four to six
+errors </span><span>to be debugged at once</span>
+
+</li>
+<li>
+<span>Don't use lp: URLs to fetch branches because it generates
+warnings. Use http://code.launchpad.net/ instead.</span>
+
+</li>
+<li>
+<span>Is there a way to have a local apt mirror or something to make
+iterating</span><span> faster?  Is this what I've got already?</span>
+
+</li>
+<li>
+<span>When translating from fabric `run("cd X && Y")`, remember that
+fabric </span><span>restores directory after `run`</span>
+
+</li>
+-   <span><span>Use</span>`(cd X && Y)`<span> in bash instead, runs in a
+    subshell</span></span>
+
+<li>
+<span>**ACTION:** Look up 'man 8 apt-get' for --force-yes and why it's
+bad</span>
+
+</li>
+<li>
+<span>Long-ish iteration cycle (2-5 mins) makes it a bit slow
+going</span>
+
+</li>
+-   <span>See also [Users not told when deploy actually
+    completes](https://bugs.launchpad.net/juju/+bug/1015644)</span>
+-   <span>Iterating with 'deploy --upgrade', watch 'debug-log',
+    'destroy-service', </span><span>(sometimes 'bzr ci'; 'bzr
+    push')</span>
+
+-   <span>**ACTION:** Poke around more with 'juju debug-log' (see
+    also </span>["juju debug-hooks -h" doesn't say what 'debug-hooks'
+    does](https://bugs.launchpad.net/juju/+bug/1016003))
+
+<li>
+<span>After delegating to puppet, if that fails, the `install` hook
+doesn't fail</span>
+
+</li>
+<li>
+<span><span>Ended up putting the puppet stuff should be in the charm to
+avoid having to commit &</span><span> push the branch up</span></span>
+
+</li>
+<li>
+<span>A little bit surprised that hooks run as root.  I don't have a
+credible </span><span>alternative to hand, but I thought that this was
+what we wanted to get away</span><span> from with .debs.</span>
+
+</li>
+-   <span>How do I run things with less privilege</span>
+
+<li>
+<span>I do server-side changes a fair bit to fix things. It's easy to
+forget a </span><span>step when applying them back to the charm /
+manifest. No easy way of</span><span> checking either.</span>
+
+</li>
+<li>
+<span>Bouncing on this command is heaps
+better:</span><span>`juju deploy --repository=charms --upgrade \`</span>`  local:libdep-service && jitsu watch libdep-service \    --state=started --num-units=1`
+
+</li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

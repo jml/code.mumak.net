@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Bug squashing sprints - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Bug squashing sprints"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/10/bug-squashing-sprints.html"/>
+            <meta property="og:description" content="Every time somebody asks me what I think we should do for a sprint, I try to suggest "fix as many bugs as possible". Each of the Launchpad teams gets together in a single location for a week long "sprint" fairly regularly. Maybe each team has two sprints a year ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/10/bug-squashing-sprints.html"
+                       rel="bookmark"
+                       title="Permalink to Bug squashing sprints">
+                        Bug squashing sprints
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-10-20T12:02:00"> Tue 20 October 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Every time somebody asks me what I think we should do for a sprint, I
+try to suggest "fix as many bugs as possible".</p>
+<div>
+
+Each of the Launchpad teams gets together in a single location for a
+week long "sprint" fairly regularly. Maybe each team has two sprints a
+year.
+
+</div>
+
+<div>
+
+Often these sprints end up being long talking sessions where designs for
+features are thrashed out. That's great and all, and sprints are a rare
+opportunity to do that, but often the design work goes unused for months
+while the team deals with the work already on its collective plate.
+
+</div>
+
+<div>
+
+Sometimes these sprints have the whole team working (i.e. coding) toward
+a single milestone, be it a release or a major feature. These sprints
+are fun, but they've been quite rare for Launchpad. (Bazaar had a great
+one in Brisbane earlier this year).
+
+</div>
+
+<div>
+
+What I'd love to see is a sprint where people fixed as many bugs as
+possible. Perhaps as a product strategist, I ought to be advocating
+higher-level visions and responding to the market and so forth, rather
+than saying "fix lots of bugs". But I don't think so, at least, not yet.
+
+</div>
+
+<div>
+
+Fixing as many bugs as we can in a fixed time frame will make many users
+happy, since behind each bug is a user in pain. It will make us happy as
+a team, since a vastly dropped bug count will make us feel less
+overwhelmed and will feel like a concrete achievement. It's an easy
+sprint to measure the success of, and my hunch is that it would be a fun
+sprint too. It's also substantially different to what we normally do,
+which adds to the fun.
+
+</div>
+
+<div>
+
+What do you think? I'd love to hear from people in community-driven open
+source projects, as well as people within Canonical who aren't in
+Launchpad. Maybe we're missing something that others know about.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-3638202102710492677.md">
+                <a href="http://code.mumak.net/2009/10/bug-squashing-sprints.html#comment-3638202102710492677.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>james_w (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-20T18:00:00">Tue 20 October 2009</abbr></p>
+                
+                <p>Debian do this with their Bug Squashing Parties (BSPs). When approaching
+a release they run these to get the number of RC bugs down.  </p>
+<p>http://wiki.debian.org/BSP  </p>
+<p>I agree that this could be a good use of sprints. For instance, bzr
+currently has 1733 open bugs, around half of those ever reported and
+more than are marked "Fix Released." That's quite a lot of pain points,
+though I feel many were transient, since fixed or extreme edge cases.  </p>
+<p>[ Hey, this would be a better conversation if LP produced graphs of
+these numbers over time. ]  </p>
+<p>Bugfixing often requires you to do feature work, or at least
+re-architect some area, so discussions around the best way to do this
+would be good for sprints.  </p>
+<p>Also, there is a question of how to pick the bugs, for Debian it is
+quite easy, there is a list and all must be dealt with, what should
+other projects do? Work from the top of the list down in terms of
+priority?  </p>
+<p>I think it would be good if tags were used extensively, so you could
+look at all the bugs related to “dirstate,” or “log,” and try and fix
+swathes of bugs in one go. Also, if all bugs had executable test cases
+then you would get TDD for free.  </p>
+<p>Or, in short, “I agree.”  </p>
+<p>Thanks,  </p>
+<p>James</p>
+            </article>
+            <article id="comment-446205790623051490.md">
+                <a href="http://code.mumak.net/2009/10/bug-squashing-sprints.html#comment-446205790623051490.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Jamu Kakar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-20T18:22:00">Tue 20 October 2009</abbr></p>
+                
+                <p>I think part of the problem is that two sprints a year is too few. On
+the Landscape team we do things a bit differently: we have 4 sprints a
+year and each one is 2 weeks (so maybe they're more like marathons). We
+distinguish planning sprints from coding sprints and generally
+interleave these two things.  </p>
+<p>We've aligned our development process with Ubuntu's 6 month cycle, so
+this works quite well. We get together at UDS for a "planning sprint"
+where we work out what we want to accomplish in the next six months.
+When we get home we all start working on whatever features have been
+discussed. These sprints are also a great time to review development
+process and other non-coding aspects of the project.  </p>
+<p>Typically in the middle of the 6 month cycle we have a "coding sprint".
+These sprints are usually about moving forward whatever tasks we've been
+working on, but sometimes they focus on other things like getting the
+client prepared for release, or stabilizing code that's been undergoing
+a lot of churn.  </p>
+<p>We divide these 6-month cycles into 1-month milestones. One of the ways
+we deal with bug accumulation is to explicitly use the 6th milestone as
+polish/bug fix time.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

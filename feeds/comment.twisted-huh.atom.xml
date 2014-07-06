@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Twisted huh?</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.twisted-huh.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/06/twisted-huh.html/</id><updated>2009-07-03T23:34:00+01:00</updated><entry><title>Posted by: Geekwad (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-1450782131141404005.md" rel="alternate"></link><updated>2009-06-30T19:27:00+01:00</updated><author><name>Geekwad (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-06-30:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;If only we *could* force them to use zope.interface. ;-)&lt;/p&gt;</summary></entry><entry><title>Posted by: Richard Jones (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-2067600067407139682.md" rel="alternate"></link><updated>2009-07-01T00:00:00+01:00</updated><author><name>Richard Jones (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-01:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;"B" said. Twisted's just too impenetrable for newbies. As a seasoned
+Twisted programmer (ie. I've written a few systems using it) I'm still
+not sure where to look in the docs for simple things like the API for
+deferreds and how they work.  &lt;/p&gt;
+&lt;p&gt;The inheritance tree is part of this: the API docs for a lot of classes
+just indicate that they inherit from some other class(es) and add some
+(un- or poorly-documented) new methods. To find out how to use said
+class you have to dig right down to the base class(es) and often their
+documentation is also poor/missing/too abstract.&lt;/p&gt;</summary></entry><entry><title>Posted by: Richard Jones (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-3330006647725190661.md" rel="alternate"></link><updated>2009-07-03T23:34:00+01:00</updated><author><name>Richard Jones (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-03:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;Kilroy, I think you need to read the comments already posted here (maybe
+again, but reading your reply I can't help thinking for the first
+time).  &lt;/p&gt;
+&lt;p&gt;In particular, about HOWTOs "B" specifically said "So you read a
+tutorial and you get told you have to write 10 lines of code, except you
+only know what 1 of those lines actually does."  &lt;/p&gt;
+&lt;p&gt;Without solid API documentation to back them up those HOWTOs are
+basically just crumbs thrown out to try to satisfy the hungry masses.&lt;/p&gt;</summary></entry><entry><title>Posted by: Kilroy (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-3755863959563583975.md" rel="alternate"></link><updated>2009-07-03T23:02:00+01:00</updated><author><name>Kilroy (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-03:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;I keep hearing things like this as well, and I just don't understand why
+so many are so intimidated by twisted. It really isn't any harder to get
+to grips with than any other large python project like TG IMHO. They do
+have some tools to kick you into gear a little faster perhaps.  &lt;/p&gt;
+&lt;p&gt;I also hear things like "twisted eats your errors", "twisted doesn't let
+me use threads", "twisted can't work with my libraries", "you can't use
+databases with twisted" - all utter nonsense, but I keep hearing it over
+and over again. They're usually in the form of anecdotal stories
+"twisted ate all my errors, I promise I attached errbacks".  &lt;/p&gt;
+&lt;p&gt;Some 5 minute howtos may be the answer to some of these. If we listen to
+a few of these complaints and create a "how to access your \${foo}sql
+instance", "how to set up logging", "how to use
+callInThread/callFromThread", "why forgetting your errbacks is bad" it
+could be something to point folks to.&lt;/p&gt;</summary></entry><entry><title>Posted by: James Henstridge (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-4078353093512040019.md" rel="alternate"></link><updated>2009-07-01T01:20:00+01:00</updated><author><name>James Henstridge (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-01:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;I think it would be a lot easier to understand Twisted if it was
+smaller. I don't mean remove features, but rather reduce cases where it
+duplicates functionality from the standard library.  &lt;/p&gt;
+&lt;p&gt;For example, if I am trying to understand the deferred concept, I need
+to understand failures. I already understand exceptions, but now need to
+learn about this similar but slightly different concept.  &lt;/p&gt;
+&lt;p&gt;For each of the bits of twisted.python where standard library interfaces
+have been extended, it would be good to consider them bugs that should
+eventually be fixed by getting the standard library updated. For
+failures, perhaps the exception handling changes in Python 3 are enough
+to use directly.  &lt;/p&gt;
+&lt;p&gt;In other cases, I think it would be useful to look at pushing some of
+Twisted's core concepts into the standard libraries. The deferred system
+is one I've mentioned before. The API review that would come it would
+likely be helpful too.&lt;/p&gt;</summary></entry><entry><title>Posted by: Richard Jones (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-505559708295920961.md" rel="alternate"></link><updated>2009-07-01T00:01:00+01:00</updated><author><name>Richard Jones (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-01:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;ps. I also like Twisted ;)&lt;/p&gt;</summary></entry><entry><title>Posted by: B (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-5218182334088359086.md" rel="alternate"></link><updated>2009-06-30T21:53:00+01:00</updated><author><name>B (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-06-30:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;I like Twisted.  &lt;/p&gt;
+&lt;p&gt;But, I know where people are coming from. You get a bunch of docs that
+just don't seem to quite fit together and the API reference just doesn't
+seem quite finished, so your learning process is scattered all over the
+place.  &lt;/p&gt;
+&lt;p&gt;So you read a tutorial and you get told you have to write 10 lines of
+code, except you only know what 1 of those lines actually does. The rest
+is just "necessary", but since you don't know what it does, it's easy to
+see why people think it's unnecessary boilerplate, when in fact it's a
+bunch of powerful tools that you can use to extend your application.  &lt;/p&gt;
+&lt;p&gt;I really believe that the only thing that creates such an unexpected
+number of Twisted detractors is the fact that there isn't a nice, easy,
+pretty, consistent documentation system that takes each part of Twisted
+as a clean slate, providing easy access to all the core stuff that's
+being used in the examples as assumed knowledge.  &lt;/p&gt;
+&lt;p&gt;Once the assumed knowledge is clearly laid out and accessable from every
+page I think everything will fall into place.  &lt;/p&gt;
+&lt;p&gt;Learning a new API, especially one as extensive as Twisted's, is hard
+enough already, without also having to juggle in your mind a kludgy and
+patchy documentation system.  &lt;/p&gt;
+&lt;p&gt;(I really, really do like Twisted a lot though)&lt;/p&gt;</summary></entry><entry><title>Posted by: europearchive (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-5754838763257586608.md" rel="alternate"></link><updated>2009-07-01T11:24:00+01:00</updated><author><name>europearchive (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-01:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;For me the biggest issue with Twisted is the steep learning curve. It
+isn't helped by the documentation - although the twisted book goes some
+way to dealing with that. Most of what I know about Twisted I learned
+from the source code though.  &lt;/p&gt;
+&lt;p&gt;I wrote a large heavy duty crawler in it - including custom DNS and HTTP
+protocols. And if I was honest I am still not 100% sure how the
+protocol/factory bits work although I obviously have made them work well
+(because the crawler worked really well)  &lt;/p&gt;
+&lt;p&gt;Not sure what or even if you would want to do something about this.
+Twisted is incredibly powerful and can do some superb stuff - but on the
+other hand I am unlikely to start new projects with it because either I
+maintain it or I have to push team members up that learning curve before
+they can do anything on it.&lt;/p&gt;</summary></entry><entry><title>Posted by: Richard Jones (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/06/twisted-huh.html/#comment-683109510637083909.md" rel="alternate"></link><updated>2009-07-01T00:01:00+01:00</updated><author><name>Richard Jones (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-07-01:2009/06/twisted-huh.html/</id><summary type="html">&lt;p&gt;This comment has been removed by the author.&lt;/p&gt;</summary></entry></feed>

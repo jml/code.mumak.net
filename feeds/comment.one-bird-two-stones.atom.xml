@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: One bird, two stones</title><link href="http://code.mumak.net/2009/02/one-bird-two-stones.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.one-bird-two-stones.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/02/one-bird-two-stones.html/</id><updated>2009-02-22T23:56:00+00:00</updated><entry><title>Posted by: Michael Hudson (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/02/one-bird-two-stones.html/#comment-3383678314465901158.md" rel="alternate"></link><updated>2009-02-22T23:56:00+00:00</updated><author><name>Michael Hudson (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-02-22:2009/02/one-bird-two-stones.html/</id><summary type="html">&lt;p&gt;I guess Twisted isn't the obvious place to look for interface utilities,
+or at least, it's not obvious to many people.  &lt;/p&gt;
+&lt;p&gt;I guess you can relate this to the difficulty of spinning out useful
+things into separately distributed (maintained, released, installed,
+...) packages.&lt;/p&gt;</summary></entry></feed>

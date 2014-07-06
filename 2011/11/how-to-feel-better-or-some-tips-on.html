@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>How to feel better (or, some tips on refactoring) - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="How to feel better (or, some tips on refactoring)"/>
+            <meta property="og:url" content="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html"/>
+            <meta property="og:description" content="A few months back I gave a lightning talk at the Launchpad Thunderdome about how I do refactoring. It's very opinionated, and mostly applies to big, old code bases, but worth writing up anyway. The core idea here is that very few things make me feel as good as ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html"
+                       rel="bookmark"
+                       title="Permalink to How to feel better (or, some tips on refactoring)">
+                        How to feel better (or, some tips on refactoring)
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2011-11-04T18:29:00"> Fri 04 November 2011</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><span>A few months back I gave a lightning talk at the
+<a href="https://launchpad.net/">Launchpad</a> Thunderdome about how I do
+refactoring.  It's very opinionated, and mostly applies to big, old code
+bases, but worth writing up anyway.</span><br />
+<span><br />
+</span><br />
+<span>The core idea here is that very few things make me feel as good as
+deleting code. I love cleaning up code and the clean code base that
+results, and I'm sure that many others feel like me. As such, this is a
+guide on how to feel better.</span>  </p>
+<p><strong>1. Know your enemy</strong>  </p>
+<p>“Functionality is an asset, code is a liability”. Truer words were never
+spoken. Every line of code is a potential source of bugs and a barrier
+to understanding, and thus carries a maintenance cost.  </p>
+<p>Maintain an awareness of things that need refactoring. Here's a quick
+and incomplete list:  </p>
+<ul>
+<li><span>unused code – this can be deleted</span></li>
+<li><span>boilerplate – this should become a function or class</span></li>
+<li><span>wrong documentation – these should be updated</span></li>
+<li><span>two ways of doing something – perhaps there should be
+    one</span></li>
+<li><span>bad names – change them to something that makes you think
+    less</span></li>
+</ul>
+<p><strong>2. Keep a "yak stack"</strong>  </p>
+<p><a href="http://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html">Yak
+shaving</a><span> is
+"any seemingly pointless activity which is actually necessary to solve a
+problem which solves a problem which, several levels of recursion later,
+solves the real problem you're working on." (<a href="http://catb.org/jargon/html/Y/yak-shaving.html">Jargon
+File</a>)</span>  </p>
+<p>A few of us have extended the concept beyond the "actually necessary" to
+include anything that's making the task at hand more difficult and less
+fun but is not worth fixing <em>right</em> now. Hence the yak stack. Here's how
+it works:  </p>
+<p>Whenever you come across something in your code base that is difficult
+to understand or that slows you down: make a note of it. When you've
+finished the task at hand, fix the problem. If you encounter other
+things that slow you down, write them down. Work through the list.  </p>
+<p><strong>3. Every option is wrong</strong>  </p>
+<p>In a big, old code base, there are probably many, many areas that need
+refactoring.  Don't worry about which is the "best" place to start –
+there is no best place.  </p>
+<p><strong>4. Start from green, stay green</strong>  </p>
+<p>Never, ever refactor while your tests are failing. Refactoring is about
+changing the shape of code while preserving its behaviour. It's much
+harder to be sure you're keeping the behaviour if you are comparing one
+set of thirty tracebacks with another set of thirty tracebacks. Better
+to compare a passing ("green") test run with another passing test run.  </p>
+<p>Run tests frequently. More often then you think you should. Commit often
+– think of it like quick save in a tough level of a video game. It frees
+you up to experiment more and means you have less in your head at any
+one time.  </p>
+<p><strong>5. Do not nest</strong>  </p>
+<p>Don't begin a refactoring while you are in the middle of another
+refactoring. If you find you must, use tools like '<a href="http://doc.bazaar.canonical.com/beta/en/user-guide/shelving_changes.html">bzr
+shelve</a>'
+to store your current diff and then work from the clean head of your
+branch.  </p>
+<p><strong>6. Keep moving, leave a trail</strong>  </p>
+<p>Don't get bogged down in details, otherwise you'll never finish.
+Literally. Someone will come along and distract you and before you know
+it, three months will pass and your refactoring branch will be full of
+conflicts. If you see something you are unsure of, mark it with a XXX or
+a FIXME or a TODO or whatever works for you and then continue with what
+you are doing.  </p>
+<p>Tools like '<a href="http://launchpad.net/difftodo">bzr todo</a>' can make it
+really easy to check to see if you've added any XXX comments.  </p>
+<p><strong>7. Translate tests with care</strong>  </p>
+<p>As said above, refactoring is about changing the shape of code while
+preserving its behaviour. When you update tests, you risk changing your
+definition of the system's behaviour – so be careful.  </p>
+<p><strong>8. Confront uncertainty with destruction</strong>  </p>
+<p>If you see some code and you are not sure if it's needed, delete it.
+Doesn't matter if it's a whole function or just an odd line. If you have
+a test suite, and it was important, that will catch the failure. If you
+have version control, and it was important, one of your collaborators
+will notice and revert the change.  </p>
+<p>If it was important and neither of these happened, then your whole
+project has learned something new about itself, and that's probably
+worth the hassle. (Oh, add tests &amp; better docs after this happens.)  </p>
+<p><strong>9. Good grep tools</strong>  </p>
+<p>Remember that symbols aren't only referenced from files that match
+*.py.  In big code bases there are often other sorts of files that
+refer to symbols in the main code. In Launchpad, for example, we have
+ZCML and doctest files that refer to symbols. When you want to know how
+something is used or you want to rename something, make sure you use a
+grep command that actually finds everything.  </p>
+<p>Ideally, you should be able to run this command faster than you can
+think about wanting to do it.  </p>
+<p>Personally, I use 'bzr grep' a lot. Others recommend 'ack'.  </p>
+<p><strong>10. There will be failures</strong>  </p>
+<p>Mentally prepare yourself for the fact that the first two or three full
+test runs after your refactoring will fail.  This is especially
+important for code bases that have multi-hour test run times.  </p>
+<p>If you think this way, then you won't be as discouraged when it actually
+happens.  </p>
+<p><strong>11. Finish the job</strong>  </p>
+<p>Busy people refactoring a big code base are often tempted to apply a
+refactoring to only a single part.  For example, some useful function is
+extracted from repeated boilerplate in a few other functions. However,
+many, many other instances in the code base continue to use the repeated
+boilerplate.  </p>
+<p>This is <em>almost</em> worse than just leaving the repeated boilerplate.
+ There are now two idiomatic ways of doing the activity.  Further, other
+developers who work on other parts of the code base probably won't find
+out about it, and might end up repeating your refactoring. Ugh. How is
+anyone new expected to get to grips with this code?  </p>
+<p>Similarly, if a class, function or concept is renamed, rename it
+everywhere, especially in the documentation.  </p>
+<p>It's difficult and often tedious, but it really is worth taking
+refactorings to completion. Apply them to the whole code base, or not at
+all.  </p>
+<p>Note that I'm referring to completeness, not perfection. If you block on
+perfection, you never get anything useful done. If you aim for frequent
+incremental improvements, you soar.  </p>
+<p><strong>12. Read these books</strong>  </p>
+<p>I highly recommend
+"<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1320430812&amp;sr=1-1">Refactoring</a>"
+by Martin Fowler and "<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1320430812&amp;sr=1-1">TDD by
+Example</a>"
+by Kent Beck. I stole many of these ideas from them.  </p>
+<div>
+
+**Over to you**
+
+</div>
+
+<div>
+
+**  
+**
+
+</div>
+
+<div>
+
+This was very much just a dump of how I do refactoring when hacking on
+Launchpad. I'm always keen to learn more, and would love to hear about
+what works for you.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-560225008571884011.md">
+                <a href="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html#comment-560225008571884011.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-11-04T18:51:00">Fri 04 November 2011</abbr></p>
+                
+                <p>As to point 7, I'd say that "with care" is not quite good enough. Change
+the test, run it, it should pass; but then always go change the
+implementation in a way which should break the test, and make sure it
+still fails.  </p>
+<p>If we had really good coverage tools which were constantly informing us
+in a useful way of which lines were being run, with good IDE
+integration, this step might not be necessary, but even the snazzier
+IDEs I've seen do not seem to have this down.</p>
+            </article>
+            <article id="comment-3971129642119894676.md">
+                <a href="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html#comment-3971129642119894676.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-11-04T18:54:00">Fri 04 November 2011</abbr></p>
+                
+                <p>I think that's exactly right.</p>
+            </article>
+            <article id="comment-6401724071507023685.md">
+                <a href="http://code.mumak.net/2011/11/how-to-feel-better-or-some-tips-on.html#comment-6401724071507023685.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michael Hudson-Doyle (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-11-05T05:27:00">Sat 05 November 2011</abbr></p>
+                
+                <p>There's that Java thing that randomly mutates your code and complains if
+no test breaks which sounds sort of vaguely like that, but it's not
+quite the same I guess.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

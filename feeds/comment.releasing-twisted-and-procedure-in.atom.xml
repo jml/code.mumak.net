@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Releasing Twisted, and procedure in general</title><link href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.releasing-twisted-and-procedure-in.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html/</id><updated>2010-07-06T13:12:00+01:00</updated><entry><title>Posted by: Cory (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html/#comment-2650157260592069491.md" rel="alternate"></link><updated>2010-07-04T15:52:00+01:00</updated><author><name>Cory (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-04:2010/07/releasing-twisted-and-procedure-in.html/</id><summary type="html">&lt;p&gt;One thing that I've found useful in release automation is *not* to try
+too hard to automate things that should be done by a human. In places
+there will be parts of your process such as "post the release
+announcement to a newsgroup" or "comb through the bug list for notable
+release notes".  &lt;/p&gt;
+&lt;p&gt;In those places, just make it as easy as possible for a human to do it.
+For example, when I'm looking for release notes, I wrote a script that
+extracts changesets and groups them by bug number, dumps that into a
+text file and then shows me an xterm with the summary, and another
+window where I can type in my release notes.  &lt;/p&gt;
+&lt;p&gt;Not automated, but *easy*.&lt;/p&gt;</summary></entry><entry><title>Posted by: Steve McInerney (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html/#comment-2720836114896048181.md" rel="alternate"></link><updated>2010-07-05T05:51:00+01:00</updated><author><name>Steve McInerney (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-05:2010/07/releasing-twisted-and-procedure-in.html/</id><summary type="html">&lt;p&gt;we'll make a sysadmin of you yet jml...&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html/#comment-3235389698956188579.md" rel="alternate"></link><updated>2010-07-06T13:12:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-06:2010/07/releasing-twisted-and-procedure-in.html/</id><summary type="html">&lt;p&gt;Glyph, that's a good idea. I wonder if a reason per artifact would be
+more useful than a reason per step, though.  &lt;/p&gt;
+&lt;p&gt;Cory, definitely. There's always going to be human steps involved. The
+trick is not eliminating them but reducing their number and making each
+step easy to do and hard to screw up.  &lt;/p&gt;
+&lt;p&gt;Steve, I have no idea what you mean. I was thinking like a programmer
+when I did this :)&lt;/p&gt;</summary></entry><entry><title>Posted by: glyph (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html/#comment-6010658711172411385.md" rel="alternate"></link><updated>2010-07-05T21:20:00+01:00</updated><author><name>glyph (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-05:2010/07/releasing-twisted-and-procedure-in.html/</id><summary type="html">&lt;p&gt;&lt;em&gt;Are all of the steps in the process really needed? Why do we have so
+many tarballs? ... Why generate a PDF?&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;As a step along the way to simplification, I think that perhaps we
+should answer these questions explicitly, and not just as a rhetorical
+device where "why..." means "let's not...". :).  &lt;/p&gt;
+&lt;p&gt;In fact, generally speaking, &lt;em&gt;every&lt;/em&gt; step in the release process should
+include an explanation of why it's necessary. Why do we run
+`change-versions`? To update the version number in a mechanical way so
+that we won't miss any instances of it. Why do we sign the tarballs? To
+provide a way for distributors to verify that the release they've got
+was the same release we released securely. Even the "quote of the
+release" ought to serve a purpose, if it involves work for the release
+manager! That way, if something else in the process changes, we have a
+good way of looking at any particular step and saying "in light of these
+changes, does it still serve its intended purpose?"&lt;/p&gt;</summary></entry></feed>

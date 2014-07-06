@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Twisted huh? - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Twisted huh?"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/06/twisted-huh.html"/>
+            <meta property="og:description" content="One of the hallway conversations I've had a few times so far at EuroPython goes like this: A: Twisted's got some good stuff going for it, but I don't like the way it forces me to use Zope interfaces. It's too heavyweight? B: Huh? What do ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/06/twisted-huh.html"
+                       rel="bookmark"
+                       title="Permalink to Twisted huh?">
+                        Twisted huh?
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-06-30T15:23:00"> Tue 30 June 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>One of the hallway conversations I've had a few times so far at
+EuroPython goes like this:  </p>
+<p>A: Twisted's got some good stuff going for it, but I don't like the way
+it forces me to use Zope interfaces. It's too heavyweight?<br />
+B: Huh? What do you mean? It doesn't make you do that.<br />
+C: Yeah, there's lots of deep inheritance, which just feels really
+wrong.<br />
+A: Right, I have to write too much code to get something simple
+working.<br />
+B: Sorry, I have no idea what you mean. Can you give a concrete
+example?<br />
+A, C: I can't think of one right now.  </p>
+<p>To me, this is a very intriguing beginning to a real conversation. Do
+you know what A and C might mean here? I'd love to understand their
+points so that I can form an opinion.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-1450782131141404005.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-1450782131141404005.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Geekwad (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-06-30T19:27:00">Tue 30 June 2009</abbr></p>
+                
+                <p>If only we *could* force them to use zope.interface. ;-)</p>
+            </article>
+            <article id="comment-5218182334088359086.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-5218182334088359086.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>B (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-06-30T21:53:00">Tue 30 June 2009</abbr></p>
+                
+                <p>I like Twisted.  </p>
+<p>But, I know where people are coming from. You get a bunch of docs that
+just don't seem to quite fit together and the API reference just doesn't
+seem quite finished, so your learning process is scattered all over the
+place.  </p>
+<p>So you read a tutorial and you get told you have to write 10 lines of
+code, except you only know what 1 of those lines actually does. The rest
+is just "necessary", but since you don't know what it does, it's easy to
+see why people think it's unnecessary boilerplate, when in fact it's a
+bunch of powerful tools that you can use to extend your application.  </p>
+<p>I really believe that the only thing that creates such an unexpected
+number of Twisted detractors is the fact that there isn't a nice, easy,
+pretty, consistent documentation system that takes each part of Twisted
+as a clean slate, providing easy access to all the core stuff that's
+being used in the examples as assumed knowledge.  </p>
+<p>Once the assumed knowledge is clearly laid out and accessable from every
+page I think everything will fall into place.  </p>
+<p>Learning a new API, especially one as extensive as Twisted's, is hard
+enough already, without also having to juggle in your mind a kludgy and
+patchy documentation system.  </p>
+<p>(I really, really do like Twisted a lot though)</p>
+            </article>
+            <article id="comment-2067600067407139682.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-2067600067407139682.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Richard Jones (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-01T00:00:00">Wed 01 July 2009</abbr></p>
+                
+                <p>"B" said. Twisted's just too impenetrable for newbies. As a seasoned
+Twisted programmer (ie. I've written a few systems using it) I'm still
+not sure where to look in the docs for simple things like the API for
+deferreds and how they work.  </p>
+<p>The inheritance tree is part of this: the API docs for a lot of classes
+just indicate that they inherit from some other class(es) and add some
+(un- or poorly-documented) new methods. To find out how to use said
+class you have to dig right down to the base class(es) and often their
+documentation is also poor/missing/too abstract.</p>
+            </article>
+            <article id="comment-505559708295920961.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-505559708295920961.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Richard Jones (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-01T00:01:00">Wed 01 July 2009</abbr></p>
+                
+                <p>ps. I also like Twisted ;)</p>
+            </article>
+            <article id="comment-683109510637083909.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-683109510637083909.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Richard Jones (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-01T00:01:00">Wed 01 July 2009</abbr></p>
+                
+                <p>This comment has been removed by the author.</p>
+            </article>
+            <article id="comment-4078353093512040019.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-4078353093512040019.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>James Henstridge (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-01T01:20:00">Wed 01 July 2009</abbr></p>
+                
+                <p>I think it would be a lot easier to understand Twisted if it was
+smaller. I don't mean remove features, but rather reduce cases where it
+duplicates functionality from the standard library.  </p>
+<p>For example, if I am trying to understand the deferred concept, I need
+to understand failures. I already understand exceptions, but now need to
+learn about this similar but slightly different concept.  </p>
+<p>For each of the bits of twisted.python where standard library interfaces
+have been extended, it would be good to consider them bugs that should
+eventually be fixed by getting the standard library updated. For
+failures, perhaps the exception handling changes in Python 3 are enough
+to use directly.  </p>
+<p>In other cases, I think it would be useful to look at pushing some of
+Twisted's core concepts into the standard libraries. The deferred system
+is one I've mentioned before. The API review that would come it would
+likely be helpful too.</p>
+            </article>
+            <article id="comment-5754838763257586608.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-5754838763257586608.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>europearchive (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-01T11:24:00">Wed 01 July 2009</abbr></p>
+                
+                <p>For me the biggest issue with Twisted is the steep learning curve. It
+isn't helped by the documentation - although the twisted book goes some
+way to dealing with that. Most of what I know about Twisted I learned
+from the source code though.  </p>
+<p>I wrote a large heavy duty crawler in it - including custom DNS and HTTP
+protocols. And if I was honest I am still not 100% sure how the
+protocol/factory bits work although I obviously have made them work well
+(because the crawler worked really well)  </p>
+<p>Not sure what or even if you would want to do something about this.
+Twisted is incredibly powerful and can do some superb stuff - but on the
+other hand I am unlikely to start new projects with it because either I
+maintain it or I have to push team members up that learning curve before
+they can do anything on it.</p>
+            </article>
+            <article id="comment-3755863959563583975.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-3755863959563583975.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Kilroy (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-03T23:02:00">Fri 03 July 2009</abbr></p>
+                
+                <p>I keep hearing things like this as well, and I just don't understand why
+so many are so intimidated by twisted. It really isn't any harder to get
+to grips with than any other large python project like TG IMHO. They do
+have some tools to kick you into gear a little faster perhaps.  </p>
+<p>I also hear things like "twisted eats your errors", "twisted doesn't let
+me use threads", "twisted can't work with my libraries", "you can't use
+databases with twisted" - all utter nonsense, but I keep hearing it over
+and over again. They're usually in the form of anecdotal stories
+"twisted ate all my errors, I promise I attached errbacks".  </p>
+<p>Some 5 minute howtos may be the answer to some of these. If we listen to
+a few of these complaints and create a "how to access your \${foo}sql
+instance", "how to set up logging", "how to use
+callInThread/callFromThread", "why forgetting your errbacks is bad" it
+could be something to point folks to.</p>
+            </article>
+            <article id="comment-3330006647725190661.md">
+                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-3330006647725190661.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Richard Jones (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-03T23:34:00">Fri 03 July 2009</abbr></p>
+                
+                <p>Kilroy, I think you need to read the comments already posted here (maybe
+again, but reading your reply I can't help thinking for the first
+time).  </p>
+<p>In particular, about HOWTOs "B" specifically said "So you read a
+tutorial and you get told you have to write 10 lines of code, except you
+only know what 1 of those lines actually does."  </p>
+<p>Without solid API documentation to back them up those HOWTOs are
+basically just crumbs thrown out to try to satisfy the hungry masses.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

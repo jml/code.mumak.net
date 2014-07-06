@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Cool Launchpad/Bazaar hack - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Cool Launchpad/Bazaar hack"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/07/cool-launchpadbazaar-hack.html"/>
+            <meta property="og:description" content="If you push a lot of Bazaar branches to Launchpad, you might want to add something like this to your .bazaar/locations.conf: [/home/jml/Code]public_branch = lp:~jmlpublic_branch:policy = appendpathpush_location = lp:~jmlpush_location:policy = appendpath Once it's there, 'bzr push' will Just Work... as long as you want it ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/07/cool-launchpadbazaar-hack.html"
+                       rel="bookmark"
+                       title="Permalink to Cool Launchpad/Bazaar hack">
+                        Cool Launchpad/Bazaar hack
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-07-25T05:52:00"> Fri 25 July 2008</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>If you push a lot of Bazaar branches to Launchpad, you might want to add
+something like this to your .bazaar/locations.conf:</p>
+<div class="highlight"><pre><span class="p">[</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jml</span><span class="o">/</span><span class="n">Code</span><span class="p">]</span><span class="n">public_branch</span> <span class="o">=</span> <span class="n">lp</span><span class="o">:~</span><span class="n">jmlpublic_branch</span><span class="o">:</span><span class="n">policy</span> <span class="o">=</span> <span class="n">appendpathpush_location</span> <span class="o">=</span> <span class="n">lp</span><span class="o">:~</span><span class="n">jmlpush_location</span><span class="o">:</span><span class="n">policy</span> <span class="o">=</span> <span class="n">appendpath</span>
+</pre></div>
+
+
+<p>Once it's there, 'bzr push' will Just Work... as long as you want it to
+do something like:</p>
+<div class="highlight"><pre><span class="n">jml</span><span class="err">@</span><span class="n">rhino</span><span class="o">:~</span><span class="err">$</span> <span class="n">cd</span> <span class="o">~/</span><span class="n">Code</span><span class="o">/</span><span class="n">pyunit3k</span><span class="o">/</span><span class="n">trunkjml</span><span class="err">@</span><span class="n">rhino</span><span class="o">:~/</span><span class="n">Code</span><span class="o">/</span><span class="n">pyunit3k</span><span class="o">/</span><span class="n">trunk</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">pushUsing</span> <span class="n">saved</span> <span class="n">location</span><span class="o">:</span> <span class="n">lp</span><span class="o">:~</span><span class="n">jml</span><span class="o">/</span><span class="n">pyunit3k</span><span class="o">/</span><span class="n">trunkNo</span> <span class="n">new</span> <span class="n">revisions</span> <span class="n">to</span> <span class="n">push</span><span class="p">.</span>
+</pre></div>
+
+
+<p>So if I've got a branch in <code>~/Code/&lt;project-name&gt;/&lt;branch-name&gt;</code>, it'll
+be published at
+<code>https://launchpad.net/~jml/&lt;project-name&gt;/&lt;branch-name&gt;</code>. This is only
+a default, of course: you can override it for a given branch by doing:</p>
+<div class="highlight"><pre><span class="nx">bzr</span> <span class="nb">push</span> <span class="o">--</span><span class="nx">remember</span> <span class="o">&lt;</span><span class="nx">new_location</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>Or you can override it for a bunch of branches by hacking
+locations.conf.  </p>
+<p>Neat huh?</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2923870251882866892.md">
+                <a href="http://code.mumak.net/2008/07/cool-launchpadbazaar-hack.html#comment-2923870251882866892.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Aaron Bentley (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-07-25T14:44:00">Fri 25 July 2008</abbr></p>
+                
+                <p>Actually, I'd expect that push --remember does nothing if you already
+have a setting in locations.conf.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Releasing Twisted, and procedure in general - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Releasing Twisted, and procedure in general"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html"/>
+            <meta property="og:description" content="I'm in the middle of releasing Twisted 10.1, following the procedure document that I wrote when I released Twisted 10.0. Having everything written down has been a wonderful aide so far, but doing the release twice has made me think about what it takes to breathe life ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html"
+                       rel="bookmark"
+                       title="Permalink to Releasing Twisted, and procedure in general">
+                        Releasing Twisted, and procedure in general
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-07-04T13:45:00"> Sun 04 July 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I'm in the middle of releasing <a href="http://twistedmatrix.com/">Twisted</a>
+10.1, following the <a href="http://twistedmatrix.com/trac/wiki/ReleaseProcess">procedure
+document</a> that I
+wrote when I released <a href="http://labs.twistedmatrix.com/2010/03/twisted-1000-released.html">Twisted
+10.0</a>.
+Having everything written down has been a wonderful aide so far, but
+doing the release twice has made me think about what it takes to breathe
+life into old procedure.  </p>
+<p>The very first step has already been taken, <em>figure out what the process
+is and write it down.</em> There are still some bits that are unknown and
+hazy, but I expect they'll be clear by the time we're done. Anyway,
+writing things down is only the beginning, after that, there are two
+things that I think we ought to do roughly concurrently.  </p>
+<p>The first is <em>automate the existing procedure</em> for which here are
+already <a href="http://twistedmatrix.com/trac/query?status=assigned&amp;status=new&amp;status=reopened&amp;group=status&amp;milestone=regular-releases">many tickets
+filed</a>,
+and the second is <em>simplify the process itself</em>. Are all of the steps in
+the process really needed? Why do we have so many tarballs? Why upload
+the tarballs to a server that is only periodically mirrored by the
+actual official download location? Why generate a PDF?  </p>
+<p>I don't want to start a discussion on the details here, but rather raise
+the need for Twisted to begin considering this simplification, and for
+myself to begin articulating some of my own thoughts about process in
+general.  </p>
+<p>The final, on-going step in revitalizing procedure is to <em>delegate the
+task</em>, either to another human being or better yet a machine. I wonder
+if it would be possible to have the Twisted release done by a monthly
+cronjob?  </p>
+<p>In summary, to revive an existing process:  </p>
+<ul>
+<li>Figure out what the process is and write it down</li>
+<li>Simplify the process itself, reducing the number of steps</li>
+<li>Automate as many of the steps as possible, thus combining them</li>
+<li>Delegate the execution of the process</li>
+</ul>
+<!-- -->
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2650157260592069491.md">
+                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-2650157260592069491.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Cory (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-04T15:52:00">Sun 04 July 2010</abbr></p>
+                
+                <p>One thing that I've found useful in release automation is *not* to try
+too hard to automate things that should be done by a human. In places
+there will be parts of your process such as "post the release
+announcement to a newsgroup" or "comb through the bug list for notable
+release notes".  </p>
+<p>In those places, just make it as easy as possible for a human to do it.
+For example, when I'm looking for release notes, I wrote a script that
+extracts changesets and groups them by bug number, dumps that into a
+text file and then shows me an xterm with the summary, and another
+window where I can type in my release notes.  </p>
+<p>Not automated, but *easy*.</p>
+            </article>
+            <article id="comment-2720836114896048181.md">
+                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-2720836114896048181.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Steve McInerney (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-05T05:51:00">Mon 05 July 2010</abbr></p>
+                
+                <p>we'll make a sysadmin of you yet jml...</p>
+            </article>
+            <article id="comment-6010658711172411385.md">
+                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-6010658711172411385.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-05T21:20:00">Mon 05 July 2010</abbr></p>
+                
+                <p><em>Are all of the steps in the process really needed? Why do we have so
+many tarballs? ... Why generate a PDF?</em>  </p>
+<p>As a step along the way to simplification, I think that perhaps we
+should answer these questions explicitly, and not just as a rhetorical
+device where "why..." means "let's not...". :).  </p>
+<p>In fact, generally speaking, <em>every</em> step in the release process should
+include an explanation of why it's necessary. Why do we run
+`change-versions`? To update the version number in a mechanical way so
+that we won't miss any instances of it. Why do we sign the tarballs? To
+provide a way for distributors to verify that the release they've got
+was the same release we released securely. Even the "quote of the
+release" ought to serve a purpose, if it involves work for the release
+manager! That way, if something else in the process changes, we have a
+good way of looking at any particular step and saying "in light of these
+changes, does it still serve its intended purpose?"</p>
+            </article>
+            <article id="comment-3235389698956188579.md">
+                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-3235389698956188579.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-06T13:12:00">Tue 06 July 2010</abbr></p>
+                
+                <p>Glyph, that's a good idea. I wonder if a reason per artifact would be
+more useful than a reason per step, though.  </p>
+<p>Cory, definitely. There's always going to be human steps involved. The
+trick is not eliminating them but reducing their number and making each
+step easy to do and hard to screw up.  </p>
+<p>Steve, I have no idea what you mean. I was thinking like a programmer
+when I did this :)</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

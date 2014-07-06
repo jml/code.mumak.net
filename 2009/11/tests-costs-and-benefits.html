@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Tests: Costs and Benefits - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Tests: Costs and Benefits"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/11/tests-costs-and-benefits.html"/>
+            <meta property="og:description" content="I like unit testing a lot. I've recently been thinking about whether it really is everything that advocates like myself make it out to be. I'm still thinking, but I reckon that language has something to do with it, and that I wouldn't like TDD so much ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html"
+                       rel="bookmark"
+                       title="Permalink to Tests: Costs and Benefits">
+                        Tests: Costs and Benefits
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-11-11T08:16:00"> Wed 11 November 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I like unit testing a lot. I've recently been thinking about whether it
+really is everything that advocates like myself make it out to be. I'm
+still thinking, but I reckon that language has something to do with it,
+and that I wouldn't like TDD so much if I were writing in Haskell.
+Maybe.</p>
+<div>
+
+Anyway, here are the benefits of unit testing, without justification or
+explanation:
+
+</div>
+
+<div>
+
+-   Easier to maintain code
+-   Avoiding regressions
+-   Make API clearer, both by describing it and by encouraging
+    contracts.
+-   Confidence in changes to code
+
+<div>
+
+For new contributors, there are other benefits:
+
+</div>
+
+<div>
+
+-   Confidence in changes to code
+-   Confidence in the validity of your own patch
+-   Mechanism for exploring internal system behaviour
+
+</div>
+
+<div>
+
+Some of the costs are:
+
+</div>
+
+<div>
+
+-   Maintaining tests
+-   Caring about the performance of tests
+-   Running the tests
+-   Debugging tests
+
+<div>
+
+For new contributors, there are other costs:
+
+</div>
+
+<div>
+
+-   Finding tests
+-   Figuring out how to run tests
+-   Figuring out how to write tests
+-   Learn unit testing
+
+</div>
+
+<div>
+
+Is this fair? Is this clear? And exactly where was that post by that guy
+about unit testing being overrated?
+
+</div>
+
+<div>
+
+On a half-related and slightly exasperated note, many of the
+conversations I've been having recently have been about costs and
+benefits. What happened to doing something because it was the right
+thing?
+
+</div>
+
+</div>
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-1781352005569485714.md">
+                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-1781352005569485714.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Gary van der Merwe (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-11T09:40:00">Wed 11 November 2009</abbr></p>
+                
+                <p>Yes - Language is very important in this debate. Test are more important
+for dynamically typed languages (e.g. python), than for statically typed
+languages (e.g. C#.)  </p>
+<p>For example, if you rename a method, and you don't change one of the
+caller of the method (cause you missed it,) the static language will
+pick this up at compile time, but with the dynamic language, if you
+don't have tests, it's going to show up later as a bug.</p>
+            </article>
+            <article id="comment-4066995166163037922.md">
+                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-4066995166163037922.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Bice Dibley (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-11T09:53:00">Wed 11 November 2009</abbr></p>
+                
+                <p>You can focus on what's right only when there is no cost to consider.</p>
+            </article>
+            <article id="comment-2019827508675150767.md">
+                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-2019827508675150767.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Travis B. Hartwell (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-11T10:09:00">Wed 11 November 2009</abbr></p>
+                
+                <p>Sure, you don't need as many of the unit tests in a language like
+Haskell, because you can encode some of the constraints on behavior in
+the type system and the compiler will handle ensure these.  </p>
+<p>But, I almost think I would be more inclined to do testing of at least
+the core structures and functions of my applications if I were in
+Haskell because in fact it sounds like it is easier. With tools like
+QuickCheck and HPC and some more advanced checkers as well, there is a
+large toolkit to do so.  </p>
+<p>I recently have been re-reading Real World Haskell and Chapter 11
+Testing and Quality Assurance
+(http://book.realworldhaskell.org/read/testing-and-quality-assurance.html)
+makes me feel like the cost vs benefit ratio is definitely more bang for
+buck.  </p>
+<p>I also remember watching a talk by Don Stewart (and perhaps another of
+the xmonad developers, I can't remember right now) about the development
+of xmonad and the testing that went on. It was very enlightening.  </p>
+<p>I feel like I'd be more prone to catch the TDD spirit (well, more
+correctly the attitude that the code isn't done until it is tested)
+while using Haskell than I have been using Python. I have not, in fact,
+got into TDD in Python because it does seem onerous.</p>
+            </article>
+            <article id="comment-7310592420242993345.md">
+                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-7310592420242993345.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Cory (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-11T19:54:00">Wed 11 November 2009</abbr></p>
+                
+                <p>> What happened to doing something because it was the right thing?  </p>
+<p>This isn't a moral issue, you won't go to hell if you didn't write any
+unit tests. ;-)  </p>
+<p>Something is the right thing if the costs outweigh the benefits. Unit
+tests clearly add value to the process, and for me it's just as clear
+that the value is greater than the cost. Most people at least agree that
+testing (of some kind) reduces the time-spent-per-bug.  </p>
+<p>I think the debate is really about the <em>opportunity</em> cost of unit
+testing; could we be doing some BETTER form of testing, if we weren't
+writing unit tests?  </p>
+<p>For me, the answer is "maybe, but I haven't heard about it yet".</p>
+            </article>
+            <article id="comment-6177646133725760680.md">
+                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-6177646133725760680.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-11T23:28:00">Wed 11 November 2009</abbr></p>
+                
+                <p>Cory, I wasn't talking about testing when I was talking about right
+things, costs and benefits.  </p>
+<p>Bice, I disagree..</p>
+            </article>
+            <article id="comment-6540922224116896473.md">
+                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-6540922224116896473.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>AmanicA (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-12T12:05:00">Thu 12 November 2009</abbr></p>
+                
+                <p>For me a major benefit is that you save time. I.e you don't have to
+manually test something 100 times until it works correctly. You just run
+the test and it should be able to automatically do the test in less time
+than it would have taken to do it manually. With the added benefit that
+you can redo the test in a months time without remembering exactly how
+it works.  </p>
+<p>Another advantage for me is that it gets you thinking about what exactly
+you are trying to do before you spend the time going in circles of
+implementation while you are still trying to figure out what you are
+trying to do.<br />
+Especially if you doing it right:<br />
+http://en.wikipedia.org/wiki/Behavior_Driven_Development</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

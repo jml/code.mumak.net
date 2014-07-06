@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>A Modest Success - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="A Modest Success"/>
+            <meta property="og:url" content="http://code.mumak.net/2012/11/a-modest-success.html"/>
+            <meta property="og:description" content="Over the last few months, James Westby and I have been working on automatic packaging. I want to talk today not about the thing itself but rather how we go about making it, because I think that we have got a fairly good process going. Here's what it looks ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2012/11/a-modest-success.html"
+                       rel="bookmark"
+                       title="Permalink to A Modest Success">
+                        A Modest Success
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-11-09T14:18:00"> Fri 09 November 2012</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Over the last few months, James Westby and I have been working on
+automatic packaging. I want to talk today not about the thing itself but
+rather how we go about making it, because I think that we have got a
+fairly good process going.  </p>
+<p>Here's what it looks like.  </p>
+<p><strong>Conception</strong><br />
+<strong><br />
+</strong>We pull the work that we do from a backlog of ideas and requests. For
+example, a little while ago, we did some experiments that showed that if
+we changed the way we mapped libraries to Ubuntu packages, we could get
+much better results for automatically packaging binary apps. The project
+to change this ended up in our backlog, and we recently decided to work
+on it.  </p>
+<p>Before we begin work, we like to have a definition of "done". We also
+write down why we are doing this, and what our assumptions are. We then
+break things up into tasks. Maybe I'll dig into this another time.  </p>
+<p><strong>Guts</strong><br />
+<strong><br />
+</strong>Most of what we do goes in a loop:  </p>
+<ol>
+<li>Make a branch</li>
+<li>Work on it</li>
+<li>Propose for merging</li>
+<li>Code review</li>
+<li>Automated tests-then-land</li>
+<li>Automatically triggered staging deploy</li>
+<li>Manual "is it deployable" check</li>
+<li>Request production deployment from webops </li>
+</ol>
+<div>
+
+We use Bazaar for version control and we use Launchpad for hosting code
+and doing code review. Here's [an example
+one](https://code.launchpad.net/~jml/pkgme-service/remove-django-fixture/+merge/131424).
+
+</div>
+
+<div>
+
+Code review is quite often fairly boring. My guess is that one in ten
+actually provoke interesting changes. Most of our branches make small
+changes, all of our changes are covered with tests, and we have
+confidence in our test suite and our ability & willingness to make
+follow-up improvements. Thus, rather than seeing code review as our last
+line of defence for ensuring code quality, it's an opportunity to learn
+and to perhaps accelerate the process by spotting problems earlier.
+
+</div>
+
+<div>
+
+Once a merge proposal is approved, magic happens.
+
+</div>
+
+<div>
+
+In this case, "magic" is a Jenkins instance that uses tarmac to poll
+Launchpad to figure out which merge proposal are approved and thus ready
+to land.  It runs our test suite, and if it passes, lands the change. If
+it fails, it posts the failure to the merge proposal and our IRC channel
+and marks it as needing more work.  
+
+It's important here that our test suite is fast, that it's reliable, and
+that it gives useful error messages when things fail.
+
+</div>
+
+<div>
+
+When the change is to a dependency, then we run the tests of the things
+that depend on it with the latest change.
+
+</div>
+
+<div>
+
+After a successful change to trunk, we have a Jenkins job that triggers
+an automatic deployment to our staging server.
+
+</div>
+
+<div>
+
+All of this takes less than five minutes.
+
+</div>
+
+<div>
+
+Once it's on staging, our "QA" website lists it as a revision that needs
+to be manually verified. What we do there isn't really QA, but instead
+making sure that if we roll it out to production, we won't break
+anything. As with code review, we are confident in our ability to fix
+things later.   
+
+</div>
+
+<div>
+
+We tend to do these in batches, as our webops are insanely busy. Once
+we've got a group of changes that are safe to deploy to production, we
+ping the webops, who then (I think) run a single command that deploys to
+production very quickly. Sometimes because of interrupts, it can take
+twenty minutes to an hour to get someone to do this.
+
+</div>
+
+<div>
+
+**Completion**
+
+</div>
+
+<div>
+
+At this stage, we return to our definition of done and check to see if
+the change actually provides the value we thought. 
+
+</div>
+
+<div>
+
+Because automatic packaging is an inherently fuzzy problem, we run a
+barrage of real world data through the new system to see if the recent
+changes actually help. This also generates interesting qualitative data
+that gives us hints on where we might want to work next.
+
+</div>
+
+<div>
+
+**Principles**
+
+</div>
+
+<div>
+
+**  
+**
+
+</div>
+
+<div>
+
+This is the end result of a lot of work, mostly by James Westby with me
+cheerleading from the sidelines. We've iterated through it a lot, making
+things faster and more reliable, generally by going from polling to
+events, by cutting out unnecessary review steps, and by making
+visibility improvements for when things are broken.
+
+</div>
+
+<div>
+
+Underlying it all are a few principles that we have found to be either
+true or useful:
+
+</div>
+
+<div>
+
+-   a thing is not done until users are happily using it
+-   more strongly, a thing is not valuable until users are happily using
+    it, until then it is wasted effort 
+-   we should be able deploy any change in the main code or a dependency
+    within minutes at any time, every time
+-   all deployments must be from trunk, all revisions of trunk must be
+    tested and known-good
+-   we can avoid a lot of needless effort by asking ourselves why we are
+    doing what we doing, and by being explicit about our assumptions
+-   regressions are intolerable, everything else is tolerable, because
+    we can, will and do fix it
+
+<div>
+
+Rather than spend time shaping up this information into a pitch for why
+doing things our way will bring you fortune and glory, we just want to
+use this post to do the bare minimum of making what we are doing known
+more broadly.  
+
+Do you do something similar? Is there something above that you would
+like to know more about? Are we making claims that seem a bit
+far-fetched? Are any of our principles BS? Have you tried working toward
+goals like these?  
+
+We would really love to know and to hear from you. It will help us get
+better. Also, I've deliberately fudged some stuff, so it'd be great to
+get called out on that.  
+
+Thanks to James Westby for reviewing this post. All errors are mine.  
+
+
+</div>
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

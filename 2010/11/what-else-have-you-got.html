@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>What else have you got? - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="What else have you got?"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/11/what-else-have-you-got.html"/>
+            <meta property="og:description" content="I recently mentioned some of the very important things we're doing on Launchpad (performance, privacy, derived archives and desktop integration) and some of the equally important things that we'restill doing (making links, importing upstream translations, daily builds). We've also got a few other things on the ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/11/what-else-have-you-got.html"
+                       rel="bookmark"
+                       title="Permalink to What else have you got?">
+                        What else have you got?
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-11-18T18:16:00"> Thu 18 November 2010</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/launchpad.html">launchpad</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I recently mentioned some of the <a href="http://code.mumak.net/2010/11/what-to-do-what-to-do.html">very important things we're doing on
+Launchpad</a>
+(performance, privacy, derived archives and desktop integration) and
+some of the equally <a href="http://code.mumak.net/2010/11/still-going.html">important things that
+we're<em>still</em> doing</a>
+(making links, importing upstream translations, daily builds). We've
+also got a few other things on the hob.  </p>
+<p>In particular, there's some corking great work going on in making our
+<strong>build farm more scalable</strong>. The build farm is used for building
+<a href="http://ubuntu.com/">Ubuntu</a>, PPAs, building recipes and doing upstream
+translation imports, so it's a critical part of our infrastructure.
+We've been working to make better use of the machines we have, and make
+sure that we don't actually degrade in performance as we add more
+machines. There's also been a lot of good work here in making the code
+more understandable and robust.  </p>
+<p>Since we're now using the build farm for more things that just building
+packages, we've had to give the UI some love, particularly in making
+<strong><a href="https://dev.launchpad.net/LEP/GeneralBuildHistories">generalized build
+histories</a></strong> for
+the builders. This just means making builder and archive pages on
+Launchpad show all of the builds nicely, regardless of what type of
+build they are. We're kind of finished here, we just need that lousy
+<a href="https://launchpad.net/~jml">product strategist</a> to get around to
+reviewing the feature.  </p>
+<p>On the bug tracker, we're adding a new facility that will <strong>disable the
+automatic duplicate detection on a package-by-package basis</strong>. The dupe
+finder is one of my favourite parts of Launchpad, and I would never
+disable it for anything I do. However, the packages that take care of
+providing sound, graphics and networking get a lot of bugs that have the
+same symptoms but are actually completely different, and only an expert
+can tell them apart. In these cases, auto dupe detection does more harm
+than good, so we're providing a way to turn it off.  </p>
+<p>Perhaps most excitingly of all the "non-core" work, we're working on
+giving you <strong><a href="https://dev.launchpad.net/LEP/BetterBugSubscriptionsAndNotifications">far more control over your bug
+mail</a></strong>.
+Launchpad has long been known for sending way too much email. We're
+changing that.  </p>
+<p>There's also some great stuff being done outside the Launchpad team:  </p>
+<ul>
+<li><a href="https://dev.launchpad.net/LEP/DKIMAuthenticatedMail">DKIM-based mail
+    authentication</a>
+    (aka "Change bug statuses from GMail")</li>
+<li><a href="https://dev.launchpad.net/LEP/ForkingLPServe">Pre-forking lp-serve</a>
+    (aka "Shave two seconds off every bzr push to Launchpad")</li>
+<li><a href="https://dev.launchpad.net/LEP/BugzillaComponents">Bugzilla
+    components</a> (aka
+    "One step closer to smooth upstreaming of bugs")</li>
+<li><a href="https://dev.launchpad.net/Code/MergeQueues/LEP"><strong>Branch merge
+    queues</strong></a> </li>
+</ul>
+<div>
+
+And that's all of the stuff that's going on in Launchpad, as far as I
+know.  Actually, there's a fair bit of work going on to make it so we
+can deploy Launchpad way more often and work on features for as long as
+we want without exposing them to unsuspecting users. And we're also
+working on simplifying our branch landing machinery.  But that's it.
+
+</div>
+
+<div>
+
+As you can see, there are a lot of things.  That means that progress on
+any one thing is much slower than anyone would like.  However, progress
+is being made.  Give us a few months and we might be working on only
+three things at once, rather than over a dozen.
+
+</div>
+
+<div>
+
+As always, if you're keen on following Launchpad development, you can
+join \#launchpad-dev on Freenode, or our [developer mailing
+list](https://launchpad.net/~launchpad-dev).
+
+</div>
+
+<div>
+
+Coming soon: ideas for the not-so-distant future.  
+
+**Edit:** Oops! Forgot merge queues.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-4162013072162191450.md">
+                <a href="http://code.mumak.net/2010/11/what-else-have-you-got.html#comment-4162013072162191450.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>mwhudson (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-13T21:20:00">Sat 13 November 2010</abbr></p>
+                
+                <p>I think the fact that the build farm is used to build Ubuntu too is
+perhaps worthy of a mention :-)</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

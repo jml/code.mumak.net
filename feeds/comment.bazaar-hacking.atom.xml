@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Bazaar hacking</title><link href="http://code.mumak.net/2008/10/bazaar-hacking.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.bazaar-hacking.atom.xml" rel="self"></link><id>http://code.mumak.net/2008/10/bazaar-hacking.html/</id><updated>2008-10-04T20:35:00+01:00</updated><entry><title>Posted by: Aaron Bentley (noreply@blogger.com)</title><link href="http://code.mumak.net/2008/10/bazaar-hacking.html/#comment-1930203768022593961.md" rel="alternate"></link><updated>2008-10-04T20:35:00+01:00</updated><author><name>Aaron Bentley (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2008-10-04:2008/10/bazaar-hacking.html/</id><summary type="html">&lt;p&gt;There basically aren't any branch formats that are incompatible with
+repository formats. You'd have to go back to formats that were current
+for bzr 0.7 to find such a thing.&lt;/p&gt;</summary></entry><entry><title>Posted by: rockstar (noreply@blogger.com)</title><link href="http://code.mumak.net/2008/10/bazaar-hacking.html/#comment-6087816162105210884.md" rel="alternate"></link><updated>2008-10-04T17:22:00+01:00</updated><author><name>rockstar (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2008-10-04:2008/10/bazaar-hacking.html/</id><summary type="html">&lt;p&gt;The functionality in bzr new is great, but I very rarely start a project
+with a shared repo. Mostly, the branch comes first to see if the work in
+a branch is even worth it.  &lt;/p&gt;
+&lt;p&gt;I was working on a similar idea of doing the shared repo and branch in
+one command thing. My idea was more about branching the trunk of another
+project into a shared repo. However, while I could get basic
+functionality, I got blocked on cases where the branch format is
+incompatible with the repo created, and found it difficult to check the
+existing branch's format, to make a compatible repo. I've tried a few
+approaches to no avail. :(&lt;/p&gt;</summary></entry></feed>

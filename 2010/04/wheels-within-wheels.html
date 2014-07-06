@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Wheels within wheels - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Wheels within wheels"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/04/wheels-within-wheels.html"/>
+            <meta property="og:description" content="Software is best built incrementally. I hope everyone agrees with that. There's quite a bit of disagreement as to what "incrementally", of course, but it seems to have something to do with iterations. No one really agrees on what an iteration is either. There are a lot of fancy ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/04/wheels-within-wheels.html"
+                       rel="bookmark"
+                       title="Permalink to Wheels within wheels">
+                        Wheels within wheels
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-04-27T17:34:00"> Tue 27 April 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Software is best built incrementally. I hope everyone agrees with that.
+There's quite a bit of disagreement as to what "incrementally", of
+course, but it seems to have something to do with <em>iterations</em>.  </p>
+<p>No one really agrees on what an iteration is either. There are a lot of
+fancy metaphors and abstract phrases that get used to describe the
+various bits of what people think an iteration is: customers tell
+"stories" that engineers then "estimate"; programmers "sprint" like
+children at an athletics carnival; they "release" software as if it were
+an insufficiently randy panda; deliverables get delivered.  </p>
+<p>When one washes all of the metaphors and best little practices away,
+what's left is this: build a little bit of software; evaluate it.
+Ideally, the software is evaluated by someone who stands to benefit
+directly from using it.  </p>
+<p>I'm not sure there's much more to recent software methodologies than
+that. Perhaps we can explore it more in the comments.  </p>
+<p>This combination of increments and iterations spirals toward the final
+product, which is generally what you have left when the money runs out.
+Alas, if only we could draw a picture of the process with a simple
+spiral! When I think of it, I fall prey to a rare attack of envy toward
+students of <a href="http://en.wikipedia.org/wiki/Hermeneutics">hermeneutics</a>.  </p>
+<p>The process involves spirals within spirals, cycles made up of cycles.
+Going<br />
+inwards from the greatest wheel to the smallest, the Launchpad project
+has:  </p>
+<dl>
+<dt>planning cycles</dt>
+<dd>When we plan the major features and general direction of Launchpad.
+<a href="https://dev.launchpad.net/RoadMap">Road map</a> sort of  </dd>
+<dt>stuff. Approximately six months.</dt>
+<dt>feature cycles</dt>
+<dd>The repeated process of beginning a feature, developing it,
+releasing it,  </dd>
+<dt>fixing it, then stopping. Varies in cycle time, but usually one to</dt>
+<dt>three</dt>
+<dt>months.</dt>
+<dt>release cycles</dt>
+<dd>We release whatever is in <a href="https://dev.launchpad.net/Trunk">trunk</a>
+each month</dd>
+<dt>branch cycles</dt>
+<dd>Branch from trunk, hack on it, push it up, get it reviewed, land it,
+wait  </dd>
+<dt>until it passes the test suite, check that the changes worked. Two</dt>
+<dt>or three</dt>
+<dt>days.</dt>
+<dt>experiment cycles</dt>
+<dd>A developer is working on a thing and wants to actually see how it
+works  </dd>
+<dt>in the running code. They write many tests and a fair bit of code</dt>
+<dt>and then</dt>
+<dt>fire up a development instance of Launchpad and see how it looks.</dt>
+<dt>TDD cycles</dt>
+<dd>Write a failing test. Run the tests (a subset of the whole suite).
+Make  </dd>
+</dl>
+<p>the test pass. Run the tests. Refactor. Run the tests. Probably
+    about<br />
+   half-an-hour?</p>
+<p>Different projects surely have different kinds of cycles. Most projects
+probably have a subset of the ones above. In any case, thinking in terms
+of nested cycles is a good way of analyzing ones development process.  </p>
+<p>Each of these cycles has its own overhead and its own waste. One cycle
+being particularly slow has a different effect to another cycle being
+slow. For example, I contend that the slow branch cycle makes it less
+likely that trivial bugs get fixed.  </p>
+<p>Lean advocates would tell me not to think this way. They would have me
+unroll these cycles and lay them out on a line beginning with someone
+wanting something and ending with that want satisfied. They would have
+me draw a "value stream map".  </p>
+<p>Bollocks to them. At least on Launchpad, we should optimize the
+innermost loops first.  </p>
+<p>Have I missed some kinds of cycles? Can you think of a better name than
+"experiment cycle"? Is there prior literature I should read? Are you
+going to apply these ideas to your project?</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-8867664693700216134.md">
+                <a href="http://code.mumak.net/2010/04/wheels-within-wheels.html#comment-8867664693700216134.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jkakar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-04-27T22:43:00">Tue 27 April 2010</abbr></p>
+                
+                <p>We pretty much have the same set of cycles on the Landscape project,
+with some having similar timelines. For example our planning cycle is 6
+months, similar to Launchpad. I think our TDD cycle has a much faster
+turn-around time than 30 minutes. It's more like 1 or 2, which is slower
+than I'd like.  </p>
+<p>Something I've been thinking about recently is a 2-3 year roadmap, a set
+of high-level themes for the project that we use to guide our choices
+when we make decisions regarding our planning cycle. My first thought
+was that this was an outer ring that you didn't include in your post,
+but I don't think that's quite right. It's more like the set of forces
+that affect the direction in which the wheel is rolling.  </p>
+<p>Also, I've been meaning to write this blog post for more than two years,
+but have procrastinated and done nothing about this desire. Thanks for
+beating me to it and describing the pieces so clearly.</p>
+            </article>
+            <article id="comment-8308811575951022028.md">
+                <a href="http://code.mumak.net/2010/04/wheels-within-wheels.html#comment-8308811575951022028.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Dean Goodmanson (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-12T21:12:00">Wed 12 May 2010</abbr></p>
+                
+                <p>Looking forward to a follow-up bloag and hearing how this relates to the
+use of a Kanban board/tool.  </p>
+<p>https://dev.launchpad.net/Kanban</p>
+            </article>
+            <article id="comment-3539796952376235993.md">
+                <a href="http://code.mumak.net/2010/04/wheels-within-wheels.html#comment-3539796952376235993.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-17T12:36:00">Mon 17 May 2010</abbr></p>
+                
+                <p>Robert Collins tried to comment on this post, but ran into technical
+difficulties. He emailed me his comment, which I'm pasting here:  </p>
+<p>I don't think Lean advocates would unroll everything - I wouldn't, and I
+think I'm a Lean advocate. I'd treat the users request stalling at the
+outside edge of each cycle, before it passes into an inner cycle,<br />
+as a stall, and I'd try to break each cycle into little boxes so that I
+could talk sensibly about how much time e.g. running tests. I naively
+expect to see a similar conclusion if modelled this way - inner loops
+that don't work well consume most of the duration of the vsm.</p>
+            </article>
+            <article id="comment-3809122509459532640.md">
+                <a href="http://code.mumak.net/2010/04/wheels-within-wheels.html#comment-3809122509459532640.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-17T12:41:00">Mon 17 May 2010</abbr></p>
+                
+                <p>Robert, I agree that taking an "optimize the inner loop" approach would
+probably yield similar results to a value-stream-driven "optimize the
+time between request and fulfilment".  </p>
+<p>However, I'm not entirely sure it's guaranteed, and the Poppendieck's
+repeatedly advocate "seeing the whole" and optimizing for it, and
+frequently warn against micro-optimizing.  </p>
+<p>By dividing things up into loops and cycles, I am explicitly ignoring
+their advice. I can imagine that, actually, they'd approve of me doing
+so.</p>
+            </article>
+            <article id="comment-6056639184799748038.md">
+                <a href="http://code.mumak.net/2010/04/wheels-within-wheels.html#comment-6056639184799748038.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-17T12:42:00">Mon 17 May 2010</abbr></p>
+                
+                <p>Dean, I'll do what I can. The short answer is that I think there's a lot
+of waste happening at a much finer level of granularity than we track
+with our Kanban board.  </p>
+<p>Perhaps I can convince Francis (our local Kanban advocate) to say
+something.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

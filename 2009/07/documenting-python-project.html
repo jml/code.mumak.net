@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Documenting a Python project - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Documenting a Python project"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/07/documenting-python-project.html"/>
+            <meta property="og:description" content="I've recently started contributing a little to GTG, a GTD-inspired todo list application that's hosted on Launchpad. So far, I've made a few UI tweaks and have done a bit of infrastructural work. I'm still trying to figure out how the code fits together. Since it ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/07/documenting-python-project.html"
+                       rel="bookmark"
+                       title="Permalink to Documenting a Python project">
+                        Documenting a Python project
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-07-19T04:22:00"> Sun 19 July 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I've recently started contributing a little to
+<a href="http://gtg.fritalk.com/">GTG</a>, a GTD-inspired todo list application
+that's hosted on <a href="https://edge.launchpad.net/gtg">Launchpad</a>.  </p>
+<p>So far, I've made <a href="https://bugs.edge.launchpad.net/gtg/+bugs?search=Search&amp;field.assignee=jml">a few UI
+tweaks</a>
+and have done a bit of <a href="https://code.edge.launchpad.net/%7Ejml/gtg/+branches?field.lifecycle=MERGED&amp;field.lifecycle-empty-marker=1&amp;field.sort_by=most+recently+changed+first&amp;field.sort_by-empty-marker=1">infrastructural
+work</a>.
+I'm still trying to figure out how the code fits together. Since it's
+such a small code base, I don't mind writing a few docstrings for it.
+And if I'm going to write docstrings, I might as well generate some API
+docs, right?  </p>
+<p>And so the journey begins.  </p>
+<p><a href="http://farmdev.com/thoughts/7/housecall-from-the-pydoctor-finally-a-doc-generator-that-works-/">Everyone
+knows</a>
+that <a href="http://codespeak.net/%7Emwh/pydoctor/">pydoctor</a> is the best way
+to generate API docs for Python code. So I fetched it from Launchpad and
+ran it according to the instructions:  </p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">bzr</span> <span class="n">branch</span> <span class="n">lp</span><span class="o">:</span><span class="n">pydoctor</span><span class="err">$</span> <span class="n">cd</span> <span class="n">GTG</span><span class="err">$</span> <span class="p">..</span><span class="o">/</span><span class="n">pydoctor</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pydoctor</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">package</span> <span class="n">GTG</span> <span class="o">--</span><span class="n">make</span><span class="o">-</span><span class="n">html</span>
+</pre></div>
+
+
+<p>This failed, saying it couldn't find zope.interfaces. I know I have
+zope.interfaces on my system:  </p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sagi</span> <span class="n">python</span><span class="o">-</span><span class="n">zopeinterface</span><span class="p">...</span><span class="n">python</span><span class="o">-</span><span class="n">zopeinterface</span> <span class="n">is</span> <span class="n">already</span> <span class="n">the</span> <span class="n">newest</span> <span class="n">version</span><span class="p">.</span>
+</pre></div>
+
+
+<p>But, ah, this is karmic, and pydoctor is insisting on running with
+Python 2.4, which is completely broken on karmic. I tweaked the
+bin/pydoctor file to use the default Python and then ran the command
+again.  </p>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">pydoctor</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pydoctor</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">package</span> <span class="n">GTG</span> <span class="o">--</span><span class="n">make</span><span class="o">-</span><span class="n">html</span>
+</pre></div>
+
+
+<p>Success, I think. There's a lot of output, so it's hard to tell. Trying
+again with a quiet option:  </p>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">pydoctor</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pydoctor</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">package</span> <span class="n">GTG</span> <span class="o">--</span><span class="n">make</span><span class="o">-</span><span class="n">html</span> <span class="o">-</span><span class="n">qWARNING</span><span class="o">:</span> <span class="n">guessing</span> <span class="n">GTG</span> <span class="k">for</span> <span class="n">project</span> <span class="n">name</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jml</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Divmod</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">Nevow</span><span class="o">/</span><span class="n">formless</span><span class="o">/</span><span class="n">annotate</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="mi">730</span><span class="o">:</span> <span class="n">DeprecationWarning</span><span class="o">:</span> <span class="n">object</span><span class="p">.</span><span class="n">__new__</span><span class="p">()</span> <span class="n">takes</span> <span class="n">no</span> <span class="n">parametersrv</span> <span class="o">=</span> <span class="n">cls</span> <span class="o">=</span> <span class="n">InterfaceClass</span><span class="p">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jml</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Divmod</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">Nevow</span><span class="o">/</span><span class="n">nevow</span><span class="o">/</span><span class="n">testutil</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="mi">7</span><span class="o">:</span> <span class="n">DeprecationWarning</span><span class="o">:</span> <span class="n">The</span> <span class="n">popen2</span> <span class="n">module</span> <span class="n">is</span> <span class="n">deprecated</span><span class="p">.</span>  <span class="n">Use</span> <span class="n">the</span> <span class="n">subprocess</span> <span class="n">module</span><span class="p">.</span><span class="n">from</span> <span class="n">popen2</span> <span class="n">import</span> <span class="n">Popen3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jml</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Divmod</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">Nevow</span><span class="o">/</span><span class="n">nevow</span><span class="o">/</span><span class="n">guard</span><span class="p">.</span><span class="n">py</span><span class="o">:</span><span class="mi">15</span><span class="o">:</span> <span class="n">DeprecationWarning</span><span class="o">:</span> <span class="n">the</span> <span class="n">md5</span> <span class="n">module</span> <span class="n">is</span> <span class="n">deprecated</span><span class="p">;</span> <span class="n">use</span> <span class="n">hashlib</span> <span class="n">insteadimport</span> <span class="n">md5these</span> <span class="mi">6</span> <span class="n">objects</span><span class="err">&#39;</span> <span class="n">docstrings</span> <span class="n">are</span> <span class="n">not</span> <span class="n">proper</span> <span class="n">epytext</span><span class="o">:</span><span class="n">GTG</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">tagstore</span><span class="p">.</span><span class="n">Tag</span><span class="p">.</span><span class="n">__init__GTG</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">tagstore</span><span class="p">.</span><span class="n">Tag</span><span class="p">.</span><span class="n">set_attributeGTG</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">tagstore</span><span class="p">.</span><span class="n">Tag</span><span class="p">.</span><span class="n">get_all_attributesGTG</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">requester</span><span class="p">.</span><span class="n">Requester</span><span class="p">.</span><span class="n">new_taskGTG</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">requester</span><span class="p">.</span><span class="n">Requester</span><span class="p">.</span><span class="n">get_tasks_listGTG</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">requester</span><span class="p">.</span><span class="n">Requester</span><span class="p">.</span><span class="n">get_active_tasks_list</span>
+</pre></div>
+
+
+<p>Hmm. The WARNING sucks, but I can work around that by specifying the
+project name on the command line. The deprecation warnings also suck,
+but I'm not quite sure what to do about them. For now, I'll invoke
+python with '-W ignore::DeprecationWarning'.  </p>
+<p>This is as good a point as any to point out that I had Nevow trunk
+already in my PYTHONPATH. I don't know what version of Nevow you will
+need.  </p>
+<p>The 'not proper epytext' warnings are more worrisome. I thought I'd been
+writing proper docstrings. Also, it doesn't tell me what the actual
+problems are: I need to drop the '-q' option for that. This gets me too
+much information. Oh hello, there's a '--verbose-about' option. Digging
+into the source doesn't enlighten immediately, but bzr-grep eventually
+reveals '--verbose-about=epydoc2stan2'. If I repeat '-q' twice and the
+'--verbose-about' option twice, I get precisely the output I want.  </p>
+<div class="highlight"><pre><span class="n">python</span> <span class="o">-</span><span class="n">W</span> <span class="n">ignore</span><span class="o">::</span><span class="n">DeprecationWarning</span> <span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">pydoctor</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pydoctor</span> <span class="err">\</span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">package</span> <span class="n">GTG</span> <span class="o">--</span><span class="n">make</span><span class="o">-</span><span class="n">html</span> <span class="o">--</span><span class="n">project</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">GTG</span> <span class="err">\</span><span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">q</span> <span class="err">\</span><span class="o">--</span><span class="n">verbose</span><span class="o">-</span><span class="n">about</span><span class="o">=</span><span class="n">epydoc2stan2</span> <span class="err">\</span><span class="o">--</span><span class="n">verbose</span><span class="o">-</span><span class="n">about</span><span class="o">=</span><span class="n">epydoc2stan2</span>
+</pre></div>
+
+
+<p>What I really want is a
+<a href="http://www.divmod.org/trac/wiki/DivmodPyflakes">pyflakes</a>-style checker
+for my docstrings that I can <a href="http://www.plope.com/Members/chrism/flymake-mode">hook up to
+flymake</a>. That way, I
+can be warned about my poorly-formed docs as I'm writing them. Looking
+at the pydoctor help, it doesn't look like such a thing exists. The
+command above is close, but it writes too much output to disk and takes
+far too long to run.  </p>
+<p>Also, it's not quite right. It seems I've been writing my docstrings in
+the style we use in Launchpad, rather than in epytext style. So if I use
+'--docformat=restructuredtext', my docstrings are formatted properly and
+I get fewer errors:  </p>
+<div class="highlight"><pre><span class="n">python</span> <span class="o">-</span><span class="n">W</span> <span class="n">ignore</span><span class="o">::</span><span class="n">DeprecationWarning</span> <span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">pydoctor</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pydoctor</span> <span class="err">\</span><span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">package</span> <span class="n">GTG</span> <span class="o">--</span><span class="n">make</span><span class="o">-</span><span class="n">html</span> <span class="o">--</span><span class="n">project</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">GTG</span> <span class="err">\</span><span class="o">--</span><span class="n">docformat</span><span class="o">=</span><span class="n">restructuredtext</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">q</span> <span class="err">\</span><span class="o">--</span><span class="n">verbose</span><span class="o">-</span><span class="n">about</span><span class="o">=</span><span class="n">epydoc2stan2</span> <span class="o">--</span><span class="n">verbose</span><span class="o">-</span><span class="n">about</span><span class="o">=</span><span class="n">epydoc2stan2</span>
+</pre></div>
+
+
+<p>This leaves only two formatting errors, both valid. It takes a full
+second longer to generate the docs, which sucks. Still, we've got doc
+generation, and we've got valid errors.  </p>
+<p>The output is good, but it's not great. Take a look at the <a href="http://starship.python.net/crew/mwh/apidocs/">Twisted API
+docs</a>, for example. I
+can't quite put my finger on it, but I wish that someone with a vision
+and the kind of CSS skills that you have to buy from the devil at a
+crossroads at midnight would set themselves the task of making the API
+docs look great.  </p>
+<p>So where does this leave us:  </p>
+<ul>
+<li>I can generate pretty good API docs easily and get told only about
+    interesting errors</li>
+<li>I need a pyflakes-like docstring formatting checker</li>
+<li>I need a simple docstring coverage checker. I do <span>not</span>
+    want to make it part of my test suite or build process.</li>
+<li>I had to tweak the pydoctor source before being able to run it from
+    trunk  </li>
+<li>The output is OK, but it ought to be beautiful  </li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Bazaar hacking - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Bazaar hacking"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/10/bazaar-hacking.html"/>
+            <meta property="og:description" content="I spent a little bit of time mucking around with some Bazaar plugin ideas I've had. The first is a command that switches from "branches and trees together inside a shared repository" to "treeless repository with lightweight checkouts". I ran it against a couple of my local repositories and ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/10/bazaar-hacking.html"
+                       rel="bookmark"
+                       title="Permalink to Bazaar hacking">
+                        Bazaar hacking
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-10-04T13:05:00"> Sat 04 October 2008</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I spent a little bit of time mucking around with some Bazaar plugin
+ideas I've had.  </p>
+<p>The first is a command that switches from "branches and trees together
+inside a shared repository" to "treeless repository with lightweight
+checkouts". I ran it against a couple of my local repositories and it
+works out rather nicely. If you are thinking of using cbranch and the
+like, you should have a look at this plugin. If you don't know why it's
+a good idea, well, umm, maybe one of the <a href="http://planet.bazaar-vcs.org">other people on the
+Planet</a> will blog an answer.  </p>
+<p>The second adds 'bzr new' to the command list.<br />
+\$ bzr new awesomer  </p>
+<p>will create a new shared repository called 'awesomer' and a new branch
+in that repository called 'trunk'. If you think trunk is a terrible
+name, you can do:<br />
+\$ bzr new awesomer devel  </p>
+<p>If you are like Tim or Aaron, you'll want your repository and branches
+separated from your working tree:<br />
+\$ bzr --repository \~/repos/foo foo devel  </p>
+<p>I'd like to figure out a nice way of letting users specify a default
+directory for repositories to go into, for those people who always use
+the split model.  </p>
+<p>The plugin with both of these commands can be found at
+https://code.edge.launchpad.net/\~jml/+junk/bzr-establish. As the "junk"
+in the name indicates, it's really rough code.  </p>
+<p>If either of these features sound like good ideas to you, let me know!</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-6087816162105210884.md">
+                <a href="http://code.mumak.net/2008/10/bazaar-hacking.html#comment-6087816162105210884.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>rockstar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-04T17:22:00">Sat 04 October 2008</abbr></p>
+                
+                <p>The functionality in bzr new is great, but I very rarely start a project
+with a shared repo. Mostly, the branch comes first to see if the work in
+a branch is even worth it.  </p>
+<p>I was working on a similar idea of doing the shared repo and branch in
+one command thing. My idea was more about branching the trunk of another
+project into a shared repo. However, while I could get basic
+functionality, I got blocked on cases where the branch format is
+incompatible with the repo created, and found it difficult to check the
+existing branch's format, to make a compatible repo. I've tried a few
+approaches to no avail. :(</p>
+            </article>
+            <article id="comment-1930203768022593961.md">
+                <a href="http://code.mumak.net/2008/10/bazaar-hacking.html#comment-1930203768022593961.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Aaron Bentley (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-04T20:35:00">Sat 04 October 2008</abbr></p>
+                
+                <p>There basically aren't any branch formats that are incompatible with
+repository formats. You'd have to go back to formats that were current
+for bzr 0.7 to find such a thing.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

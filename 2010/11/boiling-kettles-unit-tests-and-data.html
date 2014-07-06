@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Boiling kettles, unit tests and data - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Boiling kettles, unit tests and data"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/11/boiling-kettles-unit-tests-and-data.html"/>
+            <meta property="og:description" content="The Launchpad test suite takes way too long to run: somewhere between three and four hours. Incidentally, Rob has just started some work that ought to make it run a lot faster, for which I am truly thankful. Anyway, over the last three (almost four!) years, I've watched the ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/11/boiling-kettles-unit-tests-and-data.html"
+                       rel="bookmark"
+                       title="Permalink to Boiling kettles, unit tests and data">
+                        Boiling kettles, unit tests and data
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-11-26T13:34:00"> Fri 26 November 2010</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/launchpad-subunit-data.html">launchpad subunit data</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>The Launchpad test suite takes way too long to run: somewhere between
+three and four hours.  Incidentally,
+<a href="http://rbtcollins.wordpress.com/">Rob</a> has just started <a href="https://dev.launchpad.net/LEP/PersistenceLayer">some
+work</a> that ought to make
+it run a lot faster, for which I am truly thankful.  Anyway, over the
+last three (almost four!) years, I've watched the test suite run many,
+many times, waiting for it to finish or at least reveal a failure.  </p>
+<p>It has been easy to see that not all tests are created equal. Some are
+very slow, others are very fast. <a href="http://code.mumak.net/2009/09/layers-are-terrible.html">Zope's terrible layer
+mechanism</a> means
+that these are often grouped together: slow with slow, fast with fast.
+Watching the test suite churn away for the umpteenth time made me
+wonder, exactly how are the tests distributed over time.  </p>
+<p>Luckily, thanks to <a href="https://launchpad.net/subunit">subunit</a>, a <a href="http://paste.ubuntu.com/536368/">bit of
+Python glue</a>, and OpenOffice it's
+really easy to get a picture:  </p>
+<hr />
+<p><a href="http://people.canonical.com/~jml/Tests-finished-each-minute.png"><img alt="" src="http://people.canonical.com/~jml/Tests-finished-each-minute.png" /></a></p>
+<hr />
+<p>That's a graph of the number of tests that complete within each minute
+of the Launchpad test suite run.  What it means is that you are more
+likely to see an actual test result if you watch at a random time during
+the first half of the test run. It also means that we have a relatively
+small number of very slow tests.  </p>
+<p>Sometimes these graphs are more useful at lower granularity, so I made
+this one:  </p>
+<hr />
+<p><a href="http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png"><img alt="" src="http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png" /></a></p>
+<hr />
+<p>And this one:  </p>
+<hr />
+<p><a href="http://people.canonical.com/~jml/Tests-finished-each-hour.png"><img alt="" src="http://people.canonical.com/~jml/Tests-finished-each-hour.png" /></a></p>
+<hr />
+<p>The <a href="http://people.canonical.com/~jml/testtools-experiment-r11753.subunit.gz">raw
+data</a>
+is taken from a successful run of one of my recent branches. If you
+download it and open it up, you'll see that the subunit output includes
+a large number of "time:" statements. Each of these indicates that all
+subunit statements following it should be considered as taking place at
+the time given in the original statement.  </p>
+<p>I used a <a href="http://paste.ubuntu.com/536368/">small Python script</a> to
+generate the CSVs, running it like this:  </p>
+<div class="highlight"><pre><span class="n">gzip</span> <span class="o">-</span><span class="n">dc</span> <span class="n">testtools</span><span class="o">-</span><span class="n">experiment</span><span class="o">-</span><span class="n">r11753</span><span class="p">.</span><span class="n">subunit</span><span class="p">.</span><span class="n">gz</span> <span class="o">|</span> <span class="n">python</span> <span class="n">test</span><span class="o">-</span><span class="n">distribution</span><span class="p">.</span><span class="n">py</span> <span class="mi">60</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jml</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">tests</span><span class="o">-</span><span class="n">each</span><span class="o">-</span><span class="n">minute</span><span class="p">.</span><span class="n">csv</span>
+</pre></div>
+
+
+<p>Where "60" is the number of seconds of granularity.  </p>
+<p>It was about twenty minutes work all up, and subunit made much of it
+dead simple. subunit has its flaws, but it's a really good idea.  </p>
+<p>That said, I can't help but feel that it should have been less
+work. Partly, subunit should have a way to convert data to a format more
+amenable to analysis by third party tools. Mostly though, those third
+party tools ought to exist and be known to me.  </p>
+<p>I can easily imagine a tool where I wouldn't have to run the script each
+time to get a different level of granularity, but rather I could use a
+slider in a UI and watch the graph update itself in real time. That
+would be cool, and relatively easy. How come nobody has done that yet?  </p>
+<p>Also, although OpenOffice's graphing thing is fairly nice, why isn't
+there a better tool? One that makes it easier to share graphs as images
+on the web without having to take crummy screenshots.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-1475802543167976578.md">
+                <a href="http://code.mumak.net/2010/11/boiling-kettles-unit-tests-and-data.html#comment-1475802543167976578.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>David Pitkin (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-02-01T18:21:00">Wed 01 February 2012</abbr></p>
+                
+                <p>Closets I know of off the top of my head is the Google Chart API for
+interactive, animated charts.  </p>
+<p>http://code.google.com/apis/chart/interactive/docs/gallery/controls.html</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

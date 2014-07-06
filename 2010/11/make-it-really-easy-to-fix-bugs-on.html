@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Make it really easy to fix bugs on Ubuntu - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Make it really easy to fix bugs on Ubuntu"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/11/make-it-really-easy-to-fix-bugs-on.html"/>
+            <meta property="og:description" content="One of the best things that anyone ever said was, "not enough gets said about the importance of abandoning crap". Mr Glass was probably talking about writing, but his words could well have been aimed squarely at any well-established software development process. Right now, it's too hard to fix ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/11/make-it-really-easy-to-fix-bugs-on.html"
+                       rel="bookmark"
+                       title="Permalink to Make it really easy to fix bugs on Ubuntu">
+                        Make it really easy to fix bugs on Ubuntu
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-11-15T14:36:00"> Mon 15 November 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>One of the best things that anyone ever said was, "not enough gets said
+about the importance of abandoning crap". Mr Glass was probably talking
+about writing, but his words could well have been aimed squarely at any
+well-established software development process.  </p>
+<p>Right now, it's too hard to <a href="http://people.canonical.com/~dholbach/Fixing%20a%20bug.png">fix a bug in
+Ubuntu</a>.
+There are <a href="https://blueprints.edge.launchpad.net/ubuntu/+spec/ubuntutheproject-community-n-improve-fixing-a-bug-workflow">a lot of things that we can
+do</a>
+to make it easier, let me tell you about mine.  </p>
+<p>If you see a small bug in a program on your desktop, you want to
+something like this:  </p>
+<ol>
+<li>Figure out what package it's in</li>
+<li>Look for an existing bug, if not file one</li>
+<li>Get the source</li>
+<li>Build it, try to reproduce the bug</li>
+<li>Actually fix the bug</li>
+<li>Test to see that it's actually fixed</li>
+<li>Submit it then shepherd it through whatever processes come next</li>
+</ol>
+<div>
+
+Much of this is monkey work if you know how to do it, or
+incomprehensible arcana if you don't. Either way, it's important that we
+abandon (or *automate*) this essentially uninteresting work.
+
+</div>
+
+<div>
+
+In that spirit, at UDS I wrote a script that a lot of us have been
+talking about for a long time. I called it
+[start-hacking](https://launchpad.net/start-hacking), because I am
+terrible at names and wanted to make a project. Right now, when you run
+the script on your Ubuntu desktop, your cursor becomes a cross-hair.
+When you click on an application, start-hacking will tell you the source
+package that the application belongs to and where you can get the source
+(both Ubuntu source and latest upstream if available).  It's very
+simple, but that's because it builds on a very large amount of work that
+Canonical has done, mostly through Launchpad and Apport.
+
+</div>
+
+<div>
+
+Eventually, we want to make the script a much more beautiful application
+that gets you a built, runnable copy of any Ubuntu application or
+library in a test environment.  Our goal is to make fixing a typo (or
+typo-level bug) as fast and as smooth as possible for any application on
+the desktop.
+
+</div>
+
+<div>
+
+All we need is a bit of time and a few volunteers.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2261911548755040364.md">
+                <a href="http://code.mumak.net/2010/11/make-it-really-easy-to-fix-bugs-on.html#comment-2261911548755040364.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>manny (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-12-12T15:36:00">Sun 12 December 2010</abbr></p>
+                
+                <p>definitely a step in the right direction :)  </p>
+<p>The quicker and easier the better.  </p>
+<p>Everything step like this adds up and more bugs get fixed.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>testtools 0.9.2 released - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="testtools 0.9.2 released"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/12/testtools-092-released.html"/>
+            <meta property="og:description" content="I've just released testtools 0.9.2, which I firmly believe is the best testtools release ever. Thanks very much to Robert Collins and Benjamin Peterson for making it so. For the last few releases, we've been working on being more than just a simple aggregation of existing ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/12/testtools-092-released.html"
+                       rel="bookmark"
+                       title="Permalink to testtools 0.9.2 released">
+                        testtools 0.9.2 released
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-12-15T23:19:00"> Tue 15 December 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I've just released <a href="http://pypi.python.org/pypi/testtools/0.9.2">testtools
+0.9.2</a>, which I firmly
+believe is the best <a href="https://launchpad.net/testtools">testtools</a> release
+ever. Thanks very much to <a href="http://rbtcollins.wordpress.com/">Robert
+Collins</a> and <a href="http://pybites.blogspot.com/">Benjamin
+Peterson</a> for making it so.</p>
+<div>
+
+For the last few releases, we've been working on being more than just a
+simple aggregation of existing unit testing best practices and tried to
+do our own experimental extensions.
+
+</div>
+
+<div>
+
+These extensions aren't actually all that exciting by themselves. We
+haven't added better logging support or new types of outcomes or test
+replay or smart rendering of error results or anything like that. I'm
+pretty sure testtools will never do those sorts of things.
+
+</div>
+
+<div>
+
+Rather, the extensions we've added are designed to let *you* do that,
+and then share *your* extensions with other people without getting them
+into the standard library's base `unittest` classes.
+
+</div>
+
+<div>
+
+If you are using testtools, you can change the way `TestCase.run()`
+works without overriding run and without figuring out how to safely call
+user code. You can handle exceptions raised from tests however you'd
+like — again not needing to change `TestCase.run()`. You can add new,
+rich types of assertions without having to modify some base class
+somewhere. You can store information on a test object that can be used
+by a sufficiently smart `TestResult`, which can be handy if you want to
+see, say, access logs for all failed tests.
+
+</div>
+
+<div>
+
+Of course, all this starts to get really powerful when testtools is in
+the standard library, and all of the other major Python test frameworks
+inherit from it: nose, py.test, zope.testing and Twisted Trial.
+
+</div>
+
+<div>
+
+Even so, it's worth switching to testtools today, just for the assertion
+logic alone. All it takes is changing the base class of your test cases
+to `testtools.TestCase`. If your test framework supports running
+standard Python unit tests, it'll support testtools.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2515697478493436334.md">
+                <a href="http://code.mumak.net/2009/12/testtools-092-released.html#comment-2515697478493436334.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>spiv (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-12-16T06:15:00">Wed 16 December 2009</abbr></p>
+                
+                <p>Woo!</p>
+            </article>
+            <article id="comment-1360501601785077897.md">
+                <a href="http://code.mumak.net/2009/12/testtools-092-released.html#comment-1360501601785077897.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>hs (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-01-16T09:57:00">Sat 16 January 2010</abbr></p>
+                
+                <p>thanks for information plz u give me newely latest information.  </p>
+<p>hs<br />
+http://www.softwaretestingnet.com</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

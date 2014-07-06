@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Merging New trunk Features to a Development Branch (redux) - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Merging New trunk Features to a Development Branch (redux)"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/07/merging-new-trunk-features-to.html"/>
+            <meta property="og:description" content="Oubiwann has recently posted about the joys of using Combinator to do branch-based development using Subversion. I thought it'd be fun to do the same post, except this time with Bazaar. Background You're working on a project called "Project", you have a copy of the mainline branch (i ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/07/merging-new-trunk-features-to.html"
+                       rel="bookmark"
+                       title="Permalink to Merging New trunk Features to a Development Branch (redux)">
+                        Merging New trunk Features to a Development Branch (redux)
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-07-05T11:08:00"> Sat 05 July 2008</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/uncategorized.html">Uncategorized</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="http://oubiwann.blogspot.com/">Oubiwann</a> has <a href="http://oubiwann.blogspot.com/2007/09/merging-new-trunk-features-to.html">recently
+posted</a>
+about the joys of using
+<a href="http://divmod.org/trac/wiki/DivmodCombinator">Combinator</a> to do
+branch-based development using Subversion. I thought it'd be fun to do
+the same post, except this time with Bazaar.  </p>
+<h3>Background</h3>
+<p>You're working on a project called "Project", you have a copy of the
+mainline branch (i.e. 'trunk') in your <code>src</code> directory.  </p>
+<div class="highlight"><pre><span class="o">~</span><span class="err">$</span> <span class="n">cd</span> <span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="err">$</span> <span class="n">lstrunk</span>
+</pre></div>
+
+
+<p>You want to implement a new feature, so you branch trunk to work on it:  </p>
+<div class="highlight"><pre><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">branch</span> <span class="n">trunk</span> <span class="n">viking</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="mi">836</span>
+</pre></div>
+
+
+<p>Bazaar is a version control system, not a PYTHONPATH-managing system, so
+it doesn't maintain a global list of projects and the branches that are
+currently active for each project.  </p>
+<p>Perhaps your company focuses on historical invasions of Britain. You
+decide to start work on another feature:<br />
+lass objects.  </p>
+<div class="highlight"><pre><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">branch</span> <span class="n">trunk</span> <span class="n">norman</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="mi">1066</span>
+</pre></div>
+
+
+<p>You multi-task for a bit, until you finish 'viking-feature'. You decide
+to merge 'viking-feature-836' into trunk.  </p>
+<div class="highlight"><pre><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="err">$</span> <span class="n">cd</span> <span class="n">trunk</span><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="o">/</span><span class="n">trunk</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">merge</span> <span class="p">..</span><span class="o">/</span><span class="n">viking</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="mi">836</span><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="o">/</span><span class="n">trunk</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">ci</span>
+</pre></div>
+
+
+<p>At this point, you begin to suspect that Bazaar treats branches as
+first-class objects. However, at this point, a developer on the obverse
+side of your continent calls you,  </p>
+<p>"Where's your viking feature? I need it to invade Britain!"  </p>
+<p>"I've just put it into trunk. Have you got the latest copy?"  </p>
+<p>"Yeah, I do, I just pulled from trunk."  </p>
+<p>"It's in trunk, you fool! ... Oh, wait, gimme a sec."  </p>
+<div class="highlight"><pre><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="o">/</span><span class="n">trunk</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">pushPushing</span> <span class="n">to</span> <span class="n">bzr</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//bzr.example.com/Project/trunk...~/src/Project/trunk$</span>
+</pre></div>
+
+
+<p>"Try now."  </p>
+<h3>Merging</h3>
+<p>OK, enough background, let's merge.  </p>
+<p>Say you need some of the changes in trunk in order to finish work on
+your norman feature. No problems.  </p>
+<div class="highlight"><pre><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">merge</span> <span class="n">trunk</span> <span class="n">norman</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="mi">1066</span><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">ci</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;Merge from trunk.&quot;</span>
+</pre></div>
+
+
+<p>It's hard not to feel smug at this point.  </p>
+<p>Wait a second, you also want to look at the experimental branch that a
+friend is working on:  </p>
+<div class="highlight"><pre><span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">Project</span><span class="o">/</span><span class="n">norman</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="mi">1066</span><span class="err">$</span> <span class="n">bzr</span> <span class="n">merge</span> <span class="n">bzr</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//yourfriend.example.com/branches/sealion-1946~/src/Project/norman-feature-1066$ bzr diff | less # better double check this one~/src/Project/norman-feature-1066$ bzr revert # nope, doesn&#39;t seem like a good idea</span>
+</pre></div>
+
+
+<h3>Summary</h3>
+<p>Bazaar treats branches as first-class objects and treats trunk just like
+any other branch. Although Combinator is great for branch-based
+development in Subversion, it is more complex and less flexible than
+doing branch-based development in Bazaar.  </p>
+<p>With Combinator, you lose history when you merge in changes from trunk,
+with Bazaar you don't.  </p>
+<p>With Combinator, you can only merge in changes from trunk, with Bazaar
+you can merge from any branch.  </p>
+<p>With Combinator, merging from trunk leaves a bunch of changed files in
+the trunk checkout on your system (this has tripped me up more than
+once). With Bazaar, this doesn't happen.</p>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

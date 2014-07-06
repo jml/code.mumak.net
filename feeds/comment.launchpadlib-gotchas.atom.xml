@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: launchpadlib gotchas</title><link href="http://code.mumak.net/2010/03/launchpadlib-gotchas.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.launchpadlib-gotchas.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/03/launchpadlib-gotchas.html/</id><updated>2010-03-17T23:39:00+00:00</updated><entry><title>Posted by: mbp (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/03/launchpadlib-gotchas.html/#comment-2491147430862698512.md" rel="alternate"></link><updated>2010-03-17T23:39:00+00:00</updated><author><name>mbp (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-03-17:2010/03/launchpadlib-gotchas.html/</id><summary type="html">&lt;p&gt;What a nice post.  &lt;/p&gt;
+&lt;p&gt;What should one do to avoid potato programming?  &lt;/p&gt;
+&lt;p&gt;The best option for testing seems to be to run your app against staging,
+which is a real Launchpad instance with a separate expendable database
+where you can change whatever you like.  &lt;/p&gt;
+&lt;p&gt;It's worth knowing about James's tip in :  &lt;/p&gt;
+&lt;p&gt;httplib2.debuglevel = 1  &lt;/p&gt;
+&lt;p&gt;which will show you a bit of what's happening on the network.&lt;/p&gt;</summary></entry></feed>

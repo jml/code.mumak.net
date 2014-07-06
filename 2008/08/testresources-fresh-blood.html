@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>testresources: fresh blood - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="testresources: fresh blood"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/08/testresources-fresh-blood.html"/>
+            <meta property="og:description" content="Last weekend I spent a bunch of timing hacking on testresources with Rob over at Chris's place. testresources is an extension to unittest that allows tests to specify the resources they use declaratively, so that these resources can be cleanly shared between tests. On Saturday, we talked a bit ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/08/testresources-fresh-blood.html"
+                       rel="bookmark"
+                       title="Permalink to testresources: fresh blood">
+                        testresources: fresh blood
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-08-18T01:50:00"> Mon 18 August 2008</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Last weekend I spent a bunch of timing hacking on
+<a href="https://launchpad.net/testresources">testresources</a> with
+<a href="http://robertcollins.net/">Rob</a> over at
+<a href="https://launchpad.net/%7Eraof">Chris</a>'s place. testresources is an
+extension to unittest that allows tests to specify the resources they
+use declaratively, so that these resources can be cleanly shared between
+tests. On Saturday, we talked a bit about direction and decided on some
+goals. On Sunday, <a href="https://code.launchpad.net/%7Ejml/testresources/tests-meaning-cleanup/+merge/767">I got
+busy</a>.  </p>
+<p>The idea isn't particularly new: zope.testing has had "layers" for a
+long time. The key differences between testresources and Zope layers
+are:  </p>
+<ul>
+<li>You can use more than one TestResource. You can only use one layer.
+    Allowing tests to specify many resources makes it easier to use only
+    the resources that you need, which in turn makes for a faster test
+    suite.  </li>
+<li>A test that uses testresources can be used independently of other
+    testresources machinery. With layers, you pretty much need the whole
+    shebang. This means that you can use testresources with trial, bzr,
+    nose, tribunal or unittest.TextTestRunner.  </li>
+<li>Layers have magical inheritance stuff. testresources has no magic.</li>
+<li>Layers do some work in subprocesses to accommodate some setUps that
+    can have no tearDown. testresources doesn't know what a process is.  </li>
+</ul>
+<p>That said, I'm mainly familiar with layers from Zope 3.2—they may have
+changed since then.  </p>
+<p>testresources itself is somewhat old. Rob hacked up the first version
+about three years ago and little has happened to it since. I've always
+agreed with the approach, but have also had a few qualms about
+implementation details that made me reluctant to use it or to recommend
+it. Now, it's well on its way to being something that I can trust and
+perhaps, love.  </p>
+<p>If you are interested, check out <a href="https://code.launchpad.net/%7Ejml/testresources/tests-meaning-cleanup">my
+branch</a>
+or at least flick through the
+<a href="http://bazaar.launchpad.net/%7Ejml/testresources/tests-meaning-cleanup/annotate/77?file_id=todo-20080817122443-kaikqdedcg57lr4v-1">TODO</a>
+file.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-4417723050516631642.md">
+                <a href="http://code.mumak.net/2008/08/testresources-fresh-blood.html#comment-4417723050516631642.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jam (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-08-18T14:28:00">Mon 18 August 2008</abbr></p>
+                
+                <p>I thought I'd give a look at the testresources code. I've peeked at it
+before, and I'm generally interested in both testresources and your
+pyunit3k work.  </p>
+<p>Some quick comments:  </p>
+<p>1) There is a 'test_all.py' file in the root directory, but running it
+fails because the actual library is under 'lib/'. So you have to do
+something like "PYTHONPATH='lib' ./test_all.py" which seems a bit odd.  </p>
+<p>2) In grabbing pyunit3k, I figured I'd run *its* test suite as well.
+However that seems to depend on 'Zope' being installed. Which is a
+rather huge dependency for a small library. Is it truly dependent? Is it
+only the test suite? Could you something like the bzr 'Feature' work to
+make it a soft-dependency? (Test if it is available, else skip and warn)</p>
+            </article>
+            <article id="comment-1008838401674080531.md">
+                <a href="http://code.mumak.net/2008/08/testresources-fresh-blood.html#comment-1008838401674080531.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-08-18T23:31:00">Mon 18 August 2008</abbr></p>
+                
+                <p>Thanks for the comments John.  </p>
+<p>1) The way to run the testresources tests is 'make check'. I guess
+test_all can be tweaked to do PYTHONPATH setup.  </p>
+<p>2) The dependency is on zope.interfaces -- available separately from the
+main zope. I guess I don't really need to use it, and could use an
+abstract class instead.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Bad Snake Joke</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.bad-snake-joke.atom.xml" rel="self"></link><id>http://code.mumak.net/2012/02/bad-snake-joke.html/</id><updated>2012-06-25T22:26:00+01:00</updated><entry><title>Posted by: Tom Berger (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-1752508492887396610.md" rel="alternate"></link><updated>2012-02-25T15:08:00+00:00</updated><author><name>Tom Berger (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-25:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;This comment has been removed by the author.&lt;/p&gt;</summary></entry><entry><title>Posted by: Tom Berger (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-3120593975516932642.md" rel="alternate"></link><updated>2012-02-25T15:09:00+00:00</updated><author><name>Tom Berger (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-25:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;If you're thinking of revisiting lisp, I urge you to take a look at
+Racket, the latest incarnation of PLT Scheme. Racket gives you the
+opportunity to work with pretty much all the best tools and paradigms
+modern programming languages can offer (dynamic typing, static typing,
+functional, OO, declarative), it is reasonably performant (optimizing
+JIT compiler, optional type declarations) and though not as hype as
+Clojure, it has a small but active and very mature community.  &lt;/p&gt;
+&lt;p&gt;Go is great, but I'm finding it hard to give up the dynamism, especially
+interaction.&lt;/p&gt;</summary></entry><entry><title>Posted by: glyph (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-4044973019480951331.md" rel="alternate"></link><updated>2012-02-26T01:02:00+00:00</updated><author><name>glyph (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-26:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;I humbly submit that being bored with the language is kind of a good
+thing. Maybe you should be looking further up the stack for some
+excitement? Do something with PyGame, maybe? Or learn something about
+bioinformatics and mess around with BioPython?  &lt;/p&gt;
+&lt;p&gt;To put it a different way: when I was doing C++, I felt a range of
+emotions about the language and my tools for dealing with it, but
+"boredom" was not one of them.  &lt;/p&gt;
+&lt;p&gt;(That said, Twisted &lt;em&gt;really&lt;/em&gt; needs to make it easier to utilize multiple
+cores.)&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-4313266589773087604.md" rel="alternate"></link><updated>2012-06-25T09:22:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-06-25:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;+John, thanks, will give it a try. I have to say that of the "new" JVM
+languages, I'm more tempted by Clojure. Can you explain a little how
+it's type system could be considered better than Haskell's in some
+respects?&lt;/p&gt;</summary></entry><entry><title>Posted by: AmanicA (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-4571922512568106059.md" rel="alternate"></link><updated>2012-02-28T10:12:00+00:00</updated><author><name>AmanicA (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-28:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;lol. good post :)&lt;/p&gt;</summary></entry><entry><title>Posted by: Daniel Bo (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-4940830172489155511.md" rel="alternate"></link><updated>2012-02-26T03:14:00+00:00</updated><author><name>Daniel Bo (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-26:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;Learning new things is great and no one should get themselves in a rut.  &lt;/p&gt;
+&lt;p&gt;Have you tried Vala? GObject introspection in a C3/Java-like language
+that pre-compiles to C. It hits that start-up time problem you
+mentioned. Vala also has a sister language called Genie, which is much
+more Python-like and which uses the same libraries and compiler. You may
+want to start there.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-508552922097320763.md" rel="alternate"></link><updated>2012-02-26T16:28:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-26:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;@Tom, I'll take a look at Racket. When I last looked at PLT Scheme, my
+main take-away was disappointment in its module system.  &lt;/p&gt;
+&lt;p&gt;@glyph, it's &lt;em&gt;kind&lt;/em&gt; of a good thing. It's arguably a great thing for the
+end users of my work. If the way out of Python's boredom is to run
+through some other language's minefield, then, umm, yeah, no thanks.
+However, I'm not convinced that every other language will necessarily be
+more dangerous/frustrating/slippery/difficult.  &lt;/p&gt;
+&lt;p&gt;As for going further up the stack, it's definitely an option, but not
+one that immediately appeals.  &lt;/p&gt;
+&lt;p&gt;@Daniel, I haven't tried Vala. Does it do much beyond Java / C#?  &lt;/p&gt;
+&lt;p&gt;@ddaa, I'm glad I'm not the only one! That I'm bored after twelve or so
+years rather than, say, consumed by loathing, is a good sign. I look
+forward to hearing more about your project.&lt;/p&gt;</summary></entry><entry><title>Posted by: John Nilsson (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-5434314602781100486.md" rel="alternate"></link><updated>2012-06-24T10:16:00+01:00</updated><author><name>John Nilsson (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-06-24:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;You should give Scala a try. Its type system rocks (in some ways even
+beats haskell), has a type class mechanism (which should give you
+polymorphism a la carte) and compiles to Java (so is quite snappy). But
+most importantly its fun.&lt;/p&gt;</summary></entry><entry><title>Posted by: ddaa (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-5939079912788677807.md" rel="alternate"></link><updated>2012-02-26T15:03:00+00:00</updated><author><name>ddaa (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-02-26:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;That is how I feel about Python at the moment too. As Glyph says, that
+probably tells something good about the language...  &lt;/p&gt;
+&lt;p&gt;Clojure and Go are the two "next" languages I have in mind too. I will
+posting something on g+ about a project I have been contemplating for a
+while.&lt;/p&gt;</summary></entry><entry><title>Posted by: John Nilsson (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/02/bad-snake-joke.html/#comment-7853376085170754575.md" rel="alternate"></link><updated>2012-06-25T22:26:00+01:00</updated><author><name>John Nilsson (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-06-25:2012/02/bad-snake-joke.html/</id><summary type="html">&lt;p&gt;I was mainly thinking of how the scala implicits implementention give
+you somewhat more control over type class instances.  &lt;/p&gt;
+&lt;p&gt;But in general, being an OOP/FP hybrid it gives you some tools form the
+OOP end of things that provides some extra options.  &lt;/p&gt;
+&lt;p&gt;Full H-M type inference had to be sacrificed to get OOP though, but the
+inference is still pretty good.&lt;/p&gt;</summary></entry></feed>

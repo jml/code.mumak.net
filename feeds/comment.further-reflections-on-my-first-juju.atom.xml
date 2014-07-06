@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Further reflections on my first Juju charm</title><link href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.further-reflections-on-my-first-juju.atom.xml" rel="self"></link><id>http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html/</id><updated>2012-06-25T09:27:00+01:00</updated><entry><title>Posted by: clint-fewbar (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html/#comment-3199374750939571532.md" rel="alternate"></link><updated>2012-06-22T18:43:00+01:00</updated><author><name>clint-fewbar (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-06-22:2012/06/further-reflections-on-my-first-juju.html/</id><summary type="html">&lt;p&gt;Jono, thanks so much for spending time with juju, its really great to
+hear some fresh new thoughts (and to have a few old problems reiterated
+so we remember to address them.)  &lt;/p&gt;
+&lt;p&gt;For the feedback loop, I think the 'debug-hooks' command is going to
+save you a lot of problems at least in terms of being able to run your
+hook over and over until its "right". The problem is that unlike a test
+suite, we are changing the system state *on purpose* so iterating
+means getting back to the same starting state. I do think we need to
+make better use of LXC's ability to clone containers in the debug-hooks
+command, but network complexity becomes an issue, so we'll have to keep
+working on this.  &lt;/p&gt;
+&lt;p&gt;Also for colorized logs:  &lt;/p&gt;
+&lt;p&gt;juju debug-log | ccze -A  &lt;/p&gt;
+&lt;p&gt;The ccze tool's general rules will produce a pretty nicely highlighted
+log for you. The ERROR issue remains, but I think we'll solve that soon
+enough with the patch you submitted. :)&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html/#comment-3706270712593603104.md" rel="alternate"></link><updated>2012-06-25T09:27:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-06-25:2012/06/further-reflections-on-my-first-juju.html/</id><summary type="html">&lt;p&gt;@clint-fewbar, thanks for the 'ccze' tip. That's very useful, and not
+just for juju charming.  &lt;/p&gt;
+&lt;p&gt;@Kapil, thanks. I discovered replay and log level filtering pretty early
+on. The log level filtering was a bit annoying as -l ERROR didn't give
+me &lt;em&gt;all&lt;/em&gt; the errors, included some non-errors, and didn't provide enough
+context for the errors that were included.  &lt;/p&gt;
+&lt;p&gt;I'm not really sure what an agent is or how it matters.&lt;/p&gt;</summary></entry><entry><title>Posted by: Kapil Thangavelu (noreply@blogger.com)</title><link href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html/#comment-4226975663023814159.md" rel="alternate"></link><updated>2012-06-23T00:40:00+01:00</updated><author><name>Kapil Thangavelu (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2012-06-23:2012/06/further-reflections-on-my-first-juju.html/</id><summary type="html">&lt;p&gt;thanks for the feedback.  &lt;/p&gt;
+&lt;p&gt;just fwiw, juju debug-log has very fine grained options for exactly
+targeting what your interested in, you can listen in on a particular
+agent or group of agents, exclude hook output, capture logs at a
+particular level, replay logs, etc.&lt;/p&gt;</summary></entry></feed>

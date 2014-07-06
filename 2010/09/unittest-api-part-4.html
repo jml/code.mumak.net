@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>unittest API, part 4 - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="unittest API, part 4"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/09/unittest-api-part-4.html"/>
+            <meta property="og:description" content="As I said at the very beginning, unittest has an API with lots of interfaces. You can read about the interfaces for test frameworks in part 1, part 2 and part 3 of this series. This post is about the interface for test authors. If the other posts are fresh ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/09/unittest-api-part-4.html"
+                       rel="bookmark"
+                       title="Permalink to unittest API, part 4">
+                        unittest API, part 4
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-09-06T09:47:00"> Mon 06 September 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>As I said at the very beginning, unittest has an API with lots of
+interfaces. You can read about the interfaces for test frameworks in
+<a href="http://code.mumak.net/2010/07/unittest-api-part-1.html">part 1</a>, <a href="http://code.mumak.net/2010/07/unittest-api-part-2.html">part
+2</a> and <a href="http://code.mumak.net/2010/08/unittest-part-3.html">part
+3</a> of this series.
+This post is about the interface for test authors.  </p>
+<p>If the other posts are fresh in your mind, it's important to remember
+that this post is focused on the standard implementation of <code>TestCase</code>.
+After all, it's that implementation which creates the interface for test
+authors. There are other implementations (e.g. <code>FunctionTestCase</code> and
+<code>DocTestCase</code>) which provide completely different interfaces for test
+authors, and one could write one's own implementation that provided
+something else entirely.  </p>
+<div>
+
+**Subclassing `TestCase`**
+
+</div>
+
+<div>
+
+Almost all of the time that you want to write tests, you subclass
+unittest.TestCase. It's not the only way to write unit tests with
+unittest, but it's rather handy, particularly since the default test
+loader looks for subclasses of `TestCase`.  
+
+This is going to be much easier for all of us if I work from an example.
+
+</div>
+
+<div class="highlight"><pre><span class="n">class</span> <span class="n">SomeTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">)</span><span class="o">:</span>  <span class="n">def</span> <span class="n">setUp</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>    <span class="n">print</span> <span class="s">&quot;setUp&quot;</span>  <span class="n">def</span> <span class="n">tearDown</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>    <span class="n">print</span> <span class="s">&quot;tearDown&quot;</span>  <span class="n">def</span> <span class="n">test_a</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>    <span class="n">print</span> <span class="s">&quot;a&quot;</span>  <span class="n">def</span> <span class="n">test_b</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>    <span class="n">print</span> <span class="s">&quot;b&quot;</span>
+</pre></div>
+
+
+<div>
+
+The test loader will make something that looks like
+`unittest.TestSuite([SomeTests("test_a"), SomeTests("test_b")])`. That
+is, it constructs an instance of `SomeTests` for each method beginning
+with "test".  
+
+The tests will only be run when `TestCase.run(result)` is called. The
+tests do not get access to the result object, instead the run() method
+mediates between the tests and the result.  
+
+The default `TestCase.run(result)` method will run `setUp()`, then the
+test method given in the constructor (e.g. `test_a`), then
+`tearDown()`.  
+
+If `setUp()` raises any exception, `tearDown()` will not be run. The
+result object will have `addError` called on it with the test and the
+error.  
+
+If the test method raises an exception, one of two things can happen. If
+the exception is an instance of `self.failureException`, then
+`result.addFailure(test, exc_info)` is called, where test is the
+`TestCase` instance and `exc_info` is the `sys.exc_info()` tuple.
+Otherwise, `result.addError(test, exc_info)` is called. In either case,
+`tearDown()` is then run.  
+
+If `tearDown()` raises an exception, `result.addError(test, exc_info)`
+is called.  
+
+There are lots of built-in assertion methods on `unittest.TestCase`.
+These all raise `self.failureException` if their assertion fails. These
+are part of the interface for test authors, but they are already very
+well documented. Just note that if you write your own, remember to raise
+`self.failureException`, or better yet call `self.fail()`, rather than
+raising `AssertionError` or something crazy like that.  
+
+That's pretty much it.  
+
+Of course, you could write your own object that implemented **`ITest`**
+and **`ITestCase`**, and use your own test loader, and then you don't
+have to care about anything in this post. But don't do that. Better to
+subclass `unittest.TestCase`.  
+
+As always, feedback welcome.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

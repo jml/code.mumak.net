@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Command line apps</title><link href="http://code.mumak.net/2011/08/command-line-apps.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.command-line-apps.atom.xml" rel="self"></link><id>http://code.mumak.net/2011/08/command-line-apps.html/</id><updated>2009-11-02T14:21:00+00:00</updated><entry><title>Posted by: bignose (noreply@blogger.com)</title><link href="http://code.mumak.net/2011/08/command-line-apps.html/#comment-260246674476988617.md" rel="alternate"></link><updated>2009-10-31T08:57:00+00:00</updated><author><name>bignose (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-10-31:2011/08/command-line-apps.html/</id><summary type="html">&lt;p&gt;Most of the features you list are available with the popular
+&lt;a href="http://pypi.python.org/pypi/argparse"&gt;argparse&lt;/a&gt; library.  &lt;/p&gt;
+&lt;p&gt;As for “progress bar”, I don't think that belongs much in a command-line
+parser library; a separate facility for progress bar output seems more
+suitable.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2011/08/command-line-apps.html/#comment-8541837733464629549.md" rel="alternate"></link><updated>2009-11-02T14:21:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-02:2011/08/command-line-apps.html/</id><summary type="html">&lt;p&gt;Thanks bignose, I hadn't heard of that one. I'll take a look at it.  &lt;/p&gt;
+&lt;p&gt;I agree that a progress bar is separate from a command-line parser, but
+it's not separate from a command-line app toolkit. I could have made my
+point better, but what I meant is that Bazaar has a great command-line
+app toolkit begging to be separated from the dvcs bits.&lt;/p&gt;</summary></entry><entry><title>Posted by: Jamu Kakar (noreply@blogger.com)</title><link href="http://code.mumak.net/2011/08/command-line-apps.html/#comment-8562070399263375464.md" rel="alternate"></link><updated>2009-10-16T02:16:00+01:00</updated><author><name>Jamu Kakar (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-10-16:2011/08/command-line-apps.html/</id><summary type="html">&lt;p&gt;I want to add support to Commandant for command aliasing (which implies
+some kind of configuration file handling), progress display and plugins.
+I'm not sure what you mean by 'error handling', but at present
+Commandant displays str(exception) when an exception is raised by a
+command.  &lt;/p&gt;
+&lt;p&gt;If you have any advice on how to make it easier to figure out what
+Commandant is for, I'd love to hear it. Also, thanks for publicizing
+Commandant!&lt;/p&gt;</summary></entry><entry><title>Posted by: Mary (noreply@blogger.com)</title><link href="http://code.mumak.net/2011/08/command-line-apps.html/#comment-8586529892449590930.md" rel="alternate"></link><updated>2009-10-15T20:13:00+01:00</updated><author><name>Mary (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-10-15:2011/08/command-line-apps.html/</id><summary type="html">&lt;p&gt;This seems like the kind of thing a bounty would be good for, actually.  &lt;/p&gt;
+&lt;p&gt;I'm generally pretty sceptical of bounties: "here's \$200 to do \$3000
+worth of software development, oh, and we'll haggle over standards just
+as much as we would if we were paying \$3000." But this sort of task
+strikes me as fairly well defined, unlikely to blow out significantly in
+estimates, a bit low priority and unexciting for core volunteers,
+potentially high impact in terms of users.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2011/08/command-line-apps.html/#comment-9070815494461389851.md" rel="alternate"></link><updated>2009-10-17T13:43:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-10-17:2011/08/command-line-apps.html/</id><summary type="html">&lt;p&gt;Dammit. I wrote a reply which then got lost.  &lt;/p&gt;
+&lt;p&gt;Here it is again, from memory.  &lt;/p&gt;
+&lt;p&gt;Jamu, as I said, I've only ever had a fairly shallow look at Commandant.
+Here are a few things from skimming the README:  &lt;/p&gt;
+&lt;p&gt;* I don't want to have to use shell aliases to have my program be
+called by its proper name.  &lt;/p&gt;
+&lt;p&gt;* I dislike the idea of putting files in a directory to get commands.
+I'd much rather an explicit registry.  &lt;/p&gt;
+&lt;p&gt;* I don't want the word "Commandant" appearing in the output of my
+program.  &lt;/p&gt;
+&lt;p&gt;Maybe what all of this means is that I was looking for a library, and
+the README makes it look more like a framework. This is all rather
+shallow, of course, since I still haven't actually tried to use it in
+anger.  &lt;/p&gt;
+&lt;p&gt;Hope this helps.  &lt;/p&gt;
+&lt;p&gt;jml&lt;/p&gt;</summary></entry></feed>

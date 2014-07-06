@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Everything You Always Wanted to Know about Twisted - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Everything You Always Wanted to Know about Twisted"/>
+            <meta property="og:url" content="http://code.mumak.net/pages/everything-you-always-wanted-to-know-about-twisted.html"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content" class="body">
+        <h1 class="entry-title">Everything You Always Wanted to Know about Twisted</h1>
+        
+        <div class="entry-content">
+            <p><em>This paper was originally prepared as an introduction to Twisted for
+the Launchpad development team, and was presented in London on October
+30th, 2008. The version here has been edited for HTML, and has had
+Launchpad-specific references and examples removed.</em></p>
+<p>By Jonathan M. Lange &amp; Michael Hudson.</p>
+<h1>Abstract</h1>
+<p>Twisted has a bit of a reputation of being “magic” and some people seem
+to be a bit scared of it. This talk will aim to explain the basic ideas
+of Twisted in simple language and make it clear that it is not at all
+magic. It will touch on the reactor, Deferreds, basic protocol structure
+and dispell some common misconceptions.</p>
+<h1>Introduction</h1>
+<p>Twisted is, at its heart, an asynchronous I/O framework written in
+Python. It comes bundled with application servers, defunct persistence
+systems, protocol implementations, a testing framework and a quotes
+file. Its size, scope and the unfamiliarity of its concepts make it
+intimidating for newcomers. This paper aims to address the latter point,
+by explaining the concepts of asynchronous programming as implemented by
+Twisted.</p>
+<p>This paper assumes that you know how to write Python code, that you know
+roughly what an event loop is, and that you are comfortable with network
+programming in general. When you are finished, you should know enough
+about Twisted to start investigating how you can use it to solve your
+specific problems.</p>
+<h1>A Result You Don't Have Yet</h1>
+<p>Imagine that you are writing a program where one API that you are using
+returns placeholders for the actual results. You could think of each
+placeholder as a promise that you will eventually get a result or you
+could think of them as a result that you don't have yet.</p>
+<p>Suppose one of these functions was order_food(). This function places
+an order for some food and then returns immediately. When we call it, it
+returns a placeholder, like so:</p>
+<div class="highlight"><pre><span class="n">PLACEHOLDER</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span>
+</pre></div>
+
+
+<p>We have the placeholder now and sometime later we'll get the actual
+response (e.g. eggs benedict). How can we write a program that depends
+on the outcome of ordering food? To do this, we would need to be able to
+schedule actions for when we get the actual response. So, something
+like:</p>
+<div class="highlight"><pre><span class="n">PLACEHOLDER</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">When</span> <span class="n">PLACEHOLDER</span> <span class="ow">is</span> <span class="n">ready</span><span class="p">,</span> <span class="n">do</span> <span class="n">ACTION</span>
+</pre></div>
+
+
+<p>In Python, PLACEHOLDER is going to be a Python object, and the ACTION is
+best represented as a callable, giving us::</p>
+<div class="highlight"><pre><span class="n">placeholder</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">placeholder</span><span class="o">.</span><span class="n">when_ready</span><span class="p">(</span><span class="n">do_action</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can think of PLACEHOLDER as the source of a single event: "got a
+value" and <code>do_action</code> a handler for that event. If order_food just
+returned its result immediately, the code would look like:</p>
+<div class="highlight"><pre><span class="n">value</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">do_action</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+
+<p>But our placeholder is not yet good enough. We need a way to use the
+result of <code>do_action</code> to do other things. We need an equivalent of::</p>
+<div class="highlight"><pre><span class="n">value</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">x</span> <span class="o">=</span> <span class="n">do_action</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="n">do_something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>That is, our placeholder needs to do something like::</p>
+<div class="highlight"><pre><span class="n">placeholder</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">placeholder</span><span class="o">.</span><span class="n">when_ready</span><span class="p">(</span><span class="n">do_action</span><span class="p">)</span><span class="n">placeholder</span><span class="o">.</span><span class="n">when_ready</span><span class="p">(</span><span class="n">do_something_else</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Where the return value of <code>do_action</code> is passed to do_something_else.</p>
+<p>To illustrate, let's extend our example to do something interesting with
+the food we get back.</p>
+<div class="highlight"><pre>    <span class="n">placeholder</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span>    <span class="n">placeholder</span><span class="o">.</span><span class="n">when_ready</span><span class="p">(</span><span class="n">eat_meal</span><span class="p">)</span>    <span class="n">placeholder</span><span class="o">.</span><span class="n">when_ready</span><span class="p">(</span><span class="n">compliment_chef</span><span class="p">)</span>    <span class="k">def</span> <span class="nf">eat_meal</span><span class="p">(</span><span class="n">meal</span><span class="p">):</span>        <span class="c"># I don&#39;t know how to do this in Python.        was_it_good = nom_nom_nom(meal)        return was_it_good    def compliment_chef(praiseworthy):        if praiseworthy:            print &quot;Wuu chef!&quot;        else:            print &quot;I sneeze in your face!&quot;</span>
+</pre></div>
+
+
+<p><code>eat_meal</code> and <code>compliment_chef</code> are both “callbacks”. <code>eat_meal</code> is run
+as soon as we have a real result for <code>order_food()</code>. It's passed that
+result (<code>meal</code> in the example), eats it and then returns a boolean
+indicating whether or not it was any good. The key here is that <em>the
+return value of a callback is passed as the first parameter to the next
+callback.</em></p>
+<p><code>compliment_chef</code> is run as soon as submit_to_pqm finishes. It is
+passed the return value of <code>eat_meal</code>.</p>
+<p>If <code>order_food</code> returned its result immediately, the code would look
+like:</p>
+<div class="highlight"><pre><span class="n">meal</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">was_it_good</span> <span class="o">=</span> <span class="n">nom_nom_nom</span><span class="p">(</span><span class="n">meal</span><span class="p">):</span><span class="k">if</span> <span class="n">was_it_good</span><span class="p">:</span>    <span class="k">print</span> <span class="s">&quot;Wuu chef!&quot;</span><span class="k">else</span><span class="p">:</span>    <span class="k">print</span> <span class="s">&quot;I sneeze in your face!&quot;</span>
+</pre></div>
+
+
+<h2>No Magic</h2>
+<p>So far, there is no magic involved, just pure Python abstraction: no
+threads, no I/O, no subprocesses, no signals, no concurrency.</p>
+<p>In fact, here's an implementation:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Placeholder</span><span class="p">:</span>    <span class="s">&quot;&quot;&quot;A value you don&#39;t yet have.&quot;&quot;&quot;</span>    <span class="n">UNFIRED</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="p">[]</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">UNFIRED</span>    <span class="k">def</span> <span class="nf">already_fired</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">UNFIRED</span>    <span class="k">def</span> <span class="nf">when_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">callable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>                   <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">callable</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">already_fired</span><span class="p">():</span>            <span class="bp">self</span><span class="o">.</span><span class="n">_run_callbacks</span><span class="p">()</span>        <span class="k">return</span> <span class="bp">self</span>    <span class="k">def</span> <span class="nf">_run_callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span>            <span class="nb">callable</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>    <span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">already_fired</span><span class="p">():</span>            <span class="k">raise</span> <span class="n">AlreadyFiredError</span><span class="p">(</span>                <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">value</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_run_callbacks</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Nothing special, just loops, lists and first-class functions.</p>
+<p>The reader will notice three things about this implementation:</p>
+<ol>
+<li>If a callback takes a long time to execute, the _run_callbacks
+    loop will block.</li>
+<li>There is no error handling.</li>
+<li>If a callback returns a placeholder itself, the callbacks of
+    *that* placeholder will never be run</li>
+</ol>
+<p>The first is a deliberate design decision: there is no magic here. The
+second is the subject of the next section. The third is left as an
+exercise to the reader (hint: you can cheat by looking inside
+twisted/internet/defer.py).</p>
+<h2>Errors</h2>
+<p>Actually, a placeholder is the source of two events: success and
+failure, which correspond to 'return' and 'raise'. Any placeholder can
+stand for a successful result or for a raised error.</p>
+<p>This means that we need the equivalents of::</p>
+<div class="highlight"><pre><span class="c"># 1. Handle error then do the action anyway.try:    value = order_food()except:    handle_error()do_action(value)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c"># 2. Handle the error but do the action only if the error doesn&#39;t occur.try:    value = order_food()except:    handle_error()else:    do_action(value)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c"># 3. Handle the error for the entire operation.try:    value = order_food()    do_action(value)except:    handle_error()</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c"># 4. Do something regardless of success or failure.try:    value = order_food()finally:    do_cleanup()</span>
+</pre></div>
+
+
+<p>We simply cannot use Python's built-in exception handling structures
+because the result is not known yet. We need to extend our placeholder
+to be able to replicate any error handling that we can do with
+try/except/else/finally. Luckily, Twisted has already implemented such a
+placeholder, calling it a Deferred. The 'when_ready' operation
+described above is called 'addCallback', and is analogous to 'do this on
+next success'. The example from the previous section becomes:</p>
+<div class="highlight"><pre><span class="n">deferred</span> <span class="o">=</span> <span class="n">order_food</span><span class="p">()</span><span class="n">deferred</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">eat_meal</span><span class="p">)</span><span class="n">deferred</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">compliment_chef</span><span class="p">)</span>
+</pre></div>
+
+
+<p>addCallback has a sibling, 'addErrback', which is 'do this on next
+failure'.</p>
+<p>The four clauses above become:</p>
+<div class="highlight"><pre><span class="c"># 1. Handle error then do the action anyway.deferred = order_food()deferred.addErrback(handle_error)deferred.addCallback(do_action)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c"># 2. Handle the error but do the action only if# the error doesn&#39;t occur.deferred = order_food()deferred.addCallbacks(do_action, handle_error)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c"># 3. Handle the error for the entire operation.deferred = order_food()deferred.addCallback(do_action)deferred.addErrback(handle_error)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="c"># 4. Do something regardless of success or failure.deferred = order_food()deferred.addBoth(do_cleanup)</span>
+</pre></div>
+
+
+<p>Again, <em>none of this requires magic.</em> We could make the "Placeholder"
+example above handle all of these cases without introducing any
+concurrency, threading or non-blocking I/O.</p>
+<p>We now have everything we need to write programs that use results that
+we don't have yet. The only thing we lack is a <em>reason</em> for using such
+results. For that we need a way of implementing asynchronous operations.</p>
+<h1>The Reactor</h1>
+<p>The reactor is Twisted's event loop. You use the reactor to register
+sources of events and handlers for these events, and then the reactor
+calls those handlers.</p>
+<p>In this sense, the simplest possible Twisted program is:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactorprint</span> <span class="s">&#39;Hello&#39;</span><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>This will print 'Hello' and then run until it is interrupted with a
+signal (another event).</p>
+<p>We can make the program a little more complex by registering our own
+event:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactordef</span> <span class="n">print_world</span><span class="p">():</span>    <span class="k">print</span> <span class="s">&#39;World!&#39;</span><span class="k">print</span> <span class="s">&#39;Hello &#39;</span><span class="p">,</span><span class="n">reactor</span><span class="o">.</span><span class="n">callWhenRunning</span><span class="p">(</span><span class="n">print_world</span><span class="p">)</span><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The reactor will print 'Hello', and then print 'World!' once it starts
+running, and then it will loop forever as before. The next simplest form
+of event is based on elapsed time:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactordef</span> <span class="n">print_world</span><span class="p">():</span>    <span class="k">print</span> <span class="s">&#39;World!&#39;</span>    <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span><span class="k">print</span> <span class="s">&#39;Hello &#39;</span><span class="p">,</span><span class="n">reactor</span><span class="o">.</span><span class="n">callWhenRunning</span><span class="p">(</span><span class="n">print_world</span><span class="p">)</span><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>This will print "Hello, World!" as above, and then wait five seconds
+before shutting down the reactor and exiting cleanly.</p>
+<p>Note that the reactor calls your code and when your code is done,
+control returns to the reactor.</p>
+<p>Deferreds are used in order to turn event handlers into APIs that are
+independent of those events:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">reactordef</span> <span class="n">run_later</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>    <span class="n">d</span> <span class="o">=</span> <span class="n">defer</span><span class="o">.</span><span class="n">Deferred</span><span class="p">()</span>    <span class="k">def</span> <span class="nf">fire</span><span class="p">():</span>        <span class="n">value</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>        <span class="n">d</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>    <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span> <span class="n">fire</span><span class="p">)</span>    <span class="k">return</span> <span class="n">ddef</span> <span class="n">print_stuff</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>    <span class="c"># Because &#39;print&#39; is a *statement*.    print messaged = run_later(2, print_stuff, &#39;Hello&#39;)d.addCallback(lambda ignored: run_later(3, print_stuff, &#39;World&#39;))run_later(3, print_stuff, &#39;Beautiful&#39;)reactor.run()</span>
+</pre></div>
+
+
+<p>This will print "Hello" at two seconds, "Beautiful" at three seconds and
+"World" three seconds after "Hello".</p>
+<p>The deferreds here make sure that one thing happens after another. The
+'World' callback runs only after the deferred returned by the 'Hello'
+run_later is fired.</p>
+<p>The "concurrency" here, such as it is, only works because everything
+runs very quickly. If any method called by the reactor blocks, then the
+entire application blocks:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">timefrom</span> <span class="nn">twisted.internet</span> <span class="nn">import</span> <span class="nn">defer</span><span class="o">,</span> <span class="nn">reactordef</span> <span class="nn">sleep_then_print</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>    <span class="k">print</span> <span class="n">valued</span> <span class="o">=</span> <span class="n">run_later</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">print_stuff</span><span class="p">,</span> <span class="s">&#39;Hello&#39;</span><span class="p">)</span><span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ignored</span><span class="p">:</span> <span class="n">sleep_then_print</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#39;World&#39;</span><span class="p">))</span><span class="n">run_later</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">print_stuff</span><span class="p">,</span> <span class="s">&#39;Beautiful&#39;</span><span class="p">)</span><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Although this <em>looks</em> like it might do the same thing as the previous
+program, it will actually display:</p>
+<div class="highlight"><pre><span class="n">HelloWorldBeautiful</span>
+</pre></div>
+
+
+<p>What happens is that after 'Hello' is printed, the 'sleep_then_print'
+callback is fired, blocking processing for three seconds. The reactor
+only gets a chance to execute the 'Beautiful' print statement after
+sleep_then_print has exited.</p>
+<p>This is about as much as can be said about the reactor without
+introducing Twisted's abstractions for I/O.</p>
+<h1>Separate Concerns</h1>
+<p>Twisted is fundamentally about doing asynchronous I/O — the fundamental
+purpose of deferreds and the reactor is to make it easier to write
+programs that communicate over the network asynchronously.</p>
+<p>The first necessary part is an interface for handling very low-level
+events and operations: this socket just got some data; the remote end
+disconnected; write some data etc. In Twisted terminology, this is a
+<em>transport</em>. There are transports for TCP, UDP, UNIX sockets, processes
+and SSL. Each of these knows how to read and write bytes to the wire.</p>
+<p>The second part is an object that can provide meaning to the low-level
+byte operations: a <em>protocol</em> object. The protocol is a state machine
+that responds to events that the transport sends it, events like:
+<code>dataReceived</code>; <code>connectionMade</code> and <code>connectionLost</code>.</p>
+<p>The third is an object that can be used to create new protocol objects
+as new connections are required and to bind these protocol objects to
+their transports (not strictly true -- other parts of Twisted do the
+binding. Still, it's a helpful lie). Twisted calls these <em>protocol
+factories</em>.</p>
+<p>Now, let's combine all of these together to write a toy server and a
+client to go with it.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">reactorfrom</span> <span class="n">twisted</span><span class="o">.</span><span class="n">protocols</span><span class="o">.</span><span class="n">basic</span> <span class="kn">import</span> <span class="p">(</span>   <span class="n">LineReceiver</span><span class="p">)</span><span class="k">class</span> <span class="nc">ReverseLineProtocol</span><span class="p">(</span><span class="n">LineReceiver</span><span class="p">):</span>    <span class="s">&quot;&quot;&quot;Line-based protocol that echoes any lines it receives in reverse.    Disconnects the client when ten lines have been received.    &quot;&quot;&quot;</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_lines_received</span> <span class="o">=</span> <span class="mi">0</span>    <span class="k">def</span> <span class="nf">lineReceived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">sendLine</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">line</span><span class="p">)))</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_lines_received</span> <span class="o">+=</span> <span class="mi">1</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lines_received</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>            <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">loseConnection</span><span class="p">()</span><span class="k">class</span> <span class="nc">ReverseLineFactory</span><span class="p">(</span>    <span class="n">protocol</span><span class="o">.</span><span class="n">ServerFactory</span><span class="p">):</span>    <span class="n">protocol</span> <span class="o">=</span> <span class="n">ReverseLineProtocolreactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">9999</span><span class="p">,</span> <span class="n">ReverseLineFactory</span><span class="p">())</span><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The protocol is a LineReceiver, which is a simple helper built on top of
+the base protocol that buffers bytes until they become lines, and then
+sends those lines to lineReceived.</p>
+<p>The call to listenTCP binds that instance of the factory to listen on
+port 9999. When a new connection is made, Twisted constructs an instance
+of the protocol and binds it to the socket opened for that connection.</p>
+<p>Here's the client:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">protocol</span> <span class="k">as</span> <span class="n">protofrom</span> <span class="n">twisted</span><span class="o">.</span><span class="n">protocols</span><span class="o">.</span><span class="n">basic</span> <span class="kn">import</span> <span class="nn">LineReceiverclass</span> <span class="nn">ReverseClientProtocol</span><span class="p">(</span><span class="n">LineReceiver</span><span class="p">):</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deferred</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_deferred</span> <span class="o">=</span> <span class="n">deferred</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_string</span> <span class="o">=</span> <span class="n">string</span>    <span class="k">def</span> <span class="nf">connectionMade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">sendLine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_string</span><span class="p">)</span>    <span class="k">def</span> <span class="nf">lineReceived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deferred</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>            <span class="k">return</span>        <span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deferred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">deferred</span><span class="p">,</span> <span class="bp">None</span>        <span class="n">d</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="k">class</span> <span class="nc">RemoteReverser</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_host</span> <span class="o">=</span> <span class="n">host</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_port</span> <span class="o">=</span> <span class="n">port</span>    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">some_string</span><span class="p">):</span>        <span class="s">&quot;&quot;&quot;Send &#39;some_string&#39; to the host to be reversed.&quot;&quot;&quot;</span>        <span class="n">d</span> <span class="o">=</span> <span class="n">defer</span><span class="o">.</span><span class="n">Deferred</span><span class="p">()</span>        <span class="n">client_creator</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">ClientFactory</span><span class="p">(</span>            <span class="n">reactor</span><span class="p">,</span> <span class="n">ReverseClientProtocol</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">some_string</span><span class="p">)</span>        <span class="n">client_creator</span><span class="o">.</span><span class="n">connectTCP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span>        <span class="k">return</span> <span class="n">ddef</span> <span class="n">print_stuff</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>    <span class="k">print</span> <span class="n">messagereverser</span> <span class="o">=</span> <span class="n">RemoteReverser</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">9999</span><span class="p">)</span><span class="n">d</span> <span class="o">=</span> <span class="n">reverser</span><span class="o">.</span><span class="n">reverse</span><span class="p">(</span><span class="s">&#39;Hello&#39;</span><span class="p">)</span><span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">print_stuff</span><span class="p">)</span><span class="n">d</span><span class="o">.</span><span class="n">addBoth</span><span class="p">(</span><span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The ReverseLineProtocol implements the details of talking to the server:
+it sends a line on connection and then fires its deferred as soon as it
+receives a line back.</p>
+<p>The dance with setting self._deferred to None is actually quite
+important. If lineReceived naively fired the deferred every time it was
+called, then it would raise an AlreadyFiredError.</p>
+<p>RemoteReverser is a user-defined class with no explicit place in
+Twisted. It provides an API for reversing a string. 'reverse' returns a
+deferred that will fire with the first line returned from the server.</p>
+<p>Again, by calling 'reverse' and using the deferred, callers can avoid
+knowing <em>anything</em> about how the protocol works or what events are
+involved. As far as a caller is concerned, a call to 'reverse' simply
+returns a placeholder for a value that you don't have yet.</p>
+<h1>Conclusion</h1>
+<p>Twisted provides tools for building libraries and applications that are
+built around asynchronous I/O. It tries hard not to make decisions for
+you so that you can write whatever application you need.</p>
+<p>This paper hasn't described the way Deferred lets you return Deferreds
+from callbacks and errbacks, nor has it described Twisted's <code>Failure</code>
+object, which abstracts Python exceptions and provides many useful
+helper methods for writing asynchronous programs. If you'd like to read
+such a thing, <a href="mailto:jml+twistedpaper@mumak.net">email me</a>, and I'll
+consider writing a follow-up paper.</p>
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

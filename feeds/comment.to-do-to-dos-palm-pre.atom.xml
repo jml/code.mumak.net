@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: To do: To dos (Palm Prē)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.to-do-to-dos-palm-pre.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/</id><updated>2009-11-30T10:55:00+00:00</updated><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-1969180220251267864.md" rel="alternate"></link><updated>2009-11-26T17:54:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-26:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;Hey Dustin,  &lt;/p&gt;
+&lt;p&gt;That sounds like a good idea. What command do you use to rsync, exactly?
+I get a lot of permission denied errors when I try.  &lt;/p&gt;
+&lt;p&gt;A little poking around shows that the Tasks app is backed on to an
+sqlite3 database. As best as I can tell, the schema lives in
+/usr/lib/luna/PalmDatabase.db3 and the db itself in
+/var/luna/data/dbdata/PalmDatabase.db3. That last one wasn't rsynced
+when I tried with 'rsync -avPx'.  &lt;/p&gt;
+&lt;p&gt;Looks like tables for a bunch of apps are in there.  &lt;/p&gt;
+&lt;p&gt;Interestingly, the 'Task' table (com_palm_pim_Task) has a column
+called 'extraCrap'.&lt;/p&gt;</summary></entry><entry><title>Posted by: AmanicA (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-2859357370656219028.md" rel="alternate"></link><updated>2009-11-27T08:25:00+00:00</updated><author><name>AmanicA (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-27:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;mmm.. maybe somebody can port Bazaar to the Palm Prē :)  &lt;/p&gt;
+&lt;p&gt;I have a similar problem with my G1 (also a thinkingrock user). Thinking
+about it, it should be possible to do the version control part from my
+laptop when my phone is mounted. TODO: find a text editor which can edit
+files in a branch on my phone.&lt;/p&gt;</summary></entry><entry><title>Posted by: Michael Hudson-Doyle (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-4442625447241895178.md" rel="alternate"></link><updated>2009-11-26T18:54:00+00:00</updated><author><name>Michael Hudson-Doyle (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-26:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;&gt; Interestingly, the 'Task' table&lt;br /&gt;
+&gt; (com_palm_pim_Task) has a column called&lt;br /&gt;
+&gt; 'extraCrap'.  &lt;/p&gt;
+&lt;p&gt;Thank you for helping me wake up with a good laugh :-)&lt;/p&gt;</summary></entry><entry><title>Posted by: tekNico (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-4481256401807644530.md" rel="alternate"></link><updated>2009-11-26T12:39:00+00:00</updated><author><name>tekNico (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-26:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;&gt; These lists are connected to a certain popular&lt;br /&gt;
+&gt; productivity system which isn't really about&lt;br /&gt;
+&gt; productivity and is a little bit like a cult.  &lt;/p&gt;
+&lt;p&gt;Sure, brother, just say the word: GTD. ;-) I'm no David Allen follower,
+anyway, I just own the book in both English and Italian languages. ;-P  &lt;/p&gt;
+&lt;p&gt;&gt; Any ideas?  &lt;/p&gt;
+&lt;p&gt;Nope, I'm in a similar predicament. I've been using Thinking Rock for a
+few years now, but it's a big, hairy Java beast, no way to put that on
+my Nokia N800 (nor on a N900, I guess).&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-5342383903134416902.md" rel="alternate"></link><updated>2009-11-30T10:55:00+00:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-30:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;@intellectronica, EverNote is on the Palm, but AFAICT it isn't a task
+list manager, it's more of a note gathering application. Am I missing
+something?  &lt;/p&gt;
+&lt;p&gt;@drewpca, Cool! Although, I think I'm interested in getting stuff
+*into* Tasks, not out of it.  &lt;/p&gt;
+&lt;p&gt;@thomasvs, I hadn't heard of yagtd, I'll have a quick play with it. May
+I suggest taking a look at GTG? Someone has a desktopcouch branch of
+that -- it might be worth combining efforts rather than making yet
+another GTD app.&lt;/p&gt;</summary></entry><entry><title>Posted by: Dustin Kirkland (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-6195431160262419288.md" rel="alternate"></link><updated>2009-11-26T16:33:00+00:00</updated><author><name>Dustin Kirkland (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-26:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;Jono-  &lt;/p&gt;
+&lt;p&gt;I installed sshd on my Pre, and I rsync the entire filesystem to my
+laptop to back it up daily.  &lt;/p&gt;
+&lt;p&gt;I haven't looked for the backing files of the task list, if they're
+cleartext and edit-able. If they are readable, then I think
+rsync+sshd+vi might solve this for you?  &lt;/p&gt;
+&lt;p&gt;:-Dustin&lt;/p&gt;</summary></entry><entry><title>Posted by: drewpca (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-6540967187614857677.md" rel="alternate"></link><updated>2009-11-29T05:14:00+00:00</updated><author><name>drewpca (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-29:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;&lt;a href="http://bigasterisk.com/darcs/?r=palmpre2rdf;a=tree"&gt;palmpre2rdf&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;I started writing stuff to export those sqlite databases to RDF, such
+that the shared sql key ids become URIs that you could link to even more
+data sources.  &lt;/p&gt;
+&lt;p&gt;I didn't care about todo at the time, but that might be easy to add.&lt;/p&gt;</summary></entry><entry><title>Posted by: thomasvs (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-7423500843158414690.md" rel="alternate"></link><updated>2009-11-29T12:36:00+00:00</updated><author><name>thomasvs (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-29:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;I'm in the same cult. I don't know if the Palm Pre is a device that
+allows you to install whatever you want, but I'm in the same situation
+with my N800 and soon N900, plus my various laptops/desktops.  &lt;/p&gt;
+&lt;p&gt;I started writing a couchdb-based GTD manager (currently command-line
+only, inspired on yagtd which I've used for the last two years). I plan
+to port it to the N900, which should be doable given there are couchdb
+packages.  &lt;/p&gt;
+&lt;p&gt;Not entirely what you're looking for, but let me know if you are
+interested (or anyone else here, like tekNico)&lt;/p&gt;</summary></entry><entry><title>Posted by: intellectronica.net (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-8768808691687757169.md" rel="alternate"></link><updated>2009-11-29T01:40:00+00:00</updated><author><name>intellectronica.net (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-29:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;I'm using (on the iphone and PC) a service/product called Evernote which
+allows you to edit notes on the phone, on the PC (windows software but
+works fine with wine) and on the web. I don't know if they have a Palm
+version, but it they do you should give it a try.&lt;/p&gt;</summary></entry><entry><title>Posted by: intellectronica.net (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html/#comment-877140232998551780.md" rel="alternate"></link><updated>2009-11-29T01:41:00+00:00</updated><author><name>intellectronica.net (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-11-29:2009/11/to-do-to-dos-palm-pre.html/</id><summary type="html">&lt;p&gt;I'm using (on the iphone and PC) a service/product called Evernote which
+allows you to edit notes on the phone, on the PC (windows software but
+works fine with wine) and on the web. I don't know if they have a Palm
+version, but it they do you should give it a try.&lt;/p&gt;</summary></entry></feed>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>unittest: it ain't broke, let's fix it - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="unittest: it ain't broke, let's fix it"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/07/unittest-it-aint-broke-lets-fix-it.html"/>
+            <meta property="og:description" content="I spoke at EuroPython 2009 in Birmingham about the unittest module in the Python standard library. The central thesis was first proposed to me by Robert Collins, probably around 2003 or 2004. The idea is that unittest is actually surprisingly good and more extensible than you think. It was also ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/07/unittest-it-aint-broke-lets-fix-it.html"
+                       rel="bookmark"
+                       title="Permalink to unittest: it ain't broke, let's fix it">
+                        unittest: it ain't broke, let's fix it
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-07-19T10:21:00"> Sun 19 July 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I spoke at <a href="http://www.europython.eu/">EuroPython 2009</a> in Birmingham
+about the <a href="http://docs.python.org/library/unittest.html">unittest</a>
+module in the <a href="http://docs.python.org/library/index.html">Python standard
+library</a>.  </p>
+<p>The central thesis was first proposed to me by Robert Collins, probably
+around 2003 or 2004. The idea is that unittest is actually surprisingly
+good and more extensible than you think. It was also Rob's idea to
+co-present this as a talk in Birmingham. Sadly, I was obliged to present
+it by myself.  </p>
+<p>I'd like to write up the talk more thoroughly, and am keen to publish
+brief posts on why layers are bad and why setUpClass is bad, but for now
+I'll just post the artifacts from EuroPython.  </p>
+<ul>
+<li>Slides
+    (<a href="http://mumak.net/stuff/EuroPython-2009-unittest-jml.odp">ODP</a> |
+    <a href="http://mumak.net/stuff/EuroPython-2009-unittest-jml.pdf">PDF</a>)  </li>
+<li><a href="http://mumak.net/stuff/unittest-lets-fix-it-slides.txt">Text version of
+    slides</a></li>
+<li><a href="http://mumak.net/stuff/unittest-lets-fix-it.txt">Notes</a></li>
+<li><a href="http://static.mumak.net/Jonathan_Lange-Unittest_It_aint_broke_lets_fix_it.ogg">Audio</a>
+    (<a href="http://wiki.europython.eu/RecordedTalks?action=AttachFile&amp;do=get&amp;target=Jonathan_Lange-Unittest_It_aint_broke_lets_fix_it.ogg">mirror</a>)  </li>
+</ul>
+<p>What do you think?  </p>
+<p><span>Update</span>: Audio now available.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-1264120663166298058.md">
+                <a href="http://code.mumak.net/2009/07/unittest-it-aint-broke-lets-fix-it.html#comment-1264120663166298058.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jdb (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-31T09:24:00">Fri 31 July 2009</abbr></p>
+                
+                <p>I think we need something that glues together slides and audio. Now,
+they do not interact and it is not fun to follow this presentation that
+seems very valuable.  </p>
+<p>What presentation gurus say is that the handout is different document
+from the speech and different from the slides also. It is a third
+document which needs its own hours of design and tuning.</p>
+            </article>
+            <article id="comment-5723810352938334554.md">
+                <a href="http://code.mumak.net/2009/07/unittest-it-aint-broke-lets-fix-it.html#comment-5723810352938334554.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-07-31T09:44:00">Fri 31 July 2009</abbr></p>
+                
+                <p>I agree. As I mentioned in the original post, I would love to turn this
+into a paper.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Software Portfolio - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Software Portfolio"/>
+            <meta property="og:url" content="http://code.mumak.net/pages/software-portfolio.html"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content" class="body">
+        <h1 class="entry-title">Software Portfolio</h1>
+        
+        <div class="entry-content">
+            <p>I'm a programmer. I've made and contributed to an awful lot of software
+that's available on the web, mostly Open Source.  </p>
+<p>This isn't a complete list of all the software I've ever worked on, but
+I hope it includes everything that's around today and available for
+general use.  </p>
+<h2>Software I made</h2>
+<h3><a href="http://pypi.python.org/pypi/testtools">testtools</a></h3>
+<p>Tasteful unit testing for Python.  </p>
+<h3><a href="http://pypi.python.org/pypi/treeshape">treeshape</a></h3>
+<p>Creates files and directories on disk in a declarative way. Great for
+testing code that does disk I/O.  </p>
+<h2>Projects I have contributed to</h2>
+<h3><a href="http://twistedmatrix.com/">Twisted</a></h3>
+<p>Still the best way to do networking in Python. Twisted was first open
+source project I got involved with. I learnt so much from the other
+contributors.  </p>
+<p>I haven't contributed much recently, but back when I was more active, I
+did a lot of work on Trial, Twisted's unit testing framework.  </p>
+<h3><a href="https://launchpad.net/subunit">subunit</a></h3>
+<div>
+
+Protocol for streaming test results. The foundational technology for
+[testrepository](https://launchpad.net/testrepository), and extremely
+useful for gathering interesting data about tests.
+
+</div>
+
+<h3><a href="https://launchpad.net/testrepository">testrepository</a></h3>
+<div>
+
+Wonderful little test runner that stores past results and uses those
+results to parallelize test runs in the most efficient manner.
+
+</div>
+
+<div>
+
+When you use it to run tests, it shows you the delta of failures, number
+of tests and time taken to run. This is a little thing, but makes a
+powerful difference to the TDD cycle.
+
+</div>
+
+<h3><a href="http://pkgme.net/">pkgme</a></h3>
+<div>
+
+Make Ubuntu packages for your project automatically.
+
+</div>
+
+<h3><a href="http://pypi.python.org/pypi/fixtures">python-fixtures</a></h3>
+<div>
+
+Resources with clean up that you can compose and re-use without buying
+into an entire framework.  That said, they do work exceptionally well
+with [testtools](http://testtools.rtfd.org/).
+
+</div>
+
+<h3><a href="http://pypi.python.org/pypi/pyflakes">pyflakes</a></h3>
+<div>
+
+Everyone's favourite Python lint checker.
+
+</div>
+
+<h3><a href="http://bazaar.canonical.com/en/">Bazaar</a></h3>
+<div>
+
+One of the earliest distributed version control tools and in many ways
+the most pleasing to use. I wrote a lot of the Launchpad integration.
+
+</div>
+
+<h3><a href="https://launchpad.net/">Launchpad</a></h3>
+<div>
+
+Huge, ridiculously ambitious open source collaboration platform: tracks
+bugs, hosts code, manages translations, and builds Ubuntu.
+
+</div>
+
+<div>
+
+I wrote large chunks of the code hosting system, and have messed around
+lots with its testing infrastructure and the chain of tools around
+building packages.
+
+</div>
+
+<div>
+
+For a while, I was also the product manager. When I was, I tried to make
+sense of [what Launchpad actually
+is](http://launchpad.readthedocs.org/en/latest/scope.html) and [what
+it's strategy
+was](http://launchpad.readthedocs.org/en/latest/strategy.html).
+
+</div>
+
+<h2>Scraps</h2>
+<p>These projects aren't really scraps. They are actually all quite useful
+little tools that I don't spend much time on, because they meet my needs
+and they don't have many users.  </p>
+<h3><a href="https://launchpad.net/difftodo">difftodo</a></h3>
+<p>Neat little tool that looks at diffs of Python code, finds any comments
+with XXX, FIXME or TODO and then formats them nicely.  </p>
+<p>Has Emacs integration, so you can treat XXX comments like compiler
+errors.  </p>
+<h3><a href="https://launchpad.net/bzr-damage">bzr-damage</a></h3>
+<p>How much damage is this branch going to inflict? Measured in lines of
+code added.  </p>
+<h3><a href="https://launchpad.net/testdoc">testdoc</a></h3>
+<div>
+
+I dislike Python's
+[doctest](http://docs.python.org/library/doctest.html), for reasons best
+explained by Andrew Bennetts: [narrative tests are lousy
+tests](http://bemusement.org/diary/2008/October/23/narrative-tests) and
+[tests are code, doctests
+aren't](http://bemusement.org/diary/2008/October/24/more-doctest-problems).
+People kept telling me that doctests were are great way of getting
+documentation for free when writing tests. So, I wrote a cheeky little
+tool that analyzes Python unit test modules and turns them into readable
+documentation. This is it.
+
+</div>
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

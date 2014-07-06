@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Time-based releases and love - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Time-based releases and love"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/03/time-based-releases-and-love.html"/>
+            <meta property="og:description" content="I believe in time-based releases. I believe in frequent releases. I believe in a trunk branch that is always ready to be a release candidate. Many Free Software developers share my beliefs. For a long time I haven't questioned it. It's obviously good to release regularly and often ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html"
+                       rel="bookmark"
+                       title="Permalink to Time-based releases and love">
+                        Time-based releases and love
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-03-31T22:24:00"> Tue 31 March 2009</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/bazaar.html">Bazaar</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I believe in time-based releases. I believe in frequent releases. I
+believe in a trunk branch that is always ready to be a release
+candidate. Many Free Software developers share my beliefs. For a long
+time I haven't questioned it. It's obviously good to release regularly
+and often.  </p>
+<blockquote>
+<p>"It is hard to argue that bzr isn't in a state of flux when a new
+stable version is available once a month." - Jason Earl, Bazaar
+mailing list.  </p>
+</blockquote>
+<p>Now I think I have to begin asking questions.  </p>
+<p>Is it possible that time-based releases actually create negative
+impressions of software? Should regular releasers slow down their
+cadence? How should compatibility watersheds (format, API, whatever)
+affect a release cycle? What would Bazaar's format reputation be like if
+they released every six months instead of every month?</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-1538258633174815708.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-1538258633174815708.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T01:13:00">Wed 01 April 2009</abbr></p>
+                
+                <p>Please keep the monthly releases. It's quite nice to have the new
+features on a packaged format earlier. The developer are forced to keep
+the project in a "releasable" state more often too.  </p>
+<p>But I'd ask, *please*, don't add new default repository formats so
+often.<br />
+My proposal: do time-based *major* (2.0, 3.0, ...) releases too, every
+6 months for example, and add a new default format only to this
+releases.  </p>
+<p>The new format, accumulating all backward incompatible changes, could be
+developed on a branch and integrated as a --development format when its
+good enough (like it is now), but only released as the default on a
+major release.  </p>
+<p>This way, distributions can offer always a bzr with the latest (or
+almost) format, and teams/hosting sites/sysadmins can get prepared to
+upgrade their repos less often.</p>
+            </article>
+            <article id="comment-5656991530384186263.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-5656991530384186263.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Cory (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T06:04:00">Wed 01 April 2009</abbr></p>
+                
+                <p>I have to agree with Eduardo there. One of the reasons specifically
+cited by Brett Cannon today when discussing Python-on-hg is the number
+of changes to release formats in bzr.  </p>
+<p>I think that has way more of an impact on the impression of stability
+than does the frequency of releases; people just want to know it will
+always work wherever they happen to need some code, regardless of what
+version is installed there.  </p>
+<p>I don't see any reason to question the basic concept of always being
+ready to release, but that's not the same as releasing all the time. :-)
+Every month is good for a pre-1.0, after that, 3 or 6 months is a better
+pace to set. Being ready gives you the ability to do a critical bugfix
+release at the drop of a hat.</p>
+            </article>
+            <article id="comment-3590099636265162880.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-3590099636265162880.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T12:58:00">Wed 01 April 2009</abbr></p>
+                
+                <p>Also, If new formats had a big set of new features (instead of the
+one-format-per-new-feature-every-now-and-again like it is now), people
+would be more excited about upgrading. At least brisbane-core is
+something everybody will be really *really* excited about :)</p>
+            </article>
+            <article id="comment-7154288789609202402.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-7154288789609202402.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>bialix (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T18:47:00">Wed 01 April 2009</abbr></p>
+                
+                <p>I think bzr practive to release every 4 weeks is too frequent for the
+most users/admins. Once at 2 or 3 months is much better.  </p>
+<p>May be only point releases, e.g. 1.13.X should be released once at
+month.  </p>
+<p>E.g. for version X.Y.Z  </p>
+<p>Z = every month (only bugfixes)<br />
+Y = every 3 months (improvements)<br />
+X = every 9-12 months (big improvements, new formats)</p>
+            </article>
+            <article id="comment-3467960932830685026.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-3467960932830685026.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-02T05:12:00">Thu 02 April 2009</abbr></p>
+                
+                <p>My thoughts are not as specific as other commenters, but essentially:
+bzr does not provide any way to judge the level of change in its
+releases: the number is essentially 1.X where X is the number of months
+since 1.0 (give or take).  </p>
+<p>While Ubuntu also uses a similar strategy, most Free Software people
+really are accustomed to X.Y where a change in X means big changes
+including likely major fixes and improvements but also to beware of
+breakage, and a change in Y means tweaks to what you know, breakage
+unlikely. (For projects with dependant projects, X.Y.Z is better where a
+change in Z means no ABI/API break from the previous release, as
+required.)  </p>
+<p>Of course, one can get this from the release notes, but one doesn't read
+them...</p>
+            </article>
+            <article id="comment-3468572292567331193.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-3468572292567331193.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-02T12:08:00">Thu 02 April 2009</abbr></p>
+                
+                <p>@bialix: I think that point releases (especially when security fixes and
+fixes for major regression are involved) should be released any time if
+needed.  </p>
+<p>If bzr is to move to a longer release cycle (3 months, say), it can
+still do montly alpha/beta releases: an alpha on the end of the first
+month, a beta on the end of the second one (if no release critical bug
+id found, them is could slip some days), and a rc or two on the week
+before the final release.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: When do you start testing?</title><link href="http://code.mumak.net/2010/07/when-do-you-start-testing.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.when-do-you-start-testing.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/07/when-do-you-start-testing.html/</id><updated>2010-07-20T12:26:00+01:00</updated><entry><title>Posted by: jelmer (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/when-do-you-start-testing.html/#comment-2198454885381325560.md" rel="alternate"></link><updated>2010-07-20T12:26:00+01:00</updated><author><name>jelmer (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-20:2010/07/when-do-you-start-testing.html/</id><summary type="html">&lt;p&gt;Usually not at the right time.  &lt;/p&gt;
+&lt;p&gt;Sometimes I start too early (before I write my first line of code) and
+it slows down my progress too much, causing me to get distracted before
+I have a working initial version that would keep me interested.  &lt;/p&gt;
+&lt;p&gt;Sometimes I start too late and that means I have to do a lot of
+refactoring and after-the-fact writing of tests. Often this is at a
+point where I have spent more time then necessary in a debugger trying
+to figure out which layer of my code is buggy.&lt;/p&gt;</summary></entry><entry><title>Posted by: Michał Pasternak (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/when-do-you-start-testing.html/#comment-3071807827508642728.md" rel="alternate"></link><updated>2010-07-05T16:37:00+01:00</updated><author><name>Michał Pasternak (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-05:2010/07/when-do-you-start-testing.html/</id><summary type="html">&lt;p&gt;"Before anything" :-) (I wish I would!)&lt;/p&gt;</summary></entry><entry><title>Posted by: Benjamin (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/when-do-you-start-testing.html/#comment-373533969778097869.md" rel="alternate"></link><updated>2010-07-05T23:24:00+01:00</updated><author><name>Benjamin (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-05:2010/07/when-do-you-start-testing.html/</id><summary type="html">&lt;p&gt;Whenever I have to show things I wrote to the wider world.&lt;/p&gt;</summary></entry><entry><title>Posted by: glyph (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/when-do-you-start-testing.html/#comment-5473786444898800933.md" rel="alternate"></link><updated>2010-07-06T15:34:00+01:00</updated><author><name>glyph (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-06:2010/07/when-do-you-start-testing.html/</id><summary type="html">&lt;p&gt;When a program gets big enough that I have to perform more than 2 manual
+actions (commands, clicks, hits to an URL).  &lt;/p&gt;
+&lt;p&gt;If I can get \~100% coverage and instant repeatability by simply
+re-running the program (script) then there's no point to an automated
+test suite; the program is effectively testing itself. But, once I need
+to do five, six, or seven things in order to start testing it
+comprehensively, I will start forgetting some of the steps, doing some
+of them wrong, or occasionally skipping them, and maintenance
+difficulties set in.  &lt;/p&gt;
+&lt;p&gt;Pretty much any non-trivial program fits into this category, of course.
+But many trivial programs of the "rename a bunch of audio files" variety
+are easy to test just by having some stub input and re-running it until
+the output looks right.&lt;/p&gt;</summary></entry></feed>

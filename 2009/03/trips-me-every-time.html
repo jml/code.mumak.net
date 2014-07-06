@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Trips me every time - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Trips me every time"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/03/trips-me-every-time.html"/>
+            <meta property="og:description" content="etrepum commented on how hash functions need to be idempotent. I pretty much always interpret things about functions and idempotence incorrectly. When used in computing, saying a function is idempotent generally means you can call it a hozillion times and the state of the system (& thus the return value of ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/03/trips-me-every-time.html"
+                       rel="bookmark"
+                       title="Permalink to Trips me every time">
+                        Trips me every time
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-03-25T07:06:00"> Wed 25 March 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="http://twitter.com/etrepum">etrepum</a>
+<a href="https://twitter.com/etrepum/status/1385947605">commented</a> on how hash
+functions need to be idempotent. I pretty much always interpret things
+about functions and
+<a href="http://en.wikipedia.org/wiki/Idempotent">idempotence</a> incorrectly.  </p>
+<p>When used in computing, saying a function is idempotent generally means
+you can call it a hozillion times and the state of the system (&amp; thus
+the return value of the function) will be the same as if you called it
+once.  </p>
+<p>When used in mathematics, a function <span>f</span> is idempotent if
+<span>f(f(x)) = f(x)</span> for all <span>x</span>. The computing
+quality of idempotence isn't useful since <span>f(x) = f(x)</span>.  </p>
+<p>I would greatly appreciate it if we could all find a way to communicate
+that didn't involve language.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-6370027194045851100.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-6370027194045851100.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eric (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T07:16:00">Wed 25 March 2009</abbr></p>
+                
+                <p>You could just say that the function need be referentially transparent.</p>
+            </article>
+            <article id="comment-9088893627358585395.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-9088893627358585395.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T07:19:00">Wed 25 March 2009</abbr></p>
+                
+                <p>Sure.  </p>
+<p>I guess my point is that the clarity of the terms depends on the domain
+that you are speaking in.</p>
+            </article>
+            <article id="comment-2838238212953031526.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-2838238212953031526.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>ddaa (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T12:07:00">Wed 25 March 2009</abbr></p>
+                
+                <p>Oh, a new pet peeve!  </p>
+<p>From now on I'll make it a point that "idempotent" DOES mean "f(f(x)) =
+f(x)".  </p>
+<p>I did not realize that people were using it with this other, incorrect
+meaning.  </p>
+<p>f(x)=f(x) is invariant, or referentially transparent, or side-effect
+free, whatever. Real idempotence is a useful property to be able to name
+in computing.  </p>
+<p>Join me and embrace the joy of self-righteousness!</p>
+            </article>
+            <article id="comment-7114151420028511766.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-7114151420028511766.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Alex (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T16:14:00">Wed 25 March 2009</abbr></p>
+                
+                <p>The mathematics definition of idempotent sort of makes sense in
+computing if you view a function as taking a state and returning the
+state of the system after the function is applied.  </p>
+<p>Then the property f(f(x)) = f(x) seems like a desirable one if equality
+is replaced by some equivalence relation  </p>
+<p>This is still weaker than invariance of f though...</p>
+            </article>
+            <article id="comment-3634508032417411421.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-3634508032417411421.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>larstiq (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T20:36:00">Wed 25 March 2009</abbr></p>
+                
+                <p>Oh feh, I had to reread your quote of Bob and then his original post
+before I got it not being what I thought it was.  </p>
+<p>I do use idempotent in computing in the mathy way, but maybe that is
+because I'm a math student.</p>
+            </article>
+            <article id="comment-8432383445236252912.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-8432383445236252912.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michael Hudson (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T22:08:00">Wed 25 March 2009</abbr></p>
+                
+                <p>Idempotency (in computing) is not the same as side-effect free, or
+always returning the same value for the same arguments, but rather than
+calling it multiple times has the same effect as calling it once. Bob is
+perhaps using bigs words where simple ones would do :)  </p>
+<p>Alex is right that this is the same as the mathematical definition if
+you view the state of the world as implicitly passed to and returned
+from every function you call.</p>
+            </article>
+            <article id="comment-3801193626142473187.md">
+                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-3801193626142473187.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>ddaa (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-03-25T23:23:00">Wed 25 March 2009</abbr></p>
+                
+                <p>Michael Hudson: Oh right! I remember now.  </p>
+<p>Actually, idempotency in the computing sense is only meaningful where
+there ARE side effects.  </p>
+<p>For a couple of pythonic examples: "a[b] = c" where a is a list IS
+idempotent. But "a.pop()" is not.  </p>
+<p>Since the last thing you want from a hash function is to mutate its
+argument, the only meaningful sense for "idempotent hash function" is
+the mathematical one.  </p>
+<p>And etrepum is confused.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

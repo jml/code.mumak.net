@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Command line apps - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Command line apps"/>
+            <meta property="og:url" content="http://code.mumak.net/2011/08/command-line-apps.html"/>
+            <meta property="og:description" content="Back in the day, I used to want to use twisted.python.usage for all of my command-line apps. It's a fairly nice API & a good way of writing code. Since I started writing Bazaar plugins though, I've fallen in love with Bazaar's command interface. [Jamu](https ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2011/08/command-line-apps.html"
+                       rel="bookmark"
+                       title="Permalink to Command line apps">
+                        Command line apps
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2011-08-01T10:59:00"> Mon 01 August 2011</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Back in the day, I used to want to use
+<a href="http://twistedmatrix.com/projects/core/documentation/howto/options.html">twisted.python.usage</a>
+for all of my command-line apps. It's a fairly nice
+<a href="http://twistedmatrix.com/documents/8.2.0/api/twisted.python.usage.html">API</a>
+&amp; a good way of writing code.  </p>
+<div>
+
+Since I started writing Bazaar plugins though, I've fallen in love with
+Bazaar's command interface.
+[Jamu](https://code.edge.launchpad.net/~jkakar) has too, so he wrote
+[Commandant](https://edge.launchpad.net/commandant). I don't really
+understand it though, which is mostly for lack of trying.
+
+</div>
+
+<div>
+
+Michael turned our internal EC2-using testing tool into a bzr-a-like app
+[using the Bazaar
+APIs](http://bazaar.launchpad.net/~launchpad-pqm/launchpad/stable/annotate/head:/lib/devscripts/ec2test/builtins.py).
+There's a bit of duplication, but it works pretty well.
+
+</div>
+
+<div>
+
+The Bazaar developers are aware that their command-line interface code
+rocks and that it's too closely bound to Bazaar. I'm not sure whether
+anyone has filed bugs about it or not, but here's what I actually want:
+
+</div>
+
+<div>
+
+-   The subcommand interface, e.g. "bzr foo"
+-   Option parsing
+-   Help
+-   Command aliasing
+-   Error handling
+-   Progress display
+-   Verbosity control 
+-   Logging
+-   Debug helpers (e.g. The way bzr handles Ctrl-\\)
+
+<div>
+
+There's also a bunch of cool stuff in Bazaar that's useful for a lot of
+applications, command-line or not.
+
+</div>
+
+<div>
+
+-   Registries
+-   Transports
+-   Hooks
+-   Configuration files
+-   Oh yeah, **plugins**. (How could I have forgotten this?)
+
+<div>
+
+Sometimes I wish projects like Bazaar and Twisted split this sort of
+stuff out into separate packages. That would probably change the way the
+packages are maintained, and I don't know whether it would be for better
+or for worse.
+
+</div>
+
+<div>
+
+Sadly, no moral or action for this post. Just stuff that's been on my
+mind that I wanted to write down and publish. I'd very much welcome
+input.  
+
+**Update:** Was rewriting this post, then realized that, umm, well, it
+was a rewrite.
+
+</div>
+
+</div>
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-8586529892449590930.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-8586529892449590930.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-15T20:13:00">Thu 15 October 2009</abbr></p>
+                
+                <p>This seems like the kind of thing a bounty would be good for, actually.  </p>
+<p>I'm generally pretty sceptical of bounties: "here's \$200 to do \$3000
+worth of software development, oh, and we'll haggle over standards just
+as much as we would if we were paying \$3000." But this sort of task
+strikes me as fairly well defined, unlikely to blow out significantly in
+estimates, a bit low priority and unexciting for core volunteers,
+potentially high impact in terms of users.</p>
+            </article>
+            <article id="comment-8562070399263375464.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-8562070399263375464.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Jamu Kakar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-16T02:16:00">Fri 16 October 2009</abbr></p>
+                
+                <p>I want to add support to Commandant for command aliasing (which implies
+some kind of configuration file handling), progress display and plugins.
+I'm not sure what you mean by 'error handling', but at present
+Commandant displays str(exception) when an exception is raised by a
+command.  </p>
+<p>If you have any advice on how to make it easier to figure out what
+Commandant is for, I'd love to hear it. Also, thanks for publicizing
+Commandant!</p>
+            </article>
+            <article id="comment-9070815494461389851.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-9070815494461389851.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-17T13:43:00">Sat 17 October 2009</abbr></p>
+                
+                <p>Dammit. I wrote a reply which then got lost.  </p>
+<p>Here it is again, from memory.  </p>
+<p>Jamu, as I said, I've only ever had a fairly shallow look at Commandant.
+Here are a few things from skimming the README:  </p>
+<p>* I don't want to have to use shell aliases to have my program be
+called by its proper name.  </p>
+<p>* I dislike the idea of putting files in a directory to get commands.
+I'd much rather an explicit registry.  </p>
+<p>* I don't want the word "Commandant" appearing in the output of my
+program.  </p>
+<p>Maybe what all of this means is that I was looking for a library, and
+the README makes it look more like a framework. This is all rather
+shallow, of course, since I still haven't actually tried to use it in
+anger.  </p>
+<p>Hope this helps.  </p>
+<p>jml</p>
+            </article>
+            <article id="comment-260246674476988617.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-260246674476988617.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>bignose (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-31T08:57:00">Sat 31 October 2009</abbr></p>
+                
+                <p>Most of the features you list are available with the popular
+<a href="http://pypi.python.org/pypi/argparse">argparse</a> library.  </p>
+<p>As for “progress bar”, I don't think that belongs much in a command-line
+parser library; a separate facility for progress bar output seems more
+suitable.</p>
+            </article>
+            <article id="comment-8541837733464629549.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-8541837733464629549.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-02T14:21:00">Mon 02 November 2009</abbr></p>
+                
+                <p>Thanks bignose, I hadn't heard of that one. I'll take a look at it.  </p>
+<p>I agree that a progress bar is separate from a command-line parser, but
+it's not separate from a command-line app toolkit. I could have made my
+point better, but what I meant is that Bazaar has a great command-line
+app toolkit begging to be separated from the dvcs bits.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

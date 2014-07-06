@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>testresources: some examples - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="testresources: some examples"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/05/testresources-some-examples.html"/>
+            <meta property="og:description" content="There's been a clamor for more documentation on how to use testresources. While I'm not qualified to show you the best way to use it, I can show you the way that I would begin to use it. The linked files are a bunch of unit tests for ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/05/testresources-some-examples.html"
+                       rel="bookmark"
+                       title="Permalink to testresources: some examples">
+                        testresources: some examples
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-05-18T10:37:00"> Tue 18 May 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>There's been a clamor for more documentation on how to use
+<a href="https://launchpad.net/testresources">testresources</a>. While I'm not
+qualified to show you the <span>best</span> way to use it, I can show
+you the way that I would begin to use it.  </p>
+<p>The linked files are a bunch of unit tests for database code that uses
+<a href="http://storm.canonical.com/">Storm</a>. Where a real test suite might use
+an in-memory database, this test suite uses on on-disk sqlite database
+to better illustrate testresources. This database needs to be removed
+and built again after each test to guarantee test isolation.  </p>
+<p>You'll need testresources, Storm and testtools in your Python import
+path to run these examples.  </p>
+<p>The first file,
+<a href="http://static.mumak.net/complex-example.py">complex-example.py</a>, shows
+how I might do this without testresources. I create a DatabaseService
+class that has a setUp and tearDown of its own, and a get_store()
+method that tests are likely to use. This might not be the best thing
+for databases, but is very close to what I'd do for network services in
+tests, where I would need to start the service, stop it and have methods
+to get URLs, clients and other information about the service. If you run
+the file, you'll see that the database is <span>created</span> at the
+start of each test, and <span>destroyed</span> before the test finishes.
+In total, it's created and destroyed three times.  </p>
+<p>The second file,
+<a href="http://static.mumak.net/complex-example-2.py">complex-example-2.py</a>,
+shows how to switch to using testresources. To do this I,  </p>
+<ul>
+<li>added a TestResource subclass called DatabaseResource that
+    implements make() and clean() by delegating to a DatabaseService.</li>
+<li>changed the test case to subclass ResourcedTestCase</li>
+<li>added 'resources = [('database', DatabaseResource())] as a class
+    variable of the test case.</li>
+</ul>
+<p>Instead of using DatabaseService() in the test, I could have, and
+perhaps should have, declared a module level instance of
+DatabaseResource. In that case, the code would have looked like:  </p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">_DatabaseResource</span><span class="p">(</span><span class="n">TestResource</span><span class="p">)</span><span class="o">:</span><span class="p">...</span><span class="n">DatabaseResource</span> <span class="o">=</span> <span class="n">_DatabaseResource</span><span class="p">()</span><span class="n">class</span> <span class="n">TestPerson</span><span class="p">(</span><span class="n">unittest</span><span class="p">.</span><span class="n">TestPerson</span><span class="p">)</span><span class="o">:</span><span class="p">...</span><span class="n">resources</span> <span class="o">=</span> <span class="p">[(</span><span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">DatabaseResource</span><span class="p">)]...</span>
+</pre></div>
+
+
+<p>Running the file shows that the behaviour is the same as the first
+example: the database is <span>created</span> and <span>destroyed</span>
+in each test.  </p>
+<p>The third file,
+<a href="http://static.mumak.net/complex-example-3.py">complex-example-3.py</a>,
+shows how to take advantage of OptimisingTestSuite (sic). We load the
+test suite as usual, <span>adsorb</span> (sic) them into an
+OptimisingTestSuite and return that. We also have to explicity declare
+when a test <span>dirties</span> the DatabaseResource. I chose to do
+this by adding a dirtied() method to the DatabaseService. If I had used
+a singleton (as above), then I would have just called dirtied on that.  </p>
+<p>Anyway, if you run the third example, you'll see that the database is
+<span>created</span> and <span>destroyed</span> outside the tests and
+that its only done <span>twice</span>. The test suite has been optimized
+by sharing resources between tests when possible.  </p>
+<p>I hope this helps explain how to use testresources. Certainly writing
+has been a useful exercise for me, it's highlighted that:  </p>
+<ul>
+<li>a list of 2-tuples isn't quite right for declaring which resources a
+    test uses.</li>
+<li>the dirtied API is inconvenient</li>
+<li>TestResource remains a confusing name for the class, as it conflates
+    the resource acquisition and cleanup with the actual
+    <span>resource</span>.</li>
+<li>Some of the API docs are wrong (notably the ones for
+    ResourcedTestCase).</li>
+<li>The pattern of "resource object with setUp, tearDown, dirtied (and
+    addCleanup)" should perhaps be turned into Python code.</li>
+</ul>
+<p>I long for your thoughts.  </p>
+<p>Examples:  </p>
+<p><a href="http://static.mumak.net/complex-example.py">complex-example.py</a><br />
+<a href="http://static.mumak.net/complex-example-2.py">complex-example-2.py</a><br />
+<a href="http://static.mumak.net/complex-example-3.py">complex-example-3.py</a>  </p>
+<p><strong>Update:</strong> Correct links to example Python files.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-518001880574926965.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-518001880574926965.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>spiv (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-06T04:44:00">Mon 06 October 2008</abbr></p>
+                
+                <p>Fully “sic” bro. :)</p>
+            </article>
+            <article id="comment-7099591562608775706.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-7099591562608775706.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Max Magee (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-13T21:07:00">Wed 13 April 2011</abbr></p>
+                
+                <p>Thanks for posting this example. I've been struggling to understand
+testresource (coming from PyUnit backgroun) and your third example is
+the most helpful I've seen so far.  </p>
+<p>One question- why do you say the database gets created and destroyed
+<em>twice</em> in that example? If they're optimized, shouldn't the test case
+that dirties the database be run last, then simply tear the db down at
+the end of the test run- so only <em>one</em> invocation of setup and tear down
+total?</p>
+            </article>
+            <article id="comment-889632619691729131.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-889632619691729131.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-14T17:08:00">Thu 14 April 2011</abbr></p>
+                
+                <p>I'm glad you liked it, and that it's still useful years later.  </p>
+<p>In an ideal world, yes. However, there's no way for the test framework
+to predict which tests will dirty which resources. Within a group of
+tests that declare the same resources, they just run in alphabetical
+order.</p>
+            </article>
+            <article id="comment-197733674552544765.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-197733674552544765.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Max Magee (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-14T18:17:00">Thu 14 April 2011</abbr></p>
+                
+                <p>Sorry to be a bother, but I'm elbows deep in an implementation of
+testresources currently, and I'm getting "TypeError: make() takes
+exactly 1 argument (2 given)" in each test case (method of the
+ResourcedTestCase class).  </p>
+<p>I went back and reconstructed the 3rd complex example from your .py and
+Storm, and I get the exact same error from testresources.__init__
+(where I am getting it in mine). Does this ring a bell?</p>
+            </article>
+            <article id="comment-4600903575704275756.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-4600903575704275756.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-15T10:57:00">Fri 15 April 2011</abbr></p>
+                
+                <p>*ahem* https://answers.launchpad.net/testresources</p>
+            </article>
+            <article id="comment-8370710893595461974.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-8370710893595461974.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-15T10:57:00">Fri 15 April 2011</abbr></p>
+                
+                <p>Not really. testresources may have changed a lot since I wrote this blog
+post. I'm not using it day-to-day these days.  </p>
+<p>Your best hope for getting help is to ask a question on or to ask
+'lifeless' on the #python-testing channel on Freenode.  </p>
+<p>Good luck!</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

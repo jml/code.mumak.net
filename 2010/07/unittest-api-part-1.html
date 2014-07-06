@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>unittest API, part 1 - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="unittest API, part 1"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/07/unittest-api-part-1.html"/>
+            <meta property="og:description" content="It's a little known fact, but unittest actually has an API. This isn't the API that you deal with when you write tests, but rather an API that unittest itself uses when running tests. You could think of it as two interfaces: one for test frameworks and one ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html"
+                       rel="bookmark"
+                       title="Permalink to unittest API, part 1">
+                        unittest API, part 1
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-07-29T16:56:00"> Thu 29 July 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>It's a little known fact, but unittest actually has an API.  </p>
+<p>This isn't the API that you deal with when you write tests, but rather
+an API that unittest itself uses when running tests. You could think of
+it as two interfaces: one for test frameworks and one for test authors.
+Both APIs are real, but both are poorly documented and often
+misunderstood or abused.  </p>
+<p><strong><code>TestCase</code></strong>  </p>
+<p>An instance of <code>TestCase</code> represents a single test. What you think of as
+a single test is up to you, but most of the time it's a unit test.  </p>
+<p>A <code>TestCase</code> object <em>must</em> provide the following methods.  </p>
+<p>This first list of methods can be thought of as a single interface,
+which these blog posts will call <strong><code>ITest</code></strong> given the lack of any
+better name.  </p>
+<dl>
+<dt><code>countTestCases()</code></dt>
+<dd>A method that returns the number of test cases this represents. It
+should always return 1.</dd>
+<dt><code>run(result=None)</code></dt>
+<dd>Calling this method actually runs the test. <code>result</code> is a
+<code>TestResult</code> object. <code>run</code> must call <code>result.startTest(self)</code> when
+it commences running the test and <code>result.stopTest(self)</code> when it is
+finished. Between these calls it must call a method on <code>result</code> to
+signal the result of the test. <code>run</code> must never raise an exception,
+and its return value is ignored. If <code>result</code> is not provided, the
+<code>TestCase</code> is obliged to make one.</dd>
+<dt><code>__call__(result)</code></dt>
+<dd>
+<dl>
+<dt>Identical to <code>run(result)</code>, provided for backwards compatibility.</dt>
+<dt><code>debug()</code></dt>
+<dd>Calling this method runs the test without collecting its results. It
+may raise exceptions. This method is rarely called by test
+frameworks.</dd>
+</dl>
+</dd>
+</dl>
+<p>The following methods are specific to individual test case objects. We
+call this interface <strong><code>ITestCase</code></strong>.  </p>
+<dl>
+<dt><code>id()</code></dt>
+<dd>Should return a string that uniquely identifies the test. For Python
+tests, the fully-qualified Python name works well. The uniqueness of
+the id is not enforced.</dd>
+<dt><code>shortDescription()</code></dt>
+<dd>Should return a string that describes the test. Many test frameworks
+use this value to display test results.</dd>
+<dt><code>__str__</code></dt>
+<dd>Should return a string that describes the test. Frequently the same
+as either <code>shortDescription()</code> or <code>id()</code>. Many test frameworks use
+this value to display test results.</dd>
+</dl>
+<p>There is also a second interface, one that matters to code that
+subclasses <code>TestCase</code>. We'll deal with that in a later post.  </p>
+<p><strong><code>TestSuite</code></strong>  </p>
+<p>A <code>TestSuite</code> represents nothing more or less than a bunch of tests.  </p>
+<p>A <code>TestSuite</code> must provide the <code>ITest</code> interface described above, with
+the differences that you would expect from something that represents
+many tests: <code>countTestCases</code> returns the number of tests in the suite;
+<code>run</code> runs many tests and thus calls <code>result.startTest</code> and kin many
+times over; <code>debug</code> is the same and can explode anywhere.  </p>
+<p>One difference is that <code>TestSuite.run</code> must stop running tests as soon
+as it detects that <code>result.shouldStop</code> is true.  </p>
+<p>In addition, <code>TestSuite</code> implements the following interface, which I'm
+giving the completely arbitrary non-existent name of <code>ITestSuite</code>.  </p>
+<dl>
+<dt><code>addTest(test)</code></dt>
+<dd>
+<dl>
+<dt>Takes an <code>ITest</code> and adds it to the suite.</dt>
+<dt><code>addTests(tests)</code></dt>
+<dd>Takes an iterable of <code>ITest</code>s and adds them to the suite. Normally
+equivalent to <code>[suite.addTest(test) for test in tests]</code>.</dd>
+<dt><code>__iter__</code></dt>
+<dd>All test suites must be iterable. Iterating over a test suite yields
+<code>ITest</code>s. These may differ from the <code>ITest</code>s provided to <code>addTest</code>
+and <code>addTests</code>.</dd>
+</dl>
+</dd>
+</dl>
+<p>In later posts, I hope to document <code>TestResult</code>, the subclassing
+interface of <code>TestCase</code> and tell you exactly what I think about test
+loaders, test runners and the like.  </p>
+<p>I'm blogging this partly because I don't know where else to write this
+up, but mostly because I need your help to make sure that I'm being
+clear and correct. Please comment with questions and corrections, and
+let me know if you find this at all helpful.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-3981993923906561753.md">
+                <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html#comment-3981993923906561753.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Kevin H (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-30T03:23:00">Fri 30 July 2010</abbr></p>
+                
+                <p>Heck yeah, it's useful!  </p>
+<p>Please keep it up!</p>
+            </article>
+            <article id="comment-5355553186774575547.md">
+                <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html#comment-5355553186774575547.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jam (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-30T14:51:00">Fri 30 July 2010</abbr></p>
+                
+                <p>I think it is quite useful.<br />
+We've certainly had our share of unittest issues in bzr, so it is nice
+to have a fairly easy-to-read explanation of how it is at least
+<em>supposed</em> to work.</p>
+            </article>
+            <article id="comment-5350807215795733382.md">
+                <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html#comment-5350807215795733382.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michael Foord (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-30T15:20:00">Fri 30 July 2010</abbr></p>
+                
+                <p>Great stuff Jonathan. If you want to formulate these as patches to the
+unittest docs then please feel free. :-)  </p>
+<p>Would be interested in your feedback on my unittest plugin proposal too.</p>
+            </article>
+            <article id="comment-4522332925084666172.md">
+                <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html#comment-4522332925084666172.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-30T15:39:00">Fri 30 July 2010</abbr></p>
+                
+                <p>Thanks for the comments all. I'm glad you like it.  </p>
+<p>Michael, once I'm finished with the series and have a chance to get some
+more feedback – particularly from other framework authors – I'll try to
+turn these into patches. (And also try to get over the fact that I won't
+be able to use zope.interface to do so).  </p>
+<p>Your plugin proposal is up there on my list of things to respond to, but
+I likely won't get a chance until the weekend.</p>
+            </article>
+            <article id="comment-3786856957696112034.md">
+                <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html#comment-3786856957696112034.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Aaron (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-30T18:29:00">Fri 30 July 2010</abbr></p>
+                
+                <p>I don't understand how a TestCase can be a single test when the test
+suites I use all have multiple test cases per TestCase.</p>
+            </article>
+            <article id="comment-7703550226328996251.md">
+                <a href="http://code.mumak.net/2010/07/unittest-api-part-1.html#comment-7703550226328996251.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-08-02T11:13:00">Mon 02 August 2010</abbr></p>
+                
+                <p>Aaron, an <em>instance</em> of TestCase is a single test.  </p>
+<p>When you have many test_ methods on a TestCase, what actually happens
+is that one TestCase object gets constructed for each test method.  </p>
+<p>Say you've got:  </p>
+<p>class TestFoo(TestCase):<br />
+def test_a(self):<br />
+pass<br />
+def test_b(self):<br />
+pass  </p>
+<p>(please forgive the lack of indentation.)  </p>
+<p>Then the default test loader will construct something like:<br />
+[TestFoo("test_a"), TestFoo("test_b")]  </p>
+<p>Thanks for asking the question. It's a common point of confusion.
+Indeed, it tripped me up the first year or so I was writing Trial.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

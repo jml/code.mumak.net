@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>testresources overhaul - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="testresources overhaul"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/10/testresources-overhaul.html"/>
+            <meta property="og:description" content="Rob has landed my overhaul of testresources. testresources is now a lot cleaner, with more tests, more documentation and fewer classmethods. If you've looked at it before and found it a bit confusing, now is a great time to have a fresh look. The NEWS file, README or TODO ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/10/testresources-overhaul.html"
+                       rel="bookmark"
+                       title="Permalink to testresources overhaul">
+                        testresources overhaul
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-10-02T12:34:00"> Thu 02 October 2008</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="https://launchpad.net/%7Elifeless">Rob</a> has landed my overhaul of
+<a href="https://launchpad.net/testresources">testresources</a>. testresources is
+now a lot cleaner, with more tests, more documentation and fewer
+classmethods. If you've looked at it before and found it a bit
+confusing, now is a great time to have a fresh look.  </p>
+<p>The
+<a href="http://bazaar.launchpad.net/%7Elifeless/testresources/trunk/annotate/18?file_id=news-20080828110236-ku9h8n676vfwcwad-1">NEWS</a>
+file,
+<a href="http://bazaar.launchpad.net/%7Elifeless/testresources/trunk/annotate/18?file_id=README-20050904000703-ba3978635caa34f7">README</a>
+or
+<a href="http://bazaar.launchpad.net/%7Elifeless/testresources/trunk/annotate/18?file_id=todo-20080817122443-kaikqdedcg57lr4v-1">TODO</a>
+are all great places to start. Or, you could just download the
+<a href="https://code.edge.launchpad.net/%7Elifeless/testresources/trunk">branch</a>
+from Launchpad. 'bzr branch lp:testresources' should do the trick.  </p>
+<p>There's still so much I want to do, but this has been the big step:
+getting a firm conceptual base to work from.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-6144226286851403337.md">
+                <a href="http://code.mumak.net/2008/10/testresources-overhaul.html#comment-6144226286851403337.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>James Henstridge (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-03T04:10:00">Fri 03 October 2008</abbr></p>
+                
+                <p>Congratulations. One thing that'd be useful to see is a demonstration
+test suite showing how to integrate all the bits.  </p>
+<p>It wasn't particularly obvious when I was trying to do so for a project
+and there wasn't easy to find other projects using the package.</p>
+            </article>
+            <article id="comment-7844753292752259616.md">
+                <a href="http://code.mumak.net/2008/10/testresources-overhaul.html#comment-7844753292752259616.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-03T09:18:00">Fri 03 October 2008</abbr></p>
+                
+                <p>Yeah, that's a big thing I want to do. Unfortunately, the code I most
+want to do it with is proprietary!  </p>
+<p>I'll see what I can muster.</p>
+            </article>
+            <article id="comment-3798177290136039939.md">
+                <a href="http://code.mumak.net/2008/10/testresources-overhaul.html#comment-3798177290136039939.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-04T05:49:00">Sat 04 October 2008</abbr></p>
+                
+                <p>I've published <a href="http://code.mumak.net/2008/10/testresources-some-examples.html">a howto with
+examples</a>.
+Tell me what you think.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

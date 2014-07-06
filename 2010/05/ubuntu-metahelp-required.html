@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Ubuntu metahelp required - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Ubuntu metahelp required"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html"/>
+            <meta property="og:description" content="I just got back from UDS-M. If you've never been to a UDS, you probably don't know what an intense, inspiring, fun, draining time it can be. Anyway, I got back and started mucking around on my Ubuntu 10.04 LTS laptop on my home network. Everything was ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html"
+                       rel="bookmark"
+                       title="Permalink to Ubuntu metahelp required">
+                        Ubuntu metahelp required
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-05-18T08:21:00"> Tue 18 May 2010</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/ubuntu.html">ubuntu</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I just got back from UDS-M. If you've never been to a UDS, you probably
+don't know what an intense, inspiring, fun, draining time it can be.</p>
+<div>
+
+Anyway, I got back and started mucking around on my Ubuntu 10.04 LTS
+laptop on my home network. Everything was great until – suddenly – the
+wireless connection drops out. I have two other devices (Android, OS X)
+that are connected just fine, so I know it's probably not a network
+configuration issue.
+
+</div>
+
+<div>
+
+I also have noticed this behaviour all the way through Karmic and since
+the Lucid beta.
+
+</div>
+
+<div>
+
+I want to fix this bug. I want this to be my personal contribution to
+Maverick. I'm inspired, I'm *pumped*, but I don't really know where to
+begin. I don't even know how to file a good bug about this.
+
+</div>
+
+<div>
+
+That's where I need your help.
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2273743597971534615.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-2273743597971534615.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>soren (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T09:57:00">Tue 18 May 2010</abbr></p>
+                
+                <p>Blogger claims you posted this almost 7 hours from now. Is it perhaps
+set to show timestamps in Tasmanian time?  </p>
+<p>Anyways, first step is to identify the culprit: you could try looking
+through syslog to see if the driver's making a fuss about anything, if
+NetworkManager got fed up, dhclient not getting enough love, etc.  </p>
+<p>Does restarting NetworkManager help anything? (sudo restart
+network-manager)  </p>
+<p>Does reloading the driver help?</p>
+            </article>
+            <article id="comment-5497568633681055109.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-5497568633681055109.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T10:07:00">Tue 18 May 2010</abbr></p>
+                
+                <p>Reloading the driver (rmmod iwlagn; modprobe iwlagn) works.  </p>
+<p>Will check in syslog next time it happens.  </p>
+<p>Thanks!</p>
+            </article>
+            <article id="comment-3256815317062718777.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-3256815317062718777.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>mniess (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T10:43:00">Tue 18 May 2010</abbr></p>
+                
+                <p>I've got the same problem. I'm in ;-)<br />
+For me this only happends with Atheros Chipsets. Especially the AR5001X.
+Compiling madwifi and blacklisting ath5k/9k only helps a little. I also
+tried ditching NetworkManager and using /etc/network/interfaces for
+configuration. That didn't help either (wireless performance/stability
+still way below jaunty).  </p>
+<p>That leaves me with the conclusion that this a kernel issue. The exact
+same drivers (madwifi) work nicely in jaunty.</p>
+            </article>
+            <article id="comment-1725840909714160822.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-1725840909714160822.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>soren (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T11:07:00">Tue 18 May 2010</abbr></p>
+                
+                <p>I have the same driver and the same problem, actually. I usually blame
+the binary blob firmware and go on my merry way.  </p>
+<p>Let me know if you find a way to trigger it. Without a way to do that,
+I'm really not clued enough to guess where it might be getting stuck.</p>
+            </article>
+            <article id="comment-7946689300360570446.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-7946689300360570446.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Jason (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T13:31:00">Tue 18 May 2010</abbr></p>
+                
+                <p>First you need to debunk the Funcrapulators. Quickly, before the
+Unlogger kicks in and makes its way into the Codestand. You don't want
+the Leggings to fall off that one or you'll be <em>in</em>. In <em>real</em>. Real
+<em>trouble</em>.</p>
+            </article>
+            <article id="comment-4686855107210816904.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-4686855107210816904.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Dan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T13:33:00">Tue 18 May 2010</abbr></p>
+                
+                <p>I'd begin by testing the latest mainline build at
+http://kernel.ubuntu.com/\~kernel-ppa/mainline/v2.6.34-lucid/ (2.6.34
+has a sufficiently more interesting WiFi stack). See also
+http://wireless.kernel.org/en/users/Documentation/Reporting_bugs (note
+that the kernel wiki pointing to Ubuntu doesn't really contain useful
+information if you're already testing 2.6.34 as recommended).</p>
+            </article>
+            <article id="comment-6945743563734791706.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-6945743563734791706.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-18T22:23:00">Tue 18 May 2010</abbr></p>
+                
+                <p>Just don't file the bug somewhere where those "you haven't reconfirmed
+this bug in the last two seconds! please retest!" people can get at it.</p>
+            </article>
+            <article id="comment-7481746486828354593.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-7481746486828354593.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-20T09:41:00">Thu 20 May 2010</abbr></p>
+                
+                <p>Well, I've got the relevant chunk of the syslog.<br />
+http://static.mumak.net/syslog-from-disconnect.log  </p>
+<p>Dan, I'd feel uncomfortable trying out a new version of the kernel
+without having a way of reproducing the bug or any understanding of what
+is actually causing it.  </p>
+<p>Mary, at UDS I sat in rooms full of those people. They really are quite
+nice once you get to know them. I'm hoping that with this bug, I can
+understand it deeply enough that the calls to retest won't seem as
+arbitrary.</p>
+            </article>
+            <article id="comment-4096736114636130452.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-4096736114636130452.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>rbtcollins (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-06-15T21:53:00">Tue 15 June 2010</abbr></p>
+                
+                <p>Is it https://launchpad.net/bugs/352228 ?</p>
+            </article>
+            <article id="comment-4620136869918893217.md">
+                <a href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html#comment-4620136869918893217.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-06-16T16:40:00">Wed 16 June 2010</abbr></p>
+                
+                <p>Maybe!  </p>
+<p>That bug points to <a href="https://bugzilla.redhat.com/show_bug.cgi?id=493018">Redhat bug
+493018</a>, which
+claims to be recently fixed.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

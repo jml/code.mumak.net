@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Better than a pie chart - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Better than a pie chart"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/06/better-than-pie-chart.html"/>
+            <meta property="og:description" content="The bugs page for projects on Launchpad used to have a really ugly pie chart on them. It was a strange little graph, useful because it helped you feel like you were making progress as you pushed bugs from New to Triaged to In-progress to Fix Committed and then off ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/06/better-than-pie-chart.html"
+                       rel="bookmark"
+                       title="Permalink to Better than a pie chart">
+                        Better than a pie chart
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-06-25T11:26:00"> Fri 25 June 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>The bugs page for projects on Launchpad used to have a really ugly pie
+chart on them. It was a strange little graph,  useful because it helped
+you feel like you were making progress as you pushed bugs from New to
+Triaged to In-progress to Fix Committed and then off the chart
+completely with Fix Released.  </p>
+<p>Pie charts suck though. They use two dimensions to represent one
+dimension of data, and they are always 100% full. In the case of bugs,
+there was no way to tell from the pie chart whether there were more or
+fewer bugs than last week.  </p>
+<p>Inspired by some sketches from mpt, I decided to implement what I think
+would be a nice graph to have on Launchpad, but to do so using the
+<a href="https://help.launchpad.net/API">webservice API</a>. I've put some code up
+on <a href="https://edge.launchpad.net/everyday">lp:everyday</a>, and there's <a href="http://people.canonical.com/~jml/convergence/">an
+example of the graph for the whole Launchpad
+project</a>.  </p>
+<p>The code works by sucking down all of the bug tasks associated with a
+project over the API, then storing them in a desktopcouch database, then
+using that to generate some timeline data. The graph is made using
+<a href="http://code.google.com/p/flot/">flot</a>, which is excellent.  </p>
+<p>For those of you who care about Launchpad API details, I've recently
+added a parameter to <code class="Apple-style-span">searchTasks</code> called
+<code class="Apple-style-span">modified_since</code> that lets you <a href="https://bugs.edge.launchpad.net/malone/+bug/590535">fetch only bug tasks
+for bugs that have changed since a particular
+date</a>. It makes
+syncing so much faster.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2309698546773531629.md">
+                <a href="http://code.mumak.net/2010/06/better-than-pie-chart.html#comment-2309698546773531629.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Gary van der Merwe (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-06-28T08:58:00">Mon 28 June 2010</abbr></p>
+                
+                <p>How do you zoom out once you have zoomed in? (I end up reloading the
+page each time I zoom out...)  </p>
+<p>Looks good otherwise. I'm going to install it so I can look at qbzr's
+bugs.</p>
+            </article>
+            <article id="comment-1323748835343269075.md">
+                <a href="http://code.mumak.net/2010/06/better-than-pie-chart.html#comment-1323748835343269075.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-06-28T09:12:00">Mon 28 June 2010</abbr></p>
+                
+                <p>Use the graph at the bottom.</p>
+            </article>
+            <article id="comment-2031512631144675594.md">
+                <a href="http://code.mumak.net/2010/06/better-than-pie-chart.html#comment-2031512631144675594.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>mdzlog (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-06-30T09:04:00">Wed 30 June 2010</abbr></p>
+                
+                <p>Thanks for modified_since. I was trying to do something similar last
+year (syncing bug data into couchdb) and the lack of this feature made
+things difficult and eventually stalled my (spare time) project.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

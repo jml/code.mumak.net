@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>"Don't Make Me Think", thoughts for Launchpad - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content=""Don't Make Me Think", thoughts for Launchpad"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html"/>
+            <meta property="og:description" content="I just read Don't Make Me Think, by Steve Krug. It's a good book. Sadly, I read it over a fairly long chunk of time so a lot of the punch has been spread out. Here are my thoughts about how we can apply some of the ideas ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html"
+                       rel="bookmark"
+                       title="Permalink to "Don't Make Me Think", thoughts for Launchpad">
+                        "Don't Make Me Think", thoughts for Launchpad
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-11-19T15:29:00"> Fri 19 November 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I just read <a href="http://www.amazon.co.uk/Dont-Make-Think-Usability-Circle-Com/dp/0789723107">Don't Make Me
+Think</a>,
+by <a href="http://www.sensible.com/">Steve Krug</a>. It's a good book. Sadly, I
+read it over a fairly long chunk of time so a lot of the punch has been
+spread out.  </p>
+<p>Here are my thoughts about how we can apply some of the ideas to
+Launchpad.  </p>
+<p><strong>Tighten up our visual design</strong><br />
+Launchpad doesn't look <em>too</em> bad, I don't think, but it could look a
+whole lot better.  Doing that would cover over other sins, make people
+more comfortable and is just the right thing to do.  </p>
+<p><strong>Error recovery &amp; undoability</strong><br />
+We're not great at this. You can't rename teams, you can't rename PPAs,
+you can't rename branches that other branches  are stacked on. You can't
+delete bug tasks. Many forms just say "Invalid value" when you enter bad
+input.  </p>
+<p><strong>Keep up with the user testing</strong><br />
+We do a fair chunk of user testing, mostly thanks to Matthew Revell. We
+should do it more often, and more readily.  Also, we should wave some
+kind of magic wand that makes it easier for developers to observe the
+user tests as they happen.  </p>
+<p><strong>Home page</strong><br />
+Make it better.  </p>
+<p><strong>Remove more stuff</strong><br />
+Way too often in our design discussions, we talk about adding stuff to
+the page: widgets, links, explanatory text. We should lean toward
+removing before we add. Especially with text: fewer words. Be suspicious
+when the solution to a usability problem is "more documentation".  </p>
+<p><strong>Discuss things less</strong><br />
+Sometimes, we really do talk too much about whether a thing should be
+one way or it should be another.  Krug leads me to believe that most of
+things we agonize about aren't actually the things that are important to
+users.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-8635247862376006474.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-8635247862376006474.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jelmer (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-19T16:57:00">Fri 19 November 2010</abbr></p>
+                
+                <p>I think those are all good points.  </p>
+<p>I think being able to Undo a project (Deleting it) is very important.
+Talking to various GitHub users this seems to be something that they
+like a lot, where Launchpad's project creation feels heavyweight. Not
+because it's got a larger form (it's got a few more, but not that much),
+but because if you create a project it'll be there forever and you need
+intervention from another human to get it deactivated. I realize we have
++junk (worst name EVAR), but that's not quite as useful as a lightweight
+project.  </p>
+<p>It'd be great to have the hypothetical dashboard as the homepage for
+logged in users.</p>
+            </article>
+            <article id="comment-4244271011915118982.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-4244271011915118982.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-19T16:59:00">Fri 19 November 2010</abbr></p>
+                
+                <p>I agree regarding deleting projects. We can rename "+junk" when we have
+a simple, guided process for turning junk branches into trunks of new
+projects.  </p>
+<p>Yeah, having dashboard as the homepage for logged in users is the plan.</p>
+            </article>
+            <article id="comment-4088554104965985463.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-4088554104965985463.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>The Casual Vegan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-19T18:23:00">Fri 19 November 2010</abbr></p>
+                
+                <p>A couple comments about my launch pad experience.  </p>
+<ol>
+<li>
+<p>The interface changes too much from project to project.So I can never
+find the download link, many projects don't even have one. Which means I
+leave the site without the software.  </p>
+</li>
+<li>
+<p>I tried to create my own project in Launch Pad. I've done it in
+Source Forge. In Launch Pad, I literally couldn't figure out how to
+start a project and add my code to it.</p>
+</li>
+</ol>
+            </article>
+            <article id="comment-1669752809905781004.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-1669752809905781004.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-19T19:04:00">Fri 19 November 2010</abbr></p>
+                
+                <p>Thanks for the comments, Vegan.  </p>
+<p>I'm sorry you had a bad experience trying out Launchpad.  </p>
+<p>Not sure what I can say about different projects having different
+interfaces. We've made it a bit better recently, but there's still a way
+to go, particularly wrt downloading files.  </p>
+<p>On making a project, there's a "Register a project" link on the front
+page of Launchpad. If you ever want to try again, that's the place to go
+to.</p>
+            </article>
+            <article id="comment-8429088325105788732.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-8429088325105788732.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Thomi Richards (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-29T20:45:00">Mon 29 November 2010</abbr></p>
+                
+                <p>In my humble opinion the single biggest problem with the launchpad site
+is that the UI is awful.  </p>
+<p>You frequently show way too much data on a single page, making simple
+tasks harder (can't find the information amongst all the clutter), and
+hard tasks just as hard. Think about the typical use cases for most
+users, and optimise for them. Hide the advanced data somehow, and make
+improvements for things users do all the time, rather than things a few
+people do rarely.  </p>
+<p>Now, I don't want to get down on you, since I really do love launchpad -
+it's a great service (the best avilable, i think), but I suspect that
+you need to take a step back from the UI and consider how a new user
+might view it. It's a difficult task, especially for power users (which,
+almost by definition you must be) of the product.  </p>
+<p>Oh, and when I say "you", I mean... you know... launchpad developers...
+or whoever is responsible.</p>
+            </article>
+            <article id="comment-4972158324519576476.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-4972158324519576476.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-11-29T22:19:00">Mon 29 November 2010</abbr></p>
+                
+                <p>Thomi, I wouldn't say "awful", but there's definitely a lot of work to
+be done. And you're right, it is hard: both because it is tricky,
+uncertain work that requires careful judgement and because it's simply a
+lot of work.  </p>
+<p>However, without wanting to make too many promises, it's something that
+I'd like to tackle in 2011.</p>
+            </article>
+            <article id="comment-5494302315866497435.md">
+                <a href="http://code.mumak.net/2010/11/dont-make-me-think-thoughts-for.html#comment-5494302315866497435.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>manny (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-12-12T15:29:00">Sun 12 December 2010</abbr></p>
+                
+                <p>i agree with Vegan,  </p>
+<p>"Register a project" URL should be more obvious.  </p>
+<p>https://launchpad.net/projects/+new  </p>
+<p>that link should be at the bottom of every page with the other links.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>launchpadlib powerup - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="launchpadlib powerup"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/03/launchpadlib-powerup.html"/>
+            <meta property="og:description" content="In my last post, I introduced launchpadlib and demonstrated a very simple script that uses it. In this post, I'd like to build on that a bit and show you how to do something actually interesting. In particular, I want to show you how to search for bugs, teach ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/03/launchpadlib-powerup.html"
+                       rel="bookmark"
+                       title="Permalink to launchpadlib powerup">
+                        launchpadlib powerup
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-03-10T18:59:00"> Wed 10 March 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>In my last post, I <a href="http://code.mumak.net/2010/03/get-started-with-launchpadlib.html">introduced
+launchpadlib</a>
+and demonstrated a very simple script that uses it. In this post, I'd
+like to build on that a bit and show you how to do something actually
+interesting.  </p>
+<p>In particular, I want to show you how to search for bugs, teach you a
+bit about Launchpad's internal data model and help you help yourself
+when it comes to figuring out Launchpad APIs.  </p>
+<p>The script at
+<a href="https://code.edge.launchpad.net/~jml/+junk/bugstats">lp:\~jml/+junk/bugstats</a>
+is designed to tell you how good you are at filing bugs. It uses a very
+simple metric: out of the bugs that you've filed, how many actually have
+been fixed.</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">bugstats</span><span class="p">.</span><span class="n">py</span> <span class="n">ubuntu</span> <span class="n">jmljml</span> <span class="n">is</span> <span class="mf">22.22</span><span class="o">%</span> <span class="n">successful</span> <span class="n">on</span> <span class="n">bugs</span> <span class="n">in</span> <span class="n">Ubuntu</span><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">bugstats</span><span class="p">.</span><span class="n">py</span> <span class="n">launchpad</span><span class="o">-</span><span class="n">code</span> <span class="n">jmljml</span> <span class="n">is</span> <span class="mf">47.63</span><span class="o">%</span> <span class="n">successful</span> <span class="n">on</span> <span class="n">bugs</span> <span class="n">in</span> <span class="n">Launchpad</span> <span class="n">Code</span>
+</pre></div>
+
+
+<p>To do that, we need to:</p>
+<ol>
+<li>get the "project" and person referred to on the command line</li>
+<li>search for all fixed bugs filed by that person</li>
+<li>search for all bugs in total by that same person</li>
+<li>count them both</li>
+<li>divide them</li>
+<li>print them!</li>
+</ol>
+<p>I say "project", but I really should say "pillar", which is the
+Launchpad technical term for a project (e.g. "bzr"), distribution (e.g.
+"ubuntu") or project group (e.g. "gnome"). A pillar is anything in first
+part of Launchpad URL that isn't a person.  </p>
+<p>We get the pillar and person like this:</p>
+<div class="highlight"><pre>   <span class="n">pillar</span> <span class="o">=</span> <span class="n">launchpad</span><span class="p">.</span><span class="n">projects</span><span class="p">[</span><span class="n">pillar_name</span><span class="p">]</span>  <span class="n">reporter</span> <span class="o">=</span> <span class="n">launchpad</span><span class="p">.</span><span class="n">people</span><span class="p">[</span><span class="n">reporter_name</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Pretty easy, huh? Now, how do we search for bug tasks?  </p>
+<p>The first port of call is to go to the <a href="https://launchpad.net/+apidoc">Launchpad API
+reference</a> page. I'm going to look for
+the string 'reporter', since that's the one thing I definitely know I
+want to find.  </p>
+<p>Eventually, I found the <code>searchTasks</code> method (named operation) that's on
+pillars and takes a <code>bug_reporter</code> parameter and a <code>status</code> parameter.
+It returns a collection of <code>bug_tasks</code>, which are the objects that
+represent the rows in the table you see at the top of a bug page.  </p>
+<p>I can find the bugtasks for the bugs I've reported that have been fixed
+by doing:</p>
+<div class="highlight"><pre>   <span class="n">fixed_bugtasks</span> <span class="o">=</span> <span class="n">pillar</span><span class="p">.</span><span class="n">searchTasks</span><span class="p">(</span>      <span class="n">bug_reporter</span><span class="o">=</span><span class="n">reporter</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="p">[</span><span class="err">&#39;</span><span class="n">Fix</span> <span class="n">Released</span><span class="err">&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<p>It took me a while to figure out exactly how to spell "Fix Released". I
+ended up using trial and error.  </p>
+<p>Similarly, I can all the bugtasks for bugs I've filed by doing:</p>
+<div class="highlight"><pre>   <span class="n">total_bugtasks</span> <span class="o">=</span> <span class="n">pillar</span><span class="p">.</span><span class="n">searchTasks</span><span class="p">(</span>      <span class="n">bug_reporter</span><span class="o">=</span><span class="n">reporter</span><span class="p">,</span>      <span class="n">status</span><span class="o">=</span><span class="p">[</span>          <span class="s">&quot;New&quot;</span><span class="p">,</span>          <span class="s">&quot;Incomplete&quot;</span><span class="p">,</span>          <span class="s">&quot;Invalid&quot;</span><span class="p">,</span>          <span class="s">&quot;Won&#39;t Fix&quot;</span><span class="p">,</span>          <span class="s">&quot;Confirmed&quot;</span><span class="p">,</span>          <span class="s">&quot;Triaged&quot;</span><span class="p">,</span>          <span class="s">&quot;In Progress&quot;</span><span class="p">,</span>          <span class="s">&quot;Fix Committed&quot;</span><span class="p">,</span>          <span class="err">&#39;</span><span class="n">Fix</span> <span class="n">Released</span><span class="err">&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<p>I cheated a bit for that one and looked at the launchpad code to get a
+list of all bug statusus. The default for <code>searchTasks</code> is to only
+return open bugs.  </p>
+<p>Once we've got the collections of bug tasks, we need to get their
+counts. In an ideal world, it would be <code>len(total_bugtasks)</code>, but sadly
+<a href="https://bugs.edge.launchpad.net/launchpadlib/+bug/274074">bug 274074</a>
+means that <code>len</code> is really, really slow here.  </p>
+<p>Instead, I wrote this helper function:</p>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">length</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span><span class="o">:</span>  <span class="err">#</span> <span class="n">XXX</span><span class="o">:</span> <span class="n">Workaround</span> <span class="n">bug</span> <span class="mf">274074.</span> <span class="n">Thanks</span> <span class="n">wgrant</span><span class="p">.</span>  <span class="k">return</span> <span class="kt">int</span><span class="p">(</span><span class="n">collection</span><span class="p">.</span><span class="n">_wadl_resource</span><span class="p">.</span><span class="n">representation</span><span class="p">[</span><span class="err">&#39;</span><span class="n">total_size</span><span class="err">&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<p>With that, I can calculate &amp; print my success rate at filing bugs:</p>
+<div class="highlight"><pre>   <span class="n">percentage</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">length</span><span class="p">(</span><span class="n">fixed_bugtasks</span><span class="p">)</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">total_bugtasks</span><span class="p">)</span>  <span class="n">print</span> <span class="s">&quot;%s is %.2f%% successful on bugs in %s&quot;</span> <span class="o">%</span> <span class="p">(</span>      <span class="n">reporter</span><span class="p">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">percentage</span><span class="p">,</span> <span class="n">pillar</span><span class="p">.</span><span class="n">display_name</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Next up on the API, I'll talk about some of the gotchas and what you can
+do about them.</p>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

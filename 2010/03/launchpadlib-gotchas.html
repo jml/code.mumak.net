@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>launchpadlib gotchas - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="launchpadlib gotchas"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/03/launchpadlib-gotchas.html"/>
+            <meta property="og:description" content="I've shown you how to get started with launchpadlib and have shown a slightly more complex launchpadlib script. Before I cry “The power is yours!” and return to my home within the earth, I'm going to warn you about the things that can trip you up when using ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/03/launchpadlib-gotchas.html"
+                       rel="bookmark"
+                       title="Permalink to launchpadlib gotchas">
+                        launchpadlib gotchas
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-03-12T14:43:00"> Fri 12 March 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I've shown you how to <a href="http://code.mumak.net/2010/03/get-started-with-launchpadlib.html">get started with
+launchpadlib</a>
+and have shown a <a href="http://code.mumak.net/2010/03/launchpadlib-powerup.html">slightly more complex launchpadlib
+script</a>.  </p>
+<p>Before I cry “The power is yours!” and return to my home within the
+earth, I'm going to warn you about the things that can trip you up when
+using launchpadlib.  </p>
+<h3>Bugs</h3>
+<p><a href="https://bugs.launchpad.net/launchpadlib/">launchpadlib</a> has bugs. There
+are also bugs in <a href="https://bugs.launchpad.net/lazr.restful">lazr.restful</a>
+and <a href="https://bugs.launchpad.net/lazr.restfulclient">lazr.restfulclient</a>
+– two libraries that are core to launchpadlib's behaviour.</p>
+<div>
+
+Welcome to software engineering.  
+### Documentation
+
+It's [on the wiki](https://help.launchpad.net/API), and it's good, but
+it could always be better. There's a page of [as well as
+a](https://help.launchpad.net/API/Examples) [guide on
+launchpadlib](https://help.launchpad.net/API/launchpadlib).  
+
+The [reference documentation](https://launchpad.net/+apidoc/) isn't
+written for Python programmers. It's written for REST programmers.
+Actually, it's not written at all but rather auto-generated from our
+source code. Sometimes this can be confusing, and I frequently find
+myself consulting the [Launchpad source
+code](http://bazaar.launchpad.net/~launchpad-pqm/launchpad/db-devel/files)
+to get things done with the API.  
+### Error messages
+
+I'm told this has got better with recent releases, but often when you
+get an error in launchpadlib, it looks like an HTTP error and you have
+very little help on how to debug it. Unfortunately, I don't have an
+example ready.  
+
+If you come across an error like this, file a bug and head straight to
+\#launchpad-dev on freenode to get help.  
+### Potato programming
+
+It's really easy to write code with launchpadlib that does this:
+      for thing in bunch_of_things:    thing.do_something_on_launchpad()
+
+Code like this is really slow. It will do one round-trip per “thing”,
+which can be quite expensive. Twisted folks sometimes call this “[potato
+programming](http://divmod.org/trac/wiki/PotatoProgramming)”.  
+### Exposure
+
+Not all of the code within Launchpad is exposed through the API. We have
+to expose things manually and we haven't done it all yet. Sorry.  
+
+If you come across something that you want, then please [file a
+bug](https://bugs.launchpad.net/launchpad/+filebug) and tag it with
+“api”.  
+
+In general, exposing something of the API is really easy or almost
+impossible. If the thing you want falls into the first category, you can
+probably patch Launchpad yourself.  
+### Testing
+
+Testing launchpadlib apps is hard. You do not want your unit tests to
+run against launchpad.net and running your own instance of Launchpad
+simply to run unit tests is masochistically stupid.  
+
+I think the situation here has improved recently too, but I haven't
+heard much about it or explored it myself.  
+### Conclusion
+
+There you have it, all of the gotchas for writing code with
+launchpadlib. As you can see, it's not really any worse than writing for
+any Python library – I'm just being up-front with you because I like
+you.  
+
+If any of these gotchas no longer apply, please correct me and I will
+shout your good news from the rooftops.  
+
+Until then, happy hacking.  
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2491147430862698512.md">
+                <a href="http://code.mumak.net/2010/03/launchpadlib-gotchas.html#comment-2491147430862698512.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>mbp (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-03-17T23:39:00">Wed 17 March 2010</abbr></p>
+                
+                <p>What a nice post.  </p>
+<p>What should one do to avoid potato programming?  </p>
+<p>The best option for testing seems to be to run your app against staging,
+which is a real Launchpad instance with a separate expendable database
+where you can change whatever you like.  </p>
+<p>It's worth knowing about James's tip in :  </p>
+<p>httplib2.debuglevel = 1  </p>
+<p>which will show you a bit of what's happening on the network.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

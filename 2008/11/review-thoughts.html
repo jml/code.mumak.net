@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Review Thoughts - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Review Thoughts"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/11/review-thoughts.html"/>
+            <meta property="og:description" content="So, I think I've figured out what it is I dislike about Twisted's review process: reviews aren't thorough enough. This sounds a little weird, since it's actually really hard to get a patch into Twisted: it almost always takes me at least three round trips just ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/11/review-thoughts.html"
+                       rel="bookmark"
+                       title="Permalink to Review Thoughts">
+                        Review Thoughts
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-11-15T02:09:00"> Sat 15 November 2008</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>So, I think I've figured out what it is I dislike about Twisted's review
+process: reviews aren't thorough enough.  </p>
+<p>This sounds a little weird, since it's actually <span>really hard</span>
+to get a patch into Twisted: it almost always takes me at least three
+round trips just to get something in. But I think the number of
+round-trips is actually a symptom of this lack of completeness.  </p>
+<p>In Launchpad, reviews are done as in-line replies to diffs. A reviewer
+is obliged to note each chunk of code that needs to be changed, along
+with exactly what needs to be changed. In Twisted, reviews are done as
+Trac comments and generally provided as bullet points. In Launchpad, a
+reviewer would say, "You need to change foo_bar to fooBar, because our
+coding standards require camel case". In Twisted, a reviewer might say
+"There are some naming convention issues".  </p>
+<p>This obviously varies between reviewers and even between reviews, but I
+think that the difference in technologies encourages differences in
+review style.  </p>
+<p>As a patch submitter, I find the in-line-comments-on-diff form much more
+helpful. It provides me with a convenient todo list, and it lets me know
+that the reviewer has looked through and tried to understand all of my
+code. It essentially turns the review into a series of mini bug reports
+with "observed, expected, how to reproduce" sections (where "how to
+reproduce" is "where to find").  </p>
+<p>I also like it as a reviewer, since it means less typing.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2644289410147888005.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-2644289410147888005.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Benjamin (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-15T16:48:00">Sat 15 November 2008</abbr></p>
+                
+                <p>You might be interested in Guido van Rossum's Rietveld. [1] You just add
+the URL of your SVN repo, submit a patch, and tada: inline comment
+reviews. We've been using quite happily with core Python dev. The only
+annoying thing is posting your patch to the bug tracker and Rietveld,
+but that could be negated with Trac integration.  </p>
+<p>[1] http://codereview.appspot.com</p>
+            </article>
+            <article id="comment-299545788632170089.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-299545788632170089.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>intellectronica (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-15T23:52:00">Sat 15 November 2008</abbr></p>
+                
+                <p>I agree, and I hope that as the review facilities in LP evolve, we'll
+grow something that leads users in this direction. One of the things I
+really like about Launchpad is the (implicit, but nevertheless very
+clear) approach of building an opinionated tool, a
+there-is-only-one-way-to-do-it tool. Once we've identified a process
+that works very well we should make Launchpad support this process and
+no other. I don't know if Rietveld is the answer, but I hope that
+eventually we'll have some kind of rich review tool that helps you do
+the right thing.</p>
+            </article>
+            <article id="comment-3762152742188556017.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-3762152742188556017.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-16T01:56:00">Sun 16 November 2008</abbr></p>
+                
+                <p>I feel like these are all kind of sad little workarounds for what I
+believe we all really want.  </p>
+<p>When I'm going to review a branch, I want to get a side-by-side diff
+view <em>where I actually write code</em>, i.e. Emacs, that looks something
+like Meld. I want to have the merged code in my working copy so that I
+can run unit tests locally. Ideally, I'd like to have that same UI for
+transparently running the code on the buildbots as well, but we're
+getting pretty far afield into fantasy at that point...  </p>
+<p>I want to be able to annotate the changes by indicating them directly
+and typing them next to the changed region of code. Then, when I'm done
+writing comments... I just want to push a button and send the review! I
+don't want to screw around with my mail client, push buttons on a web
+page, or anything like that.  </p>
+<p>Guido's code review stuff (is codereview.appspot.com the same as
+Rietveld?) and reviewboard both kinda-sorta get this done, but with a
+god-awful amount of mousing around. The "Show 10 Above / Show 10 Below"
+thing on codereview.appspot.com is a hilarious example of how bad this
+gets. I don't want to see "10 more lines" of diff, I want to know what
+goddamn class definition this method is a part of!  </p>
+<p>Anything that involves chopping up unstructured unified-diff content and
+reading it or writing about it is sucky. Anything that separates the
+code from the diff from the ticket from the review is sucky. I can
+definitely see the advantages of doing things the Canonical way, but I
+can also see the immense disadvantages of trying to cram the immense
+suckage of email into the already sucky world of code review.  </p>
+<p>Personally an emerging feature I like about Twisted's review process is
+that reviewers are starting to use enumerated lists rather than bullet
+points, so it's easy to refer to a point in subsequent comments and
+re-reviews. But, in the system I'd really like to be using, that would
+all be automatic.</p>
+            </article>
+            <article id="comment-6598108978451585050.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-6598108978451585050.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-16T02:11:00">Sun 16 November 2008</abbr></p>
+                
+                <p>glyph, certainly the diff format has a lot of problems and using
+something richer that could provide more context would be better.  </p>
+<p>But regarding cramming "the immense suckage of email into the already
+sucky world of code review", I think you'd be surprised. By and large,
+we find doing reviews email <em>less</em> sucky.  </p>
+<p>Part of the reason is that you get a diff and a cover letter in your
+inbox, you type your recommended changes next to the code that causes
+them, then push a button that sends a review. It really is quite close
+to what you describe in paragraph 3.  </p>
+<p>I think that using numbers rather than bullets is definitely an
+improvement, but you get essentially that for free with email quoting.  </p>
+<p>If you can, you should contrive a way to experiment with doing reviews
+by email.  </p>
+<p>Also, fwiw, I'm not sure this is a Canonical-wide thing. I think
+Landscape uses a system much more like Twisted's, for example.</p>
+            </article>
+            <article id="comment-8583996537367579331.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-8583996537367579331.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-17T01:32:00">Mon 17 November 2008</abbr></p>
+                
+                <p>I may have made my argument too strongly.  </p>
+<p>I can definitely see some advantages to using email. Having dealt with a
+couple of your reviews written in this style now, I can appreciate its
+subjective impact, at least a little. Personally I find it a wash with
+the way that I'm doing things now.  </p>
+<p>Your comment about feedback like "there are some coding standard issues"
+is well-taken. This is a pretty crappy form of comment, and we should
+try to keep that in mind ourselves and also educate other reviewers
+about what constitutes a good comment. I don't think this actually has
+anything to do with the tools, because I've gotten (and written) lots of
+reviews that don't make that mistake.  </p>
+<p>My favorite kind of review is where everything is phrased in terms of
+FQPNs; there is a button in my editor which can (sort of) take me
+directly to the definition of an FQPN, so it's a very quick copy/paste.  </p>
+<p>My main point, though, is that these are both rough approximations of
+what we actually want. You don't want to type into the middle of a hunk
+of diff; I don't want to copy and paste an FQPN into some bespoke secret
+elisp. We both want to abstractly indicate a region of changed code and
+annotate it during the review process, then send those annotations back
+to the author in a format where they can easily see them.  </p>
+<p>I can see how emailing commentary on diffs more closely approximates
+this ideal for you. For me, it does not, and I prefer ticket comments
+with module names in them. But let's not lose sight of the fact that
+both experiences are terrible next to being able to push a button in
+your editor and see the next feedback comment you have to deal with,
+right next to the code that the feedback is on.  </p>
+<p>If you have a mechanism to jump directly to a region of code in emacs
+based on a mangled / email-quoted diff, though, I'd be very interested
+:).</p>
+            </article>
+            <article id="comment-8355321387342363380.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-8355321387342363380.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-17T01:48:00">Mon 17 November 2008</abbr></p>
+                
+                <p>There were a few things that I realize were implicit in my last comment.
+For one thing, I didn't make it clear how much I agree with the
+experience you're espousing. I always copy review comments into an
+outline buffer and delete each point as I deal with it, using it as a
+nice to-do list with a built in progress meter. I actually find that
+emailed diffs make this much harder to do.  </p>
+<p>I also offered no specific criticism of the suckage of email and diffs.  </p>
+<p>I find scrolling around hundreds of lines of un-annotated context
+difficult, and (without reconfiguring my editor to use extremely loud
+font faces) I find it easy to miss individual points, and I spend a lot
+more time reading code that I wrote. I also find it very easy to get a
+hunk of diff and have no idea what chunk of code it refers to without
+scrolling around. Even without my aforementioned elisp, I find it a lot
+easier to manually translate the string
+"twisted.web.server.Request.render" into some file/line pair in my
+editor than "@@ -187,7 +187,7 @@".  </p>
+<p>Maybe this is because I prefer to work through reviews in issue order,
+not in file order; i.e. if there's a problem with the structure of some
+API, I will fix issues with the tests and the code at the same time.</p>
+            </article>
+            <article id="comment-893167848990395595.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-893167848990395595.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michael Hudson (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-17T10:33:00">Mon 17 November 2008</abbr></p>
+                
+                <p>I think that most of what glyph wants could probably be done with a
+sufficiently advanced major mode for Launchpad style
+review-amongst-quoted-diffs. Not that I'm going to write this any time
+soon.  </p>
+<p>One of the problems with the fancy web-based solutions -- have glyph or
+jml tried any of them? I haven't -- is that you can't use emacs, of
+course.  </p>
+<p>I also don't have <em>all</em> that much experience with Twisted's development
+process yet -- hopefully that will change soon :)</p>
+            </article>
+            <article id="comment-2560779994666102914.md">
+                <a href="http://code.mumak.net/2008/11/review-thoughts.html#comment-2560779994666102914.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-11-17T22:24:00">Mon 17 November 2008</abbr></p>
+                
+                <p>So, glyph, vague comments do have *something* to do with the tools,
+because with some technologies it's easier to be specific. Email quoted
+reply, for example.  </p>
+<p>I don't have anything as good as "jump to an FQPN". I do have etags
+though, which is generally good enough.  </p>
+<p>My own toolchain for navigating big emails could probably be better. At
+the moment I use Gmail's "collapse quoted text" feature and that solves
+most of my problems.  </p>
+<p>The other big advantage of email (which you could get from other tools,
+I guess) is that as the *reviewer* I can easily see which of my points
+the author has replied to, and more importantly, which points they
+haven't.  </p>
+<p>Other points worth mentioning is that Launchpad tries to keep diff size
+down (you need to specially arrange a reviewer if your diff is > 800
+lines). This probably has an impact on tool experience.  </p>
+<p>I agree that something higher level would be much better. Perhaps we can
+con Barry into writing such an emacs mode?</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

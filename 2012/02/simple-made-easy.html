@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Simple made easy - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Simple made easy"/>
+            <meta property="og:url" content="http://code.mumak.net/2012/02/simple-made-easy.html"/>
+            <meta property="og:description" content="Rich Hickey did a great talk at Strange Loop called "Simple Made Easy". You should watch it. When I tried to explain the talk to someone, I stumbled a lot and it was obvious to me that I didn't really understand it. So I'm going through it again ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2012/02/simple-made-easy.html"
+                       rel="bookmark"
+                       title="Permalink to Simple made easy">
+                        Simple made easy
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-02-01T13:50:00"> Wed 01 February 2012</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Rich Hickey did a great talk at Strange Loop called "<a href="http://www.infoq.com/presentations/Simple-Made-Easy">Simple Made
+Easy</a>". You should
+watch it.  </p>
+<p>When I tried to explain the talk to someone, I stumbled a lot and it was
+obvious to me that I didn't really understand it. So I'm going through
+it again and turning it into a blog post, purely for my own gain.  </p>
+<p>This is roughly the first half of the talk. Not much of my own analysis
+or opinion is inserted, and I've pretty much stuck with Hickey's
+illustrations and phrasings. Thus this post is pretty derivative. Oops.  </p>
+<p><strong>Simple vs Easy</strong>  </p>
+<p>"Simple" means one thing, "easy" another. Simple is the opposite of
+complex. A thing is simple if it has no interleaving, if it has one
+purpose, one concept, one dimension, one task. Being simple does not
+imply one instance or one operation: it's about interleaving, not
+cardinality. Importantly, this means that simplicity is <em>objective</em>.  </p>
+<p>Easy is the opposite of hard, or difficult. A thing is easy if it's near
+to hand, if it's easy to get at (location), if it's near to our
+understanding (familiarity) or skill set or if it's within our
+capabilities. This means that ease is <em>relative</em>.  </p>
+<p>Speaking English is dead easy for me, but that doesn't mean that
+speaking English is intrinsically simple. I find French quite difficult.
+Little French children speak French all the time, and there's always a
+part of me that thinks, "Boy, those kids are clever, being able to speak
+a foreign language at that age", but that's silly. It's easy for them,
+it lies near to them.  </p>
+<p>This distinction between simple &amp; easy is good one, and is useful in all
+sorts of areas. But how does it relate to software?  </p>
+<p><strong>Constructs vs Artefacts</strong>  </p>
+<p>As programmers, when we make software we are working on <em>constructs</em>:
+source code, libraries, language concepts and so forth. Rich contends
+that we focus on the ease of use of those constructs: How many lines of
+code? How much boilerplate? Will new developers be familiar with our
+technology?  </p>
+<p>But all of this is secondary. What actually matters is the <em>artefact</em>,
+the running programs that users actually use. Does it do what it's
+supposed to do? Does it do it well? Can we rely on it working well? Can
+we fix problems when they occur? Can we change it? You know, the
+interesting problems.  </p>
+<p>Thus we need to be assessing our constructs – our code, our technology
+choices – based on the attributes of the artefacts that we'll create,
+not based on the experience of typing code in.  </p>
+<p><strong>Limits</strong>  </p>
+<p>We can't make something reliable if we don't understand it. And,
+actually, everyone's understanding is pretty limited. We can all only
+hold a small number of things in our head at once.  </p>
+<p>When things are complex, many parts are tied together by definition. You
+can't pull out just one piece and consider it because it's intertwined
+with other pieces. This creates an extra burden to understanding a
+system and thus makes it difficult to reason about the system.  </p>
+<p>You do need to reason about a system, both to know what to change and to
+be able to do so without introducing defects. Tests, refactoring, rapid
+deployment and all that are great, but to make a change to the system
+safely &amp; without fear still requires you to be able to reason about it.
+Every bug in your product that was found in the field passed the type
+checker and passed all of the tests.  Your type system doesn't tell you
+what change to make next in order to get the software you want any more
+than guard rails on a highway tell you how to get to Grandma's.  </p>
+<p><strong>Speed</strong>  </p>
+<p>Focusing on ease and ignoring simplicity means that you'll go really
+fast in the beginning, but will become slower and slower as the
+complexity builds.  </p>
+<p>Focusing on simplicity will mean that you'll go slower in the beginning,
+because you'll have to do some work to simplify the problem space, but
+making sure that you only have intrinsic complexity means that your rate
+of development will remain at a high constant.  </p>
+<p>There are no actual numbers for this.  </p>
+<p><strong>Complicating constructs</strong>  </p>
+<p>Many complicating constructs are available, familiar, succinctly
+described and easy to use. But none of that matters to end users. What
+matters is the complexity they yield. This complexity is <em>incidental</em>,
+it's not intrinsic to the problem.  </p>
+<p>If we build things simply, then the resulting system is easier to debug,
+easier to change and easier to understand.  </p>
+<p>Compare a knitted castle to a castle made of Lego. The knitted castle
+might have been great fun to make, and might have been really easy if
+knitted using a loom and cutting edge knitting tools, but there's no way
+that it's easier to change than a Lego castle. It's not about the <em>ease
+of construction</em>, it's about the <em>simplicity of the artefact</em>.  </p>
+<p><strong>How can we make software easier?</strong>  </p>
+<p>Well, we can install it to make it easier by location. We can learn it
+and try it to make it easier by familiarity. We can't do much about our
+capabilities though. If we want software to be easier to comprehend, we
+are going to have to bring it down to our level. We have to make it
+simpler.  </p>
+<p>Take Lisp as an example. It's hard for many people because they don't
+have a Lisp installed, or their editor doesn't support paren matching,
+but they can make it easier by installing a Lisp and getting a plugin
+for their editor. It's also hard because it's unfamiliar. Who'd have
+thought that parens could go on that side of the function? But you can
+gain that familiarity quickly enough.  </p>
+<p>But parens in Lisp are used for functions and for grouping data. That's
+hard to get your head around, and that's because it's complex. It braids
+together two distinct notions.</p>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

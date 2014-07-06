@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>I don't want to talk about documentation - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="I don't want to talk about documentation"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html"/>
+            <meta property="og:description" content="Most of the time, I don't like talking about documentation. I particularly don't like talking about documenting code. There's not much to say. I do like talking about testing though, since I enjoy writing code TDD, since tests for[big, big, big programs](https://launchpad.net/launchpad ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html"
+                       rel="bookmark"
+                       title="Permalink to I don't want to talk about documentation">
+                        I don't want to talk about documentation
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-04-29T16:02:00"> Thu 29 April 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Most of the time, I don't like talking about documentation. I
+particularly don't like talking about documenting code. There's not much
+to say.</p>
+<div>
+
+<div>
+
+I do like talking about testing though, since I enjoy writing code TDD,
+since tests for[big, big, big programs](https://launchpad.net/launchpad)
+are really hard and because most everyone else is doing it wrong.
+
+</div>
+
+<div>
+
+Thing is, every time I talk about testing in the Python world, I have to
+talk about documentation because [someone](http://barry.warsaw.us/)
+always brings up [doctest](http://docs.python.org/library/doctest.html)
+and thinks it's a good way of testing code. It's not. Andrew has
+explained clearly the problems with the
+[principle](http://bemusement.org/diary/2008/October/23/narrative-tests)
+and with the
+[implementation](http://bemusement.org/diary/2008/October/24/more-doctest-problems).
+He concludes that the only thing that doctest is any good for is writing
+self-testing documentation about Python code, and I agree.
+
+</div>
+
+</div>
+
+<div>
+
+However, I humbly suggest that for many projects, this is a solution in
+search of a problem. Which means I am going to have to talk about
+documenting code. Before that, a short plea.
+
+</div>
+
+<div>
+
+Please stop talking about documentation and testing at the same time!
+They are both actually quite tricky, and you can never, ever, ever
+effectively address both of them with the same initiative. They are
+different! Just stop it!
+
+</div>
+
+<div>
+
+OK, let's talk about documenting code.
+
+</div>
+
+<div>
+
+**Why bother?**
+
+</div>
+
+<div>
+
+Before you even begin to talk about the best way to document your code,
+you must seriously consider why you are even bothering.
+
+</div>
+
+<div>
+
+Time spent documenting code is time not spent fixing bugs. Instead of
+writing docs you could be talking to users, making your software
+internationalizable, improving its website, improving the *user*
+documentation, making the test suite run faster or any number of things
+that directly help your end users or your existing developers.
+
+</div>
+
+<div>
+
+You might want to document your code as part of an initiative to get
+more contributors, or to make your existing contributors' lives happier.
+If so, great, but make sure that documenting code will actually achieve
+these goals.
+
+</div>
+
+<div>
+
+If not, take pride in your lack of code documentation! It is the direct
+fruit of you doing better things with your life. Stand up, walk out the
+door and skip down the street, clutch the first suit-wearing stranger
+you see by his lapels and shout "My code is under-documented, yippee
+ki-yay!"
+
+</div>
+
+<div>
+
+More seriously, know why you are documenting your code, don't just do it
+out of guilt, and don't feel guilty if your code is under-documented
+while your users are many and happy.
+
+</div>
+
+<div>
+
+**Guiding principles**
+
+</div>
+
+<div>
+
+*Audience and benefit*
+
+</div>
+
+<div>
+
+Do not even bother to write a document unless you have an audience in
+mind and a clear benefit in mind for what they'll get out of reading
+this document. And no, "help them understand the branch puller XML-RPC
+API" is not a clear benefit.
+
+</div>
+
+<div>
+
+As an example, I'm writing this blog post primarily for Python
+programmers at work and in the open source projects I care about. My aim
+is to convince them to be silent about doctest when we're talking about
+testing and to see the whole picture when talking about documentation so
+that they'll have good unit tests and won't misdirect energy toward
+inappropriate documentation. I have a secondary aim of learning where
+I'm wrong by reading the comments.
+
+</div>
+
+<div>
+
+*Clear code*
+
+</div>
+
+<div>
+
+If someone is reading documentation that's about code, then they can
+probably read code. You can probably save everyone a lot of trouble by
+picking better names, adding a couple of docstrings, fixing the bits
+you're embarrassed by and deleting the crap that you don't need.
+
+</div>
+
+<div>
+
+To put it another way, when people say "this needs documentation" they
+often mean "I don't understand this" (similarly, "we have a
+communication problem" often means "you are not doing what I want"). The
+best way to help them is not necessarily to write documentation.
+
+</div>
+
+<div>
+
+*Value is in the output*
+
+</div>
+
+<div>
+
+Documentation that's not being read is worthless and probably incorrect,
+much like code that is not being executed. Documentation that cannot be
+found cannot be read. How is your audience going to find your
+documentation? Is it going to be in a format they like to read? Don't
+bother writing anything until you've figured this out.
+
+</div>
+
+<div>
+
+**Different approaches**
+
+</div>
+
+<div>
+
+*No documentation, just code*
+
+</div>
+
+<div>
+
+Some people believe that no human language text should ever sully their
+code base. There are plenty of good sentiments behind this idea: source
+code is a powerful tool for describing how to think about a problem;
+textual documentation about code frequently goes out of date and it's
+often used as a crutch for bad code.
+
+</div>
+
+<div>
+
+Personally, I think it's a bad idea to have no documentation. Even the
+best coders read good prose faster than good code, and text has a
+wonderful power of summary that code lacks. Sometimes it's impossible to
+communicate the intent of the code in the code itself (for example, you
+might be working around a POSIX insanity). Nothing wrong with using a
+crutch when your leg is broken.
+
+</div>
+
+<div>
+
+*API reference documentation*
+
+</div>
+
+<div>
+
+Instead of having no documentation, you can use Python's docstring
+feature to add a mini-document describing a class or function. This
+docstring can tell you how to use it, what to expect from it, and most
+importantly, why you should care. Because Python functions don't have
+explicit type declarations, these docstrings can be *very* useful (is
+that `branch` parameter a Bazaar branch, a Launchpad `IBranch` object or
+the URL for a branch?). Also, because the docstring is so close to the
+code, they are much less likely to be out of date or incorrect.
+
+</div>
+
+<div>
+
+*Specifications*
+
+</div>
+
+<div>
+
+[Some people](http://rspec.info/) like having specifications as part of
+the documentation for their code. I haven't really seen this in
+practice, so I can't comment much. I can say that I find good comments
+on unit tests extremely helpful, and now almost always write such a
+comment before I write the test.
+
+</div>
+
+<div>
+
+*Guides, tutorials and howtos*
+
+</div>
+
+<div>
+
+Rather than consulting a reference, you sometimes want to be guided
+through a task or to be introduced to some new area of the problem
+domain. In these cases, it's pretty hard to beat a solid chunk of prose
+with some code examples. It's here that doctest shines, since it's quick
+to write, can be rendered nicely and can be executed to guarantee the
+code is not hopelessly wrong.
+
+</div>
+
+<div>
+
+**Summary**
+
+</div>
+
+<div>
+
+Code documentation is not intrinsically valuable. It has no value unless
+you give careful thought to why you want to do it and how it is going to
+connect you to your audience. Once you've done that, prose documentation
+can be very helpful, but you can also get a lot of the same benefits by
+cleaning up your code base.
+
+</div>
+
+<div>
+
+Doctest is neither necessary nor sufficient for good code documentation.
+Do not use it simply because it is there. Use it when it fits.
+
+</div>
+
+<div>
+
+Now, please can we go back to talking about testing?
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-3246919094362618894.md">
+                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-3246919094362618894.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Thomas Hervé (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-04-29T15:17:00">Thu 29 April 2010</abbr></p>
+                
+                <p><em>If not, take pride in your lack of code documentation! It is the direct
+fruit of you doing better things with your life. Stand up, walk out the
+door an skip down the street, clutch the first suit-wearing stranger you
+see by his lapels and shout "My code is under-documented, yippee
+ki-yay!"</em>  </p>
+<p>I couldn't disagree more. Because once you're in the street, there is a
+good chance that you get hit by a bus. And then, the person hired to
+replace you (let's face it, we won't mourn you forever), will have to
+take over your undocumented piece of crap, and it will take him months
+to understand your APIs because of the lack of documentation.  </p>
+<p>Also, admitting that yourself in 6 months is not the same person today,
+you're making him a big favor by documenting your code. That is, you.</p>
+            </article>
+            <article id="comment-8661668960481154913.md">
+                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-8661668960481154913.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-04-29T15:26:00">Thu 29 April 2010</abbr></p>
+                
+                <p>First, I'm not against documenting code. I'm against documenting code
+without knowing why you are doing it.  </p>
+<p>Second, you are conflating "documenting code" with "making code easy to
+understand". Only the second one is valuable in itself. The first is a
+means to that end, and only one of many.  </p>
+<p>Did you read past there?</p>
+            </article>
+            <article id="comment-5139985196792798166.md">
+                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-5139985196792798166.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Thomas Hervé (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-04-29T15:58:00">Thu 29 April 2010</abbr></p>
+                
+                <p>I sure agree with you, I was just pointing out that telling people "not
+to write doc is OK" is not OK.  </p>
+<p>Also, I have abandoned for long the idea that I could write code easy to
+understand. It may be possible for self-contained code, but any
+interaction with a library, an API, or an external application will
+result in some kind of stupid error management (like POSIX you mention).
+That's why you need tests too :)</p>
+            </article>
+            <article id="comment-1199994764069753538.md">
+                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-1199994764069753538.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-04-29T16:06:00">Thu 29 April 2010</abbr></p>
+                
+                <p>Yeah.  </p>
+<p>I'm a huge believer in putting code clarity above everything else, and
+think good code design can do a lot to reduce the amount of
+documentation you need, much like a well-designed product doesn't need a
+massive user manual.  </p>
+<p>Still, I'm simply bewildered that people can say "My code is
+self-documenting" with a straight face. Maybe if it's a really small
+sample of code.</p>
+            </article>
+            <article id="comment-5095859175069847602.md">
+                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-5095859175069847602.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jkakar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-01T11:12:00">Sat 01 May 2010</abbr></p>
+                
+                <p>Code without a documented API is incomplete, in the same way that it is
+without tests. Documenting the tests clearly is also important. Like
+you, I typically write the docstring for a test before I write it. On
+the topic of API documentation, I far too often see comments that
+describe what the code does, instead of what its purpose is. I can read
+the code to see what it does, but often that doesn't help me understand
+what its purpose is. Writing good API documentation is a skill.  </p>
+<p>At a previous job it was mandated that a specification must be written
+before doing any coding. It was ridiculous, because it wasn't really
+about discovering the domain, but about documenting the classes you
+would be implementing. These specifications were expected to include UML
+diagrams to show class hierarchies, the sequence of calls that would be
+made to satisfy (very poorly identified) use cases. It was horrible. In
+the beginning I tried to comply but quickly realized that this was a
+complete waste of time: it was super boring and the code I ended up
+writing never matched the specification.  </p>
+<p>I think this kind of documentation about code is pointless. It's another
+artifact to maintain and inevitably it gets out of date. That said, I do
+find high-level documentation useful. In many cases these are diagrams.
+For example, an architecture diagram showing, at a high-level, the
+components in a system and how they interact can be very enlightening.
+It's often that high-level perspective that is hard to determine by
+reading code. Also, documentation that describes user stories and
+provides context about the domain can be useful. In most cases I find a
+list of 'As a X I want to Y so that Z' stories adequate. I just want
+something to help me get into the problem space, I don't need tons of
+prose.  </p>
+<p>One interesting thing at the previous job where there was a push for
+detailed specifications is that the programmers there felt reading code
+was too hard. They didn't want to do it, they weren't good at it and so
+they would look for documentation as a way to figure it out. There was
+no review process there. When I first got involved with reviews I
+realized how poor my reading skills were... having been doing it for a
+while, my ability to dive into code and read and comprehend it has
+improved immensely.  </p>
+<p>I don't think we should be proud of a lack of documentation. I think we
+should determine what kind of documentation is useful, write it and then
+produce no more. Documenting everything we possibly can is a bad idea.</p>
+            </article>
+            <article id="comment-1939236916249817965.md">
+                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-1939236916249817965.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>mbp (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-05-25T03:14:00">Tue 25 May 2010</abbr></p>
+                
+                <p>I agree. If documentation is helping you delight your customers, then
+add it; otherwise you are wasting your time and should feel ashamed
+rather than proud.  </p>
+<p>So documentation could help you satisfy your customers by  </p>
+<p>1- directly helping them: developers are attracted to the Apple platform
+because they feel it has good consistent developer-oriented
+documentation, whereas Ubuntu's tends to be inward-looking and patchy  </p>
+<p>2- making you more effective, by letting people get into the code or
+letting them find conceptual bugs in the course of writing docs  </p>
+<p>3- drawing in new contributors: perhaps the best way to satisfy this is
+to update the documentation when a would-be contributor says "how do
+I...?" or "what is the ...?"  </p>
+<p>So in Launchpad, perhaps the most useful kind of technical documentation
+is external API docs.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

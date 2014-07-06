@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Further reflections on my first Juju charm - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Further reflections on my first Juju charm"/>
+            <meta property="og:url" content="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html"/>
+            <meta property="og:description" content="Since I wrote the notes that appear in my previous post, I've had a chance to reflect further on my experience writing a Juju charm. The thing is, even though the end result is very cool – I can just deploy this code as a new service whenever I want ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html"
+                       rel="bookmark"
+                       title="Permalink to Further reflections on my first Juju charm">
+                        Further reflections on my first Juju charm
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-06-22T18:19:00"> Fri 22 June 2012</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Since I wrote the notes that appear in my previous post, I've had a
+chance to reflect further on my experience writing a Juju charm.<br />
+<span><br />
+</span><br />
+<span>The thing is, even though the end result is very cool – I can just
+deploy this code as a new service whenever I want without having to
+think about it – the experience wasn't great. I wasn't having a fun time
+getting it to work. I think there are a few reasons for this.</span>  </p>
+<p><span>First, I was on my own. I work from home and most days I sit down
+in my office and plug away at my laptop. I generally like it, but there
+are times when it's not great. Most of the time I'm doing things I
+already know how to do: debugging strange production problems; deleting
+unnecessary Python code; encouraging people to get to the point in
+meetings and <a href="https://plus.google.com/115348217455779620753/posts/J8to9rW8Ef8">despairing over voice communication
+technologies</a>.</span><br />
+<span><br />
+</span><br />
+<span>Juju is still a fairly new technology. The <a href="http://juju.ubuntu.com/docs/">published
+documentation</a> is still a bit raw, the
+website isn't the easiest to navigate and the tools could do a better
+job at being self-documenting. It's demotivating to want to do a thing,
+not know how to do it and not know how to find out how to do it. That's
+one of the reasons I mentioned that #juju is a much better place when
+the US is awake: that's when the experts are around. T</span><span>he
+Juju shamans know about these problems and are working now to the whole
+learning experience much better.</span>  </p>
+<p>Tangent: I'd very much encourage you to go to a <a href="https://juju.ubuntu.com/CharmSchool">Charm
+School</a> if you get the chance. The
+Juju guys are super-helpful, fun to be around, and the whole thing is
+much more pleasant when you're with other people and not the only one
+asking dumb questions. I went to one, but I didn't do the
+<a href="https://juju.ubuntu.com/CharmSchool#Necessary_Software">preparation</a>,
+and had a dodgy laptop, so I spent all of my time head-butting network
+issues rather than actually writing charms. <a href="https://juju.ubuntu.com/docs/getting-started.html#configuring-a-local-environment">Do the
+preparation</a>.  </p>
+<p>Second, the core feedback loop wasn't that great. I'm a bit spoiled.
+Most of the time, I run tests, they run very quickly, I get very nicely
+formatted results in colour, I fix the small, known number of failures,
+I run the tests, everything works and I get a visual sweetie from
+laptop. Automating the deploymment of pre-alpha software is not like
+that at all.  </p>
+<p>The feedback loop is longish, about 2-5 minutes. By default, you have to
+sit watching the debug-log to tell when it's done or when it hits a
+fatal error. <span>If you accidentally run an interactive command in
+your install hook, then deployment will stall. </span><span>You don't
+get any notice of success or failure, and certainly nothing that you
+could integrate into your desktop (e.g. beep when done). Over two
+minutes is long enough for me to get distracted, but under five minutes
+is short enough that I won't switch to any task that requires
+concentration. It doesn't make for a pleasant day.</span><br />
+<span><br />
+</span><br />
+<span>Oh, I should mention that I got stuck for a while at the very
+outset, redeploying the same version of my charm because I forgot to
+update the revision file and didn't realize that I actually wanted to
+run deploy with the <code>--upgrade</code> option.</span>  </p>
+<p><span>When you do get errors, there are likely to be many of them, and
+they are messily strewn about the debug log in hard to find places,
+cluttered with useless stuff. This is largely not Juju's fault: it's the
+fault of the system tools that you have to call to get things set up.
+Juju's debug-log does give an option to limit output to just "ERROR"
+level message, but that includes noise from things like GPG and Bazaar
+(which emit to stderr as part of normal behaviour, <a href="https://bugs.launchpad.net/juju/+bug/955209">which Juju
+interprets as ERROR</a>). It
+also doesn't give you enough context to debug the real errors. There are
+also some <a href="https://bugs.launchpad.net/juju/+bug/1015655">formatting
+glitches</a>, and it doesn't
+have colour.</span><br />
+<span><br />
+</span><br />
+I mentioned these things about the feedback loop to a colleague. He
+rightly pointed out that I was speaking very much as a programmer,
+accustomed to bouncing on <code>make check</code>. For a sysadmin, being able to
+redeploy on a fresh machine from scratch and see all the errors in one
+place in under five minutes is a huge improvement.  </p>
+<p><span>Third, I have to pass on some of this knowledge to <em>my</em> users. Or
+at least, people who are contributing to my project ought to be able to
+quickly learn how to fire up the charm. At the moment, there are still a
+few too many ifs, buts, maybes and perhaps-try-thises that I'm
+<a href="http://paste.ubuntu.com/1054697/">compelled to include</a>. I'll probably
+turn the documentation into a script at some point, as others seem to
+<a href="https://gist.github.com/2050525">have</a>
+<a href="https://gist.github.com/1406018">done</a>.</span><br />
+<span><br />
+</span><br />
+<span>That's it. It's a <em>much</em> longer post than I expected. Sorry. I
+hope it helps some.</span>  </p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-3199374750939571532.md">
+                <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html#comment-3199374750939571532.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>clint-fewbar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-06-22T18:43:00">Fri 22 June 2012</abbr></p>
+                
+                <p>Jono, thanks so much for spending time with juju, its really great to
+hear some fresh new thoughts (and to have a few old problems reiterated
+so we remember to address them.)  </p>
+<p>For the feedback loop, I think the 'debug-hooks' command is going to
+save you a lot of problems at least in terms of being able to run your
+hook over and over until its "right". The problem is that unlike a test
+suite, we are changing the system state *on purpose* so iterating
+means getting back to the same starting state. I do think we need to
+make better use of LXC's ability to clone containers in the debug-hooks
+command, but network complexity becomes an issue, so we'll have to keep
+working on this.  </p>
+<p>Also for colorized logs:  </p>
+<p>juju debug-log | ccze -A  </p>
+<p>The ccze tool's general rules will produce a pretty nicely highlighted
+log for you. The ERROR issue remains, but I think we'll solve that soon
+enough with the patch you submitted. :)</p>
+            </article>
+            <article id="comment-4226975663023814159.md">
+                <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html#comment-4226975663023814159.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Kapil Thangavelu (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-06-23T00:40:00">Sat 23 June 2012</abbr></p>
+                
+                <p>thanks for the feedback.  </p>
+<p>just fwiw, juju debug-log has very fine grained options for exactly
+targeting what your interested in, you can listen in on a particular
+agent or group of agents, exclude hook output, capture logs at a
+particular level, replay logs, etc.</p>
+            </article>
+            <article id="comment-3706270712593603104.md">
+                <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html#comment-3706270712593603104.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-06-25T09:27:00">Mon 25 June 2012</abbr></p>
+                
+                <p>@clint-fewbar, thanks for the 'ccze' tip. That's very useful, and not
+just for juju charming.  </p>
+<p>@Kapil, thanks. I discovered replay and log level filtering pretty early
+on. The log level filtering was a bit annoying as -l ERROR didn't give
+me <em>all</em> the errors, included some non-errors, and didn't provide enough
+context for the errors that were included.  </p>
+<p>I'm not really sure what an agent is or how it matters.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

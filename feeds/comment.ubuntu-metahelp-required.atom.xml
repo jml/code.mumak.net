@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Ubuntu metahelp required</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.ubuntu-metahelp-required.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/</id><updated>2010-06-16T16:40:00+01:00</updated><entry><title>Posted by: soren (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-1725840909714160822.md" rel="alternate"></link><updated>2010-05-18T11:07:00+01:00</updated><author><name>soren (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;I have the same driver and the same problem, actually. I usually blame
+the binary blob firmware and go on my merry way.  &lt;/p&gt;
+&lt;p&gt;Let me know if you find a way to trigger it. Without a way to do that,
+I'm really not clued enough to guess where it might be getting stuck.&lt;/p&gt;</summary></entry><entry><title>Posted by: soren (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-2273743597971534615.md" rel="alternate"></link><updated>2010-05-18T09:57:00+01:00</updated><author><name>soren (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;Blogger claims you posted this almost 7 hours from now. Is it perhaps
+set to show timestamps in Tasmanian time?  &lt;/p&gt;
+&lt;p&gt;Anyways, first step is to identify the culprit: you could try looking
+through syslog to see if the driver's making a fuss about anything, if
+NetworkManager got fed up, dhclient not getting enough love, etc.  &lt;/p&gt;
+&lt;p&gt;Does restarting NetworkManager help anything? (sudo restart
+network-manager)  &lt;/p&gt;
+&lt;p&gt;Does reloading the driver help?&lt;/p&gt;</summary></entry><entry><title>Posted by: mniess (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-3256815317062718777.md" rel="alternate"></link><updated>2010-05-18T10:43:00+01:00</updated><author><name>mniess (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;I've got the same problem. I'm in ;-)&lt;br /&gt;
+For me this only happends with Atheros Chipsets. Especially the AR5001X.
+Compiling madwifi and blacklisting ath5k/9k only helps a little. I also
+tried ditching NetworkManager and using /etc/network/interfaces for
+configuration. That didn't help either (wireless performance/stability
+still way below jaunty).  &lt;/p&gt;
+&lt;p&gt;That leaves me with the conclusion that this a kernel issue. The exact
+same drivers (madwifi) work nicely in jaunty.&lt;/p&gt;</summary></entry><entry><title>Posted by: rbtcollins (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-4096736114636130452.md" rel="alternate"></link><updated>2010-06-15T21:53:00+01:00</updated><author><name>rbtcollins (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-06-15:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;Is it https://launchpad.net/bugs/352228 ?&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-4620136869918893217.md" rel="alternate"></link><updated>2010-06-16T16:40:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-06-16:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;Maybe!  &lt;/p&gt;
+&lt;p&gt;That bug points to &lt;a href="https://bugzilla.redhat.com/show_bug.cgi?id=493018"&gt;Redhat bug
+493018&lt;/a&gt;, which
+claims to be recently fixed.&lt;/p&gt;</summary></entry><entry><title>Posted by: Dan (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-4686855107210816904.md" rel="alternate"></link><updated>2010-05-18T13:33:00+01:00</updated><author><name>Dan (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;I'd begin by testing the latest mainline build at
+http://kernel.ubuntu.com/\~kernel-ppa/mainline/v2.6.34-lucid/ (2.6.34
+has a sufficiently more interesting WiFi stack). See also
+http://wireless.kernel.org/en/users/Documentation/Reporting_bugs (note
+that the kernel wiki pointing to Ubuntu doesn't really contain useful
+information if you're already testing 2.6.34 as recommended).&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-5497568633681055109.md" rel="alternate"></link><updated>2010-05-18T10:07:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;Reloading the driver (rmmod iwlagn; modprobe iwlagn) works.  &lt;/p&gt;
+&lt;p&gt;Will check in syslog next time it happens.  &lt;/p&gt;
+&lt;p&gt;Thanks!&lt;/p&gt;</summary></entry><entry><title>Posted by: Mary (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-6945743563734791706.md" rel="alternate"></link><updated>2010-05-18T22:23:00+01:00</updated><author><name>Mary (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;Just don't file the bug somewhere where those "you haven't reconfirmed
+this bug in the last two seconds! please retest!" people can get at it.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-7481746486828354593.md" rel="alternate"></link><updated>2010-05-20T09:41:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-20:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;Well, I've got the relevant chunk of the syslog.&lt;br /&gt;
+http://static.mumak.net/syslog-from-disconnect.log  &lt;/p&gt;
+&lt;p&gt;Dan, I'd feel uncomfortable trying out a new version of the kernel
+without having a way of reproducing the bug or any understanding of what
+is actually causing it.  &lt;/p&gt;
+&lt;p&gt;Mary, at UDS I sat in rooms full of those people. They really are quite
+nice once you get to know them. I'm hoping that with this bug, I can
+understand it deeply enough that the calls to retest won't seem as
+arbitrary.&lt;/p&gt;</summary></entry><entry><title>Posted by: Jason (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/05/ubuntu-metahelp-required.html/#comment-7946689300360570446.md" rel="alternate"></link><updated>2010-05-18T13:31:00+01:00</updated><author><name>Jason (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-05-18:2010/05/ubuntu-metahelp-required.html/</id><summary type="html">&lt;p&gt;First you need to debunk the Funcrapulators. Quickly, before the
+Unlogger kicks in and makes its way into the Codestand. You don't want
+the Leggings to fall off that one or you'll be &lt;em&gt;in&lt;/em&gt;. In &lt;em&gt;real&lt;/em&gt;. Real
+&lt;em&gt;trouble&lt;/em&gt;.&lt;/p&gt;</summary></entry></feed>

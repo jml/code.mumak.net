@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: unittest API, part 2</title><link href="http://code.mumak.net/2010/08/unittest-api-part-2.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.unittest-api-part-2.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/08/unittest-api-part-2.html/</id><updated>2010-07-30T18:36:00+01:00</updated><entry><title>Posted by: Aaron (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/08/unittest-api-part-2.html/#comment-6483064864510876793.md" rel="alternate"></link><updated>2010-07-30T18:36:00+01:00</updated><author><name>Aaron (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-30:2010/08/unittest-api-part-2.html/</id><summary type="html">&lt;p&gt;In your description of expectedFailures:&lt;br /&gt;
+&lt;em&gt;A list of tuples of (test, error_message) for all of the tests that
+were expected to fail, where test is an ITestCase and error_message is
+a string suitable for display to humans, generally containing a
+traceback.&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;There is some ambiguity. I think you mean that it is a list of tests
+that failed in the expected way, rather that tests that were expected to
+fail (whether or not they actually did fail that way).&lt;/p&gt;</summary></entry></feed>

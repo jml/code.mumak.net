@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>What's wrong with ORMs - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="What's wrong with ORMs"/>
+            <meta property="og:url" content="http://code.mumak.net/2012/11/whats-wrong-with-orms.html"/>
+            <meta property="og:description" content="I was recently reading about F1, Google's fault-tolerant distributed RDBMS and came across this neat little summary of what's wrong with ORMs. Obscured database operations Serial reads Implicit traversal *Obscured database operations* essentially means that when scanning code, you cannot easily tell which code is going to kick ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2012/11/whats-wrong-with-orms.html"
+                       rel="bookmark"
+                       title="Permalink to What's wrong with ORMs">
+                        What's wrong with ORMs
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-11-20T15:07:00"> Tue 20 November 2012</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I was recently reading about <a href="http://research.google.com/pubs/pub38125.html">F1, Google's fault-tolerant distributed
+RDBMS</a> and came across
+this neat little summary of what's wrong with ORMs.  </p>
+<ol>
+<li>Obscured database operations</li>
+<li>Serial reads</li>
+<li>Implicit traversal</li>
+</ol>
+<div>
+
+*Obscured database operations* essentially means that when scanning
+code, you cannot easily tell which code is going to kick off a network
+round-trip to the database. If you care about writing code that performs
+well, it's pretty important to know.
+
+</div>
+
+<div>
+
+*Serial reads* are what many in my circles know as "[potato
+programming](http://divmod.readthedocs.org/en/latest/philosophy/potato.html)".
+When you have a loop, and something inside that loop is doing a query,
+that's potato programming. Again, disastrous for performance.
+
+</div>
+
+<div>
+
+*Implicit traversal* is doing unwanted joins and loading unnecessary
+data. ORMs tend to load up an object with all of its instance variables,
+which often means traversing the graph of references.
+
+</div>
+
+<div>
+
+Anyway, this is a much handier answer to have than 'google for "[Vietnam
+of Computer
+Science](http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx)"',
+which is fascinating but rather lengthy. (See also [Jeff Atwood's
+summary](http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html)).
+
+</div>
+
+<div>
+
+For bonus points, these three things are also what's wrong
+with [Launchpad's API](https://help.launchpad.net/API).
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-686724678219093940.md">
+                <a href="http://code.mumak.net/2012/11/whats-wrong-with-orms.html#comment-686724678219093940.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Aaron Bentley (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-11-21T04:46:00">Wed 21 November 2012</abbr></p>
+                
+                <p>I agree about 2 and 3 affecting Launchpad's API. For 1, don't all
+Launchpad API operations hit database? And so how is that obscure?
+Unless you mean Launchpadlib there.</p>
+            </article>
+            <article id="comment-2443279196094880583.md">
+                <a href="http://code.mumak.net/2012/11/whats-wrong-with-orms.html#comment-2443279196094880583.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Jonathan Lange (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-11-21T10:10:00">Wed 21 November 2012</abbr></p>
+                
+                <p>For 1 for Launchpad's API, change "database" to "remote". It's really
+easy to accidentally do something with a launchpadlib object that makes
+it hit the network, giving your lucky, lucky users another roundtrip to
+wait on.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

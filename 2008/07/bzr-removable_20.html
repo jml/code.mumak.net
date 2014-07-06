@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>bzr-removable - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="bzr-removable"/>
+            <meta property="og:url" content="http://code.mumak.net/2008/07/bzr-removable_20.html"/>
+            <meta property="og:description" content="The plugin I talked about in a previous post is now at https://launchpad.net/bzr-removable. Please file bugs. Thanks to Michael Hudson and Daniel Watkins for submitting patches. You can get the plugin by typing 'bzr branch lp:bzr-removable' on the command line."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2008/07/bzr-removable_20.html"
+                       rel="bookmark"
+                       title="Permalink to bzr-removable">
+                        bzr-removable
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2008-07-05T10:40:00"> Sat 05 July 2008</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/uncategorized.html">Uncategorized</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>The plugin I talked about in a previous post is now at
+https://launchpad.net/bzr-removable. Please file bugs.  </p>
+<p>Thanks to Michael Hudson and Daniel Watkins for submitting patches.  </p>
+<p>You can get the plugin by typing 'bzr branch lp:bzr-removable' on the
+command line.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-8075425670982635945.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-8075425670982635945.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>spiv (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-27T01:11:00">Tue 27 January 2009</abbr></p>
+                
+                <p>Btw, more docs required. You need to do something like:  </p>
+<p>bzr branch lp:bzr-removable \~/code/bzr-removable<br />
+ln -s \~/code/bzr-removable/removable \~/.bazaar/plugins/removable</p>
+            </article>
+            <article id="comment-177625014971213180.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-177625014971213180.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-27T01:12:00">Tue 27 January 2009</abbr></p>
+                
+                <p>Fuller and more prominent documentation would be appreciated (in general
+my rule of thumb is that if I've had to go to a core developer of a
+piece of software for assistance, it's not well documented!)  </p>
+<p>The full sequence of install steps for this (on UNIX filesystems) is
+actually:  </p>
+<p>\$ cd [some directory where one normally stores code]<br />
+\$ bzr branch lp:bzr-removable<br />
+\$ mkdir -p \~/.bazaar/plugins<br />
+\$ cd \~/.bazaar/plugins<br />
+\$ ln -s [some directory]/bzr-removable/removeable  </p>
+<p>Then "bzr plugins" will verify the install and finally the actual
+commands one needs are "bzr removable" and "bzr unremovable"</p>
+            </article>
+            <article id="comment-8972095469374756076.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-8972095469374756076.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-27T11:32:00">Tue 27 January 2009</abbr></p>
+                
+                <p>Thanks for the interest guys. I agree that the software is not well
+documented, but you are the first users I've heard from in the last
+eight months, I think the documentation is economical.  </p>
+<p>Can you please file bugs on the project on Launchpad?</p>
+            </article>
+            <article id="comment-1008714665724290483.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-1008714665724290483.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-28T05:48:00">Wed 28 January 2009</abbr></p>
+                
+                <p>Cause and effect on "bad documentation, unused software" is not always
+"unusued software leads to no motivation for documentation". I'd tend to
+argue the other way around, in fact.</p>
+            </article>
+            <article id="comment-254121289965735895.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-254121289965735895.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-28T11:51:00">Wed 28 January 2009</abbr></p>
+                
+                <p>Sure, I'm not laying down a fundamental law of physics here -- I'm
+describing my own personal motivation.  </p>
+<p>I'm sorry that your whole experience of this plugin has been terrible,
+and I'm glad you've gone to the trouble of posting here so that other
+googlers can find the docs you've written.  </p>
+<p>As this is obviously the first user feedback I've received, I would have
+liked to hear something nice, but perhaps there was nothing nice to
+say.  </p>
+<p>Mary says https://bugs.edge.launchpad.net/bzr-removable/+bug/322262</p>
+            </article>
+            <article id="comment-5157927380961955683.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-5157927380961955683.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-28T11:51:00">Wed 28 January 2009</abbr></p>
+                
+                <p>The "Mary says" thing was a comment typed into the wrong field. Sorry
+again.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

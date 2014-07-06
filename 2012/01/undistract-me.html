@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Undistract me - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Undistract me"/>
+            <meta property="og:url" content="http://code.mumak.net/2012/01/undistract-me.html"/>
+            <meta property="og:description" content="Here's a thing that happens a lot to me: I'm doing some work, and as part of that work I need to run a command in my terminal that takes a little while. I run the command, look at it for about a second and then switch to ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2012/01/undistract-me.html"
+                       rel="bookmark"
+                       title="Permalink to Undistract me">
+                        Undistract me
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-01-23T17:44:00"> Mon 23 January 2012</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Here's a thing that happens a lot to me: I'm doing some work, and as
+part of that work I need to run a command in my terminal that takes a
+little while. I run the command, look at it for about a second and then
+switch to doing something else – checking email, perhaps. I get deeply
+involved in my email checking, and then about twenty minutes later I
+switch back to the terminal and see the command has finished. For all I
+know, it finished nineteen minutes ago, and I was just too engrossed to
+notice it.  </p>
+<p>This is a big productivity sink for me, especially if the command
+happened to fail and need retrying. I'm not disciplined enough to just
+sit and watch the command, and I'm not prescient enough to add something
+to each invocation telling me when a command is done. What I want is
+something that alerts me whenever long running commands finish.  </p>
+<p>Well, that thing now exists, thanks to
+<a href="http://glyph.twistedmatrix.com/">glyph</a>'s <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html">script that provides precmd
+and postcmd support to
+bash</a> and
+a lot of help from <a href="http://www.tenshu.net/">Chris Jones</a> of
+<a href="http://www.tenshu.net/p/terminator.html">Terminator</a>.  </p>
+<p>To use it right now:<br />
+<code>$ bzr co lp:~jml/+junk/shell-tools</code><br />
+<code>$ . shell-tools/long-running.bash</code><br />
+<code>$ notify_when_long_running_commands_finish_install</code>  </p>
+<p>You'll see that if you run a command that takes over 30 seconds to
+complete, it will pop up a notification, which should hopefully take you
+away from whatever it was you are doing and back to the task at hand.  </p>
+<p>If you <a href="http://bazaar.launchpad.net/~jml/+junk/shell-tools/view/head:/long-running.bash">look at the
+code</a>,
+you'll see that it installs two hooks: <code>precmd</code> and <code>preexec</code>. <code>preexec</code>
+runs just before the shell launches a command, and <code>precmd</code> runs just
+before it prompts for the next command. Our <code>preexec</code> stores when the
+command was launched and the <code>precmd</code> checks to see if it finished
+within a certain time frame. If not, it sends out a notification.  </p>
+<p>Currently, you'll get a notification when you finish reading a long
+document, since the command finishes a long time after the command
+starts. Obviously this isn't ideal. I think the fix is to only send
+notifications when the shell doesn't have focus. Unfortunately, that's a
+little tricky and I think is going to be highly terminal specific.  </p>
+<p>Anyway, I'm a total shell newbie, so I'd love to know if there's any way
+this could be done better.  Also let me know if you find this useful, or
+you know of someone who has already done this.</p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-2543669125005054719.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-2543669125005054719.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Daniel Bo (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-23T16:00:00">Mon 23 January 2012</abbr></p>
+                
+                <p>Wonderful and extremely useful. Why can't this be modified so the focus
+issue is solved for GNOME Terminal and then be shipped by default?  </p>
+<p>It seems like one of those polish features that Ubuntu needs and wants.</p>
+            </article>
+            <article id="comment-6198012248500709847.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-6198012248500709847.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-23T17:37:00">Mon 23 January 2012</abbr></p>
+                
+                <p>Interesting application!  </p>
+<p>Please update your links, though: <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html">that post now lives
+here</a>.
+(LiveJournal is dead to me.)</p>
+            </article>
+            <article id="comment-1711552249004199268.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1711552249004199268.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-23T18:11:00">Mon 23 January 2012</abbr></p>
+                
+                <p>@Daniel_Bo: No reason, just a simple matter of patching GNOME Terminal
+a DBUS API that lets you ask if the current shell has focus, and getting
+that patch upstream.  </p>
+<p>@glyph: Updated.</p>
+            </article>
+            <article id="comment-5849038104588459398.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-5849038104588459398.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Steve McInerney (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-23T22:04:00">Mon 23 January 2012</abbr></p>
+                
+                <p>Hmm. I'm a loooong time konsole fan, and that functionality is built in.
+"View; Monitor for Silence" or "Monitor for Activity".<br />
+Use it quite a lot for long running commands/rollouts etc.<br />
+Used to be better in previous versions, that you could adjust the time
+before alert; but alas, that's been removed.  </p>
+<p>I have my layout setup such that the konsole tab bar (at the bottom
+where it belongs) is *always* visible, so when something changes, it
+flashes, I see it instantly.</p>
+            </article>
+            <article id="comment-8377016586601209041.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-8377016586601209041.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Tuure Laurinolli (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-23T22:39:00">Mon 23 January 2012</abbr></p>
+                
+                <p>This seems like it would only work on local machine. Something similar
+for remote machine would have to have a back-channel to your local
+machine, e.g. with ssh -R. I think I'll hack on something along these
+lines tomorrow night.</p>
+            </article>
+            <article id="comment-6571505211216979398.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-6571505211216979398.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-24T00:22:00">Tue 24 January 2012</abbr></p>
+                
+                <p>@Steve Terminator has plugins that do that. However, what I wanted was
+something that I didn't have to enable or disable at all, and something
+that wouldn't do false positives even if the command spewed stuff all
+the time.  </p>
+<p>@Tuure Good point. My hunch is that problem is best solved at the
+notify-send level.</p>
+            </article>
+            <article id="comment-1686798819138016675.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1686798819138016675.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jam (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-24T08:44:00">Tue 24 January 2012</abbr></p>
+                
+                <p>Why not just have it blacklist specific commands. For example
+"vi/emacs/less". I don't know specifically how you are looking at text
+for a long time, but it seems the commands that run are going to be
+fairly different.  </p>
+<p>There are also easy things if you know a command is going to be slow,
+like setting up a shell command to run a sound file/pop up a
+notification, and alias it to something short like 'n' and then just  </p>
+<p>command; n  </p>
+<p>It isn't quite as auto-magical, but it does avoid false positives.</p>
+            </article>
+            <article id="comment-1999947875949458828.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1999947875949458828.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-24T09:18:00">Tue 24 January 2012</abbr></p>
+                
+                <p>@jam A blacklist might not be a bad idea. As it is, I'm not minding the
+pop ups when focused though.  </p>
+<p>As for the '; n' thing. I've tried it before. What happens is I tend to
+forget to put it on, then feel lazy <em>and</em> stupid when I get distracted
+again.</p>
+            </article>
+            <article id="comment-1252040256722822943.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1252040256722822943.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Martin Lindhe (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-25T14:53:00">Wed 25 January 2012</abbr></p>
+                
+                <p>FYI, you could also try the "beep" command to sound the pc speaker from
+your shell script</p>
+            </article>
+            <article id="comment-4475359635352539952.md">
+                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-4475359635352539952.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Martin Lindhe (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2012-01-25T14:56:00">Wed 25 January 2012</abbr></p>
+                
+                <p>there is also a util called "zenity" that creates gnome dialogs from the
+shell</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>When do you start testing? - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="When do you start testing?"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/07/when-do-you-start-testing.html"/>
+            <meta property="og:description" content="Although I love TDD, I don't always use it for everything. I wrote a Python script the other day to clean up my music collection, and I didn't write any tests for it. Someone asked me, what's the trade-off? At what point do you start writing tests ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/07/when-do-you-start-testing.html"
+                       rel="bookmark"
+                       title="Permalink to When do you start testing?">
+                        When do you start testing?
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-07-05T14:17:00"> Mon 05 July 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Although I love TDD, I don't always use it for everything. I wrote a
+Python script the other day to clean up my music collection, and I
+didn't write any tests for it.  </p>
+<p>Someone asked me, what's the trade-off? At what point do you start
+writing tests?  </p>
+<p>For me, it's at one of a few points:  </p>
+<ul>
+<li>Somewhere between 100-200 lines of code I start feeling the need for
+    tests</li>
+<li>When I start feeling unclear in my head, I reach to tests to make
+    them clear</li>
+<li>If someone wants to work with me, tests instantly become mandatory</li>
+<li>When I come back to some code after a while</li>
+<li>When I notice my first bug</li>
+</ul>
+<div>
+
+What about you? Do you always do TDD? Do you have any rules-of-thumb for
+when you do?
+
+</div>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-3071807827508642728.md">
+                <a href="http://code.mumak.net/2010/07/when-do-you-start-testing.html#comment-3071807827508642728.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michał Pasternak (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-05T16:37:00">Mon 05 July 2010</abbr></p>
+                
+                <p>"Before anything" :-) (I wish I would!)</p>
+            </article>
+            <article id="comment-373533969778097869.md">
+                <a href="http://code.mumak.net/2010/07/when-do-you-start-testing.html#comment-373533969778097869.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Benjamin (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-05T23:24:00">Mon 05 July 2010</abbr></p>
+                
+                <p>Whenever I have to show things I wrote to the wider world.</p>
+            </article>
+            <article id="comment-5473786444898800933.md">
+                <a href="http://code.mumak.net/2010/07/when-do-you-start-testing.html#comment-5473786444898800933.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>glyph (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-06T15:34:00">Tue 06 July 2010</abbr></p>
+                
+                <p>When a program gets big enough that I have to perform more than 2 manual
+actions (commands, clicks, hits to an URL).  </p>
+<p>If I can get \~100% coverage and instant repeatability by simply
+re-running the program (script) then there's no point to an automated
+test suite; the program is effectively testing itself. But, once I need
+to do five, six, or seven things in order to start testing it
+comprehensively, I will start forgetting some of the steps, doing some
+of them wrong, or occasionally skipping them, and maintenance
+difficulties set in.  </p>
+<p>Pretty much any non-trivial program fits into this category, of course.
+But many trivial programs of the "rename a bunch of audio files" variety
+are easy to test just by having some stub input and re-running it until
+the output looks right.</p>
+            </article>
+            <article id="comment-2198454885381325560.md">
+                <a href="http://code.mumak.net/2010/07/when-do-you-start-testing.html#comment-2198454885381325560.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jelmer (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2010-07-20T12:26:00">Tue 20 July 2010</abbr></p>
+                
+                <p>Usually not at the right time.  </p>
+<p>Sometimes I start too early (before I write my first line of code) and
+it slows down my progress too much, causing me to get distracted before
+I have a working initial version that would keep me interested.  </p>
+<p>Sometimes I start too late and that means I have to do a lot of
+refactoring and after-the-fact writing of tests. Often this is at a
+point where I have spent more time then necessary in a debugger trying
+to figure out which layer of my code is buggy.</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

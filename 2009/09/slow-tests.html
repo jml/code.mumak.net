@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Slow tests - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Slow tests"/>
+            <meta property="og:url" content="http://code.mumak.net/2009/09/slow-tests.html"/>
+            <meta property="og:description" content="Robert Collins of Bazaar, recently blogged about the cost of slow tests. I couldn't agree more. Launchpad has a very slow test suite. It takes upwards of five hours to get a change into our "known good" branch. It's been a source of pain for the team for ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2009/09/slow-tests.html"
+                       rel="bookmark"
+                       title="Permalink to Slow tests">
+                        Slow tests
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2009-09-01T08:37:00"> Tue 01 September 2009</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><a href="http://www.advogato.org/person/robertc/">Robert Collins</a> of
+<a href="http://bazaar-vcs.org">Bazaar</a>, recently blogged about the <a href="http://www.advogato.org/person/robertc/diary/113.html">cost of
+slow tests</a>. I
+couldn't agree more.  </p>
+<p><a href="http://launchpad.net">Launchpad</a> has a very slow test suite. It takes
+upwards of five hours to get a change into <a href="https://code.launchpad.net/%7Elaunchpad-pqm/launchpad/stable">our "known good"
+branch</a>.
+It's been a source of pain for the team for years, and now that
+Launchpad is Free Software, it's becoming a pain to new contributors.  </p>
+<p>We've tried a few things to deal with it, none of them great. First up,
+we've got a tool for running the test suite on EC2 instances. It's nice,
+but it's still too slow. I've written a "<a href="https://dev.launchpad.net/FasterTests">faster
+tests</a>" spec outlining some of
+the options we have; but specs never got software written. Likewise,
+there are a bunch of bugs flagged as
+<a href="https://bugs.edge.launchpad.net/launchpad-project/+bugs?field.tag=build-infrastructure">build-infrastructure</a>,
+many of which address the slow test sped. We also have a rotating
+"<a href="https://dev.launchpad.net/BuildEngineer">Build Engineer</a>" position
+within the team to address those bugs.  </p>
+<p><span id="formatbar_Buttons"><span id="formatbar_CreateLink"
+class="on down" title="Link">It's probably not enough though. From
+watching Rob's blog posts, and the emails to the Bazaar mailing list, I
+think that what Launchpad really needs is someone with a passion for
+solving the problem (i.e. making Launchpad hacking fun) who is willing
+to lead the way, and a full commitment from the rest of the team for
+getting the runtime down and keeping it there.  </p>
+<p>More on this later.<br />
+</span></span></p>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-6848911217246927419.md">
+                <a href="http://code.mumak.net/2009/09/slow-tests.html#comment-6848911217246927419.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Cory (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-09-01T17:01:00">Tue 01 September 2009</abbr></p>
+                
+                <p>5 hours! Wow!  </p>
+<p>5 minutes is too much. To run some tests between code edits, 50s is
+really pushing it.  </p>
+<p>My preferred method of development is to run the one test or TestCase
+that exercises the code I'm working on, and trial has no problems doing
+that. When I think I'm fine with that, then run the entire test suite.
+Does Launchpad lack a good way to do that?  </p>
+<p>If I can't make-a-change-run-a-test in about a 10 second cycle, there's
+something wrong with my development environment and I won't rest until
+it's fixed ...</p>
+            </article>
+            <article id="comment-4666487366183081327.md">
+                <a href="http://code.mumak.net/2009/09/slow-tests.html#comment-4666487366183081327.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Michael Hudson (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-09-01T22:01:00">Tue 01 September 2009</abbr></p>
+                
+                <p>We're not completely stupid, of course we have a way to limit the tests
+we run between code edits :) Although this tends to also be too slow
+because of excessively general fixture setup...</p>
+            </article>
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

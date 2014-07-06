@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Still going - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Still going"/>
+            <meta property="og:url" content="http://code.mumak.net/2010/11/still-going.html"/>
+            <meta property="og:description" content="Last post, I talked about the top priorities for Launchpad development right now: performance, privacy, derivative distributions and desktop integration. In this post, I want to talk about the other things that we are doing, and why we are doing them at all. In September last year, we decided that ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2010/11/still-going.html"
+                       rel="bookmark"
+                       title="Permalink to Still going">
+                        Still going
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2010-11-04T17:24:00"> Thu 04 November 2010</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Last post, I talked about the <a href="http://code.mumak.net/2010/11/what-to-do-what-to-do.html">top priorities for Launchpad development
+right now</a>:
+performance, privacy, derivative distributions and desktop integration.
+In this post, I want to talk about the other things that we are doing,
+and why we are doing them at all.  </p>
+<p>In September last year, we decided that we needed to put a lot of work
+into something that is at the core of the very idea of Launchpad:
+bridging the gap between Linux distributions (specifically Ubuntu) and
+upstream open source projects. Launchpad has been intended from the very
+beginning to smooth out and accelerate collaboration between these two
+areas of endeavour.  </p>
+<p>Much of that work has already been done, but we have three initiatives
+still going: <strong>making links, daily builds </strong>and <strong>importing upstream
+translations</strong>.  </p>
+<p><strong>Making links</strong> is all about making it incredibly to add useful, usable
+information about package / upstream relationships. Launchpad has always
+had the ability to store such information, but now it's much, much
+easier to use because of a whole suite of changes: automatic suggestions
+for upstream / distro links; simplified project configuration; automatic
+linking to projects when marking a bug as upstream; just-in-time project
+registration etc. There are a few more bugs to go before we're happy to
+call it done.  </p>
+<p><strong>Daily builds</strong> are a very cool feature that's still in beta. You
+provide us with a "recipe" that tells Launchpad how to combine branches
+into something resembling a source package, then we take that recipe,
+assemble the source package, build it and then publish it into a PPA of
+your choice. Then, if the branches change, we'll provide a new build
+each day. The feature mostly works right now – Project Neon are using it
+to get <a href="https://launchpad.net/~project-neon/+archive/ppa">nightly builds of
+Amarok</a> – but the UI
+needs polish, there are a few system-level
+<a href="https://bugs.launchpad.net/launchpad-code/+bug/669703">glitches</a> and
+we're <a href="https://bugs.launchpad.net/launchpad-code/+bug/608450">asking
+questions</a> about
+the recipe format. I'll be posting later about how to get involved with
+the beta.  </p>
+<p><strong>Importing upstream translations</strong> into Ubuntu makes it much easier for
+Ubuntu to be the best-translated Linux distribution ever. Right now it's
+already possible to import translations from upstream projects into
+Launchpad. Soon those translations will be imported directly into the
+equivalent Ubuntu packages too, which means that Ubuntu translators can
+choose to use the upstream translation or instead provide a better one.
+Before we can do that, we'll need to do some scalability work. After
+that's done, we'll also want to do some UI work to make it very easy to
+connect the Ubuntu package translations to the imported upstream
+translations.  </p>
+<p>All in all, three very neat initiatives to bring Ubuntu and its
+upstreams closer together.  </p>
+<p>So that's it right? What with <strong>performance</strong>, <strong>derivative
+distributions</strong>, <strong>privacy</strong> and <strong>desktop integration</strong> as well as
+<strong>making links, daily builds </strong>and <strong>importing upstream translations</strong>,
+the Launchpad team must have its plate full? Indeed not! Stay tuned, and
+I'll let you know what other things we are currently working on, as well
+as the future plans that are bubbling away.</p>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2013 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

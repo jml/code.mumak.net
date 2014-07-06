@@ -54,5 +54,8 @@ CATEGORIES_SAVE_AS = ''
 ARCHIVES_SAVE_AS = 'blog/archives/index.html'
 ARCHIVES_URL = 'blog/archives/'
 
+STATIC_PATHS = ['extra/CNAME']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

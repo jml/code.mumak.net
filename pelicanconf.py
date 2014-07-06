@@ -31,11 +31,11 @@ TRANSLATION_FEED_ATOM = None
 
 DEFAULT_PAGINATION = 20
 
-PLUGIN_PATHS = ['/Users/jml/src/pelican-plugins']
+PLUGIN_PATHS = ['plugins']
 PLUGINS = ['pelican_comment_system']
 PELICAN_COMMENT_SYSTEM = True
 
-THEME = '/Users/jml/src/pelican-themes/pelican-bootstrap3'
+THEME = 'themes/pelican-bootstrap3'
 BOOTSTRAP_THEME = 'yeti'
 
 

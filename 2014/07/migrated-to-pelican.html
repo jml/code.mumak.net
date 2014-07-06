@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Migrated to Pelican - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Migrated to Pelican"/>
+            <meta property="og:url" content="http://code.mumak.net/2014/07/migrated-to-pelican.html"/>
+            <meta property="og:description" content="code.mumak.net now powered by Pelican"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2014/07/migrated-to-pelican.html"
+                       rel="bookmark"
+                       title="Permalink to Migrated to Pelican">
+                        Migrated to Pelican
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-07-05T15:21:00"> Sat 05 July 2014</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://code.mumak.net/tag/pelican.html">pelican</a>
+        /
+	<a href="http://code.mumak.net/tag/blog.html">blog</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>A while ago, I got sick of Blogger, so I switched to Octopress.</p>
+<p>I really could not be bothered learning how to manage Ruby virtual
+environments, and kept running into version issues, so I have followed
+<a href="https://glyph.twistedmatrix.com/2014/01/and-now-for-something-completely-different.html">glyph's example</a>
+and migrated to <a href="http://blog.getpelican.com/">Pelican</a>.</p>
+<p>No comments yet, and still quite a few things that ought to be done.  If you
+notice something broken or missing, <a href="https://github.com/jml/code.mumak.net/issues">please file a bug</a>.</p>
+<p>I'm afraid I have neither the energy nor the inclination to do a full write-up
+of the migration process. However, I'll provide the following notes in case
+they help anyone who wants to do the same thing.</p>
+<h2>Patches required</h2>
+<ul>
+<li><a href="https://github.com/getpelican/pelican-plugins/pull/235">Handle unicode authors</a></li>
+<li><a href="https://github.com/getpelican/pelican/pull/1390">Basic blogger import</a></li>
+<li>Comment support for blogger</li>
+<li><a href="https://gist.github.com/jml/106e87af1bbf6067a94c">Post-processing of extracted HTML</a></li>
+</ul>
+<h2>Make the blog</h2>
+<div class="highlight"><pre><span class="gp">$</span> pelican-quickstart
+<span class="go">Welcome to pelican-quickstart v3.3.1.dev.</span>
+
+<span class="go">This script will help you create a new Pelican-based website.</span>
+
+<span class="go">Please answer the following questions so this script can generate the files</span>
+<span class="go">needed by Pelican.</span>
+
+
+<span class="gp">&gt;</span> Where <span class="k">do </span>you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> code-blog
+<span class="gp">&gt;</span> What will be the title of this web site? Mere Code
+<span class="gp">&gt;</span> Who will be the author of this web site? Jonathan M. Lange
+<span class="gp">&gt;</span> What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span>
+<span class="gp">&gt;</span> Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> Y
+<span class="gp">&gt;</span> What is your URL prefix? <span class="o">(</span>see above example; no trailing slash<span class="o">)</span> http://code.mumak.net
+<span class="gp">&gt;</span> Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> Y
+<span class="gp">&gt;</span> How many articles per page <span class="k">do </span>you want? <span class="o">[</span>10<span class="o">]</span> 20
+<span class="gp">&gt;</span> Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> Y
+<span class="gp">&gt;</span> Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> Y
+<span class="gp">&gt;</span> Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
+<span class="gp">&gt;</span> Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> Y
+<span class="gp">&gt;</span> Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> N
+</pre></div>
+
+
+<h2>Extract the things</h2>
+<div class="highlight"><pre><span class="gp">$</span> pelican-import --blogger -m markdown <span class="se">\</span>
+<span class="go">  -o output-directory/ --wp-custpost --dir-page \</span>
+<span class="go">  blog-08-29-2013.xml</span>
+</pre></div>
+
+
+<h2>Transfer the things</h2>
+<div class="highlight"><pre><span class="gp">$</span> cp output-directory/* blog-directory/content/
+<span class="gp">$</span> rm -rf blog-directory/content/settings blog-directory/content/templates/
+<span class="gp">$</span> mv blog-directory/content/comments blog-directory
+</pre></div>
+
+
+<h2>Tweak the blog</h2>
+<p>Only
+<a href="https://github.com/jml/code.mumak.net/commit/4ed1bdf23811d01de8d2ed2392350dd63f3ecd8a">basic tweaks</a>.
+Note that the <code>pelican_comment_system</code> plugin is used in order to nicely
+render the imported blogger comments.</p>
+<p>I had to
+<a href="https://github.com/jml/pelican-themes/commit/ae3c4d3e78d75180a4c25a22de01790b7e502bab">manually tweak the theme</a>
+to support the comment system.</p>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/pelican.html">
+                                pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

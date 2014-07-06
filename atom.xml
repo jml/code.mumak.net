@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code</title><link href="http://code.mumak.net/" rel="alternate"></link><link href="http://code.mumak.net/atom.xml" rel="self"></link><id>http://code.mumak.net/</id><updated>2013-04-29T13:23:00+01:00</updated><entry><title>Deliberately being naughty</title><link href="http://code.mumak.net/2013/04/deliberately-being-naughty.html" rel="alternate"></link><updated>2013-04-29T13:23:00+01:00</updated><author><name>Jonathan Lange (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2013-04-29:2013/04/deliberately-being-naughty.html</id><summary type="html">&lt;p&gt;I don't get a whole lot of time to hack on things outside of work. Maybe
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code</title><link href="http://code.mumak.net/" rel="alternate"></link><link href="http://code.mumak.net/atom.xml" rel="self"></link><id>http://code.mumak.net/</id><updated>2014-07-05T15:21:00+01:00</updated><entry><title>Migrated to Pelican</title><link href="http://code.mumak.net/2014/07/migrated-to-pelican.html" rel="alternate"></link><updated>2014-07-05T15:21:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-07-05:2014/07/migrated-to-pelican.html</id><summary type="html">&lt;p&gt;A while ago, I got sick of Blogger, so I switched to Octopress.&lt;/p&gt;
+&lt;p&gt;I really could not be bothered learning how to manage Ruby virtual
+environments, and kept running into version issues, so I have followed
+&lt;a href="https://glyph.twistedmatrix.com/2014/01/and-now-for-something-completely-different.html"&gt;glyph's example&lt;/a&gt;
+and migrated to &lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;No comments yet, and still quite a few things that ought to be done.  If you
+notice something broken or missing, &lt;a href="https://github.com/jml/code.mumak.net/issues"&gt;please file a bug&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I'm afraid I have neither the energy nor the inclination to do a full write-up
+of the migration process. However, I'll provide the following notes in case
+they help anyone who wants to do the same thing.&lt;/p&gt;
+&lt;h2&gt;Patches required&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/getpelican/pelican-plugins/pull/235"&gt;Handle unicode authors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/getpelican/pelican/pull/1390"&gt;Basic blogger import&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Comment support for blogger&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/jml/106e87af1bbf6067a94c"&gt;Post-processing of extracted HTML&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Make the blog&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pelican-quickstart
+&lt;span class="go"&gt;Welcome to pelican-quickstart v3.3.1.dev.&lt;/span&gt;
+
+&lt;span class="go"&gt;This script will help you create a new Pelican-based website.&lt;/span&gt;
+
+&lt;span class="go"&gt;Please answer the following questions so this script can generate the files&lt;/span&gt;
+&lt;span class="go"&gt;needed by Pelican.&lt;/span&gt;
+
+
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Where &lt;span class="k"&gt;do &lt;/span&gt;you want to create your new web site? &lt;span class="o"&gt;[&lt;/span&gt;.&lt;span class="o"&gt;]&lt;/span&gt; code-blog
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What will be the title of this web site? Mere Code
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Who will be the author of this web site? Jonathan M. Lange
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://code.mumak.net
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to &lt;span class="nb"&gt;enable &lt;/span&gt;article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; How many articles per page &lt;span class="k"&gt;do &lt;/span&gt;you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt; 20
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
+&lt;span class="gp"&gt;&amp;gt;&lt;/span&gt; Is this your personal page &lt;span class="o"&gt;(&lt;/span&gt;username.github.io&lt;span class="o"&gt;)&lt;/span&gt;? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; N
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Extract the things&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pelican-import --blogger -m markdown &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;  -o output-directory/ --wp-custpost --dir-page \&lt;/span&gt;
+&lt;span class="go"&gt;  blog-08-29-2013.xml&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Transfer the things&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cp output-directory/* blog-directory/content/
+&lt;span class="gp"&gt;$&lt;/span&gt; rm -rf blog-directory/content/settings blog-directory/content/templates/
+&lt;span class="gp"&gt;$&lt;/span&gt; mv blog-directory/content/comments blog-directory
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Tweak the blog&lt;/h2&gt;
+&lt;p&gt;Only
+&lt;a href="https://github.com/jml/code.mumak.net/commit/4ed1bdf23811d01de8d2ed2392350dd63f3ecd8a"&gt;basic tweaks&lt;/a&gt;.
+Note that the &lt;code&gt;pelican_comment_system&lt;/code&gt; plugin is used in order to nicely
+render the imported blogger comments.&lt;/p&gt;
+&lt;p&gt;I had to
+&lt;a href="https://github.com/jml/pelican-themes/commit/ae3c4d3e78d75180a4c25a22de01790b7e502bab"&gt;manually tweak the theme&lt;/a&gt;
+to support the comment system.&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category></entry><entry><title>Deliberately being naughty</title><link href="http://code.mumak.net/2013/04/deliberately-being-naughty.html" rel="alternate"></link><updated>2013-04-29T13:23:00+01:00</updated><author><name>Jonathan Lange (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2013-04-29:2013/04/deliberately-being-naughty.html</id><summary type="html">&lt;p&gt;I don't get a whole lot of time to hack on things outside of work. Maybe
 one or two slots of about two hours in a good week. What I want is for
 that time to be fun, creative, and hopefully useful for others.  &lt;/p&gt;
 &lt;p&gt;When I do get such discretionary time, what I often end up doing is code

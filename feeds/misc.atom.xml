@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code</title><link href="http://code.mumak.net/" rel="alternate"></link><link href="http://code.mumak.net/feeds/misc.atom.xml" rel="self"></link><id>http://code.mumak.net/</id><updated>2014-07-05T15:21:00+01:00</updated><entry><title>Migrated to Pelican</title><link href="http://code.mumak.net/2014/07/migrated-to-pelican.html" rel="alternate"></link><updated>2014-07-05T15:21:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-07-05:2014/07/migrated-to-pelican.html</id><summary type="html">&lt;p&gt;A while ago, I got sick of Blogger, so I switched to Octopress.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code</title><link href="http://code.mumak.net/" rel="alternate"></link><link href="http://code.mumak.net/feeds/misc.atom.xml" rel="self"></link><id>http://code.mumak.net/</id><updated>2014-07-08T00:00:00+01:00</updated><entry><title>conda and binstar: initial experiences</title><link href="http://code.mumak.net/2014/07/conda-and-binstar-initial-experiences.html" rel="alternate"></link><updated>2014-07-08T00:00:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-07-08:2014/07/conda-and-binstar-initial-experiences.html</id><summary type="html">&lt;p&gt;A while ago my friend &lt;a href="https://github.com/teh"&gt;teh&lt;/a&gt; recommended that I use
+&lt;a href="http://conda.pydata.org/"&gt;conda&lt;/a&gt; for Python package management, because of
+its intrinsic superiority to &lt;a href="http://pip.readthedocs.org/en/latest/"&gt;pip&lt;/a&gt; &amp;amp;
+&lt;a href="http://virtualenv.readthedocs.org/en/latest/"&gt;virtualenv&lt;/a&gt;. I'm no fan of
+either, and teh generally has pretty good taste, so I thought I'd check it
+out.&lt;/p&gt;
+&lt;p&gt;I haven't formed an overall opinion yet, but I &lt;em&gt;can&lt;/em&gt; say without reservation
+that the overall experience for someone who has become used to pip &amp;amp;
+virtualenv is very frustrating.&lt;/p&gt;
+&lt;p&gt;What I found myself wanting was a one pager explaining conda &amp;amp; binstar to
+someone familiar with pip &amp;amp; virtualenv, which are unquestionably vastly more
+popular.  Alas, there's none to be found.&lt;/p&gt;
+&lt;p&gt;There are some guidelines here and there on the net about how to install a
+package that's available on PyPI into a conda system, but they don't always
+work.&lt;/p&gt;
+&lt;p&gt;For example, I'd like to play around with
+&lt;a href="http://pyrsistent.readthedocs.org/en/latest/"&gt;pyrsistent&lt;/a&gt;. The recommended
+approach is to do the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; conda skeleton pypi pyrsistent
+&lt;span class="gp"&gt;$&lt;/span&gt; conda build pyrsistent
+&lt;span class="gp"&gt;$&lt;/span&gt; binstar upload //anaconda/conda-bld/osx-64/pyrsistent-0.3.1-py27_0.tar.bz2
+&lt;span class="gp"&gt;$&lt;/span&gt; conda install pyrsistent
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Everything works fine up until the &lt;code&gt;build&lt;/code&gt; step, but the upload fails because
+someone has already uploaded the package. Fine. So &lt;code&gt;conda install pyrsistent&lt;/code&gt;
+should work, right?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; conda install pyrsistent
+&lt;span class="go"&gt;Fetching package metadata: ...&lt;/span&gt;
+&lt;span class="go"&gt;Error: No packages found matching: pyrsistent&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Wut.&lt;/p&gt;
+&lt;p&gt;Searching &lt;a href="https://binstar.org/dashboard"&gt;binstar&lt;/a&gt; finds pyristent. Apparently
+I have to add some kind of channel (a concept that's not well explained, and
+that does not seem to appear at all on the binstar UI).&lt;/p&gt;
+&lt;p&gt;I try this way:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; conda config --add channels https://binstar.org/auto
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But apparently that's not a channel:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; conda install pyrsistent
+&lt;span class="go"&gt;Fetching package metadata: ....Error: HTTPError: 404 Client Error: NOT FOUND: https://binstar.org/auto/osx-64/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So I try this way:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; conda config --add channels https://binstar.org/auto
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And that &lt;em&gt;is&lt;/em&gt; a channel, but pyrsistent it doth not find:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; conda install pyrsistent
+&lt;span class="go"&gt;Error: No packages found matching: pyrsistent&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I take a look at the
+&lt;a href="https://binstar.org/auto/pyrsistent/0.1.0/files"&gt;files page for pyrsistent&lt;/a&gt;
+and it looks like the only file is &lt;code&gt;linux-64/pyrsistent-0.1.0-py27_0.tar.bz2&lt;/code&gt;.
+I'm running OS X (for my sins) and my &lt;em&gt;guess&lt;/em&gt; is that the "No packages found
+matching" error refers to a lack of binary builds.&lt;/p&gt;
+&lt;p&gt;So, what am I supposed to do? At this point, the documentation and the error
+messages from the tools leave me with no obvious way forward. Perhaps there's
+some underlying concept that would illuminate all for me, if only I could
+grasp it. Perhaps it's simply a bug.&lt;/p&gt;
+&lt;p&gt;In any case, I'm not abandoning conda yet (in part because I have no idea how
+to extricate it from my system), but it has some way to go before it is
+properly better than pip &amp;amp; virtualenv.&lt;/p&gt;</summary></entry><entry><title>Migrated to Pelican</title><link href="http://code.mumak.net/2014/07/migrated-to-pelican.html" rel="alternate"></link><updated>2014-07-05T15:21:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-07-05:2014/07/migrated-to-pelican.html</id><summary type="html">&lt;p&gt;A while ago, I got sick of Blogger, so I switched to Octopress.&lt;/p&gt;
 &lt;p&gt;I really could not be bothered learning how to manage Ruby virtual
 environments, and kept running into version issues, so I have followed
 &lt;a href="https://glyph.twistedmatrix.com/2014/01/and-now-for-something-completely-different.html"&gt;glyph's example&lt;/a&gt;

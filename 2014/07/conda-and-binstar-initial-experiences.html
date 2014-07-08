@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Twisted - Mere Code</title>
+    <title>conda and binstar: initial experiences - Mere Code</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -11,10 +11,10 @@
     
 
     <!-- Open Graph tags -->
-            <meta property="og:type" content="website"/>
-            <meta property="og:title" content="Mere Code"/>
-            <meta property="og:url" content="http://code.mumak.net"/>
-            <meta property="og:description" content="Mere Code"/>
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="conda and binstar: initial experiences"/>
+            <meta property="og:url" content="http://code.mumak.net/2014/07/conda-and-binstar-initial-experiences.html"/>
+            <meta property="og:description" content="A while ago my friend teh recommended that I use conda for Python package management, because of its intrinsic superiority to pip & virtualenv. I'm no fan of either, and teh generally has pretty good taste, so I thought I'd check it out. I haven't formed an overall ..."/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
@@ -56,17 +56,108 @@ Mere Code            </a>
     <div class="row">
         <div class="col-sm-9">
 
-            <article>
-                <h2><a href="http://code.mumak.net/2008/07/within-you-without-you.html">Within You Without You</a></h2>
-                <div class="summary"><p>Testing is hard, writing testing frameworks is easy. In an effort to
-make testing easier, big projects like Twisted, Bazaar and Zope write
-their own testing frameworks. That way they control both the test runner
-and the tests that are run. It's actually quite convenient.  </p>
-<p>However, it's led ...</p>
-                    <a class="btn btn-default btn-xs" href="http://code.mumak.net/2008/07/within-you-without-you.html">more ...</a>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2014/07/conda-and-binstar-initial-experiences.html"
+                       rel="bookmark"
+                       title="Permalink to conda and binstar: initial experiences">
+                        conda and binstar: initial experiences
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-07-08T00:00:00"> Tue 08 July 2014</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
                 </div>
-            </article>
-            <hr/>
+                <p>A while ago my friend <a href="https://github.com/teh">teh</a> recommended that I use
+<a href="http://conda.pydata.org/">conda</a> for Python package management, because of
+its intrinsic superiority to <a href="http://pip.readthedocs.org/en/latest/">pip</a> &amp;
+<a href="http://virtualenv.readthedocs.org/en/latest/">virtualenv</a>. I'm no fan of
+either, and teh generally has pretty good taste, so I thought I'd check it
+out.</p>
+<p>I haven't formed an overall opinion yet, but I <em>can</em> say without reservation
+that the overall experience for someone who has become used to pip &amp;
+virtualenv is very frustrating.</p>
+<p>What I found myself wanting was a one pager explaining conda &amp; binstar to
+someone familiar with pip &amp; virtualenv, which are unquestionably vastly more
+popular.  Alas, there's none to be found.</p>
+<p>There are some guidelines here and there on the net about how to install a
+package that's available on PyPI into a conda system, but they don't always
+work.</p>
+<p>For example, I'd like to play around with
+<a href="http://pyrsistent.readthedocs.org/en/latest/">pyrsistent</a>. The recommended
+approach is to do the following:</p>
+<div class="highlight"><pre><span class="gp">$</span> conda skeleton pypi pyrsistent
+<span class="gp">$</span> conda build pyrsistent
+<span class="gp">$</span> binstar upload //anaconda/conda-bld/osx-64/pyrsistent-0.3.1-py27_0.tar.bz2
+<span class="gp">$</span> conda install pyrsistent
+</pre></div>
+
+
+<p>Everything works fine up until the <code>build</code> step, but the upload fails because
+someone has already uploaded the package. Fine. So <code>conda install pyrsistent</code>
+should work, right?</p>
+<div class="highlight"><pre><span class="gp">$</span> conda install pyrsistent
+<span class="go">Fetching package metadata: ...</span>
+<span class="go">Error: No packages found matching: pyrsistent</span>
+</pre></div>
+
+
+<p>Wut.</p>
+<p>Searching <a href="https://binstar.org/dashboard">binstar</a> finds pyristent. Apparently
+I have to add some kind of channel (a concept that's not well explained, and
+that does not seem to appear at all on the binstar UI).</p>
+<p>I try this way:</p>
+<div class="highlight"><pre><span class="gp">$</span> conda config --add channels https://binstar.org/auto
+</pre></div>
+
+
+<p>But apparently that's not a channel:</p>
+<div class="highlight"><pre><span class="gp">$</span> conda install pyrsistent
+<span class="go">Fetching package metadata: ....Error: HTTPError: 404 Client Error: NOT FOUND: https://binstar.org/auto/osx-64/</span>
+</pre></div>
+
+
+<p>So I try this way:</p>
+<div class="highlight"><pre><span class="gp">$</span> conda config --add channels https://binstar.org/auto
+</pre></div>
+
+
+<p>And that <em>is</em> a channel, but pyrsistent it doth not find:</p>
+<div class="highlight"><pre><span class="gp">$</span> conda install pyrsistent
+<span class="go">Error: No packages found matching: pyrsistent</span>
+</pre></div>
+
+
+<p>I take a look at the
+<a href="https://binstar.org/auto/pyrsistent/0.1.0/files">files page for pyrsistent</a>
+and it looks like the only file is <code>linux-64/pyrsistent-0.1.0-py27_0.tar.bz2</code>.
+I'm running OS X (for my sins) and my <em>guess</em> is that the "No packages found
+matching" error refers to a lack of binary builds.</p>
+<p>So, what am I supposed to do? At this point, the documentation and the error
+messages from the tools leave me with no obvious way forward. Perhaps there's
+some underlying concept that would illuminate all for me, if only I could
+grasp it. Perhaps it's simply a bug.</p>
+<p>In any case, I'm not abandoning conda yet (in part because I have no idea how
+to extricate it from my system), but it has some way to go before it is
+properly better than pip &amp; virtualenv.</p>
+            </div>
+            <!-- /.entry-content -->
+
+        </article>
+    </section>
 
         </div>
         <div class="col-sm-3 well well-sm" id="sidebar">
@@ -162,7 +253,7 @@ and the tests that are run. It's actually quite convenient.  </p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2008 Jonathan M. Lange
+         <div class="col-xs-10">&copy; 2014 Jonathan M. Lange
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

@@ -98,149 +98,6 @@ you know what A and C might mean here? I'd love to understand their
 points so that I can form an opinion.</p>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-1450782131141404005.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-1450782131141404005.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Geekwad (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-06-30T19:27:00">Tue 30 June 2009</abbr></p>
-                
-                <p>If only we *could* force them to use zope.interface. ;-)</p>
-            </article>
-            <article id="comment-5218182334088359086.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-5218182334088359086.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>B (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-06-30T21:53:00">Tue 30 June 2009</abbr></p>
-                
-                <p>I like Twisted.  </p>
-<p>But, I know where people are coming from. You get a bunch of docs that
-just don't seem to quite fit together and the API reference just doesn't
-seem quite finished, so your learning process is scattered all over the
-place.  </p>
-<p>So you read a tutorial and you get told you have to write 10 lines of
-code, except you only know what 1 of those lines actually does. The rest
-is just "necessary", but since you don't know what it does, it's easy to
-see why people think it's unnecessary boilerplate, when in fact it's a
-bunch of powerful tools that you can use to extend your application.  </p>
-<p>I really believe that the only thing that creates such an unexpected
-number of Twisted detractors is the fact that there isn't a nice, easy,
-pretty, consistent documentation system that takes each part of Twisted
-as a clean slate, providing easy access to all the core stuff that's
-being used in the examples as assumed knowledge.  </p>
-<p>Once the assumed knowledge is clearly laid out and accessable from every
-page I think everything will fall into place.  </p>
-<p>Learning a new API, especially one as extensive as Twisted's, is hard
-enough already, without also having to juggle in your mind a kludgy and
-patchy documentation system.  </p>
-<p>(I really, really do like Twisted a lot though)</p>
-            </article>
-            <article id="comment-2067600067407139682.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-2067600067407139682.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Richard Jones (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-01T00:00:00">Wed 01 July 2009</abbr></p>
-                
-                <p>"B" said. Twisted's just too impenetrable for newbies. As a seasoned
-Twisted programmer (ie. I've written a few systems using it) I'm still
-not sure where to look in the docs for simple things like the API for
-deferreds and how they work.  </p>
-<p>The inheritance tree is part of this: the API docs for a lot of classes
-just indicate that they inherit from some other class(es) and add some
-(un- or poorly-documented) new methods. To find out how to use said
-class you have to dig right down to the base class(es) and often their
-documentation is also poor/missing/too abstract.</p>
-            </article>
-            <article id="comment-505559708295920961.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-505559708295920961.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Richard Jones (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-01T00:01:00">Wed 01 July 2009</abbr></p>
-                
-                <p>ps. I also like Twisted ;)</p>
-            </article>
-            <article id="comment-683109510637083909.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-683109510637083909.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Richard Jones (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-01T00:01:00">Wed 01 July 2009</abbr></p>
-                
-                <p>This comment has been removed by the author.</p>
-            </article>
-            <article id="comment-4078353093512040019.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-4078353093512040019.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>James Henstridge (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-01T01:20:00">Wed 01 July 2009</abbr></p>
-                
-                <p>I think it would be a lot easier to understand Twisted if it was
-smaller. I don't mean remove features, but rather reduce cases where it
-duplicates functionality from the standard library.  </p>
-<p>For example, if I am trying to understand the deferred concept, I need
-to understand failures. I already understand exceptions, but now need to
-learn about this similar but slightly different concept.  </p>
-<p>For each of the bits of twisted.python where standard library interfaces
-have been extended, it would be good to consider them bugs that should
-eventually be fixed by getting the standard library updated. For
-failures, perhaps the exception handling changes in Python 3 are enough
-to use directly.  </p>
-<p>In other cases, I think it would be useful to look at pushing some of
-Twisted's core concepts into the standard libraries. The deferred system
-is one I've mentioned before. The API review that would come it would
-likely be helpful too.</p>
-            </article>
-            <article id="comment-5754838763257586608.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-5754838763257586608.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>europearchive (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-01T11:24:00">Wed 01 July 2009</abbr></p>
-                
-                <p>For me the biggest issue with Twisted is the steep learning curve. It
-isn't helped by the documentation - although the twisted book goes some
-way to dealing with that. Most of what I know about Twisted I learned
-from the source code though.  </p>
-<p>I wrote a large heavy duty crawler in it - including custom DNS and HTTP
-protocols. And if I was honest I am still not 100% sure how the
-protocol/factory bits work although I obviously have made them work well
-(because the crawler worked really well)  </p>
-<p>Not sure what or even if you would want to do something about this.
-Twisted is incredibly powerful and can do some superb stuff - but on the
-other hand I am unlikely to start new projects with it because either I
-maintain it or I have to push team members up that learning curve before
-they can do anything on it.</p>
-            </article>
-            <article id="comment-3755863959563583975.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-3755863959563583975.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Kilroy (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-03T23:02:00">Fri 03 July 2009</abbr></p>
-                
-                <p>I keep hearing things like this as well, and I just don't understand why
-so many are so intimidated by twisted. It really isn't any harder to get
-to grips with than any other large python project like TG IMHO. They do
-have some tools to kick you into gear a little faster perhaps.  </p>
-<p>I also hear things like "twisted eats your errors", "twisted doesn't let
-me use threads", "twisted can't work with my libraries", "you can't use
-databases with twisted" - all utter nonsense, but I keep hearing it over
-and over again. They're usually in the form of anecdotal stories
-"twisted ate all my errors, I promise I attached errbacks".  </p>
-<p>Some 5 minute howtos may be the answer to some of these. If we listen to
-a few of these complaints and create a "how to access your \${foo}sql
-instance", "how to set up logging", "how to use
-callInThread/callFromThread", "why forgetting your errbacks is bad" it
-could be something to point folks to.</p>
-            </article>
-            <article id="comment-3330006647725190661.md">
-                <a href="http://code.mumak.net/2009/06/twisted-huh.html#comment-3330006647725190661.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Richard Jones (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-07-03T23:34:00">Fri 03 July 2009</abbr></p>
-                
-                <p>Kilroy, I think you need to read the comments already posted here (maybe
-again, but reading your reply I can't help thinking for the first
-time).  </p>
-<p>In particular, about HOWTOs "B" specifically said "So you read a
-tutorial and you get told you have to write 10 lines of code, except you
-only know what 1 of those lines actually does."  </p>
-<p>Without solid API documentation to back them up those HOWTOs are
-basically just crumbs thrown out to try to satisfy the hungry masses.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -261,8 +118,8 @@ basically just crumbs thrown out to try to satisfy the hungry masses.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -271,8 +128,8 @@ basically just crumbs thrown out to try to satisfy the hungry masses.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/hacking.html">
-                                Hacking
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -286,16 +143,6 @@ basically just crumbs thrown out to try to satisfy the hungry masses.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
-                                launchpad subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/twisted.html">
                                 Twisted
                             </a>
@@ -306,23 +153,33 @@ basically just crumbs thrown out to try to satisfy the hungry masses.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/personal.html">
                                 Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ubuntu.html">
                                 ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
                             </a>
                         </li>
                     </ul>

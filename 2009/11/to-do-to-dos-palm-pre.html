@@ -96,139 +96,6 @@ to get them synchronized with something I can edit from my laptop.  </p>
 <p>Any ideas?</p>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-4481256401807644530.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-4481256401807644530.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>tekNico (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-26T12:39:00">Thu 26 November 2009</abbr></p>
-                
-                <p>> These lists are connected to a certain popular<br />
-> productivity system which isn't really about<br />
-> productivity and is a little bit like a cult.  </p>
-<p>Sure, brother, just say the word: GTD. ;-) I'm no David Allen follower,
-anyway, I just own the book in both English and Italian languages. ;-P  </p>
-<p>> Any ideas?  </p>
-<p>Nope, I'm in a similar predicament. I've been using Thinking Rock for a
-few years now, but it's a big, hairy Java beast, no way to put that on
-my Nokia N800 (nor on a N900, I guess).</p>
-            </article>
-            <article id="comment-6195431160262419288.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-6195431160262419288.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Dustin Kirkland (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-26T16:33:00">Thu 26 November 2009</abbr></p>
-                
-                <p>Jono-  </p>
-<p>I installed sshd on my Pre, and I rsync the entire filesystem to my
-laptop to back it up daily.  </p>
-<p>I haven't looked for the backing files of the task list, if they're
-cleartext and edit-able. If they are readable, then I think
-rsync+sshd+vi might solve this for you?  </p>
-<p>:-Dustin</p>
-            </article>
-            <article id="comment-1969180220251267864.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-1969180220251267864.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-26T17:54:00">Thu 26 November 2009</abbr></p>
-                
-                <p>Hey Dustin,  </p>
-<p>That sounds like a good idea. What command do you use to rsync, exactly?
-I get a lot of permission denied errors when I try.  </p>
-<p>A little poking around shows that the Tasks app is backed on to an
-sqlite3 database. As best as I can tell, the schema lives in
-/usr/lib/luna/PalmDatabase.db3 and the db itself in
-/var/luna/data/dbdata/PalmDatabase.db3. That last one wasn't rsynced
-when I tried with 'rsync -avPx'.  </p>
-<p>Looks like tables for a bunch of apps are in there.  </p>
-<p>Interestingly, the 'Task' table (com_palm_pim_Task) has a column
-called 'extraCrap'.</p>
-            </article>
-            <article id="comment-4442625447241895178.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-4442625447241895178.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Michael Hudson-Doyle (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-26T18:54:00">Thu 26 November 2009</abbr></p>
-                
-                <p>> Interestingly, the 'Task' table<br />
-> (com_palm_pim_Task) has a column called<br />
-> 'extraCrap'.  </p>
-<p>Thank you for helping me wake up with a good laugh :-)</p>
-            </article>
-            <article id="comment-2859357370656219028.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-2859357370656219028.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>AmanicA (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-27T08:25:00">Fri 27 November 2009</abbr></p>
-                
-                <p>mmm.. maybe somebody can port Bazaar to the Palm Prē :)  </p>
-<p>I have a similar problem with my G1 (also a thinkingrock user). Thinking
-about it, it should be possible to do the version control part from my
-laptop when my phone is mounted. TODO: find a text editor which can edit
-files in a branch on my phone.</p>
-            </article>
-            <article id="comment-8768808691687757169.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-8768808691687757169.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>intellectronica.net (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-29T01:40:00">Sun 29 November 2009</abbr></p>
-                
-                <p>I'm using (on the iphone and PC) a service/product called Evernote which
-allows you to edit notes on the phone, on the PC (windows software but
-works fine with wine) and on the web. I don't know if they have a Palm
-version, but it they do you should give it a try.</p>
-            </article>
-            <article id="comment-877140232998551780.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-877140232998551780.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>intellectronica.net (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-29T01:41:00">Sun 29 November 2009</abbr></p>
-                
-                <p>I'm using (on the iphone and PC) a service/product called Evernote which
-allows you to edit notes on the phone, on the PC (windows software but
-works fine with wine) and on the web. I don't know if they have a Palm
-version, but it they do you should give it a try.</p>
-            </article>
-            <article id="comment-6540967187614857677.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-6540967187614857677.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>drewpca (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-29T05:14:00">Sun 29 November 2009</abbr></p>
-                
-                <p><a href="http://bigasterisk.com/darcs/?r=palmpre2rdf;a=tree">palmpre2rdf</a>  </p>
-<p>I started writing stuff to export those sqlite databases to RDF, such
-that the shared sql key ids become URIs that you could link to even more
-data sources.  </p>
-<p>I didn't care about todo at the time, but that might be easy to add.</p>
-            </article>
-            <article id="comment-7423500843158414690.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-7423500843158414690.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>thomasvs (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-29T12:36:00">Sun 29 November 2009</abbr></p>
-                
-                <p>I'm in the same cult. I don't know if the Palm Pre is a device that
-allows you to install whatever you want, but I'm in the same situation
-with my N800 and soon N900, plus my various laptops/desktops.  </p>
-<p>I started writing a couchdb-based GTD manager (currently command-line
-only, inspired on yagtd which I've used for the last two years). I plan
-to port it to the N900, which should be doable given there are couchdb
-packages.  </p>
-<p>Not entirely what you're looking for, but let me know if you are
-interested (or anyone else here, like tekNico)</p>
-            </article>
-            <article id="comment-5342383903134416902.md">
-                <a href="http://code.mumak.net/2009/11/to-do-to-dos-palm-pre.html#comment-5342383903134416902.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-30T10:55:00">Mon 30 November 2009</abbr></p>
-                
-                <p>@intellectronica, EverNote is on the Palm, but AFAICT it isn't a task
-list manager, it's more of a note gathering application. Am I missing
-something?  </p>
-<p>@drewpca, Cool! Although, I think I'm interested in getting stuff
-*into* Tasks, not out of it.  </p>
-<p>@thomasvs, I hadn't heard of yagtd, I'll have a quick play with it. May
-I suggest taking a look at GTG? Someone has a desktopcouch branch of
-that -- it might be worth combining efforts rather than making yet
-another GTD app.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -249,8 +116,8 @@ another GTD app.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -259,8 +126,8 @@ another GTD app.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/hacking.html">
-                                Hacking
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -274,16 +141,6 @@ another GTD app.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
-                                launchpad subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/twisted.html">
                                 Twisted
                             </a>
@@ -294,23 +151,33 @@ another GTD app.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/personal.html">
                                 Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ubuntu.html">
                                 ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
                             </a>
                         </li>
                     </ul>

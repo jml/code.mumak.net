@@ -119,70 +119,6 @@ cronjob?  </p>
 <!-- -->
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-2650157260592069491.md">
-                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-2650157260592069491.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Cory (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-07-04T15:52:00">Sun 04 July 2010</abbr></p>
-                
-                <p>One thing that I've found useful in release automation is *not* to try
-too hard to automate things that should be done by a human. In places
-there will be parts of your process such as "post the release
-announcement to a newsgroup" or "comb through the bug list for notable
-release notes".  </p>
-<p>In those places, just make it as easy as possible for a human to do it.
-For example, when I'm looking for release notes, I wrote a script that
-extracts changesets and groups them by bug number, dumps that into a
-text file and then shows me an xterm with the summary, and another
-window where I can type in my release notes.  </p>
-<p>Not automated, but *easy*.</p>
-            </article>
-            <article id="comment-2720836114896048181.md">
-                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-2720836114896048181.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Steve McInerney (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-07-05T05:51:00">Mon 05 July 2010</abbr></p>
-                
-                <p>we'll make a sysadmin of you yet jml...</p>
-            </article>
-            <article id="comment-6010658711172411385.md">
-                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-6010658711172411385.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>glyph (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-07-05T21:20:00">Mon 05 July 2010</abbr></p>
-                
-                <p><em>Are all of the steps in the process really needed? Why do we have so
-many tarballs? ... Why generate a PDF?</em>  </p>
-<p>As a step along the way to simplification, I think that perhaps we
-should answer these questions explicitly, and not just as a rhetorical
-device where "why..." means "let's not...". :).  </p>
-<p>In fact, generally speaking, <em>every</em> step in the release process should
-include an explanation of why it's necessary. Why do we run
-`change-versions`? To update the version number in a mechanical way so
-that we won't miss any instances of it. Why do we sign the tarballs? To
-provide a way for distributors to verify that the release they've got
-was the same release we released securely. Even the "quote of the
-release" ought to serve a purpose, if it involves work for the release
-manager! That way, if something else in the process changes, we have a
-good way of looking at any particular step and saying "in light of these
-changes, does it still serve its intended purpose?"</p>
-            </article>
-            <article id="comment-3235389698956188579.md">
-                <a href="http://code.mumak.net/2010/07/releasing-twisted-and-procedure-in.html#comment-3235389698956188579.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-07-06T13:12:00">Tue 06 July 2010</abbr></p>
-                
-                <p>Glyph, that's a good idea. I wonder if a reason per artifact would be
-more useful than a reason per step, though.  </p>
-<p>Cory, definitely. There's always going to be human steps involved. The
-trick is not eliminating them but reducing their number and making each
-step easy to do and hard to screw up.  </p>
-<p>Steve, I have no idea what you mean. I was thinking like a programmer
-when I did this :)</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -203,8 +139,8 @@ when I did this :)</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -213,8 +149,8 @@ when I did this :)</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/hacking.html">
-                                Hacking
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -228,16 +164,6 @@ when I did this :)</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
-                                launchpad subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/twisted.html">
                                 Twisted
                             </a>
@@ -248,23 +174,33 @@ when I did this :)</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/personal.html">
                                 Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ubuntu.html">
                                 ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
                             </a>
                         </li>
                     </ul>

@@ -110,166 +110,6 @@ way?
 </div>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-4204081253523828672.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-4204081253523828672.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Martin (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-07T11:46:00">Tue 07 September 2010</abbr></p>
-                
-                <p>I've been flip-flopping a lot on this. I probably do more TDD than not,
-but there are still scenarios where I just can't start off with tests.
-Usually, it's because I either don't understand the problem well enough
-yet, or because the testing infrastructure work needed is pretty big,
-and I can't bring myself to spending so much time upfront on it.</p>
-            </article>
-            <article id="comment-351305329505201410.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-351305329505201410.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>absoludity (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-07T13:53:00">Tue 07 September 2010</abbr></p>
-                
-                <p>The point that I enjoy the most about writing tests first is that it
-breaks the task down into a lot of mini-successes: write test, run code
-to show failure, add functionality, run test, success! For me it makes
-it a bit more like a game where you're always trying to reach the next
-level which is just out of reach.  </p>
-<p>Without writing tests first, it's more like a long wait until a
-(potentially) big success, followed by many small failure moments as you
-start finding bugs.  </p>
-<p>But I agree with Martin... when I'm unsure about which way to go,
-<em>sometimes</em> a tracer bullet helps me see how I can test.</p>
-            </article>
-            <article id="comment-3507088317300413492.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-3507088317300413492.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>doxxxicle (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-07T14:27:00">Tue 07 September 2010</abbr></p>
-                
-                <p>I tend to be a "code &amp; cover" type, mostly because the environments and
-systems I write for are hard to simulate in a test and I often am not
-sure what I need to do beforehand or how to do it -- i.e. prototyping
-work.  </p>
-<p>Not very good excuses, I know.</p>
-            </article>
-            <article id="comment-3694031723642678615.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-3694031723642678615.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Julian (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-08T14:52:00">Wed 08 September 2010</abbr></p>
-                
-                <p>The big exception to the rule for me is a prototype, which then turns
-into something useful. There's no way I am going to write tests up front
-for a prototype.</p>
-            </article>
-            <article id="comment-5119528839421413108.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-5119528839421413108.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>glyph (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-08T19:57:00">Wed 08 September 2010</abbr></p>
-                
-                <p>This seems like it could use a little expanding; it seems to be written
-for an audience that mostly understands what you're talking about
-already, and will just evoke familiar pangs rather than really educate.
-<em>Why</em> is code-and-cover dull? You write the same tests and code either
-way, right? Why is it harder to get full coverage? You just write your
-tests and then run your coverage tool, of course.  </p>
-<p>I think that there are a lot of folks out there who do code-and-cover
-but don't really know why it's not as good as TDD. A more expansive post
-would benefit them quite a bit.  </p>
-<p>(Of course, <em>I</em> know the answers, as do many of your readers, but I'm
-too lazy to write a good post in response, so I'm hoping you'll do it
-for me ;-)).  </p>
-<p>For my part, I do sometimes have trouble getting tests first, mostly in
-not-fully-covered code that has a big pile of existing dependencies that
-don't have test mocks, and building out even the most trivial test
-infrastructure would take substantially longer than just fixing a simple
-bug. However, when I do get around to fixing it "for real", I try to
-avoid the code-and-cover mistake of writing a test that passes first: I
-cut the whole implementation into another file, write a test, and get it
-to fail first, then start re-importing the smallest bits I need to get
-my test passing. Once I'm in the TDD groove again, I will quite often
-spot uncovered or buggy chunks of functionality and get them fixed
-right.  </p>
-<p>The few times I have tried to just write tests for existing code without
-modifying it so that it will fail, it's been a complete mess.</p>
-            </article>
-            <article id="comment-3206176607002629967.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-3206176607002629967.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>glyph (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-08T20:19:00">Wed 08 September 2010</abbr></p>
-                
-                <p>... and another thing.  </p>
-<p>There is one case where not writing tests first is actually a better
-idea, I think.  </p>
-<p>If you have some code with a lot of dependencies and no test support for
-those dependencies (where "test support" means mocks, fakes, stubs,
-in-memory implementations, or what-have-you), sometimes TDD means that
-you have to start off by writing a largeish pile of unmaintainable
-one-off junk just to stub out enough to get a simple test running.  </p>
-<p>I go back and forth on this, but I am coming to be of the opinion that
-having big piles of unmaintainable test stubs <em>can</em> be a worse problem
-than having poor coverage. The stubs and functionality and interfaces
-can diverge from the "real" implementations, and inevitably you end up
-having to maintain a couple dozen fake implementations of the
-not-really-test-supported interfaces, each of which has its own quirks.
-This can lead to lots of false failures, which leads to decreased trust
-in the test suite, which is of course bad.  </p>
-<p>If you're adding functionality to a system, you can usually manage this
-problem by implementing the new functionality itself in a corner, with
-only the dependencies that it really needs, and keep the test
-maintenance burden sane. Rather than try to make sure that the
-integration code is properly TDD, the goal is then to just keep the
-integration code (which glues your shiny new TDD-developed module into
-the system) as small as possible.  </p>
-<p>This is really just a restatement of "minimize untestable code", but I
-take issue with that phrasing, because it's defeatist (especially in a
-nice, dynamic language like Python). <em>All</em> code is testable: this
-strategy should be a temporary measure as you work towards developing
-<em>good</em> test support for your "untestable" interfaces and thinning out
-unnecessary coupling. I think that it may be worthwhile to do some
-planning and architecture around your test development as well as your
-main body of code.</p>
-            </article>
-            <article id="comment-973756273912646077.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-973756273912646077.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jkakar (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-09T02:53:00">Thu 09 September 2010</abbr></p>
-                
-                <p>Whether you do TDD or code-and-cover it's very important to make sure
-your test fails when the code you think it is testing is broken (or
-gone). Doing TDD ensures this fail-when-broken check happens for each
-test. This validation can be performed with code-and-cover, but it is
-much more tedious.  </p>
-<p>I prefer TDD but use code-and-cover when I really don't understand what
-I need. In that case, the code-and-cover I do is to (1) spike until I
-know what I want and then (2) comment out my code and TDD until it's all
-uncommented and covered properly.</p>
-            </article>
-            <article id="comment-625296451880378550.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-625296451880378550.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-14T13:29:00">Tue 14 September 2010</abbr></p>
-                
-                <p>Thanks for the comments everyone.  </p>
-<p>Julian, if by prototype you mean "proof of concept", then I also often
-don't do that TDD. What tends to happen with those is that the prototype
-<em>becomes</em> the tests. (After all, how did I know it worked?).  </p>
-<p>Glyph, I would love to write up a more detailed version of this post.
-It's unlikely I'll have the time.  </p>
-<p>A thing that can help with untested mocks &amp; stubs is "interface
-verification tests": one set of tests that runs against the real thing
-and against a more easily testable thing.</p>
-            </article>
-            <article id="comment-4783755865577412917.md">
-                <a href="http://code.mumak.net/2010/09/why-you-should-write-your-tests-first.html#comment-4783755865577412917.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Kevin H (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-09-22T22:46:00">Wed 22 September 2010</abbr></p>
-                
-                <p>I tend to sketch out a minimal "spike solution", then write some tests
-for it, and then use TDD to add functionality and make sure corner cases
-get handled.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -290,8 +130,8 @@ get handled.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -300,8 +140,8 @@ get handled.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/hacking.html">
-                                Hacking
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -315,16 +155,6 @@ get handled.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
-                                launchpad subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/twisted.html">
                                 Twisted
                             </a>
@@ -335,23 +165,33 @@ get handled.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/personal.html">
                                 Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ubuntu.html">
                                 ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
                             </a>
                         </li>
                     </ul>

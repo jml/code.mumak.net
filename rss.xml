@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mere Code</title><link>http://code.mumak.net/</link><description></description><atom:link href="http://code.mumak.net/rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 11 Jul 2014 00:00:00 +0100</lastBuildDate><item><title>Cutting edge debugging</title><link>http://code.mumak.net/2014/07/cutting-edge-debugging.html</link><description>&lt;p&gt;One of the great pleasures of advancing in one's craft is the thrill of solving 
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mere Code</title><link>http://code.mumak.net/</link><description></description><atom:link href="http://code.mumak.net/rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 13 Aug 2014 00:00:00 +0100</lastBuildDate><item><title>Isn't it Pythonic?</title><link>http://code.mumak.net/2014/08/isnt-it-pythonic.html</link><description>&lt;p&gt;--&lt;/p&gt;
+&lt;p&gt;I really should be over
+&lt;a href="http://article.gmane.org/gmane.comp.python.devel/93654/"&gt;this&lt;/a&gt; by
+now.&lt;/p&gt;
+&lt;p&gt;Here's how you test exceptions in Python 2.7 and later:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertRaises&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SomeException&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;do_something&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;the_exception&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exception&lt;/span&gt;
+&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;the_exception&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(as recommended in the &lt;a href="https://docs.python.org/2.7/library/unittest.html#unittest.TestCase.assertRaises"&gt;unittest
+documentation&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Here's how you test exceptions in earlier Pythons, using libraries
+like &lt;a href="https://pypi.python.org/pypi/testtools"&gt;testtools&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;the_exception&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertRaises&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SomeException&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;do_something&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;the_exception&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I still like the second way. It's simpler, uses less code, and doesn't
+rely on new syntax. I'm sorry it didn't work out that way.&lt;/p&gt;
+&lt;p&gt;I guess this is how &lt;a href="http://barry.warsaw.us/"&gt;Barry&lt;/a&gt; feels about the
+&lt;a href="http://legacy.python.org/dev/peps/pep-0401/"&gt;diamond operator&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Jonathan M. Lange</dc:creator><pubDate>Wed, 13 Aug 2014 00:00:00 +0100</pubDate><guid>tag:code.mumak.net,2014-08-13:2014/08/isnt-it-pythonic.html</guid></item><item><title>Cutting edge debugging</title><link>http://code.mumak.net/2014/07/cutting-edge-debugging.html</link><description>&lt;p&gt;One of the great pleasures of advancing in one's craft is the thrill of solving 
 newer, more difficult problems. In the course of my work, I frequently encounter 
 many bugs which appear at first glance to be impossible. Not just impossible to
 solve, but intrinsically impossible. It's as if being at the very frontiers of

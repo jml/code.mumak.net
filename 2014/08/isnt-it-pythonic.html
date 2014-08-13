@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Isn't it Pythonic? - Mere Code</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Open Graph tags -->
+            <meta property="og:type" content="article"/>
+            <meta property="og:title" content="Isn't it Pythonic?"/>
+            <meta property="og:url" content="http://code.mumak.net/2014/08/isnt-it-pythonic.html"/>
+            <meta property="og:description" content="-- I really should be over this by now. Here's how you test exceptions in Python 2.7 and later: with self.assertRaises(SomeException) as cm: do_something() the_exception = cm.exception self.assertEqual(the_exception.error_code, 3) (as recommended in the unittest documentation) Here's how you test exceptions in earlier Pythons ..."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="http://code.mumak.net/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://code.mumak.net/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.mumak.net/theme/css/style.css" type="text/css"/>
+
+        <link href="http://code.mumak.net/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Mere Code ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://code.mumak.net/" class="navbar-brand">
+Mere Code            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://code.mumak.net/blog/archives/"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://code.mumak.net/2014/08/isnt-it-pythonic.html"
+                       rel="bookmark"
+                       title="Permalink to Isn't it Pythonic?">
+                        Isn't it Pythonic?
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-08-13T00:00:00"> Wed 13 August 2014</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>--</p>
+<p>I really should be over
+<a href="http://article.gmane.org/gmane.comp.python.devel/93654/">this</a> by
+now.</p>
+<p>Here's how you test exceptions in Python 2.7 and later:</p>
+<div class="highlight"><pre><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">SomeException</span><span class="p">)</span> <span class="k">as</span> <span class="n">cm</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="n">the_exception</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">exception</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">the_exception</span><span class="o">.</span><span class="n">error_code</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>(as recommended in the <a href="https://docs.python.org/2.7/library/unittest.html#unittest.TestCase.assertRaises">unittest
+documentation</a>)</p>
+<p>Here's how you test exceptions in earlier Pythons, using libraries
+like <a href="https://pypi.python.org/pypi/testtools">testtools</a>.</p>
+<div class="highlight"><pre><span class="n">the_exception</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">SomeException</span><span class="p">,</span> <span class="n">do_something</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">the_exception</span><span class="o">.</span><span class="n">error_code</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>I still like the second way. It's simpler, uses less code, and doesn't
+rely on new syntax. I'm sorry it didn't work out that way.</p>
+<p>I guess this is how <a href="http://barry.warsaw.us/">Barry</a> feels about the
+<a href="http://legacy.python.org/dev/peps/pep-0401/">diamond operator</a>.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+
+
+
+                <li class="list-group-item"><a href="http://code.mumak.net/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://code.mumak.net/tag/uncategorized.html">
+                                Uncategorized
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/hacking.html">
+                                Hacking
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://code.mumak.net/tag/bazaar.html">
+                                Bazaar
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-3">
+                            <a href="http://code.mumak.net/tag/testing.html">
+                                Testing
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/pelican.html">
+                                pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Jonathan M. Lange
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="//code.jquery.com/jquery.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://code.mumak.net/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://code.mumak.net/theme/js/respond.min.js"></script>
+
+</body>
+</html>

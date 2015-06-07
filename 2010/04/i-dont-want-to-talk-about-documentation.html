@@ -372,133 +372,6 @@ Now, please can we go back to talking about testing?
 </div>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-3246919094362618894.md">
-                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-3246919094362618894.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Thomas Hervé (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-04-29T15:17:00">Thu 29 April 2010</abbr></p>
-                
-                <p><em>If not, take pride in your lack of code documentation! It is the direct
-fruit of you doing better things with your life. Stand up, walk out the
-door an skip down the street, clutch the first suit-wearing stranger you
-see by his lapels and shout "My code is under-documented, yippee
-ki-yay!"</em>  </p>
-<p>I couldn't disagree more. Because once you're in the street, there is a
-good chance that you get hit by a bus. And then, the person hired to
-replace you (let's face it, we won't mourn you forever), will have to
-take over your undocumented piece of crap, and it will take him months
-to understand your APIs because of the lack of documentation.  </p>
-<p>Also, admitting that yourself in 6 months is not the same person today,
-you're making him a big favor by documenting your code. That is, you.</p>
-            </article>
-            <article id="comment-8661668960481154913.md">
-                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-8661668960481154913.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-04-29T15:26:00">Thu 29 April 2010</abbr></p>
-                
-                <p>First, I'm not against documenting code. I'm against documenting code
-without knowing why you are doing it.  </p>
-<p>Second, you are conflating "documenting code" with "making code easy to
-understand". Only the second one is valuable in itself. The first is a
-means to that end, and only one of many.  </p>
-<p>Did you read past there?</p>
-            </article>
-            <article id="comment-5139985196792798166.md">
-                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-5139985196792798166.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Thomas Hervé (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-04-29T15:58:00">Thu 29 April 2010</abbr></p>
-                
-                <p>I sure agree with you, I was just pointing out that telling people "not
-to write doc is OK" is not OK.  </p>
-<p>Also, I have abandoned for long the idea that I could write code easy to
-understand. It may be possible for self-contained code, but any
-interaction with a library, an API, or an external application will
-result in some kind of stupid error management (like POSIX you mention).
-That's why you need tests too :)</p>
-            </article>
-            <article id="comment-1199994764069753538.md">
-                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-1199994764069753538.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-04-29T16:06:00">Thu 29 April 2010</abbr></p>
-                
-                <p>Yeah.  </p>
-<p>I'm a huge believer in putting code clarity above everything else, and
-think good code design can do a lot to reduce the amount of
-documentation you need, much like a well-designed product doesn't need a
-massive user manual.  </p>
-<p>Still, I'm simply bewildered that people can say "My code is
-self-documenting" with a straight face. Maybe if it's a really small
-sample of code.</p>
-            </article>
-            <article id="comment-5095859175069847602.md">
-                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-5095859175069847602.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jkakar (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-05-01T11:12:00">Sat 01 May 2010</abbr></p>
-                
-                <p>Code without a documented API is incomplete, in the same way that it is
-without tests. Documenting the tests clearly is also important. Like
-you, I typically write the docstring for a test before I write it. On
-the topic of API documentation, I far too often see comments that
-describe what the code does, instead of what its purpose is. I can read
-the code to see what it does, but often that doesn't help me understand
-what its purpose is. Writing good API documentation is a skill.  </p>
-<p>At a previous job it was mandated that a specification must be written
-before doing any coding. It was ridiculous, because it wasn't really
-about discovering the domain, but about documenting the classes you
-would be implementing. These specifications were expected to include UML
-diagrams to show class hierarchies, the sequence of calls that would be
-made to satisfy (very poorly identified) use cases. It was horrible. In
-the beginning I tried to comply but quickly realized that this was a
-complete waste of time: it was super boring and the code I ended up
-writing never matched the specification.  </p>
-<p>I think this kind of documentation about code is pointless. It's another
-artifact to maintain and inevitably it gets out of date. That said, I do
-find high-level documentation useful. In many cases these are diagrams.
-For example, an architecture diagram showing, at a high-level, the
-components in a system and how they interact can be very enlightening.
-It's often that high-level perspective that is hard to determine by
-reading code. Also, documentation that describes user stories and
-provides context about the domain can be useful. In most cases I find a
-list of 'As a X I want to Y so that Z' stories adequate. I just want
-something to help me get into the problem space, I don't need tons of
-prose.  </p>
-<p>One interesting thing at the previous job where there was a push for
-detailed specifications is that the programmers there felt reading code
-was too hard. They didn't want to do it, they weren't good at it and so
-they would look for documentation as a way to figure it out. There was
-no review process there. When I first got involved with reviews I
-realized how poor my reading skills were... having been doing it for a
-while, my ability to dive into code and read and comprehend it has
-improved immensely.  </p>
-<p>I don't think we should be proud of a lack of documentation. I think we
-should determine what kind of documentation is useful, write it and then
-produce no more. Documenting everything we possibly can is a bad idea.</p>
-            </article>
-            <article id="comment-1939236916249817965.md">
-                <a href="http://code.mumak.net/2010/04/i-dont-want-to-talk-about-documentation.html#comment-1939236916249817965.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>mbp (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-05-25T03:14:00">Tue 25 May 2010</abbr></p>
-                
-                <p>I agree. If documentation is helping you delight your customers, then
-add it; otherwise you are wasting your time and should feel ashamed
-rather than proud.  </p>
-<p>So documentation could help you satisfy your customers by  </p>
-<p>1- directly helping them: developers are attracted to the Apple platform
-because they feel it has good consistent developer-oriented
-documentation, whereas Ubuntu's tends to be inward-looking and patchy  </p>
-<p>2- making you more effective, by letting people get into the code or
-letting them find conceptual bugs in the course of writing docs  </p>
-<p>3- drawing in new contributors: perhaps the best way to satisfy this is
-to update the documentation when a would-be contributor says "how do
-I...?" or "what is the ...?"  </p>
-<p>So in Launchpad, perhaps the most useful kind of technical documentation
-is external API docs.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -544,33 +417,8 @@ is external API docs.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/pelican.html">
                                 pelican
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -579,8 +427,33 @@ is external API docs.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
                                 launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                     </ul>

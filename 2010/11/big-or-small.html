@@ -186,93 +186,6 @@ it includes a great deal of extra features along with its core.
 </div>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-8607739841621494036.md">
-                <a href="http://code.mumak.net/2010/11/big-or-small.html#comment-8607739841621494036.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>spiv (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-11-24T22:14:00">Wed 24 November 2010</abbr></p>
-                
-                <p>Perhaps a related question is how easy is to take a many small code
-bases and bundle them as one later, versus separating one big code base
-into many small ones? I think small has a slight advantage over big
-here: in general the pain I've observed in e.g. building bzr's windows
-installer or various core+plugins PPAs has probably been a little less
-than Twisted's pain in producing releases of individual subpackages. But
-I'm not sure, and perhaps the tradeoffs vary quite a lot between
-projects.  </p>
-<p>I'm frankly deeply frightened by “scaling problems with big projects”
-though. To focus on just one aspect of that, I'm increasingly feeling
-that increased complexity brings massive, perhaps exponential, increase
-in cost. Just compare how easy it is to do a quick hack <em>and feel that
-it is good enough</em> in a small project versus a large one. For a mini
-case study, look at ControlDir.sprout in current bzrlib: over time we've
-added features like separate metadirs, shared repositories, stacking
-policies, hardlinking, reusing transport objects, subtrees,
-optimisations to the way we do a fetch into a newly sprouted
-repository... and each of those things has taken a toll on this one
-function. All nice things to have, but now it alarmingly difficult to
-make further improvements to this function because complexity is fragile
-— happily I mostly trust the test suite here, which helps, but only the
-full test suite. And of course I *do* want to improve that
-function...  </p>
-<p>In the case of ControlDir.sprout I'm hopeful that some refactorings may
-ease the pain a little, but I think truly radical surgery is required if
-it is going to be anything other than hideous.  </p>
-<p>So I guess I'd lean towards many small over one big, but try to find
-ways to reduce the duplication release effort and project
-infrastructure.</p>
-            </article>
-            <article id="comment-4671967371627585114.md">
-                <a href="http://code.mumak.net/2010/11/big-or-small.html#comment-4671967371627585114.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>glyph (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2010-11-30T21:52:00">Tue 30 November 2010</abbr></p>
-                
-                <p>I don't think that you can actually model the distinction between
-different types of projects as "small" vs. "big". Granted, it's a
-popular dichotomy, but that doesn't mean it's not a false one :).  </p>
-<p>For example: for many projects, "smaller" is better. But Twisted's
-attempt to go from "big" to "small", as spiv notes, was a disaster
-(although not an unqualified one). The further we pushed it, the more
-duplication of process was created. If we had continued to really break
-out all the subprojects fully, I suspect that most of them would be
-completely moribund now. For example: if a change to core which broke
-conch didn't alert us immediately to that fact, it would be <em>years</em>
-before anybody got around to fixing it, probably past the point where
-all hope would be lost that it was fixable at all. Does this really have
-anything to do with big vs. small? Not really, it's more a question of
-shared vs. duplicated build infrastructure.  </p>
-<p>Another way to look at this problem is: projects aren't small or big,
-it's that they fit into some conceptual model and possibly also provide
-one themselves. The real question of how to organize things is more
-about what those relationships are than about the absolute size of the
-project.  </p>
-<p>For example: "small tools that do one thing well" is frequently extolled
-as a key part of the UNIX philosophy. Yet, many of those "small" tools
-have intimate dependencies on a gigantic pile of infrastructure that the
-<em>huge</em> lower-level projects, such as the kernel, X.org, glibc, et. al.
-provide.  </p>
-<p>The best projects are the ones which provide a firm core and strong
-conventions upon which may be built a wide variety of tools which follow
-those conventions, and be seamlessly integrated according to them. This
-is what Twisted aims to be; its 'bigness' is mostly a result of the fact
-that 'smallness' requires a per-project duplication of effort which,
-with a small development team, we have empirically demonstrated we can't
-afford.</p>
-            </article>
-            <article id="comment-6011496983982800422.md">
-                <a href="http://code.mumak.net/2010/11/big-or-small.html#comment-6011496983982800422.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2011-01-25T21:29:00">Tue 25 January 2011</abbr></p>
-                
-                <p>Good answers both! I'm sorry I haven't responded earlier.  </p>
-<p>Glyph, I wonder how things would be different if the cost of duplicating
-infrastructure was substantially lower.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -318,33 +231,8 @@ infrastructure was substantially lower.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/pelican.html">
                                 pelican
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -353,8 +241,33 @@ infrastructure was substantially lower.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
                                 launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                     </ul>

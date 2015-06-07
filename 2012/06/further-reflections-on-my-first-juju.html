@@ -170,58 +170,6 @@ turn the documentation into a script at some point, as others seem to
 hope it helps some.</span>  </p>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-3199374750939571532.md">
-                <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html#comment-3199374750939571532.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>clint-fewbar (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-06-22T18:43:00">Fri 22 June 2012</abbr></p>
-                
-                <p>Jono, thanks so much for spending time with juju, its really great to
-hear some fresh new thoughts (and to have a few old problems reiterated
-so we remember to address them.)  </p>
-<p>For the feedback loop, I think the 'debug-hooks' command is going to
-save you a lot of problems at least in terms of being able to run your
-hook over and over until its "right". The problem is that unlike a test
-suite, we are changing the system state *on purpose* so iterating
-means getting back to the same starting state. I do think we need to
-make better use of LXC's ability to clone containers in the debug-hooks
-command, but network complexity becomes an issue, so we'll have to keep
-working on this.  </p>
-<p>Also for colorized logs:  </p>
-<p>juju debug-log | ccze -A  </p>
-<p>The ccze tool's general rules will produce a pretty nicely highlighted
-log for you. The ERROR issue remains, but I think we'll solve that soon
-enough with the patch you submitted. :)</p>
-            </article>
-            <article id="comment-4226975663023814159.md">
-                <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html#comment-4226975663023814159.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Kapil Thangavelu (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-06-23T00:40:00">Sat 23 June 2012</abbr></p>
-                
-                <p>thanks for the feedback.  </p>
-<p>just fwiw, juju debug-log has very fine grained options for exactly
-targeting what your interested in, you can listen in on a particular
-agent or group of agents, exclude hook output, capture logs at a
-particular level, replay logs, etc.</p>
-            </article>
-            <article id="comment-3706270712593603104.md">
-                <a href="http://code.mumak.net/2012/06/further-reflections-on-my-first-juju.html#comment-3706270712593603104.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-06-25T09:27:00">Mon 25 June 2012</abbr></p>
-                
-                <p>@clint-fewbar, thanks for the 'ccze' tip. That's very useful, and not
-just for juju charming.  </p>
-<p>@Kapil, thanks. I discovered replay and log level filtering pretty early
-on. The log level filtering was a bit annoying as -l ERROR didn't give
-me <em>all</em> the errors, included some non-errors, and didn't provide enough
-context for the errors that were included.  </p>
-<p>I'm not really sure what an agent is or how it matters.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -267,33 +215,8 @@ context for the errors that were included.  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/pelican.html">
                                 pelican
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -302,8 +225,33 @@ context for the errors that were included.  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
                                 launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                     </ul>

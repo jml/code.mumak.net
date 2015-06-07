@@ -97,93 +97,6 @@ quality of idempotence isn't useful since <span>f(x) = f(x)</span>.  </p>
 that didn't involve language.</p>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-6370027194045851100.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-6370027194045851100.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Eric (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T07:16:00">Wed 25 March 2009</abbr></p>
-                
-                <p>You could just say that the function need be referentially transparent.</p>
-            </article>
-            <article id="comment-9088893627358585395.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-9088893627358585395.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T07:19:00">Wed 25 March 2009</abbr></p>
-                
-                <p>Sure.  </p>
-<p>I guess my point is that the clarity of the terms depends on the domain
-that you are speaking in.</p>
-            </article>
-            <article id="comment-2838238212953031526.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-2838238212953031526.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>ddaa (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T12:07:00">Wed 25 March 2009</abbr></p>
-                
-                <p>Oh, a new pet peeve!  </p>
-<p>From now on I'll make it a point that "idempotent" DOES mean "f(f(x)) =
-f(x)".  </p>
-<p>I did not realize that people were using it with this other, incorrect
-meaning.  </p>
-<p>f(x)=f(x) is invariant, or referentially transparent, or side-effect
-free, whatever. Real idempotence is a useful property to be able to name
-in computing.  </p>
-<p>Join me and embrace the joy of self-righteousness!</p>
-            </article>
-            <article id="comment-7114151420028511766.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-7114151420028511766.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Alex (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T16:14:00">Wed 25 March 2009</abbr></p>
-                
-                <p>The mathematics definition of idempotent sort of makes sense in
-computing if you view a function as taking a state and returning the
-state of the system after the function is applied.  </p>
-<p>Then the property f(f(x)) = f(x) seems like a desirable one if equality
-is replaced by some equivalence relation  </p>
-<p>This is still weaker than invariance of f though...</p>
-            </article>
-            <article id="comment-3634508032417411421.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-3634508032417411421.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>larstiq (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T20:36:00">Wed 25 March 2009</abbr></p>
-                
-                <p>Oh feh, I had to reread your quote of Bob and then his original post
-before I got it not being what I thought it was.  </p>
-<p>I do use idempotent in computing in the mathy way, but maybe that is
-because I'm a math student.</p>
-            </article>
-            <article id="comment-8432383445236252912.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-8432383445236252912.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Michael Hudson (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T22:08:00">Wed 25 March 2009</abbr></p>
-                
-                <p>Idempotency (in computing) is not the same as side-effect free, or
-always returning the same value for the same arguments, but rather than
-calling it multiple times has the same effect as calling it once. Bob is
-perhaps using bigs words where simple ones would do :)  </p>
-<p>Alex is right that this is the same as the mathematical definition if
-you view the state of the world as implicitly passed to and returned
-from every function you call.</p>
-            </article>
-            <article id="comment-3801193626142473187.md">
-                <a href="http://code.mumak.net/2009/03/trips-me-every-time.html#comment-3801193626142473187.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>ddaa (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-03-25T23:23:00">Wed 25 March 2009</abbr></p>
-                
-                <p>Michael Hudson: Oh right! I remember now.  </p>
-<p>Actually, idempotency in the computing sense is only meaningful where
-there ARE side effects.  </p>
-<p>For a couple of pythonic examples: "a[b] = c" where a is a list IS
-idempotent. But "a.pop()" is not.  </p>
-<p>Since the last thing you want from a hash function is to mutate its
-argument, the only meaningful sense for "idempotent hash function" is
-the mathematical one.  </p>
-<p>And etrepum is confused.</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -229,33 +142,8 @@ the mathematical one.  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/pelican.html">
                                 pelican
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -264,8 +152,33 @@ the mathematical one.  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
                                 launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                     </ul>

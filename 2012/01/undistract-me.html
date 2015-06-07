@@ -124,119 +124,6 @@ this could be done better.  Also let me know if you find this useful, or
 you know of someone who has already done this.</p>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-2543669125005054719.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-2543669125005054719.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Daniel Bo (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-23T16:00:00">Mon 23 January 2012</abbr></p>
-                
-                <p>Wonderful and extremely useful. Why can't this be modified so the focus
-issue is solved for GNOME Terminal and then be shipped by default?  </p>
-<p>It seems like one of those polish features that Ubuntu needs and wants.</p>
-            </article>
-            <article id="comment-6198012248500709847.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-6198012248500709847.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>glyph (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-23T17:37:00">Mon 23 January 2012</abbr></p>
-                
-                <p>Interesting application!  </p>
-<p>Please update your links, though: <a href="http://glyph.twistedmatrix.com/2006/11/bash-shell-is-now-fully-operational.html">that post now lives
-here</a>.
-(LiveJournal is dead to me.)</p>
-            </article>
-            <article id="comment-1711552249004199268.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1711552249004199268.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-23T18:11:00">Mon 23 January 2012</abbr></p>
-                
-                <p>@Daniel_Bo: No reason, just a simple matter of patching GNOME Terminal
-a DBUS API that lets you ask if the current shell has focus, and getting
-that patch upstream.  </p>
-<p>@glyph: Updated.</p>
-            </article>
-            <article id="comment-5849038104588459398.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-5849038104588459398.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Steve McInerney (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-23T22:04:00">Mon 23 January 2012</abbr></p>
-                
-                <p>Hmm. I'm a loooong time konsole fan, and that functionality is built in.
-"View; Monitor for Silence" or "Monitor for Activity".<br />
-Use it quite a lot for long running commands/rollouts etc.<br />
-Used to be better in previous versions, that you could adjust the time
-before alert; but alas, that's been removed.  </p>
-<p>I have my layout setup such that the konsole tab bar (at the bottom
-where it belongs) is *always* visible, so when something changes, it
-flashes, I see it instantly.</p>
-            </article>
-            <article id="comment-8377016586601209041.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-8377016586601209041.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Tuure Laurinolli (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-23T22:39:00">Mon 23 January 2012</abbr></p>
-                
-                <p>This seems like it would only work on local machine. Something similar
-for remote machine would have to have a back-channel to your local
-machine, e.g. with ssh -R. I think I'll hack on something along these
-lines tomorrow night.</p>
-            </article>
-            <article id="comment-6571505211216979398.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-6571505211216979398.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-24T00:22:00">Tue 24 January 2012</abbr></p>
-                
-                <p>@Steve Terminator has plugins that do that. However, what I wanted was
-something that I didn't have to enable or disable at all, and something
-that wouldn't do false positives even if the command spewed stuff all
-the time.  </p>
-<p>@Tuure Good point. My hunch is that problem is best solved at the
-notify-send level.</p>
-            </article>
-            <article id="comment-1686798819138016675.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1686798819138016675.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jam (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-24T08:44:00">Tue 24 January 2012</abbr></p>
-                
-                <p>Why not just have it blacklist specific commands. For example
-"vi/emacs/less". I don't know specifically how you are looking at text
-for a long time, but it seems the commands that run are going to be
-fairly different.  </p>
-<p>There are also easy things if you know a command is going to be slow,
-like setting up a shell command to run a sound file/pop up a
-notification, and alias it to something short like 'n' and then just  </p>
-<p>command; n  </p>
-<p>It isn't quite as auto-magical, but it does avoid false positives.</p>
-            </article>
-            <article id="comment-1999947875949458828.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1999947875949458828.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-24T09:18:00">Tue 24 January 2012</abbr></p>
-                
-                <p>@jam A blacklist might not be a bad idea. As it is, I'm not minding the
-pop ups when focused though.  </p>
-<p>As for the '; n' thing. I've tried it before. What happens is I tend to
-forget to put it on, then feel lazy <em>and</em> stupid when I get distracted
-again.</p>
-            </article>
-            <article id="comment-1252040256722822943.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-1252040256722822943.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Martin Lindhe (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-25T14:53:00">Wed 25 January 2012</abbr></p>
-                
-                <p>FYI, you could also try the "beep" command to sound the pc speaker from
-your shell script</p>
-            </article>
-            <article id="comment-4475359635352539952.md">
-                <a href="http://code.mumak.net/2012/01/undistract-me.html#comment-4475359635352539952.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Martin Lindhe (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2012-01-25T14:56:00">Wed 25 January 2012</abbr></p>
-                
-                <p>there is also a util called "zenity" that creates gnome dialogs from the
-shell</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -282,33 +169,8 @@ shell</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/pelican.html">
                                 pelican
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -317,8 +179,33 @@ shell</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
                                 launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                     </ul>

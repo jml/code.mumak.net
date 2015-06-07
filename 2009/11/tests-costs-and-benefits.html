@@ -164,102 +164,6 @@ thing?
 </div>
             </div>
             <!-- /.entry-content -->
-
-    <hr />
-    <section class="comments">
-      <h2>Comments</h2>
-
-            <article id="comment-1781352005569485714.md">
-                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-1781352005569485714.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Gary van der Merwe (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-11T09:40:00">Wed 11 November 2009</abbr></p>
-                
-                <p>Yes - Language is very important in this debate. Test are more important
-for dynamically typed languages (e.g. python), than for statically typed
-languages (e.g. C#.)  </p>
-<p>For example, if you rename a method, and you don't change one of the
-caller of the method (cause you missed it,) the static language will
-pick this up at compile time, but with the dynamic language, if you
-don't have tests, it's going to show up later as a bug.</p>
-            </article>
-            <article id="comment-4066995166163037922.md">
-                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-4066995166163037922.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Bice Dibley (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-11T09:53:00">Wed 11 November 2009</abbr></p>
-                
-                <p>You can focus on what's right only when there is no cost to consider.</p>
-            </article>
-            <article id="comment-2019827508675150767.md">
-                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-2019827508675150767.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Travis B. Hartwell (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-11T10:09:00">Wed 11 November 2009</abbr></p>
-                
-                <p>Sure, you don't need as many of the unit tests in a language like
-Haskell, because you can encode some of the constraints on behavior in
-the type system and the compiler will handle ensure these.  </p>
-<p>But, I almost think I would be more inclined to do testing of at least
-the core structures and functions of my applications if I were in
-Haskell because in fact it sounds like it is easier. With tools like
-QuickCheck and HPC and some more advanced checkers as well, there is a
-large toolkit to do so.  </p>
-<p>I recently have been re-reading Real World Haskell and Chapter 11
-Testing and Quality Assurance
-(http://book.realworldhaskell.org/read/testing-and-quality-assurance.html)
-makes me feel like the cost vs benefit ratio is definitely more bang for
-buck.  </p>
-<p>I also remember watching a talk by Don Stewart (and perhaps another of
-the xmonad developers, I can't remember right now) about the development
-of xmonad and the testing that went on. It was very enlightening.  </p>
-<p>I feel like I'd be more prone to catch the TDD spirit (well, more
-correctly the attitude that the code isn't done until it is tested)
-while using Haskell than I have been using Python. I have not, in fact,
-got into TDD in Python because it does seem onerous.</p>
-            </article>
-            <article id="comment-7310592420242993345.md">
-                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-7310592420242993345.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>Cory (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-11T19:54:00">Wed 11 November 2009</abbr></p>
-                
-                <p>> What happened to doing something because it was the right thing?  </p>
-<p>This isn't a moral issue, you won't go to hell if you didn't write any
-unit tests. ;-)  </p>
-<p>Something is the right thing if the costs outweigh the benefits. Unit
-tests clearly add value to the process, and for me it's just as clear
-that the value is greater than the cost. Most people at least agree that
-testing (of some kind) reduces the time-spent-per-bug.  </p>
-<p>I think the debate is really about the <em>opportunity</em> cost of unit
-testing; could we be doing some BETTER form of testing, if we weren't
-writing unit tests?  </p>
-<p>For me, the answer is "maybe, but I haven't heard about it yet".</p>
-            </article>
-            <article id="comment-6177646133725760680.md">
-                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-6177646133725760680.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>jml (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-11T23:28:00">Wed 11 November 2009</abbr></p>
-                
-                <p>Cory, I wasn't talking about testing when I was talking about right
-things, costs and benefits.  </p>
-<p>Bice, I disagree..</p>
-            </article>
-            <article id="comment-6540922224116896473.md">
-                <a href="http://code.mumak.net/2009/11/tests-costs-and-benefits.html#comment-6540922224116896473.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
-                <h4>AmanicA (noreply@blogger.com)</h4>
-                <p>Posted on <abbr class="published" title="2009-11-12T12:05:00">Thu 12 November 2009</abbr></p>
-                
-                <p>For me a major benefit is that you save time. I.e you don't have to
-manually test something 100 times until it works correctly. You just run
-the test and it should be able to automatically do the test in less time
-than it would have taken to do it manually. With the added benefit that
-you can redo the test in a months time without remembering exactly how
-it works.  </p>
-<p>Another advantage for me is that it gets you thinking about what exactly
-you are trying to do before you spend the time going in circles of
-implementation while you are still trying to figure out what you are
-trying to do.<br />
-Especially if you doing it right:<br />
-http://en.wikipedia.org/wiki/Behavior_Driven_Development</p>
-            </article>
-    </section>
         </article>
     </section>
 
@@ -305,33 +209,8 @@ http://en.wikipedia.org/wiki/Behavior_Driven_Development</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/pelican.html">
                                 pelican
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ui.html">
-                                UI
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/blog.html">
-                                blog
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -340,8 +219,33 @@ http://en.wikipedia.org/wiki/Behavior_Driven_Development</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ui.html">
+                                UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/blog.html">
+                                blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
                                 launchpad subunit data
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                     </ul>

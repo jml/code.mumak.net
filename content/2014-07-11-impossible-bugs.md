@@ -12,7 +12,7 @@ Each of these bugs is, of course, unique, and it would be folly to suggest that
 there could be any sort of _systematic method_ that could be applied at the
 cutting edge of technology, as if one could push back the boundaries of ignorance
 in much the same way as one fills in a tax return. Nevertheless, the following
-principles have served me pretty well, and are perhaps deserve a wider audience.
+principles have served me pretty well, and perhaps deserve a wider audience.
 
 
 * You're editing the wrong file

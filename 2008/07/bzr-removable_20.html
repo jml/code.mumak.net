@@ -90,6 +90,81 @@ https://launchpad.net/bzr-removable. Please file bugs.  </p>
 command line.</p>
             </div>
             <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-8075425670982635945.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-8075425670982635945.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>spiv (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-27T01:11:00">Tue 27 January 2009</abbr></p>
+                
+                <p>Btw, more docs required. You need to do something like:  </p>
+<p>bzr branch lp:bzr-removable \~/code/bzr-removable<br />
+ln -s \~/code/bzr-removable/removable \~/.bazaar/plugins/removable</p>
+            </article>
+            <article id="comment-177625014971213180.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-177625014971213180.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-27T01:12:00">Tue 27 January 2009</abbr></p>
+                
+                <p>Fuller and more prominent documentation would be appreciated (in general
+my rule of thumb is that if I've had to go to a core developer of a
+piece of software for assistance, it's not well documented!)  </p>
+<p>The full sequence of install steps for this (on UNIX filesystems) is
+actually:  </p>
+<p>\$ cd [some directory where one normally stores code]<br />
+\$ bzr branch lp:bzr-removable<br />
+\$ mkdir -p \~/.bazaar/plugins<br />
+\$ cd \~/.bazaar/plugins<br />
+\$ ln -s [some directory]/bzr-removable/removeable  </p>
+<p>Then "bzr plugins" will verify the install and finally the actual
+commands one needs are "bzr removable" and "bzr unremovable"</p>
+            </article>
+            <article id="comment-8972095469374756076.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-8972095469374756076.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-27T11:32:00">Tue 27 January 2009</abbr></p>
+                
+                <p>Thanks for the interest guys. I agree that the software is not well
+documented, but you are the first users I've heard from in the last
+eight months, I think the documentation is economical.  </p>
+<p>Can you please file bugs on the project on Launchpad?</p>
+            </article>
+            <article id="comment-1008714665724290483.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-1008714665724290483.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-28T05:48:00">Wed 28 January 2009</abbr></p>
+                
+                <p>Cause and effect on "bad documentation, unused software" is not always
+"unusued software leads to no motivation for documentation". I'd tend to
+argue the other way around, in fact.</p>
+            </article>
+            <article id="comment-254121289965735895.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-254121289965735895.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-28T11:51:00">Wed 28 January 2009</abbr></p>
+                
+                <p>Sure, I'm not laying down a fundamental law of physics here -- I'm
+describing my own personal motivation.  </p>
+<p>I'm sorry that your whole experience of this plugin has been terrible,
+and I'm glad you've gone to the trouble of posting here so that other
+googlers can find the docs you've written.  </p>
+<p>As this is obviously the first user feedback I've received, I would have
+liked to hear something nice, but perhaps there was nothing nice to
+say.  </p>
+<p>Mary says https://bugs.edge.launchpad.net/bzr-removable/+bug/322262</p>
+            </article>
+            <article id="comment-5157927380961955683.md">
+                <a href="http://code.mumak.net/2008/07/bzr-removable_20.html#comment-5157927380961955683.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-01-28T11:51:00">Wed 28 January 2009</abbr></p>
+                
+                <p>The "Mary says" thing was a comment typed into the wrong field. Sorry
+again.</p>
+            </article>
+    </section>
         </article>
     </section>
 
@@ -110,8 +185,8 @@ command line.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -120,8 +195,8 @@ command line.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -132,11 +207,6 @@ command line.</p>
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -167,6 +237,11 @@ command line.</p>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

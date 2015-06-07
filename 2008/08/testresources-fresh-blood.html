@@ -121,6 +121,42 @@ or at least flick through the
 file.</p>
             </div>
             <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-4417723050516631642.md">
+                <a href="http://code.mumak.net/2008/08/testresources-fresh-blood.html#comment-4417723050516631642.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jam (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-08-18T14:28:00">Mon 18 August 2008</abbr></p>
+                
+                <p>I thought I'd give a look at the testresources code. I've peeked at it
+before, and I'm generally interested in both testresources and your
+pyunit3k work.  </p>
+<p>Some quick comments:  </p>
+<p>1) There is a 'test_all.py' file in the root directory, but running it
+fails because the actual library is under 'lib/'. So you have to do
+something like "PYTHONPATH='lib' ./test_all.py" which seems a bit odd.  </p>
+<p>2) In grabbing pyunit3k, I figured I'd run *its* test suite as well.
+However that seems to depend on 'Zope' being installed. Which is a
+rather huge dependency for a small library. Is it truly dependent? Is it
+only the test suite? Could you something like the bzr 'Feature' work to
+make it a soft-dependency? (Test if it is available, else skip and warn)</p>
+            </article>
+            <article id="comment-1008838401674080531.md">
+                <a href="http://code.mumak.net/2008/08/testresources-fresh-blood.html#comment-1008838401674080531.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-08-18T23:31:00">Mon 18 August 2008</abbr></p>
+                
+                <p>Thanks for the comments John.  </p>
+<p>1) The way to run the testresources tests is 'make check'. I guess
+test_all can be tweaked to do PYTHONPATH setup.  </p>
+<p>2) The dependency is on zope.interfaces -- available separately from the
+main zope. I guess I don't really need to use it, and could use an
+abstract class instead.</p>
+            </article>
+    </section>
         </article>
     </section>
 
@@ -141,8 +177,8 @@ file.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -151,8 +187,8 @@ file.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -163,11 +199,6 @@ file.</p>
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -198,6 +229,11 @@ file.</p>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

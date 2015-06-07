@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Isn't it Pythonic? - Mere Code</title>
+    <title>How programming language affects my approach - Mere Code</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -12,9 +12,9 @@
 
     <!-- Open Graph tags -->
             <meta property="og:type" content="article"/>
-            <meta property="og:title" content="Isn't it Pythonic?"/>
-            <meta property="og:url" content="http://code.mumak.net/2014/08/isnt-it-pythonic.html"/>
-            <meta property="og:description" content="I really should be over this by now. Here's how you test exceptions in Python 2.7 and later: with self.assertRaises(SomeException) as cm: do_something() the_exception = cm.exception self.assertEqual(the_exception.error_code, 3) (as recommended in the unittest documentation) Here's how you test exceptions in earlier Pythons ..."/>
+            <meta property="og:title" content="How programming language affects my approach"/>
+            <meta property="og:url" content="http://code.mumak.net/2014/08/how-programming-language-affects-my-approach.html"/>
+            <meta property="og:description" content="Introduction For a while I've suspected when I solve a problem using Haskell, I do so in a different manner than I'd solve the same problem in Python. I don't know if this is a real thing, and I don't know what causes it, but I ..."/>
 
     <!-- Bootstrap -->
         <link rel="stylesheet" href="http://code.mumak.net/theme/css/bootstrap.yeti.min.css" type="text/css"/>
@@ -60,10 +60,10 @@ Mere Code            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://code.mumak.net/2014/08/isnt-it-pythonic.html"
+                    <a href="http://code.mumak.net/2014/08/how-programming-language-affects-my-approach.html"
                        rel="bookmark"
-                       title="Permalink to Isn't it Pythonic?">
-                        Isn't it Pythonic?
+                       title="Permalink to How programming language affects my approach">
+                        How programming language affects my approach
                     </a>
                 </h1>
             </header>
@@ -73,7 +73,7 @@ Mere Code            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2014-08-13T00:00:00"> Wed 13 August 2014</time>
+        <i class="fa fa-calendar"></i><time datetime="2014-08-03T00:00:00"> Sun 03 August 2014</time>
     </span>
 
 
@@ -81,33 +81,43 @@ Mere Code            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>I really should be over
-<a href="http://article.gmane.org/gmane.comp.python.devel/93654/">this</a> by
-now.</p>
-<p>Here's how you test exceptions in Python 2.7 and later:</p>
-<div class="highlight"><pre><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">SomeException</span><span class="p">)</span> <span class="k">as</span> <span class="n">cm</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-
-<span class="n">the_exception</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">exception</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">the_exception</span><span class="o">.</span><span class="n">error_code</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-
-<p>(as recommended in the <a href="https://docs.python.org/2.7/library/unittest.html#unittest.TestCase.assertRaises">unittest
-documentation</a>)</p>
-<p>Here's how you test exceptions in earlier Pythons, using libraries
-like <a href="https://pypi.python.org/pypi/testtools">testtools</a>.</p>
-<div class="highlight"><pre><span class="n">the_exception</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">SomeException</span><span class="p">,</span> <span class="n">do_something</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">the_exception</span><span class="o">.</span><span class="n">error_code</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-
-<p>I still like the second way. It's simpler, uses less code, and doesn't
-rely on new syntax. I'm sorry it didn't work out that way.</p>
-<p>I guess this is how <a href="http://barry.warsaw.us/">Barry</a> feels about the
-<a href="http://legacy.python.org/dev/peps/pep-0401/">diamond operator</a>.</p>
+                <h2>Introduction</h2>
+<p>For a while I've suspected when I solve a problem using Haskell, I do so in a
+different manner than I'd solve the same problem in Python.</p>
+<p>I don't know if this is a real thing, and I don't know what causes it, but I
+thought it might be worth exploring. Here's the exploration.</p>
+<h2>The problem</h2>
+<p>I've got a command-line todo list application in the works. It's in Haskell.</p>
+<p>At this stage, I've got most of the core functionality written up, but I'd
+like to change the way the tool is configured. Currently, it has a couple of
+command line options, with hard-coded defaults. I'd like to be able to
+configure the tool with a configuration file.</p>
+<h2>Requirements</h2>
+<ul>
+<li>Configuration file in YAML</li>
+<li>Sensible default location for configuration file (e.g.
+  <code>~/.todo/config.yaml</code>)</li>
+<li>Overwrite configuration file location with command-line option (e.g. <code>-d
+  ~/todo/diff-config.yaml</code>)</li>
+<li>Overwrite most configuration file settings with command-line options</li>
+<li>Paths in the configuration file can use <code>~</code> to refer to the user's home
+  directory</li>
+</ul>
+<h2>Current set up</h2>
+<p>I have a <code>Config</code> data record and a <code>defaultConfig</code> instance of that record
+with some defaults.</p>
+<p>I use the <a href="XXX">GetOpt</a> package to parse command-line options. I use the
+result of that parsing to update the <code>defaultConfig</code> instance with
+user-specified values.</p>
+<h2>If it were Python I'd</h2>
+<ul>
+<li>find a YAML parsing library</li>
+<li>start by loading from a hard-wired location</li>
+<li>change the </li>
+</ul>
             </div>
             <!-- /.entry-content -->
+
         </article>
     </section>
 
@@ -128,8 +138,8 @@ rely on new syntax. I'm sorry it didn't work out that way.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -138,8 +148,8 @@ rely on new syntax. I'm sorry it didn't work out that way.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -150,11 +160,6 @@ rely on new syntax. I'm sorry it didn't work out that way.</p>
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -185,6 +190,11 @@ rely on new syntax. I'm sorry it didn't work out that way.</p>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

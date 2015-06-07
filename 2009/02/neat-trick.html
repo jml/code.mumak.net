@@ -93,6 +93,78 @@ branch in your web browser.  </p>
 doesn't mention it.</p>
             </div>
             <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-5522968295613288507.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-5522968295613288507.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-21T02:01:00">Sat 21 February 2009</abbr></p>
+                
+                <p>Don't seem to work with local branches pushed (with --remember) to
+launchpad.  </p>
+<p>\$ bzr lp-open<br />
+bzr: ERROR: There is no public branch set for ...</p>
+            </article>
+            <article id="comment-1415503455515543422.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-1415503455515543422.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-21T02:04:00">Sat 21 February 2009</abbr></p>
+                
+                <p>Good point!  </p>
+<p>At the moment works based on the public location, which is different
+from the push location. I guess the push location could be used as a
+fallback.</p>
+            </article>
+            <article id="comment-1747185353561285461.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-1747185353561285461.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-21T02:04:00">Sat 21 February 2009</abbr></p>
+                
+                <p>https://bugs.edge.launchpad.net/bzr/+bug/332372</p>
+            </article>
+            <article id="comment-4425858687836118295.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-4425858687836118295.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>bialix (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-21T11:49:00">Sat 21 February 2009</abbr></p>
+                
+                <p>\$ bzr lp-open lp:qbzr  </p>
+<p>bzr: ERROR: There is no public branch set for
+"bzr+ssh://bazaar.launchpad.net/\~qbzr-dev/qbzr/trunk/".  </p>
+<p>Your neat trick is a bit useless without public branch. Why I should
+have public branch for lp:qbzr branch anyway?</p>
+            </article>
+            <article id="comment-6158582558710352517.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-6158582558710352517.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-21T22:27:00">Sat 21 February 2009</abbr></p>
+                
+                <p>bialix, the main use case for this was to open the pages of branches
+that you already have locally. The command you type ought to work
+though.  </p>
+<p>Do you know why having public branches set is useful in general?</p>
+            </article>
+            <article id="comment-5895845069379872857.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-5895845069379872857.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>bialix (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-22T06:59:00">Sun 22 February 2009</abbr></p>
+                
+                <p>IIRC, public branch settings used only by `bzr send` command, and
+maybe by pqm plugin (I'm not sure).  </p>
+<p>Your command just unclear in what it ought to do and why for it
+designed. So...</p>
+            </article>
+            <article id="comment-8991222579297095265.md">
+                <a href="http://code.mumak.net/2009/02/neat-trick.html#comment-8991222579297095265.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-02-24T06:12:00">Tue 24 February 2009</abbr></p>
+                
+                <p>There's a fix for the issues here in the Bazaar review queue:
+http://bundlebuggy.aaronbentley.com.</p>
+            </article>
+    </section>
         </article>
     </section>
 
@@ -113,8 +185,8 @@ doesn't mention it.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -123,8 +195,8 @@ doesn't mention it.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -135,11 +207,6 @@ doesn't mention it.</p>
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -170,6 +237,11 @@ doesn't mention it.</p>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

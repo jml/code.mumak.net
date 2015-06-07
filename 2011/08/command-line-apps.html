@@ -165,6 +165,83 @@ was a rewrite.
 </div>
             </div>
             <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-8586529892449590930.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-8586529892449590930.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-15T20:13:00">Thu 15 October 2009</abbr></p>
+                
+                <p>This seems like the kind of thing a bounty would be good for, actually.  </p>
+<p>I'm generally pretty sceptical of bounties: "here's \$200 to do \$3000
+worth of software development, oh, and we'll haggle over standards just
+as much as we would if we were paying \$3000." But this sort of task
+strikes me as fairly well defined, unlikely to blow out significantly in
+estimates, a bit low priority and unexciting for core volunteers,
+potentially high impact in terms of users.</p>
+            </article>
+            <article id="comment-8562070399263375464.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-8562070399263375464.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Jamu Kakar (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-16T02:16:00">Fri 16 October 2009</abbr></p>
+                
+                <p>I want to add support to Commandant for command aliasing (which implies
+some kind of configuration file handling), progress display and plugins.
+I'm not sure what you mean by 'error handling', but at present
+Commandant displays str(exception) when an exception is raised by a
+command.  </p>
+<p>If you have any advice on how to make it easier to figure out what
+Commandant is for, I'd love to hear it. Also, thanks for publicizing
+Commandant!</p>
+            </article>
+            <article id="comment-9070815494461389851.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-9070815494461389851.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-17T13:43:00">Sat 17 October 2009</abbr></p>
+                
+                <p>Dammit. I wrote a reply which then got lost.  </p>
+<p>Here it is again, from memory.  </p>
+<p>Jamu, as I said, I've only ever had a fairly shallow look at Commandant.
+Here are a few things from skimming the README:  </p>
+<p>* I don't want to have to use shell aliases to have my program be
+called by its proper name.  </p>
+<p>* I dislike the idea of putting files in a directory to get commands.
+I'd much rather an explicit registry.  </p>
+<p>* I don't want the word "Commandant" appearing in the output of my
+program.  </p>
+<p>Maybe what all of this means is that I was looking for a library, and
+the README makes it look more like a framework. This is all rather
+shallow, of course, since I still haven't actually tried to use it in
+anger.  </p>
+<p>Hope this helps.  </p>
+<p>jml</p>
+            </article>
+            <article id="comment-260246674476988617.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-260246674476988617.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>bignose (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-10-31T08:57:00">Sat 31 October 2009</abbr></p>
+                
+                <p>Most of the features you list are available with the popular
+<a href="http://pypi.python.org/pypi/argparse">argparse</a> library.  </p>
+<p>As for “progress bar”, I don't think that belongs much in a command-line
+parser library; a separate facility for progress bar output seems more
+suitable.</p>
+            </article>
+            <article id="comment-8541837733464629549.md">
+                <a href="http://code.mumak.net/2011/08/command-line-apps.html#comment-8541837733464629549.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-11-02T14:21:00">Mon 02 November 2009</abbr></p>
+                
+                <p>Thanks bignose, I hadn't heard of that one. I'll take a look at it.  </p>
+<p>I agree that a progress bar is separate from a command-line parser, but
+it's not separate from a command-line app toolkit. I could have made my
+point better, but what I meant is that Bazaar has a great command-line
+app toolkit begging to be separated from the dvcs bits.</p>
+            </article>
+    </section>
         </article>
     </section>
 
@@ -185,8 +262,8 @@ was a rewrite.
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -195,8 +272,8 @@ was a rewrite.
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -207,11 +284,6 @@ was a rewrite.
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -242,6 +314,11 @@ was a rewrite.
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

@@ -157,6 +157,75 @@ has been a useful exercise for me, it's highlighted that:  </p>
 <p><strong>Update:</strong> Correct links to example Python files.</p>
             </div>
             <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-518001880574926965.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-518001880574926965.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>spiv (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2008-10-06T04:44:00">Mon 06 October 2008</abbr></p>
+                
+                <p>Fully “sic” bro. :)</p>
+            </article>
+            <article id="comment-7099591562608775706.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-7099591562608775706.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Max Magee (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-13T21:07:00">Wed 13 April 2011</abbr></p>
+                
+                <p>Thanks for posting this example. I've been struggling to understand
+testresource (coming from PyUnit backgroun) and your third example is
+the most helpful I've seen so far.  </p>
+<p>One question- why do you say the database gets created and destroyed
+<em>twice</em> in that example? If they're optimized, shouldn't the test case
+that dirties the database be run last, then simply tear the db down at
+the end of the test run- so only <em>one</em> invocation of setup and tear down
+total?</p>
+            </article>
+            <article id="comment-889632619691729131.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-889632619691729131.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-14T17:08:00">Thu 14 April 2011</abbr></p>
+                
+                <p>I'm glad you liked it, and that it's still useful years later.  </p>
+<p>In an ideal world, yes. However, there's no way for the test framework
+to predict which tests will dirty which resources. Within a group of
+tests that declare the same resources, they just run in alphabetical
+order.</p>
+            </article>
+            <article id="comment-197733674552544765.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-197733674552544765.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Max Magee (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-14T18:17:00">Thu 14 April 2011</abbr></p>
+                
+                <p>Sorry to be a bother, but I'm elbows deep in an implementation of
+testresources currently, and I'm getting "TypeError: make() takes
+exactly 1 argument (2 given)" in each test case (method of the
+ResourcedTestCase class).  </p>
+<p>I went back and reconstructed the 3rd complex example from your .py and
+Storm, and I get the exact same error from testresources.__init__
+(where I am getting it in mine). Does this ring a bell?</p>
+            </article>
+            <article id="comment-4600903575704275756.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-4600903575704275756.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-15T10:57:00">Fri 15 April 2011</abbr></p>
+                
+                <p>*ahem* https://answers.launchpad.net/testresources</p>
+            </article>
+            <article id="comment-8370710893595461974.md">
+                <a href="http://code.mumak.net/2010/05/testresources-some-examples.html#comment-8370710893595461974.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>jml (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2011-04-15T10:57:00">Fri 15 April 2011</abbr></p>
+                
+                <p>Not really. testresources may have changed a lot since I wrote this blog
+post. I'm not using it day-to-day these days.  </p>
+<p>Your best hope for getting help is to ask a question on or to ask
+'lifeless' on the #python-testing channel on Freenode.  </p>
+<p>Good luck!</p>
+            </article>
+    </section>
         </article>
     </section>
 
@@ -177,8 +246,8 @@ has been a useful exercise for me, it's highlighted that:  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -187,8 +256,8 @@ has been a useful exercise for me, it's highlighted that:  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -199,11 +268,6 @@ has been a useful exercise for me, it's highlighted that:  </p>
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -234,6 +298,11 @@ has been a useful exercise for me, it's highlighted that:  </p>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

@@ -101,6 +101,108 @@ affect a release cycle? What would Bazaar's format reputation be like if
 they released every six months instead of every month?</p>
             </div>
             <!-- /.entry-content -->
+
+    <hr />
+    <section class="comments">
+      <h2>Comments</h2>
+
+            <article id="comment-1538258633174815708.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-1538258633174815708.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T01:13:00">Wed 01 April 2009</abbr></p>
+                
+                <p>Please keep the monthly releases. It's quite nice to have the new
+features on a packaged format earlier. The developer are forced to keep
+the project in a "releasable" state more often too.  </p>
+<p>But I'd ask, *please*, don't add new default repository formats so
+often.<br />
+My proposal: do time-based *major* (2.0, 3.0, ...) releases too, every
+6 months for example, and add a new default format only to this
+releases.  </p>
+<p>The new format, accumulating all backward incompatible changes, could be
+developed on a branch and integrated as a --development format when its
+good enough (like it is now), but only released as the default on a
+major release.  </p>
+<p>This way, distributions can offer always a bzr with the latest (or
+almost) format, and teams/hosting sites/sysadmins can get prepared to
+upgrade their repos less often.</p>
+            </article>
+            <article id="comment-5656991530384186263.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-5656991530384186263.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Cory (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T06:04:00">Wed 01 April 2009</abbr></p>
+                
+                <p>I have to agree with Eduardo there. One of the reasons specifically
+cited by Brett Cannon today when discussing Python-on-hg is the number
+of changes to release formats in bzr.  </p>
+<p>I think that has way more of an impact on the impression of stability
+than does the frequency of releases; people just want to know it will
+always work wherever they happen to need some code, regardless of what
+version is installed there.  </p>
+<p>I don't see any reason to question the basic concept of always being
+ready to release, but that's not the same as releasing all the time. :-)
+Every month is good for a pre-1.0, after that, 3 or 6 months is a better
+pace to set. Being ready gives you the ability to do a critical bugfix
+release at the drop of a hat.</p>
+            </article>
+            <article id="comment-3590099636265162880.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-3590099636265162880.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T12:58:00">Wed 01 April 2009</abbr></p>
+                
+                <p>Also, If new formats had a big set of new features (instead of the
+one-format-per-new-feature-every-now-and-again like it is now), people
+would be more excited about upgrading. At least brisbane-core is
+something everybody will be really *really* excited about :)</p>
+            </article>
+            <article id="comment-7154288789609202402.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-7154288789609202402.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>bialix (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-01T18:47:00">Wed 01 April 2009</abbr></p>
+                
+                <p>I think bzr practive to release every 4 weeks is too frequent for the
+most users/admins. Once at 2 or 3 months is much better.  </p>
+<p>May be only point releases, e.g. 1.13.X should be released once at
+month.  </p>
+<p>E.g. for version X.Y.Z  </p>
+<p>Z = every month (only bugfixes)<br />
+Y = every 3 months (improvements)<br />
+X = every 9-12 months (big improvements, new formats)</p>
+            </article>
+            <article id="comment-3467960932830685026.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-3467960932830685026.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Mary (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-02T05:12:00">Thu 02 April 2009</abbr></p>
+                
+                <p>My thoughts are not as specific as other commenters, but essentially:
+bzr does not provide any way to judge the level of change in its
+releases: the number is essentially 1.X where X is the number of months
+since 1.0 (give or take).  </p>
+<p>While Ubuntu also uses a similar strategy, most Free Software people
+really are accustomed to X.Y where a change in X means big changes
+including likely major fixes and improvements but also to beware of
+breakage, and a change in Y means tweaks to what you know, breakage
+unlikely. (For projects with dependant projects, X.Y.Z is better where a
+change in Z means no ABI/API break from the previous release, as
+required.)  </p>
+<p>Of course, one can get this from the release notes, but one doesn't read
+them...</p>
+            </article>
+            <article id="comment-3468572292567331193.md">
+                <a href="http://code.mumak.net/2009/03/time-based-releases-and-love.html#comment-3468572292567331193.md" rel="bookmark" title="Permalink to this comment">Permalink</a>
+                <h4>Eduardo de Oliveira Padoan (noreply@blogger.com)</h4>
+                <p>Posted on <abbr class="published" title="2009-04-02T12:08:00">Thu 02 April 2009</abbr></p>
+                
+                <p>@bialix: I think that point releases (especially when security fixes and
+fixes for major regression are involved) should be released any time if
+needed.  </p>
+<p>If bzr is to move to a longer release cycle (3 months, say), it can
+still do montly alpha/beta releases: an alpha on the end of the first
+month, a beta on the end of the second one (if no release critical bug
+id found, them is could slip some days), and a rc or two on the week
+before the final release.</p>
+            </article>
+    </section>
         </article>
     </section>
 
@@ -121,8 +223,8 @@ they released every six months instead of every month?</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -131,8 +233,8 @@ they released every six months instead of every month?</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -143,11 +245,6 @@ they released every six months instead of every month?</p>
                         <li class="list-group-item tag-3">
                             <a href="http://code.mumak.net/tag/testing.html">
                                 Testing
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -178,6 +275,11 @@ they released every six months instead of every month?</p>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/ui.html">
                                 UI
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
                             </a>
                         </li>
                         <li class="list-group-item tag-4">

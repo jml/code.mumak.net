@@ -1,38 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code</title><link href="http://code.mumak.net/" rel="alternate"></link><link href="http://code.mumak.net/atom.xml" rel="self"></link><id>http://code.mumak.net/</id><updated>2014-08-03T00:00:00+01:00</updated><entry><title>How programming language affects my approach</title><link href="http://code.mumak.net/2014/08/how-programming-language-affects-my-approach.html" rel="alternate"></link><updated>2014-08-03T00:00:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-08-03:2014/08/how-programming-language-affects-my-approach.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;For a while I've suspected when I solve a problem using Haskell, I do so in a
-different manner than I'd solve the same problem in Python.&lt;/p&gt;
-&lt;p&gt;I don't know if this is a real thing, and I don't know what causes it, but I
-thought it might be worth exploring. Here's the exploration.&lt;/p&gt;
-&lt;h2&gt;The problem&lt;/h2&gt;
-&lt;p&gt;I've got a command-line todo list application in the works. It's in Haskell.&lt;/p&gt;
-&lt;p&gt;At this stage, I've got most of the core functionality written up, but I'd
-like to change the way the tool is configured. Currently, it has a couple of
-command line options, with hard-coded defaults. I'd like to be able to
-configure the tool with a configuration file.&lt;/p&gt;
-&lt;h2&gt;Requirements&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Configuration file in YAML&lt;/li&gt;
-&lt;li&gt;Sensible default location for configuration file (e.g.
-  &lt;code&gt;~/.todo/config.yaml&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Overwrite configuration file location with command-line option (e.g. &lt;code&gt;-d
-  ~/todo/diff-config.yaml&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Overwrite most configuration file settings with command-line options&lt;/li&gt;
-&lt;li&gt;Paths in the configuration file can use &lt;code&gt;~&lt;/code&gt; to refer to the user's home
-  directory&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Current set up&lt;/h2&gt;
-&lt;p&gt;I have a &lt;code&gt;Config&lt;/code&gt; data record and a &lt;code&gt;defaultConfig&lt;/code&gt; instance of that record
-with some defaults.&lt;/p&gt;
-&lt;p&gt;I use the &lt;a href="XXX"&gt;GetOpt&lt;/a&gt; package to parse command-line options. I use the
-result of that parsing to update the &lt;code&gt;defaultConfig&lt;/code&gt; instance with
-user-specified values.&lt;/p&gt;
-&lt;h2&gt;If it were Python I'd&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;find a YAML parsing library&lt;/li&gt;
-&lt;li&gt;start by loading from a hard-wired location&lt;/li&gt;
-&lt;li&gt;change the &lt;/li&gt;
-&lt;/ul&gt;</summary></entry><entry><title>Cutting edge debugging</title><link href="http://code.mumak.net/2014/07/cutting-edge-debugging.html" rel="alternate"></link><updated>2014-07-11T00:00:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-07-11:2014/07/cutting-edge-debugging.html</id><summary type="html">&lt;p&gt;One of the great pleasures of advancing in one's craft is the thrill of solving 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code</title><link href="http://code.mumak.net/" rel="alternate"></link><link href="http://code.mumak.net/atom.xml" rel="self"></link><id>http://code.mumak.net/</id><updated>2014-07-11T00:00:00+01:00</updated><entry><title>Cutting edge debugging</title><link href="http://code.mumak.net/2014/07/cutting-edge-debugging.html" rel="alternate"></link><updated>2014-07-11T00:00:00+01:00</updated><author><name>Jonathan M. Lange</name></author><id>tag:code.mumak.net,2014-07-11:2014/07/cutting-edge-debugging.html</id><summary type="html">&lt;p&gt;One of the great pleasures of advancing in one's craft is the thrill of solving 
 newer, more difficult problems. In the course of my work, I frequently encounter 
 many bugs which appear at first glance to be impossible. Not just impossible to
 solve, but intrinsically impossible. It's as if being at the very frontiers of

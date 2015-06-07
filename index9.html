@@ -57,16 +57,6 @@ Mere Code            </a>
         <div class="col-sm-9">
 
             <article>
-                <h2><a href="http://code.mumak.net/2009/02/neat-trick.html">Neat trick</a></h2>
-                <div class="summary"><p>In Argentina I hacked up a little command for the 'launchpad' Bazaar
-plugin. It's a command line tool to open the Launchpad page for your
-branch in your web browser.  </p>
-<div class="highlight"><pre>  <span class="err">$</span> <span class="n">cd</span> <span class="o">~/</span><span class="n">src</span><span class="o">/</span><span class="n">testresources</span><span class="o">/</span><span class="n">expose</span><span class="o">-</span><span class="n">reset</span><span class="o">-</span><span class="n">bug</span><span class="o">-</span><span class="mi">271619</span> <span class="err">$</span> <span class="n">bzr</span> <span class="n">lp</span><span class="o">-</span><span class="n">open</span> <span class="n">Opening</span> <span class="n">https</span><span class="o">:</span><span class="c1">//code.edge.launchpad.net/~jml/testresources/expose-reset-bug-271619 ...</span></pre></div>
-                    <a class="btn btn-default btn-xs" href="http://code.mumak.net/2009/02/neat-trick.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
                 <h2><a href="http://code.mumak.net/2009/02/things-every-project-needs.html">Things every project needs</a></h2>
                 <div class="summary"><p>I'm reviewing my checklists right now. I just came across one that I'd
 like some help with. It's called "Things every project needs", and it
@@ -294,6 +284,17 @@ together and <span>hack</span>?  </p>
                 </div>
             </article>
             <hr/>
+            <article>
+                <h2><a href="http://code.mumak.net/2008/10/more-bzr-hacking.html">More bzr hacking</a></h2>
+                <div class="summary"><p>I've extended bzr-establish to give it a new command: hack.  </p>
+<p>'bzr hack lp:foo' will create a repository with working trees called
+'foo' and fetch the lp:foo branch into that repository.<br />
+'bzr hack --repository \~/repos lp:foo' will create a repository in
+'\~/repos/foo', a working tree area ...</p>
+                    <a class="btn btn-default btn-xs" href="http://code.mumak.net/2008/10/more-bzr-hacking.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
 
     <ul class="pagination">
             <li class="prev"><a href="http://code.mumak.net/index8.html">&laquo;</a>
@@ -320,8 +321,6 @@ together and <span>hack</span>?  </p>
                         href="http://code.mumak.net/index10.html">10</a></li>
                 <li class=""><a
                         href="http://code.mumak.net/index11.html">11</a></li>
-                <li class=""><a
-                        href="http://code.mumak.net/index12.html">12</a></li>
             <li class="next"><a
                     href="http://code.mumak.net/index10.html">&raquo;</a></li>
     </ul>
@@ -342,8 +341,8 @@ together and <span>hack</span>?  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/testtools.html">
-                                testtools
+                            <a href="http://code.mumak.net/tag/launchpad.html">
+                                launchpad
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -352,8 +351,8 @@ together and <span>hack</span>?  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://code.mumak.net/tag/launchpad.html">
-                                launchpad
+                            <a href="http://code.mumak.net/tag/testtools.html">
+                                testtools
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -367,8 +366,8 @@ together and <span>hack</span>?  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/ubuntu.html">
-                                ubuntu
+                            <a href="http://code.mumak.net/tag/twisted.html">
+                                Twisted
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -377,18 +376,8 @@ together and <span>hack</span>?  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
-                                launchpad subunit data
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/twisted.html">
-                                Twisted
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/subunit-data.html">
-                                subunit data
+                            <a href="http://code.mumak.net/tag/ubuntu.html">
+                                ubuntu
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -397,13 +386,23 @@ together and <span>hack</span>?  </p>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://code.mumak.net/tag/personal.html">
-                                Personal
+                            <a href="http://code.mumak.net/tag/subunit-data.html">
+                                subunit data
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
                             <a href="http://code.mumak.net/tag/blog.html">
                                 blog
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/personal.html">
+                                Personal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://code.mumak.net/tag/launchpad-subunit-data.html">
+                                launchpad subunit data
                             </a>
                         </li>
                     </ul>

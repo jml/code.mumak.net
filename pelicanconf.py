@@ -32,12 +32,31 @@ TRANSLATION_FEED_ATOM = None
 DEFAULT_PAGINATION = 20
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican_comment_system']
+PLUGINS = [
+    'pelican_comment_system',
+    'related_posts',
+]
 PELICAN_COMMENT_SYSTEM = True
 
+# Theme
 THEME = 'themes/pelican-bootstrap3'
 BOOTSTRAP_THEME = 'yeti'
+SHOW_ARTICLE_CATEGORY = True
+ABOUT_ME = '''
+Programmer in London, UK
+'''
+SOCIAL = (
+    ('github', 'http://github.com/jml'),
+    ('twitter', 'http://twitter.com/mumak'),
+    ('google-plus', 'https://plus.google.com/+JonathanLange/'),
+)
+DISPLAY_TAGS_ON_SIDEBAR = False
+CC_LICENSE = "CC-BY-NC-SA"
+GITHUB_USER = 'jml'
+GITHUB_SKIP_FORK = True
+GITHUB_SHOW_USER_LINK = True
 
+DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False

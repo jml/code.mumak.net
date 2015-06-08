@@ -45,6 +45,7 @@ SHOW_ARTICLE_CATEGORY = True
 ABOUT_ME = '''
 Programmer in London, UK
 '''
+AVATAR = 'images/jml.jpg'
 SOCIAL = (
     ('github', 'http://github.com/jml'),
     ('twitter', 'http://twitter.com/mumak'),
@@ -74,7 +75,10 @@ CATEGORIES_SAVE_AS = ''
 ARCHIVES_SAVE_AS = 'blog/archives/index.html'
 ARCHIVES_URL = 'blog/archives/'
 
-STATIC_PATHS = ['extra/CNAME']
+STATIC_PATHS = [
+    'extra/CNAME',
+    'images',
+]
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 
 # Uncomment following line if you want document-relative URLs when developing

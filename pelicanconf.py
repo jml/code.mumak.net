@@ -49,6 +49,7 @@ SOCIAL = (
     ('github', 'http://github.com/jml'),
     ('twitter', 'http://twitter.com/mumak'),
     ('google-plus', 'https://plus.google.com/+JonathanLange/'),
+    ('linkedin', 'https://www.linkedin.com/profile/view?id=5746961'),
 )
 DISPLAY_TAGS_ON_SIDEBAR = False
 CC_LICENSE = "CC-BY-NC-SA"

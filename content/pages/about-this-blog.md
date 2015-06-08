@@ -1,4 +1,4 @@
-Title: About this blog
+Title: About
 Date: 2012-10-19 16:47
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: about-this-blog

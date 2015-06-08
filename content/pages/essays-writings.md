@@ -1,4 +1,4 @@
-Title: Essays & Writings
+Title: Writing
 Date: 2013-01-11 16:32
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: essays-writings

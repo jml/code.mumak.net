@@ -60,7 +60,7 @@ GITHUB_SHOW_USER_LINK = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
 DISPLAY_CATEGORIES_ON_MENU = False
-DISPLAY_PAGES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = True
 
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}.html'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}.html'

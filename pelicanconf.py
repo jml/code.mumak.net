@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Jonathan M. Lange'
-SITENAME = u'Mere Code'
+AUTHOR = u'Jonathan Lange'
+SITENAME = u'jml :: Jonathan Lange'
 SITEURL = ''
 
 PATH = 'content'

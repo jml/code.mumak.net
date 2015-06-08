@@ -1,28 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: unittest API, part 1</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.unittest-api-part-1.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/07/unittest-api-part-1.html/</id><updated>2010-08-02T11:13:00+01:00</updated><entry><title>Posted by: Aaron (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/#comment-3786856957696112034.md" rel="alternate"></link><updated>2010-07-30T18:29:00+01:00</updated><author><name>Aaron (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-30:2010/07/unittest-api-part-1.html/</id><summary type="html">&lt;p&gt;I don't understand how a TestCase can be a single test when the test
-suites I use all have multiple test cases per TestCase.&lt;/p&gt;</summary></entry><entry><title>Posted by: Kevin H (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/#comment-3981993923906561753.md" rel="alternate"></link><updated>2010-07-30T03:23:00+01:00</updated><author><name>Kevin H (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-30:2010/07/unittest-api-part-1.html/</id><summary type="html">&lt;p&gt;Heck yeah, it's useful!  &lt;/p&gt;
-&lt;p&gt;Please keep it up!&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/#comment-4522332925084666172.md" rel="alternate"></link><updated>2010-07-30T15:39:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-30:2010/07/unittest-api-part-1.html/</id><summary type="html">&lt;p&gt;Thanks for the comments all. I'm glad you like it.  &lt;/p&gt;
-&lt;p&gt;Michael, once I'm finished with the series and have a chance to get some
-more feedback – particularly from other framework authors – I'll try to
-turn these into patches. (And also try to get over the fact that I won't
-be able to use zope.interface to do so).  &lt;/p&gt;
-&lt;p&gt;Your plugin proposal is up there on my list of things to respond to, but
-I likely won't get a chance until the weekend.&lt;/p&gt;</summary></entry><entry><title>Posted by: Michael Foord (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/#comment-5350807215795733382.md" rel="alternate"></link><updated>2010-07-30T15:20:00+01:00</updated><author><name>Michael Foord (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-30:2010/07/unittest-api-part-1.html/</id><summary type="html">&lt;p&gt;Great stuff Jonathan. If you want to formulate these as patches to the
-unittest docs then please feel free. :-)  &lt;/p&gt;
-&lt;p&gt;Would be interested in your feedback on my unittest plugin proposal too.&lt;/p&gt;</summary></entry><entry><title>Posted by: jam (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/#comment-5355553186774575547.md" rel="alternate"></link><updated>2010-07-30T14:51:00+01:00</updated><author><name>jam (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-07-30:2010/07/unittest-api-part-1.html/</id><summary type="html">&lt;p&gt;I think it is quite useful.&lt;br /&gt;
-We've certainly had our share of unittest issues in bzr, so it is nice
-to have a fairly easy-to-read explanation of how it is at least
-&lt;em&gt;supposed&lt;/em&gt; to work.&lt;/p&gt;</summary></entry><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/#comment-7703550226328996251.md" rel="alternate"></link><updated>2010-08-02T11:13:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-08-02:2010/07/unittest-api-part-1.html/</id><summary type="html">&lt;p&gt;Aaron, an &lt;em&gt;instance&lt;/em&gt; of TestCase is a single test.  &lt;/p&gt;
-&lt;p&gt;When you have many test_ methods on a TestCase, what actually happens
-is that one TestCase object gets constructed for each test method.  &lt;/p&gt;
-&lt;p&gt;Say you've got:  &lt;/p&gt;
-&lt;p&gt;class TestFoo(TestCase):&lt;br /&gt;
-def test_a(self):&lt;br /&gt;
-pass&lt;br /&gt;
-def test_b(self):&lt;br /&gt;
-pass  &lt;/p&gt;
-&lt;p&gt;(please forgive the lack of indentation.)  &lt;/p&gt;
-&lt;p&gt;Then the default test loader will construct something like:&lt;br /&gt;
-[TestFoo("test_a"), TestFoo("test_b")]  &lt;/p&gt;
-&lt;p&gt;Thanks for asking the question. It's a common point of confusion.
-Indeed, it tripped me up the first year or so I was writing Trial.&lt;/p&gt;</summary></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: unittest API, part 1</title><link href="http://code.mumak.net/2010/07/unittest-api-part-1.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.unittest-api-part-1.atom.xml" rel="self"></link><id>http://code.mumak.net/2010/07/unittest-api-part-1.html/</id><updated>2015-06-08T15:58:09Z</updated></feed>

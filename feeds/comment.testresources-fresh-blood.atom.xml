@@ -1,18 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: testresources: fresh blood</title><link href="http://code.mumak.net/2008/08/testresources-fresh-blood.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.testresources-fresh-blood.atom.xml" rel="self"></link><id>http://code.mumak.net/2008/08/testresources-fresh-blood.html/</id><updated>2008-08-18T23:31:00+01:00</updated><entry><title>Posted by: jml (noreply@blogger.com)</title><link href="http://code.mumak.net/2008/08/testresources-fresh-blood.html/#comment-1008838401674080531.md" rel="alternate"></link><updated>2008-08-18T23:31:00+01:00</updated><author><name>jml (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2008-08-18:2008/08/testresources-fresh-blood.html/</id><summary type="html">&lt;p&gt;Thanks for the comments John.  &lt;/p&gt;
-&lt;p&gt;1) The way to run the testresources tests is 'make check'. I guess
-test_all can be tweaked to do PYTHONPATH setup.  &lt;/p&gt;
-&lt;p&gt;2) The dependency is on zope.interfaces -- available separately from the
-main zope. I guess I don't really need to use it, and could use an
-abstract class instead.&lt;/p&gt;</summary></entry><entry><title>Posted by: jam (noreply@blogger.com)</title><link href="http://code.mumak.net/2008/08/testresources-fresh-blood.html/#comment-4417723050516631642.md" rel="alternate"></link><updated>2008-08-18T14:28:00+01:00</updated><author><name>jam (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2008-08-18:2008/08/testresources-fresh-blood.html/</id><summary type="html">&lt;p&gt;I thought I'd give a look at the testresources code. I've peeked at it
-before, and I'm generally interested in both testresources and your
-pyunit3k work.  &lt;/p&gt;
-&lt;p&gt;Some quick comments:  &lt;/p&gt;
-&lt;p&gt;1) There is a 'test_all.py' file in the root directory, but running it
-fails because the actual library is under 'lib/'. So you have to do
-something like "PYTHONPATH='lib' ./test_all.py" which seems a bit odd.  &lt;/p&gt;
-&lt;p&gt;2) In grabbing pyunit3k, I figured I'd run *its* test suite as well.
-However that seems to depend on 'Zope' being installed. Which is a
-rather huge dependency for a small library. Is it truly dependent? Is it
-only the test suite? Could you something like the bzr 'Feature' work to
-make it a soft-dependency? (Test if it is available, else skip and warn)&lt;/p&gt;</summary></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: testresources: fresh blood</title><link href="http://code.mumak.net/2008/08/testresources-fresh-blood.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.testresources-fresh-blood.atom.xml" rel="self"></link><id>http://code.mumak.net/2008/08/testresources-fresh-blood.html/</id><updated>2015-06-08T15:58:09Z</updated></feed>

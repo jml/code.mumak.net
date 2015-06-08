@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Layers are terrible</title><link href="http://code.mumak.net/2009/09/layers-are-terrible.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.layers-are-terrible.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/09/layers-are-terrible.html/</id><updated>2010-01-11T09:58:00+00:00</updated><entry><title>Posted by: ChrisW (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/09/layers-are-terrible.html/#comment-1777572030400674616.md" rel="alternate"></link><updated>2010-01-11T09:58:00+00:00</updated><author><name>ChrisW (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2010-01-11:2009/09/layers-are-terrible.html/</id><summary type="html">&lt;p&gt;The punted alternative right now is:  &lt;/p&gt;
-&lt;p&gt;http://pypi.python.org/pypi/testresources  &lt;/p&gt;
-&lt;p&gt;...which sadly seems to be lacking on the docs and examples front.&lt;/p&gt;</summary></entry><entry><title>Posted by: jcalderone (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/09/layers-are-terrible.html/#comment-6278239678061902501.md" rel="alternate"></link><updated>2009-09-14T22:52:00+01:00</updated><author><name>jcalderone (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-09-14:2009/09/layers-are-terrible.html/</id><summary type="html">&lt;p&gt;Hi jml,  &lt;/p&gt;
-&lt;p&gt;I've never used Layers, but these points seem right. One thing that I
-find missing from this post is a discussion of some of the alternatives.
-For example, I know I am sometimes tempted to add new methods to
-TestCase and require the runner to find them. It's not always obvious
-how to add features without expanding the interface. When I started
-writing this post, I had an example of this, but then it slipped away
-from me. Oops.&lt;/p&gt;</summary></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Layers are terrible</title><link href="http://code.mumak.net/2009/09/layers-are-terrible.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.layers-are-terrible.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/09/layers-are-terrible.html/</id><updated>2015-06-08T15:58:09Z</updated></feed>

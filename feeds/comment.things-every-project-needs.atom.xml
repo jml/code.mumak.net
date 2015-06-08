@@ -1,20 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Things every project needs</title><link href="http://code.mumak.net/2009/02/things-every-project-needs.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.things-every-project-needs.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/02/things-every-project-needs.html/</id><updated>2009-02-20T20:42:00+00:00</updated><entry><title>Posted by: intellectronica (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/02/things-every-project-needs.html/#comment-1226769124581017865.md" rel="alternate"></link><updated>2009-02-20T20:42:00+00:00</updated><author><name>intellectronica (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-02-20:2009/02/things-every-project-needs.html/</id><summary type="html">&lt;p&gt;IRC channel&lt;br /&gt;
-Mailing list&lt;br /&gt;
-Wiki&lt;/p&gt;</summary></entry><entry><title>Posted by: Cory (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/02/things-every-project-needs.html/#comment-1233733798298244998.md" rel="alternate"></link><updated>2009-02-20T08:58:00+00:00</updated><author><name>Cory (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-02-20:2009/02/things-every-project-needs.html/</id><summary type="html">&lt;p&gt;I'm not sure I agree on all of this - why does build-and-run-tests need
-to be one step? Why can't distro packagers take care of build-and-run?  &lt;/p&gt;
-&lt;p&gt;Here's a few more though.  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Documented build-run-tests-upload-release. (Maybe this is why you need
-build-and-run-tests? I still disagree that it absolutely must be one
-step.)  &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Documented release announcement procedure. (Unlikely to get this down
-to one step though because there are many places to announce a project,
-not all of them belong to you.) Basically, &lt;a href="http://wiki.goonmill.org/HowtoReleaseHypy"&gt;this
-document&lt;/a&gt;.  &lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Releasing should be done &lt;em&gt;early and often&lt;/em&gt;. Therefore, it must be easy.&lt;/p&gt;</summary></entry><entry><title>Posted by: Christopher Armstrong (noreply@blogger.com)</title><link href="http://code.mumak.net/2009/02/things-every-project-needs.html/#comment-5841857811485464731.md" rel="alternate"></link><updated>2009-02-20T18:09:00+00:00</updated><author><name>Christopher Armstrong (noreply@blogger.com)</name></author><id>tag:code.mumak.net,2009-02-20:2009/02/things-every-project-needs.html/</id><summary type="html">&lt;p&gt;One-step release.&lt;/p&gt;</summary></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mere Code - Comments: Things every project needs</title><link href="http://code.mumak.net/2009/02/things-every-project-needs.html/" rel="alternate"></link><link href="http://code.mumak.net/feeds/comment.things-every-project-needs.atom.xml" rel="self"></link><id>http://code.mumak.net/2009/02/things-every-project-needs.html/</id><updated>2015-06-08T15:58:09Z</updated></feed>

@@ -12,10 +12,16 @@ TIMEZONE = 'Europe/London'
 
 DEFAULT_LANG = u'en'
 
+INDEX_SAVE_AS = 'blog/index.html'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+
+MENUITEMS = (
+    ('Blog', '/blog/'),
+)
 
 # XXX: Do something with these once basic publishing is back.
 #
@@ -29,6 +35,10 @@ TRANSLATION_FEED_ATOM = None
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)
 
+TEMPLATE_PAGES = {
+    'home.html': 'index.html',
+}
+
 DEFAULT_PAGINATION = 20
 
 PLUGIN_PATHS = ['plugins']
@@ -40,12 +50,13 @@ PELICAN_COMMENT_SYSTEM = True
 
 # Theme
 THEME = 'themes/pelican-bootstrap3'
-BOOTSTRAP_THEME = 'yeti'
+BOOTSTRAP_THEME = 'darkly'
+BOOTSTRAP_FLUID = True
 SHOW_ARTICLE_CATEGORY = True
 ABOUT_ME = '''
 Programmer in London, UK
 '''
-AVATAR = 'images/jml.jpg'
+AVATAR = '/images/jml.jpg'
 SOCIAL = (
     ('github', 'http://github.com/jml'),
     ('twitter', 'http://twitter.com/mumak'),

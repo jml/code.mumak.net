@@ -14,8 +14,7 @@ there's every chance you aren't doing it correctly.
 Thanks to [moshez](http://moshez.livejournal.com) and teratorn for
 reviewing this document. Any errors are still my fault.
 
-How to Disconnect in Twisted, Really
-------------------------------------
+----
 
 You are writing a test for some network code. You have already written
 many unit tests for the protocol and the protocol factories, and you

@@ -4,9 +4,6 @@ Author: Jonathan Lange (noreply@blogger.com)
 Slug: test-doubles
 Status: hidden
 
-Test Doubles
-============
-
 Dummy
 -----
 

@@ -4,14 +4,19 @@ Author: Jonathan Lange (noreply@blogger.com)
 Slug: your-code-sucks-and-i-hate-you
 Status: hidden
 
-Your Code Sucks and I Hate You: The Social Dynamics of Code Reviews
+The Social Dynamics of Code Reviews
 ===================================================================
 
-Jonathan Lange, September 15^th^ 2008
+Jonathan Lange, September 15th, 2008
 
 Read the [Ukrainian
 translation](http://www.webhostinghub.com/support/by/edu/code-sucks-uk)
 (thanks Alyona Lompar!)
+
+This article is translated to <a
+href="http://translate.coupofy.com/your-code-sucks-and-i-hate-you/">Russian</a>
+language by Ivanka from <a href="http://www.coupofy.com">Coupofy.com</a>
+
 
 Abstract
 --------

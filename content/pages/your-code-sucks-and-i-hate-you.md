@@ -12,6 +12,10 @@ Read the [Ukrainian
 translation](http://www.webhostinghub.com/support/by/edu/code-sucks-uk)
 (thanks Alyona Lompar!)
 
+This article is translated to <a
+href="http://translate.coupofy.com/your-code-sucks-and-i-hate-you/">Russian</a>
+language by Ivanka from <a href="http://www.coupofy.com">Coupofy.com</a>
+
 
 Abstract
 --------

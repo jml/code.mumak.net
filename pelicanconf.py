@@ -50,7 +50,7 @@ PELICAN_COMMENT_SYSTEM = True
 
 # Theme
 THEME = 'themes/pelican-bootstrap3'
-BOOTSTRAP_THEME = 'darkly'
+BOOTSTRAP_THEME = 'paper'
 BOOTSTRAP_FLUID = True
 SHOW_ARTICLE_CATEGORY = True
 ABOUT_ME = '''

@@ -35,10 +35,6 @@ MENUITEMS = (
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)
 
-TEMPLATE_PAGES = {
-    'home.html': 'index.html',
-}
-
 DEFAULT_PAGINATION = 20
 
 PLUGIN_PATHS = ['plugins']
@@ -50,7 +46,7 @@ PELICAN_COMMENT_SYSTEM = True
 
 # Theme
 THEME = 'themes/pelican-bootstrap3'
-BOOTSTRAP_THEME = 'paper'
+BOOTSTRAP_THEME = 'cosmo'
 BOOTSTRAP_FLUID = True
 SHOW_ARTICLE_CATEGORY = True
 ABOUT_ME = '''

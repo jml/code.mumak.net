@@ -39,6 +39,7 @@ DEFAULT_PAGINATION = 20
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
+    'pelican_alias',
     'pelican_comment_system',
     'related_posts',
 ]

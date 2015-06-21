@@ -54,6 +54,7 @@ ABOUT_ME = '''
 Programmer in London, UK
 '''
 CUSTOM_CSS = 'static/custom.css'
+FAVICON = 'images/favicon.png'
 AVATAR = '/images/jml-transparent.png'
 SOCIAL = (
     ('github', 'http://github.com/jml'),

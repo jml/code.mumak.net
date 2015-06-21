@@ -2,6 +2,7 @@ Title: Test Doubles
 Date: 2012-09-22 16:48
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: test-doubles
+Alias: test-doubles/index.html
 Status: hidden
 
 Dummy

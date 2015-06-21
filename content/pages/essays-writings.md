@@ -2,6 +2,7 @@ Title: Writing
 Date: 2015-06-16 21:25
 Author: Jonathan Lange <jml@mumak.net>
 Slug: essays-writings
+Alias: stuff/index.html
 
 ## [Test Doubles]({filename}/pages/test-doubles.md)
 

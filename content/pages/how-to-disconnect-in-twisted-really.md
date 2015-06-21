@@ -2,6 +2,7 @@ Title: How to disconnect in Twisted, really
 Date: 2012-09-22 16:51
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: how-to-disconnect-in-twisted-really
+Alias: stuff/twisted-disconnect.html
 Status: hidden
 
 Twisted's unit testing framework Trial is quite strict on tests that

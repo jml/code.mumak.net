@@ -1,7 +1,8 @@
 Title: Your code sucks, and I hate you
-Date: 2012-09-22 16:54
+Date: 2015-06-16 21:32
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: your-code-sucks-and-i-hate-you
+Alias: stuff/your-code-sucks.html
 Status: hidden
 
 The Social Dynamics of Code Reviews

@@ -10,8 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-#SITEURL = 'https://jml.io'
-SITEURL = 'http://jml.io.s3-website-us-west-2.amazonaws.com/'
+SITEURL = 'https://jml.io'
 RELATIVE_URLS = True
 
 

@@ -10,6 +10,6 @@ If you are interested in software development, open source, Python, Haskell,
 unit testing, functional programming, vague ramblings about process, then this
 site is for you.
 
-I also have a more [personal blog](http://life.mumak.net/). I don't update it
+I also have a more [personal blog](https://life.jml.io/). I don't update it
 very often at all.
 

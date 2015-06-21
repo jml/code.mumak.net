@@ -53,7 +53,8 @@ SHOW_ARTICLE_CATEGORY = True
 ABOUT_ME = '''
 Programmer in London, UK
 '''
-AVATAR = '/images/jml.png'
+CUSTOM_CSS = 'static/custom.css'
+AVATAR = '/images/jml-transparent.png'
 SOCIAL = (
     ('github', 'http://github.com/jml'),
     ('twitter', 'http://twitter.com/mumak'),
@@ -85,9 +86,13 @@ ARCHIVES_URL = 'blog/archives/'
 
 STATIC_PATHS = [
     'extra/CNAME',
+    'extra/custom.css',
     'images',
 ]
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/custom.css': {'path': 'static/custom.css'},
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

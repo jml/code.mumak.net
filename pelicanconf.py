@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Jonathan Lange'
+AUTHOR = u'Jonathan M. Lange, except &ldquo;pixel jml&rdquo; image &copy; 2014 Bice Dibley, used with permission'
 SITENAME = u'jml :: Jonathan Lange'
 SITEURL = ''
 
@@ -49,10 +49,11 @@ PELICAN_COMMENT_SYSTEM = True
 THEME = 'themes/pelican-bootstrap3'
 BOOTSTRAP_THEME = 'cosmo'
 BOOTSTRAP_FLUID = True
-SHOW_ARTICLE_CATEGORY = True
+SHOW_ARTICLE_CATEGORY = False
 ABOUT_ME = '''
 Programmer in London, UK
 '''
+EMAIL_ADDRESS = '_@jml.io'
 CUSTOM_CSS = 'static/custom.css'
 FAVICON = 'images/favicon.png'
 AVATAR = '/images/jml-transparent.png'

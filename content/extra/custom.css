@@ -2,3 +2,7 @@
 div#aboutme img {
     border: none;
 }
+
+footer {
+    font-size: 80%;
+}

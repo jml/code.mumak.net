@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Jonathan M. Lange, except &ldquo;pixel jml&rdquo; image &copy; 2014 Bice Dibley, used with permission'
+AUTHOR = 'Jonathan Lange'
+COPYRIGHT = u'Jonathan M. Lange, except &ldquo;pixel jml&rdquo; image &copy; 2014 Bice Dibley, used with permission'
 SITENAME = u'jml :: Jonathan Lange'
 SITEURL = ''
 

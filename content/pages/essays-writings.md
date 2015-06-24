@@ -26,3 +26,10 @@ same paper. Co-written with Michael Hudson.
 
 Written for OSDC Sydney 2008, this paper talks about the social dynamics
 of code review. I like the title.
+
+## [How to write docstrings for tests]({filename}/pages/test-docstrings.md)
+
+Five-step guide to writing docstrings for tests.
+
+Originally written as a
+[post on Google+](https://plus.google.com/+JonathanLange/posts/YA3ThKWhSAj).

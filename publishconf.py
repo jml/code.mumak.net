@@ -10,8 +10,8 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://code.mumak.net'
-RELATIVE_URLS = False
+SITEURL = 'https://jml.io'
+RELATIVE_URLS = True
 
 
 FEED_ATOM = 'atom.xml'

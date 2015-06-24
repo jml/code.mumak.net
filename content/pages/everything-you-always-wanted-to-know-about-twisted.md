@@ -2,6 +2,7 @@ Title: Everything You Always Wanted to Know about Twisted
 Date: 2012-09-22 16:53
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: everything-you-always-wanted-to-know-about-twisted
+Status: hidden
 
 *This paper was originally prepared as an introduction to Twisted for
 the Launchpad development team, and was presented in London on October

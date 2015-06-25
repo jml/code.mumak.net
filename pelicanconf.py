@@ -51,6 +51,7 @@ THEME = 'themes/pelican-bootstrap3'
 BOOTSTRAP_THEME = 'cosmo'
 BOOTSTRAP_FLUID = True
 SHOW_ARTICLE_CATEGORY = False
+TYPOGRIFY = True
 ABOUT_ME = '''
 Programmer in London, UK
 '''

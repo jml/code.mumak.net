@@ -54,36 +54,46 @@ tricky part: **you have to *wait* for each of these things to happen.**
 
 To make the server stop listening:
 
-        port = reactor.listenTCP(portNumber, factory)    ...    port.stopListening()
+```python
+port = reactor.listenTCP(portNumber, factory)
+...
+port.stopListening()
+```
 
 You can effect the last two with one stroke, using either of the
 following commands:
 
-        protocol.transport.loseConnection()
+```python
+protocol.transport.loseConnection()
+```
 
 OR
 
-        connector = reactor.connectTCP(host, port, factory)    ...    connector.disconnect()
+```
+connector = reactor.connectTCP(host, port, factory)
+...
+connector.disconnect()
+```
 
 Now, just running these commands is *not* enough. Twisted is
 asynchronous: you have to wait for it to call you.
 
-The way to wait for something in a Trial test is to return a `Deferred`
-from the test method.
+The way to wait for something in a Trial test is to return a `Deferred` from
+the test method.
 
-`stopListening` is easy. It returns a `Deferred` if it is going to take
-a while. The others are harder. There is only one way to know when the
-connection has truly been lost: override `connectionLost` on a
-`Protocol` instance. Pass a `Deferred` to your `Protocol` and have
-`connectionLost` call `callback` on that `Deferred`. You will need to do
-this for *both* the client *and* the server protocols. Once you have
-your three `Deferred`s, return them in a `DeferredList`.
+`stopListening` is easy. It returns a `Deferred` if it is going to take a
+while. The others are harder. There is only one way to know when the
+connection has truly been lost: override `connectionLost` on a `Protocol`
+instance. Pass a `Deferred` to your `Protocol` and have `connectionLost` call
+`callback` on that `Deferred`. You will need to do this for *both* the client
+*and* the server protocols. Once you have your three `Deferred`s, return them
+in a `DeferredList`.
 
 Simple.
 
 **UPDATE:** [exarkun](http://jcalderone.livejournal.com) tells me that
 there are two ways to know when the connection has truly been lost on
-the client side. ClientFactory.clientConnectionLost is the other one.
+the client side. `ClientFactory.clientConnectionLost` is the other one.
 
 ### Summary
 
@@ -95,4 +105,54 @@ Below is an example demonstrating how to disconnect. As you can see, it
 is quite verbose. Trial does not provide any shortcuts, even though it
 should.
 
-    from twisted.internet import defer, protocolfrom twisted.trial import unittestclass ServerProtocol(protocol.Protocol):    def connectionLost(self, *a):        self.factory.onConnectionLost.callback(self)class ClientProtocol(protocol.Protocol):    def connectionMade(self):        self.factory.onConnectionMade.callback(self)    def connectionLost(self, *a):        self.factory.onConnectionLost.callback(self)class TestDisconnect(unittest.TestCase):    def setUp(self):        self.serverDisconnected = defer.Deferred()        self.serverPort = self._listenServer(self.serverDisconnected)        connected = defer.Deferred()        self.clientDisconnected = defer.Deferred()        self.clientConnection = self._connectClient(connected,                                                    self.clientDisconnected)        return connected    def _listenServer(self, d):        from twisted.internet import reactor        f = protocol.Factory()        f.onConnectionLost = d        f.protocol = ServerProtocol        return reactor.listenTCP(0, f)    def _connectClient(self, d1, d2):        from twisted.internet import reactor        factory = protocol.ClientFactory()        factory.protocol = ClientProtocol        factory.onConnectionMade = d1        factory.onConnectionLost = d2        return reactor.connectTCP('localhost',                                  self.serverPort.getHost().port,                                  factory)    def tearDown(self):        d = defer.maybeDeferred(self.serverPort.stopListening)        self.clientConnection.disconnect()        return defer.gatherResults([d,                                    self.clientDisconnected,                                    self.serverDisconnected])    def test_disconnect(self):        pass
+```python
+from twisted.internet import defer, protocol
+from twisted.trial import unittest
+
+
+class ServerProtocol(protocol.Protocol):
+    def connectionLost(self, *a):
+        self.factory.onConnectionLost.callback(self)
+
+
+class ClientProtocol(protocol.Protocol):
+    def connectionMade(self):
+        self.factory.onConnectionMade.callback(self)
+
+    def connectionLost(self, *a):
+        self.factory.onConnectionLost.callback(self)
+
+
+class TestDisconnect(unittest.TestCase):
+    def setUp(self):
+        self.serverDisconnected = defer.Deferred()
+        self.serverPort = self._listenServer(self.serverDisconnected)
+        connected = defer.Deferred()
+        self.clientDisconnected = defer.Deferred()
+        self.clientConnection = self._connectClient(connected, self.clientDisconnected)
+        return connected
+
+    def _listenServer(self, d):
+        from twisted.internet import reactor
+        f = protocol.Factory()
+        f.onConnectionLost = d
+        f.protocol = ServerProtocol
+        return reactor.listenTCP(0, f)
+
+    def _connectClient(self, d1, d2):
+        from twisted.internet import reactor
+        factory = protocol.ClientFactory()
+        factory.protocol = ClientProtocol
+        factory.onConnectionMade = d1
+        factory.onConnectionLost = d2
+        return reactor.connectTCP(
+            'localhost', self.serverPort.getHost().port, factory)
+
+    def tearDown(self):
+        d = defer.maybeDeferred(self.serverPort.stopListening)
+        self.clientConnection.disconnect()
+        return defer.gatherResults([d, self.clientDisconnected, self.serverDisconnected])
+
+    def test_disconnect(self):
+        pass
+```

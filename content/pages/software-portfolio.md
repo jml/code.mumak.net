@@ -80,7 +80,7 @@ For a while, I was also the product manager. When I was, I tried to make
 sense of
 [what Launchpad actually is](https://launchpad.readthedocs.org/en/latest/scope.html)
 and
-[what it's strategy was](https://launchpad.readthedocs.org/en/latest/strategy.html).
+[what its strategy was](https://launchpad.readthedocs.org/en/latest/strategy.html).
 
 Scraps
 ------

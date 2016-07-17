@@ -36,7 +36,7 @@ let
         Wordpress).
       '';
       homepage = "http://github.com/Nitron/pelican-alias";
-      license = pkgs.licenses.mit;
+      license = "MIT";
     };
   });
 in

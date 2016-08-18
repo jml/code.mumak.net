@@ -1,9 +1,8 @@
 Patterns are half-formed code
 #############################
 
-:date: 2016-08-17 20:55
+:date: 2016-08-18 18:00
 :tags: programming, golang, python
-:status: draft
 :slug: anti-patterns
 
 If "technology is stuff that doesn't work yet"[1]_, then patterns are code we

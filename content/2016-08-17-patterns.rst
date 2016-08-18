@@ -1,0 +1,137 @@
+Patterns are half-formed code
+#############################
+
+:date: 2016-08-18 18:00
+:tags: programming, golang, python
+:slug: anti-patterns
+
+If "technology is stuff that doesn't work yet"[1]_, then patterns are code we
+don't know how to write yet.
+
+In the *Go Programming Language*, the authors show how to iterate over
+elements in a map, sorted by keys:
+
+  To enumerate the key/value pairs in order, we must sort the keys explicitly,
+  for instances, using the ``Strings`` function from the ``sort`` package if
+  the keys are strings. This is a common pattern.
+
+  — Go Programming Language, Alan A. A. Donovan & Brian W. Kernighan, p94
+
+The pattern is illustrated by the following code:
+
+.. code-block:: go
+
+   import "sort"
+
+   var names []string
+   for name := range ages {
+       name = append(names, name)
+   }
+   sort.Strings(names)
+   for _, name := range names {
+       fmt.Printf("%s\t%d\n", name, ages[name])
+   }
+
+Peter Norvig calls this an `informal design pattern
+<http://norvig.com/design-patterns/>`_: something referred to by name
+("iterate through items in a map in order of keys") and re-implemented from
+scratch each time it's needed.
+
+Informal patterns have their place but they are a larval form of knowledge,
+stuck halfway between intuition and formal understanding. When we see a
+recognize a pattern, our next step should always be to ask, "can we make it go
+away?"
+
+Patterns are one way of expressing "how to" knowledge [2]_ but we have
+another, better way: code. Source code is a *formal* expression of "how to"
+knowledge that we can execute, test, manipulate, verify, compose, and re-use.
+Encoding "how to" knowledge is largely what programming *is* [3]_. We talk
+about replacing people with programs precisely because we take the knowledge
+about how to do their job and encode it such that even a machine can
+understand it.
+
+So how can we encode the knowledge of iterating through the items in a map in
+order of keys? How can we replace this pattern with code?
+
+We can start by following Peter Norvig's example and reach for a dynamic
+programming language, such as Python:
+
+.. code-block:: python
+
+   names = []
+   for name in ages:
+       names.append(name)
+   names.sort()
+   for name in names:
+       print("{}\t{}".format(name, ages[name]))
+
+This is a very literal translation of the first snippet. A more idiomatic
+approach would look like:
+
+.. code-block:: python
+
+   names = sorted(ages.keys())
+   for name in names:
+       print("{}\t{}".format(name, ages[name])
+
+To turn this into a formal pattern, we need to extract a function that takes a
+map and returns a list of pairs of ``(key, value)`` in sorted order, like so:
+
+.. code-block:: python
+
+   def sorted_items(d):
+       result = []
+       sorted_keys = sorted(d.keys())
+       for k in sorted_keys:
+           result.append((k, d[k]))
+       return result
+
+   for name, age in sorted_items(ages):
+       print("{}\t{}".format(name, ages[name]))
+
+The pattern has become a function. Instead of a name or a description, it has
+an *identifier*, a True Name that gives us power over the thing. When we
+invoke it we don't need to comment our code to indicate that we are using a
+pattern because the name ``sorted_items`` makes it clear. If we choose, we can
+test it, optimize it, or perhaps even prove its correctness.
+
+If we figure out a better way of doing it, such as:
+
+.. code-block:: python
+
+   def sorted_items(d):
+       return [(k, d[k]) for k in sorted(d.keys())]
+
+Then we only have to change one place.
+
+And if we are willing to tolerate a slight change in behavior,
+
+.. code-block:: python
+
+   def sorted_items(d):
+       return sorted(d.items())
+
+Then we might not need the function at all.
+
+It was being able to write code like this that drew me towards Python and away
+from Java, way back in 2001. It wasn't just that I could get more done in
+fewer lines—although that helped—it was that I could write what I meant.
+
+Of course, these days I'd much rather write:
+
+.. code-block:: haskell
+
+   import Data.List (sort)
+   import qualified Data.HashMap as Map
+
+   sortedItems :: (Ord k, Ord v) => Map.Map k v -> [(k, v)]
+   sortedItems d = sort (Map.toList d)
+
+But that's another story.
+
+.. footer:: Thanks to Tom Hunger for reviewing this. Infelicities are my own.
+
+
+.. [1] Bran Ferren, `via Douglas Adams <http://www.douglasadams.com/dna/19990901-00-a.html>`_
+.. [2] Patterns can also contain "when to", "why to", "why not to", and "how much" knowledge, but they _always_ contain "how to" knowledge.
+.. [3] The excellent `SICP lectures <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/>`_ open with the insight that what we call "computer science" might be the very beginning of a science of "how to" knowledge.   

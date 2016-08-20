@@ -87,7 +87,7 @@ map and returns a list of pairs of ``(key, value)`` in sorted order, like so:
        return result
 
    for name, age in sorted_items(ages):
-       print("{}\t{}".format(name, ages[name]))
+       print("{}\t{}".format(name, age))
 
 The pattern has become a function. Instead of a name or a description, it has
 an *identifier*, a True Name that gives us power over the thing. When we

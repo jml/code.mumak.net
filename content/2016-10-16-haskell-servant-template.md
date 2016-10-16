@@ -99,6 +99,10 @@ easier to
 generate
 [client code](http://haskell-servant.readthedocs.io/en/stable/tutorial/Client.html).
 
+The template comes with a test suite that uses servant-quickcheck to guarantee
+that none of your endpoints return 500s, take longer than 100ms to serve, and
+that all the 201s include `Location` headers.
+
 If you're so inclined, you could push the created Docker image to a repository
 somewhere—it's around 25MB when built. Then, people could use it and no one
 would have to know that it's Haskell, they'd just notice a fast web service

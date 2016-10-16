@@ -2,13 +2,15 @@
 layout: post
 tags: haskell prometheus servant docker
 date: 2016-10-16
-title: Production-ready Haskell web service in 5 minutes
+title: servant-template: production-ready Haskell web services in 5 minutes
 author: jml
-published: false
 ---
 
-If you want to get started writing web APIs in Haskell, then you should use my
-new cookiecutter template at https://github.com/jml/servant-template.
+If you want to write a web API in Haskell, then you should start by using my
+new cookiecutter template at https://github.com/jml/servant-template. It'll
+get you a production-ready web service in 5 minutes or less.
+
+For some values of "production". And "ready".
 
 Whenever you start any new web service and you actually care about getting it
 working and available to users, you need to get a few things sorted out:
@@ -85,8 +87,7 @@ http://$(docker-machine ip):8080/) if you're on a Mac, and you'll see a simple
 HTML page describing the API and giving you a link to the `/metrics` page,
 which is where all the Prometheus metrics are exported.
 
-There you have it, a production-ready web service. For some values of
-"production". And "ready".
+There you have it, a production-ready web service.
 
 Of course, the API it offers is really simple. You'll need to go in and edit
 the

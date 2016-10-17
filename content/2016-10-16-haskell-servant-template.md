@@ -10,10 +10,8 @@ If you want to write a web API in Haskell, then you should start by using my
 new cookiecutter template at https://github.com/jml/servant-template. It'll
 get you a production-ready web service in 5 minutes or less.
 
-For some values of "production". And "ready".
-
 Whenever you start any new web service and you actually care about getting it
-working and available to users, you need to get a few things sorted out:
+working and available to users, it's very useful to have:
 
 * logging
 * monitoring
@@ -22,12 +20,12 @@ working and available to users, you need to get a few things sorted out:
 * deployment
 * command-line parsing
 
-These are mostly boring, but essential. Logs and monitoring give you
+These are largely boring, but nearly essential. Logs and monitoring give you
 visibility into the code's behaviour in production, tests and continuous
 integration help you make sure you don't break it, and, of course, you need
 some way of actually shipping code to users. As an engineer who cares deeply
-about running code in production, all of these are pretty much the bare
-minimum for me to be able to deploy something to my users.
+about running code in production, these are pretty much the bare minimum for
+me to be able to deploy something to my users.
 
 The [cookiecutter](https://cookiecutter.readthedocs.io/) template
 at [gh:jml/servant-template](https://github.com/jml/servant-template) creates
@@ -87,9 +85,11 @@ http://$(docker-machine ip):8080/) if you're on a Mac, and you'll see a simple
 HTML page describing the API and giving you a link to the `/metrics` page,
 which is where all the Prometheus metrics are exported.
 
-There you have it, a production-ready web service.
+There you have it, a production-ready web service. At least for some values of
+"production-ready".
 
-Of course, the API it offers is really simple. You'll need to go in and edit
+Of course, the API it offers is really simple. You can make it your own by
+editing
 the
 [API definition](https://github.com/jml/servant-template/blob/master/%7B%7B%20cookiecutter.project_name%20%7D%7D/%7B%7B%20cookiecutter.project_name%20%7D%7D-api/src/%7B%7B%20cookiecutter.module_name%20%7D%7D/API.hs) and
 the

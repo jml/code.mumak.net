@@ -60,3 +60,166 @@ Outcome:
  * Haskell developers are better equipped to use Haskell in contexts where
    they might have previously reached for Python / Go
 
+Trying Haskell again
+--------------------
+
+This would be a summary of what I've learned doing Haskell development over
+the last four years. I don't think this is very interesting.
+
+Highlights:
+
+* type classes
+* pattern matching
+* partial application and function composition
+* has a learning curve
+* miss literal dict syntax
+
+Could be spun up into Haskell vs Python.
+
+Choose Your Mistake
+-------------------
+
+Lots of software processes come down to deciding "Yes" or "No". When you build
+such processes, you should choose the kind of mistake you'd rather make, and
+you should be aware of the secondary repercussions of that sort of mistake.
+
+Audience: Software engineers in general, I guess?
+
+Effort: 2
+
+Outcome:
+ * people design processes better?
+ * people revisit their processes?
+
+
+Pros & Cons of Office vs Remote
+-------------------------------
+
+I've worked remotely and in an office for a long time now. I could probably
+write something interesting about this.
+
+Not sure what the angle would be.
+
+Audience: Software engineers in general.
+
+Pre-merge testing
+-----------------
+
+Specifically about the trade-offs in strict "Not rocket science" pre-merge
+testing, drawing on the example of Launchpad taking 4hrs to build.
+
+Why "Why?"
+----------
+
+Start with "Why?". There's already a TED talk on this but it doesn't get said
+often enough.
+
+People seem to get this wrong all the time and it drives me up the wall.
+
+LEPs
+----
+
+I have a "design" template that I've been shuffling around from job to job.
+It's actually not a design template so much as a thing to help people get
+clear on what they want.
+
+End of Object Inheritance write-up
+----------------------------------
+
+Lots of people won't watch the video, so *someone* should write up the talk.
+
+Effort: 5 (I tried this before and gave up)
+
+GitHub notifications
+--------------------
+
+Simple post on how to set up GitHub notifications to maximize your
+productivity.
+
+In essence, don't watch repositories by default, *do* watch repositories that
+you're the maintainer of.
+
+GTD braindump
+-------------
+
+I wrote this already:
+https://gist.github.com/jml/2d693f1e846ed0cbc116bce2b1f7d341
+
+Polish it up.
+
+Effort: 1
+
+Developer UX: Our Beautiful Model
+---------------------------------
+
+I've noticed this a lot. A lot of developers will reject a user's feedback
+because it will make their code uglier. "What you’re trying to do doesn’t
+match our beautiful model"
+
+Calendars
+---------
+
+They're the source of truth. Only put actual events in there.
+
+Productivity vs Deep Work
+-------------------------
+
+Basically riff on Cal Newport's stuff, but adding a personal perspective. My
+own journey through GTD and what I'm trying to do now.
+
+Benchmarking
+------------
+
+It's really hard. How do you do this as an open source project.
+
+What you want:
+ * reproducible / stable results
+ * red / green answer for incoming PRs
+ * very low false positives
+ * very little infrastructure overhead
+
+And all of this is even if you are using something like ``go bench`` or
+``cargo bench``.
+
+checkState pattern
+------------------
+
+pro tip: checkState() method that asserts that all the internal state of a
+data structure is consistent; call it before & after every mutation; run unit
+tests
+
+Kubernetes as a hobbyist
+------------------------
+
+Report on the labs.jml.io experiment.
+
+GraphQL API
+-----------
+
+Announce the release. Needs to explain & justify GraphQL.
+
+Audience: Haskell developers. Web developers.
+
+Haskell "Validation" pattern
+----------------------------
+
+The GraphQL API uses a very simple API for handling the validation logic.
+Explain how this can translate into Python.
+
+GraphQL validation without types
+--------------------------------
+
+Notes for GraphQL wonks about how validation works without types.
+
+Working on an open-source side-project
+--------------------------------------
+
+Jot down my experiences working on GraphQL library with Tom.
+
+Proof by constructions
+----------------------
+
+The validation stuff goes to some effort to build values that can only
+possibly be "correct" by construction. See if this idea can be generalised
+usefully, perhaps even to non-typed languages.
+

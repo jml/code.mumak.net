@@ -25,7 +25,7 @@ So I made `haskell-cli-template
 makes a Haskell command-line project with some tests, command-line parsing,
 and a CircleCI build.
 
-I sort of wanted to integrate `logging-effect
+I wanted to integrate `logging-effect
 <https://hackage.haskell.org/package/logging-effect>`_, but after a few months
 away from it my tired little brain wasn't able to figure it out. I like
 command-line tools with logging controls, so I suspect I'll add it again in

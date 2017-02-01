@@ -43,8 +43,10 @@ PLUGINS = [
     'pelican_alias',
     'pelican_comment_system',
     'related_posts',
+    'i18n_subsites',
 ]
 PELICAN_COMMENT_SYSTEM = True
+JINJA_EXTENSIONS = ['jinja2.ext.i18n']
 
 # Theme
 THEME = 'themes/pelican-bootstrap3'

@@ -2,5 +2,5 @@ ghp-import
 Markdown
 s3cmd
 typogrify
--e git://github.com/jml/pelican@export-hidden-pages#egg=pelican
--e git://github.com/jml/pelican-alias@hidden-pages#egg=pelican-alias
+pelican
+pelican-alias

@@ -16,6 +16,7 @@ RELATIVE_URLS = True
 
 FEED_ATOM = 'atom.xml'
 FEED_RSS = 'rss.xml'
+FEED_MAX_ITEMS = 10  # dlvr.it has a cap on RSS feed size
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'

@@ -193,13 +193,6 @@ Kubernetes as a hobbyist
 
 Report on the labs.jml.io experiment.
 
-GraphQL API
------------
-
-Announce the release. Needs to explain & justify GraphQL.
-
-Audience: Haskell developers. Web developers.
-
 Haskell "Validation" pattern
 ----------------------------
 
@@ -223,3 +216,12 @@ The validation stuff goes to some effort to build values that can only
 possibly be "correct" by construction. See if this idea can be generalised
 usefully, perhaps even to non-typed languages.
 
+Taste in code
+-------------
+
+Things I like about code that I mention in code review.
+
+Github for monorepos
+--------------------
+
+What would this look like?

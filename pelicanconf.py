@@ -60,7 +60,7 @@ Programmer in London, UK
 EMAIL_ADDRESS = '_@jml.io'
 CUSTOM_CSS = 'static/custom.css'
 FAVICON = 'images/favicon.png'
-AVATAR = '/images/jml-transparent.png'
+AVATAR = 'images/jml-transparent.png'
 SOCIAL = (
     ('github', 'http://github.com/jml'),
     ('twitter', 'http://twitter.com/mumak'),

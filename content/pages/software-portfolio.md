@@ -1,6 +1,6 @@
 Title: Software
-Date: 2012-09-22 16:11
-Author: Jonathan Lange (noreply@blogger.com)
+Date: 2017-05-27
+Author: Jonathan Lange (jml@mumak.net)
 Slug: software-portfolio
 
 I'm a programmer. I've made and contributed to an awful lot of software
@@ -12,17 +12,62 @@ Here's a partial list.
 Software I made
 ---------------
 
+Software of which I am the primary author or co-author.
+
+### [graphql-api](https://github.com/jml/graphql-api)
+
+[GraphQL](http://graphql.org/) server in Haskell.
+
+GraphQL is a compelling alternative to REST.
+This library, inspired by [servant](https://haskell-servant.github.io/)
+and implemented together with [teh](https://github.com/teh),
+allows you to write GraphQL services in Haskell.
+
+I wrote most of the "validation" code,
+which translates the AST into something that can be executed.
+
+### [haskell-spake2](https://github.com/jml/graphql-api)
+
+Implementation of the SPAKE2 key-exchange protocol in Haskell.
+
+Derived from warner's [python-spake2](https://github.com/warner/python-spake2)
+and intended for use with [magic-wormhole](https://github.com/warner/magic-wormhole).
+
+### [grafanalib](https://github.com/weaveworks/grafanalib)
+
+EDSL in Python for building Grafana dashboards.
+
 ### [testtools](https://pypi.python.org/pypi/testtools)
 
 Tasteful unit testing for Python.
 
+Created together with Robert Collins.
+I no longer play much of a role in maintaining it.
+
 ### [treeshape](https://pypi.python.org/pypi/treeshape)
 
-Creates files and directories on disk in a declarative way. Great for
-testing code that does disk I/O.
+Creates files and directories on disk in a declarative way.
+Great for testing code that does disk I/O.
+
+### [difftodo](https://github.com/jml/difftodo)
+
+Neat little tool that looks at diffs of arbitrary source codecode,
+finds any comments with XXX, FIXME or TODO and then formats them nicely.
+
+Has Emacs integration, so you can treat XXX comments like compiler errors.
+
+I have ambitions to turn it into a web service.
 
 Projects I have contributed to
 ------------------------------
+
+### [Cortex](https://github.com/weaveworks/cortex)
+
+Highly-available, horizontally-scalable time series database for Prometheus,
+developed by [Weaveworks](https://weave.works).
+
+The brain-child of [Tom Wilkie](https://github.com/tomwilkie),
+I mostly play a guest starring role, but I'm proud of contributing.
 
 ### [Twisted](https://twistedmatrix.com/trac/)
 
@@ -60,7 +105,7 @@ with [testtools](http://testtools.rtfd.org/).
 
 ### [pyflakes](https://pypi.python.org/pypi/pyflakes)
 
-Everyone's favourite Python lint checker.
+What used to be everyone's favourite Python lint checker.
 
 ### [Bazaar](http://bazaar.canonical.com/en/)
 
@@ -69,12 +114,12 @@ the most pleasing to use. I wrote a lot of the Launchpad integration.
 
 ### [Launchpad](https://launchpad.net/)
 
-Huge, ridiculously ambitious open source collaboration platform: tracks
-bugs, hosts code, manages translations, and builds Ubuntu.
+Huge, ridiculously ambitious open source collaboration platform:
+tracks bugs, hosts code, manages translations, and builds Ubuntu.
 
-I wrote large chunks of the code hosting system, and have messed around
-lots with its testing infrastructure and the chain of tools around
-building packages.
+I wrote large chunks of the code hosting system,
+and have messed around lots with its testing infrastructure
+and the chain of tools around building packages.
 
 For a while, I was also the product manager. When I was, I tried to make
 sense of
@@ -88,13 +133,11 @@ Scraps
 Little tools that I don't spend much time on, because they meet my needs and
 they don't have many users.
 
-### [difftodo](https://github.com/jml/difftodo)
+### [txapply](https://github.com/jml/txapply)
 
-Neat little tool that looks at diffs of Python code, finds any comments
-with XXX, FIXME or TODO and then formats them nicely.
+Provides a way of using Twisted's `Deferred` objects like they are applicative functors.
 
-Has Emacs integration, so you can treat XXX comments like compiler
-errors.
+Lets you use an arbitrary function to combine arbitrary `Deferred` objects.
 
 ### [testdoc](https://github.com/testing-cabal/testdoc)
 
@@ -106,3 +149,7 @@ People kept telling me that doctests were are great way of getting
 documentation for free when writing tests. So, I wrote a cheeky little tool
 that analyzes Python unit test modules and turns them into readable
 documentation. This is it.
+
+### [hodor](https://github.com/jml/hodor)
+
+todo.txt compatible command-line client, written in Haskell.

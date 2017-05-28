@@ -5,7 +5,6 @@ SPAKE2 in Haskell: the journey begins
 :date: 2017-05-27
 :tags: haskell, cryptography, spake2
 :slug: spake2-begins
-:status: draft
 
 There's a joke about programmers that's been doing the rounds for the last couple of years:
 

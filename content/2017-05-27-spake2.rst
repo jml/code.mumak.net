@@ -1,0 +1,174 @@
+=====================================
+SPAKE2 in Haskell: the journey begins
+=====================================
+
+:date: 2017-05-27
+:tags: haskell, cryptography, spake2
+:slug: spake2-begins
+:status: draft
+
+There's a joke about programmers that's been doing the rounds for the last couple of years:
+
+    We do these things not because they are easy,
+    but because we thought they would be easy.
+
+This is about how I became the butt of a tired, old joke.
+
+My friend Jean-Paul decided to start learning Haskell by writing a magic-wormhole_ client.
+
+magic-wormhole works in part by negotiating a session key using SPAKE2_:
+a password-authenticated key exchange protocol,
+so one of the first things Jean-Paul needed was a Haskell implementation.
+
+Eager to help Jean-Paul on his Haskell journey,
+I volunteered to write a SPAKE2 implementation in Haskell.
+After all, there's a `pure Python implementation`_,
+so all I'd need to do is translate it from Python to Haskell.
+I know both languages pretty well.
+How hard could it be?
+
+Turns out there are a few things I hadn't really counted on.
+
+I know next to nothing about cryptography
+-----------------------------------------
+
+Until now, I could summarise what I knew about cryptography into two points:
+
+1. It works because factoring prime numbers is hard
+2. I don't know enough about it to implement it reliably,
+   I should use proven, off-the-shelf components instead
+
+This isn't really a solid foundation for implementing crypto code.
+In fact, it's a compelling argument to walk away while I still had the chance.
+
+My ignorance was a particular liability here,
+since python-spake2_ assumes a lot of cryptographic knowledge.
+What's HKDF? What's Ed25519?
+Is that the same thing as Curve25519?
+What's NIST? What's ``q`` in this context?
+
+python-spake2 also assumes a lot of knowledge about abstract algebra.
+This is less of a problem for me, since I studied a lot of that at university.
+However, it's still a problem.
+Most of that knowledge has sat unused for fifteen or so years.
+Dusting off those cobwebs took time.
+
+My rusty know-how was especially obvious when reading the `PDFs that describe SPAKE2`_.
+Mathematical notation isn't easy to read,
+and every subdiscipline has its own special variants
+("Oh, obviously *q* means the size of the subgroup. That's just convention.")
+
+For example, I know that what's in `spake2/groups.py`_
+is the multiplicative group of integers modulo n,
+and I know what "the multiplicative group of integers modulo n" means,
+but I understand about 2% of the `Wikipedia page on the subject`_,
+and I have even less understanding about how the group is relevant to cryptography.
+
+The protocol diagrams that appear in the papers I read were a confusing mess of symbols at first.
+It took several passes through the text,
+and a couple of botched explanations to patient listeners on IRC before I really understood them.
+These diagrams now seem clear & succinct to me,
+although I'm sure they could be `written better in code`_.
+
+python-spake2 is idiosyncratic
+------------------------------
+
+The python-spake2 source code is made almost entirely out of object inheritance and mutation,
+which makes it hard for me to follow,
+and hard to transliterate into Haskell,
+where object inheritance and mutation are hard to model.
+
+This is a very minor criticism.
+With magic-wormhole_ and python-spake2_,
+Warner has made creative, useful software that solves a difficult problem
+and meets a worthwhile need.
+
+crypto libraries rarely have beginner-friendly documentation
+------------------------------------------------------------
+
+python-spake2 isn't alone in assuming cryptographic knowledge.
+The Haskell library cryptonite_ is much the same.
+Most documentation I could find about various topics on the web pointed to cr.py.to pages,
+which either link to papers or C code.
+
+I think this is partly driven by a concern for user safety,
+"if you don't understand it, you shouldn't be using it".
+Maybe this is a good idea.
+The problem is that it can be hard to know where to start in order to gain that understanding.
+
+To illustrate, I now sort of get how an elliptic curve might form a group,
+but have forgotten enough algebra to not know about what subgroups there are,
+how that's relevant to the implementation of ed25519,
+how subgroups and groups relate to fields,
+to say nothing of how elliptic curve *cryptography* actually works.
+
+I don't really know where to go to remedy this ignorance,
+although I'm pretty sure doing so is within my capabilities,
+I just need to find the right book or course to actually teach me these things.
+
+Protocols ain't protocols
+-------------------------
+
+The mathematics of SPAKE2 are fairly clearly defined,
+but there is a large gap between "use this group element" and sending some bits over the wire.
+
+python-spake2 doesn't clearly distinguish between the mathematics of SPAKE2
+and the necessary implementation decisions it makes in order to be a useful networked protocol.
+
+This meant that when translating, it was hard to tell what was an essential detail and what was accidental detail.
+As Siderea eloquently points out, `software is made of decisions`_.
+When writing the Haskell version, which decisions do I get to make, and which are forced upon me?
+*Must* this salt be the empty string?
+Can I generate the "blind" any way I want?
+
+Eventually, I found a PR implementing SPAKE2 (and SPAKE2+, SPAKE2-EE, etc.) `in Javascript`_.
+From the discussion there, I was able to synthesize `a rough standard`_ for implementing.
+
+Jean-Paul helped by writing an `interoperability test harness`_,
+which gave me an easy way to experiment with design choices.
+
+Conclusion
+----------
+
+Happily, as of this weekend, I've been able to overcome
+my lack of knowledge of cryptography,
+the idiosyncracies of python-spake2,
+the documentation quirks of crypto libraries,
+and the lack of a standard for SPAKE2 on the network
+to implement SPAKE2 in Haskell,
+first with `NIST groups`_,
+then with `Ed25519`_.
+
+No doubt much could be better—I would very much welcome feedback,
+whether it's about my Haskell, my mathematics, or my documentation—but I'm pretty happy with the results.
+
+This has been a fun, stretching, challenging exercise.
+Even though it took more time and was more difficult than I expected,
+it has been such a privilege to be able to tackle it.
+Not only have I learned much,
+but I also feel much more confident in my ability to learn hard things.
+
+I hope to follow up with more posts, covering:
+
+* just what *is* SPAKE2, and why should I care?
+* how can I use SPAKE2 (and especially, `haskell-spake2`_)?
+* what was it like to write a Haskell version of a Python library?
+* what's up with Ed25519? (this is somewhat ambitious)
+
+
+.. _magic-wormhole: https://github.com/warner/magic-wormhole
+.. _SPAKE2: http://www.di.ens.fr/~mabdalla/papers/AbPo05a-letter.pdf
+.. _`pure python implementation`: python-spake2_
+.. _python-spake2: https://github.com/warner/python-spake2
+.. _`spake2/groups.py`: https://github.com/warner/python-spake2/blob/master/src/spake2/groups.py
+.. _`PDFs that describe SPAKE2`: SPAKE2_
+.. _`written better in code`: https://mitpress.mit.edu/sites/default/files/titles/content/sicm/book-Z-H-5.html#%_chap_Temp_2
+.. _cryptonite: https://hackage.haskell.org/package/cryptonite
+.. _`in Javascript`: https://github.com/bitwiseshiftleft/sjcl/pull/273/
+.. _`a rough standard`: https://github.com/bitwiseshiftleft/sjcl/pull/273/#issuecomment-302659535
+.. _`interoperability test harness`: https://github.com/leastauthority/spake2-interop-test
+.. _`software is made of decisions`: http://siderea.livejournal.com/1241996.html
+.. _`NIST groups`: https://github.com/jml/haskell-spake2/pull/3
+.. _`Ed25519`: https://github.com/jml/haskell-spake2/pull/4
+.. _haskell-spake2: https://github.com/jml/haskell-spake2
+.. _`Wikipedia page on the subject`: https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n

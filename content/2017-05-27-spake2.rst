@@ -87,7 +87,7 @@ crypto libraries rarely have beginner-friendly documentation
 
 python-spake2 isn't alone in assuming cryptographic knowledge.
 The Haskell library cryptonite_ is much the same.
-Most documentation I could find about various topics on the web pointed to cr.py.to pages,
+Most documentation I could find about various topics on the web pointed to cr.yp.to pages,
 which either link to papers or C code.
 
 I think this is partly driven by a concern for user safety,

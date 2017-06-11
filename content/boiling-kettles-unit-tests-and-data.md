@@ -25,7 +25,7 @@ really easy to get a picture:
   
 
   ----------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------
-  [![](http://people.canonical.com/~jml/Tests-finished-each-minute.png)](http://people.canonical.com/~jml/Tests-finished-each-minute.png)
+  [![Bar chart of tests finished each minute-long block](http://people.canonical.com/~jml/Tests-finished-each-minute.png)](http://people.canonical.com/~jml/Tests-finished-each-minute.png)
   ----------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------
 
 That's a graph of the number of tests that complete within each minute
@@ -38,13 +38,13 @@ Sometimes these graphs are more useful at lower granularity, so I made
 this one:  
 
   --------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
-  [![](http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png)](http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png)
+  [![Bar chart of tests finished each ten-minute-long block](http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png)](http://people.canonical.com/~jml/Tests-finished-each-ten-minutes.png)
   --------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
 
 And this one:  
 
   ------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------
-  [![](http://people.canonical.com/~jml/Tests-finished-each-hour.png)](http://people.canonical.com/~jml/Tests-finished-each-hour.png)
+  [![Bar chart of tests finished each hour-long block](http://people.canonical.com/~jml/Tests-finished-each-hour.png)](http://people.canonical.com/~jml/Tests-finished-each-hour.png)
   ------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------
 
   

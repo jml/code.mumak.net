@@ -10,7 +10,7 @@ them](http://lifehacker.com/387944/how-to-make-your-own-smart-bookmarks-in-firef
   
 Here's one to add for Launchpad branches:  
   
-[![](http://code.mumak.net/uploaded_images/Screenshot-Properties-for--759574)](http://code.mumak.net/uploaded_images/Screenshot-Properties-for--759585)Once
+[![Screenshot of Firefox smart bookmark](http://code.mumak.net/uploaded_images/Screenshot-Properties-for--759574)](http://code.mumak.net/uploaded_images/Screenshot-Properties-for--759585)Once
 you've added this, you can type 'lp twisted' or 'lp python' into your
 Firefox location bar and get redirected to the branch page for Firefox.
 Anything that works as part of an lp: URL will work here. Right now,

@@ -3,7 +3,7 @@ Date: 2010-04-24 12:23
 Author: Jonathan Lange (noreply@blogger.com)
 Slug: python-testing-review
 
-[![](http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s200/Python+Testing.jpg)](http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s1600/Python+Testing.jpg)Quite
+[![Cover of Python Testing book](http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s200/Python+Testing.jpg)](http://4.bp.blogspot.com/_i72o3jegILg/S9LbHwDQ5_I/AAAAAAAAABs/oYwQaHlELgs/s1600/Python+Testing.jpg)Quite
 a few weeks ago, perhaps even months, I was asked by [Packt
 Publishing](http://www.packtpub.com/) to review a new book: "[Python
 Testing: Beginner's

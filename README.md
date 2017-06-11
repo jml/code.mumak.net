@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-    pip install pelican ghp-import Markdown pelican-alias s3cmd typogrify
+    pip install -r requirements.txt
     git clone git@github.com:jml/pelican-plugins.git plugins
     git clone git@github.com:jml/pelican-themes.git themes
     cd themes

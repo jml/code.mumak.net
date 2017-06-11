@@ -43,6 +43,7 @@ PLUGINS = [
     'pelican_alias',
     'pelican_comment_system',
     'related_posts',
+    'render_math',
     'i18n_subsites',
 ]
 PELICAN_COMMENT_SYSTEM = True

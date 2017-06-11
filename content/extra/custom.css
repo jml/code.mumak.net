@@ -4,5 +4,10 @@ div#aboutme img {
 }
 
 footer {
-    font-size: 80%;
+    font-size: smaller;
+}
+
+.footnote-reference {
+    vertical-align: super;
+    font-size: smaller;
 }

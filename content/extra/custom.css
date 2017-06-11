@@ -11,3 +11,13 @@ footer {
     vertical-align: super;
     font-size: smaller;
 }
+
+div.entry-content {
+    max-width: 40em;
+}
+
+
+body {
+    font-size: 12pt;
+    line-height: 1.4em;
+}

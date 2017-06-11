@@ -354,47 +354,40 @@ Side A calculates its key like this:
 
    K_A = x \cdot (Y^{\star} - pw \cdot N)
 
-The bit inside the parentheses is side A recovering :math:`Y`, since
+The bit inside the parentheses is side A recovering :math:`Y`,
+since we defined :math:`Y^{\star}` as:
 
 .. math::
 
    Y^{\star} = Y + pw \cdot N
 
-Then (subtracting :math:`pw \cdot N` from both sides)
+We can rewrite that in terms of :math:`Y` by subtracting :math:`pw \cdot N` from both sides:
 
 .. math::
 
    Y = Y^{\star} - pw \cdot N
 
-Which means, if both sides have the same value for :math:`pw`,
-can substitute in :math:`Y`:
+Which means, as long as both sides have the same value for :math:`pw`,
+can swap in :math:`Y` like so:
 
 .. math::
 
-   K_A = x \cdot Y
+   K_A& = x \cdot Y \\
+      & = x \cdot (y \cdot g) \\
+      & = xy \cdot g
 
-And remembering that we generated :math:`Y` from :math:`y`,
-we can substitute :math:`y \cdot g`:
-
-.. math::
-
-   K_A = x \cdot (y \cdot g)
-
-Which we can write more simply as:
-
-.. math::
-
-   K_A = xy \cdot g
+Remember that when we created :math:`Y` in the first place,
+we did so by multiplying our generator :math:`g` by a random scalar :math:`y`.
 
 Side B calculates its key in the same way:
 
 .. math::
 
-   K_B = y \cdot (X^{\star} - pw \cdot N)
-       = y \cdot X
-       = y \cdot (x \cdot g)
-       = yx \cdot g
-       = xy \cdot g
+   K_B& = y \cdot (X^{\star} - pw \cdot N) \\
+      & = y \cdot X \\
+      & = y \cdot (x \cdot g) \\
+      & = yx \cdot g \\
+      & = xy \cdot g
 
 Thus, if both sides used the same password, :math:`K_A = K_B`.
 

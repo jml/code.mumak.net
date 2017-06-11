@@ -187,7 +187,7 @@ The integers with multiplication are *not* a group, because what's the inverse o
 But! The `integers with multiplication modulo some fixed number`_ do form a group.
 So for integers with multiplication modulo 7,
 the identity is 1, multiplication is associative,
-and the inverse of 2 is 4, because :math:`(2 * 4) mod 7 = 1`.
+and the inverse of 2 is 4, because :math:`(2 \cdot 4) \mod 7 = 1`.
 
 But but! When we are talking about groups in the abstract,
 we'll still call the operation :math:`+` and the identity :math:`0`,
@@ -271,7 +271,7 @@ there will always be a number, :math:`k`, such that:
 
 .. math::
 
-   X = kg
+   X = k \cdot g
 
 Here, :math:`k` would be called the discrete log of :math:`X` with respect to base :math:`g`.
 "Log" is a nod to exponentiation notation,
@@ -325,9 +325,9 @@ The process for both sides is the same, but each side needs to know who's who.
 One side is side A, and other is side B,
 and how they figure out which is which happens outside the protocol.
 
-Each draw a random scalar between 0 and :math:`p`: :math:`x` for side A, :math:`y` for side B.
-They then use that to generate an element: :math:`X = x * g` for side A,
-:math:`Y = y * g` for side B.
+Each draw a random scalar between :math:`0` and :math:`p`: :math:`x` for side A, :math:`y` for side B.
+They then use that to generate an element: :math:`X = x \cdot g` for side A,
+:math:`Y = y \cdot g` for side B.
 
 They then "blind" this value by adding it to one of the elements that make up the system parameters,
 scalar multiplied by :math:`pw`, our password.
@@ -338,8 +338,9 @@ and side B makes :math:`Y^{\star} = Y + pw \cdot N`.
 They then each send this to the other side and wait to receive the equivalent message.
 
 Again, the papers don't say how to encode the message,
-so `python-spake2`_ just base256 encodes it
-and has side A prepend ``A`` and side B prepend ``B``.
+so `python-spake2`_ just base-256 encodes it
+and has side A prepend the byte ``A`` (``0x41``)
+and side B prepend ``B`` (``0x42``).
 
 
 Calculating a key

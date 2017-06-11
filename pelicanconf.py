@@ -50,6 +50,7 @@ JINJA_EXTENSIONS = ['jinja2.ext.i18n']
 
 # Theme
 THEME = 'themes/pelican-bootstrap3'
+DOCUTIL_CSS = True
 BOOTSTRAP_THEME = 'cosmo'
 BOOTSTRAP_FLUID = True
 SHOW_ARTICLE_CATEGORY = False

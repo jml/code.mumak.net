@@ -491,7 +491,7 @@ and to `Michel Abdalla and David Pointcheval's paper "Simple Password-Based Encr
 
 `Bice Dibley <http://life.metagnome.net/>`_,
 `Chris Halse Rogers <https://twitter.com/raof_47>`_,
-and froztbyte
+and `JP Viljoen <https://keybase.io/froztbyte>`_
 all read early drafts and provided helpful suggestions.
 This piece has been much improved by their input.
 Any infelicities are my own.

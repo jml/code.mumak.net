@@ -138,6 +138,10 @@ by people who actually understand what they are talking about.
 This means that I'll try to go out of my way to explain the notation and terminology
 while also going through the core concepts.
 
+I want to stress that I am not an expert.
+What you're reading here is me figuring this out for myself,
+with a little help from my friends and the Internet.
+
 Overview
 --------
 
@@ -178,14 +182,22 @@ It's important to note that :math:`+` stands for a generic binary operation with
 not necessarily any kind of addition,
 and :math:`0` stands for the identity, rather than the numeral 0.
 
+To get a better sense of this somewhat abstract concept,
+it can help to look at a few concrete examples.
+These don't have much to do with SPAKE2 per se,
+they are just here to help explain groups.
+
 The integers with addition form a group with :math:`0` as the identity,
 because you can add and subtract (i.e. add the negative) them and get other integers,
 and because addition is associative.
 
 The integers with multiplication are *not* a group, because what's the inverse of 2?
 
-But! The `integers with multiplication modulo some fixed number`_ do form a group.
-So for integers with multiplication modulo 7,
+But the rational numbers greater than zero with multiplication *do* form a group,
+with 1 as the identity.
+
+Likewise, `integers with multiplication modulo some fixed number`_ do form a group—a finite group.
+For example, for integers with multiplication modulo 7,
 the identity is 1, multiplication is associative,
 and the inverse of 2 is 4, because :math:`(2 \cdot 4) \mod 7 = 1`.
 
@@ -216,19 +228,20 @@ Still with me?
    We want to define our protocol to allow lots of different underlying implementations,
    and without getting bogged down in how they actually work.
 
-For SPAKE2, we have add an additional requirement for the group:
+For SPAKE2, we have an additional requirement for the group:
 it is finite and has a prime number of elements.
 We'll use :math:`p` to refer to this number—this is what is meant by "of prime order :math:`p`" above.
 
 Due to the magic of group theory [#]_, this gives :math:`G` some bonus properties:
 
 * it is *cyclic*, we can generate all of the elements of the group by picking one (not the identity) and adding it to itself over and over
-* it is *abelian*, that is :math:`X + Y = Y + X`,
+* it is `abelian`_, that is :math:`X + Y = Y + X`,
   for any two elements :math:`X`, :math:`Y` in :math:`G` (commutativity)
 
-Which explains what we mean by "a generator element, :math:`g`",
+Which explains what we mean by "a generator element", :math:`g`,
 it's just an element from the group that's not the identity.
 We can use it to make any other element of the group by adding it to itself.
+If the group weren't cyclic, we could, in general, only use :math:`g` to generate a subgroup.
 
 The process of adding an element to itself over and over is called *scalar multiplication* [#]_.
 In mathematical notation, we write it like this:
@@ -415,8 +428,8 @@ that both sides have previously agreed upon, so that:
 Where :math:`K` is either :math:`K_A` or :math:`K_B`.
 
 I don't really understand why this step is necessary—why not use :math:`K`?
-Nor do I understand why each of the inputs to the hash is necessary –
-:math:`K` is already derived from :math:`X^{\star}`, why do we need :math:`X^{\star}`?
+Nor do I understand why each of the inputs to the hash is necessary—:math:`K`
+is already derived from :math:`X^{\star}`, why do we need :math:`X^{\star}`?
 
 In the code, we change this ever so slightly:
 
@@ -426,6 +439,9 @@ In the code, we change this ever so slightly:
 
 Basically, we hash all of the variable length fields to make them fixed length
 to avoid collisions between values. [#]_
+
+python-spake2 uses SHA256 as the hash algorithm for this step.
+I've got no idea why this and not, say, HKDF.
 
 And this is the session key. SPAKE2 is done!
 
@@ -440,8 +456,11 @@ and without using that password to encrypt known plaintext. We've done that.
 The SPAKE2 protocol above will result in two sides negotiating a shared session key,
 sending only randomly generated data over the wire.
 
-Is it vulnerable to offline dictionary attacks? The `SPAKE2 paper`_ says "no"
-and I don't pretend to have the time or expertise to assess that claim.
+Is it vulnerable to offline dictionary attacks? No.
+The value we send over the wire is just a random group element encrypted with the password.
+Even if an eavesdropper gets that value and runs a dictionary against it,
+they'll have no way of determining whether they've cracked it or not.
+After all, one random value looks very much like another.
 
 
 Where to now?
@@ -470,6 +489,18 @@ to `Jake Edge's write-up of that talk <https://lwn.net/Articles/692061/>`_,
 and to `Michel Abdalla and David Pointcheval's paper "Simple Password-Based Encrypted Key Exchange Protocols"
 <http://www.di.ens.fr/~pointche/Documents/Papers/2005_rsa.pdf>`_.
 
+`Bice Dibley <http://life.metagnome.net/>`_,
+`Chris Halse Rogers <https://twitter.com/raof_47>`_,
+and froztbyte
+all read early drafts and provided helpful suggestions.
+This piece has been much improved by their input.
+Any infelicities are my own.
+
+I wouldn't have written this without being inspired by `Julia Evans <https://jvns.ca/>`_.
+Julia often shares what she's learning as she learns it,
+and does a great job at making difficult topics seem approachable and fun.
+I highly recommend her blog, especially if you're into devops or distributed systems.
+
 .. _`Last post`: {filename}/2017-05-27-spake2.rst
 .. _`SPAKE2 in Haskell`: https://github.com/jml/haskell-spake2
 .. _magic-wormhole: https://github.com/warner/magic-wormhole
@@ -480,6 +511,7 @@ and to `Michel Abdalla and David Pointcheval's paper "Simple Password-Based Encr
 .. _`confused`: {filename}/2017-05-27-spake2.rst#protocols-ain-t-protocols
 .. _`HKDF`: https://tools.ietf.org/html/rfc5869
 .. _`python-spake2`: https://github.com/warner/python-spake2
+.. _`abelian`: https://en.wikipedia.org/wiki/Abelian_group
 
 .. [#] I used to know the proof for this but have since forgotten it, so I'm taking this on faith for now.
 .. [#] With scalar multiplication, we aren't talking about a group, but rather a :math:`\mathbb{Z}`-module.

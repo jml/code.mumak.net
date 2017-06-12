@@ -5,7 +5,6 @@ SPAKE2 in Haskell: What is SPAKE2?
 :date: 2017-06-04
 :tags: haskell, cryptography, spake2
 :slug: what-is-spake2
-:status: draft
 
 `Last post`_, I discussed how I found myself implementing `SPAKE2 in Haskell`_.
 Here, I want to discuss what SPAKE2 is, and why you might care.

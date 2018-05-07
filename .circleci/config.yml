@@ -41,7 +41,7 @@ jobs:
     steps:
       - run:
           name: Install AWS client
-          command: pip install --upgrade --user awscli
+          command: pip install --upgrade awscli
       - attach_workspace:
           at: output
       - run:

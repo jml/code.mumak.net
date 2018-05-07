@@ -44,6 +44,19 @@ jobs:
           command: echo -e "[default] \naccess_key = $AWS_ACCESS_KEY_ID \nsecret_key = $AWS_SECRET_ACCESS_KEY \n" > $HOME/.s3cfg
       - attach_workspace:
           at: output
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install dependencies
+          command: |
+            python -m virtualenv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
       - run:
           name: Upload to S3
           command: |

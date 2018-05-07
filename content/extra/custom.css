@@ -16,6 +16,10 @@ div.entry-content {
     max-width: 40em;
 }
 
+/* So that in-post headings don't overwhelm the blog post title on listing page. */
+div.summary h2 {
+    font-size: 24px;
+}
 
 body {
     font-size: 12pt;

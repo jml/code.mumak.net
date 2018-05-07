@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7-jessie
+    working_directory: ~/code.mumak.net
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install dependencies
+          command: |
+            python -m virtualenv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Fetch plugins
+          command: git clone git@github.com:getpelican/pelican-plugins.git plugins
+      - run:
+          name: Fetch themes
+          command: git clone git@github.com:getpelican/pelican-themes.git themes
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          name: Build website
+          command: make publish
+  deploy:
+    docker:
+      - image: circleci/python:2.7-jessie
+    working_directory: ~/code.mumak.net
+    steps:
+      - run:
+          name: Configure S3 client (s3cmd)
+          command: echo -e "[default] \naccess_key = $AWS_ACCESS_KEY_ID \nsecret_key = $AWS_SECRET_ACCESS_KEY \n" > $HOME/.s3cfg
+      - run:
+          name: Upload to S3
+          command: make s3_upload
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

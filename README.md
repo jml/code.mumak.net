@@ -4,6 +4,4 @@
 
     pip install -r requirements.txt
     git clone git@github.com:jml/pelican-plugins.git plugins
-    git clone git@github.com:jml/pelican-themes.git themes
-    cd themes
-    git checkout jml-tweaks
+    git clone --recursive git@github.com:getpelican/pelican-themes.git themes

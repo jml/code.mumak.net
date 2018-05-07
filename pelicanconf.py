@@ -102,6 +102,11 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
     'extra/custom.css': {'path': 'static/custom.css'},
 }
+EXTRA_TEMPLATES_PATHS = [
+    # pelican-bootstrap3 doesn't have a 'home' template, so I have to maintain
+    # one myself.
+    'templates',
+]
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

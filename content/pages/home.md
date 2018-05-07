@@ -1,7 +1,6 @@
-Title: jml <small>tries to…</small>
+Title: jml <small>is a…</small>
 save_as: index.html
 Status: hidden
 Template: home
 
-[Make software]({filename}/pages/software-portfolio.md) that is a delight to use. Eliminate obstacles and junk. Understand how things connect. Learn from everyone.
-
+Software engineer in London who has a [blog](blog/), [software portfolio]({filename}/pages/software-portfolio.md), and a [collection of writings]({filename}/pages/essays-writings.md).

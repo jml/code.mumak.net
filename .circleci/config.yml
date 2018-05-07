@@ -39,12 +39,12 @@ jobs:
       - image: circleci/python:2.7-jessie
     working_directory: ~/code.mumak.net
     steps:
+      - checkout
       - run:
           name: Configure S3 client (s3cmd)
           command: echo -e "[default] \naccess_key = $AWS_ACCESS_KEY_ID \nsecret_key = $AWS_SECRET_ACCESS_KEY \n" > $HOME/.s3cfg
       - attach_workspace:
           at: output
-      - checkout
       - restore_cache:
           key: v1-deps-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:

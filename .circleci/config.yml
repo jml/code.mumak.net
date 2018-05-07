@@ -29,6 +29,11 @@ jobs:
           command: |
             . venv/bin/activate
             make publish
+      - persist_to_workspace:
+          root: output
+          paths:
+            - "*"
+
   deploy:
     docker:
       - image: circleci/python:2.7-jessie
@@ -37,6 +42,8 @@ jobs:
       - run:
           name: Configure S3 client (s3cmd)
           command: echo -e "[default] \naccess_key = $AWS_ACCESS_KEY_ID \nsecret_key = $AWS_SECRET_ACCESS_KEY \n" > $HOME/.s3cfg
+      - attach_workspace:
+          at: output
       - run:
           name: Upload to S3
           command: |

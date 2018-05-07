@@ -1,6 +1,5 @@
 ghp-import
 Markdown
-s3cmd
 typogrify
 pelican
 pelican-alias

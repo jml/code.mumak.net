@@ -41,12 +41,12 @@ jobs:
     steps:
       - run:
           name: Install AWS client
-          command: pip install --upgrade awscli
+          command: pip install --user --upgrade awscli
       - attach_workspace:
           at: output
       - run:
           name: Upload to S3
-          command: aws s3 sync --acl public-read --delete output/ s3://jml.io
+          command: $HOME/.local/bin/aws s3 sync --acl public-read --delete output/ s3://jml.io
 
 workflows:
   version: 2

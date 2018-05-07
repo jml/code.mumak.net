@@ -26,7 +26,9 @@ jobs:
             - "venv"
       - run:
           name: Build website
-          command: make publish
+          command: |
+            . venv/bin/activate
+            make publish
   deploy:
     docker:
       - image: circleci/python:2.7-jessie
@@ -37,7 +39,9 @@ jobs:
           command: echo -e "[default] \naccess_key = $AWS_ACCESS_KEY_ID \nsecret_key = $AWS_SECRET_ACCESS_KEY \n" > $HOME/.s3cfg
       - run:
           name: Upload to S3
-          command: make s3_upload
+          command: |
+            . venv/bin/activate
+            make s3_upload
 
 workflows:
   version: 2

@@ -53,6 +53,11 @@
     {# Twitter Cards tags #}
     {% include 'includes/twitter_cards.html' %}
 
+    {# Flattr ID for the Flattr browser plug-in #}
+    {% if FLATTR_ID %}
+        <meta name="flattr:id" content="{{ FLATTR_ID }}">
+    {% endif %}
+
     <!-- Bootstrap -->
     {% if BOOTSTRAP_THEME %}
         <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
@@ -113,7 +118,7 @@
 <body>
 
 <div class="navbar {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse{% else %}navbar-default{% endif %} navbar-fixed-top" role="navigation">
-	<div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
+    <div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
         <div class="navbar-header">
             {% if MENUITEMS or (pages and DISPLAY_PAGES_ON_MENU) or (categories and DISPLAY_CATEGORIES_ON_MENU) %}
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -169,6 +174,16 @@
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
+
+<!-- Banner -->
+{% if BANNER and BANNER_ALL_PAGES %}
+    {% include 'includes/banner.html' %}
+{% elif BANNER and not BANNER_ALL_PAGES %}
+    {% block banner %}{% endblock %}
+{% endif %}
+<!-- End Banner -->
+
+<!-- Content Container -->
 <div class="jumbotron">
   <div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
     <h1>jml <small>tries to &hellip;</small></h1>
@@ -206,6 +221,8 @@
     </li>
   </ul>
 </div>
+<!-- End Content Container -->
+
 {% include 'includes/footer.html' %}
 
 <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.min.js"></script>
@@ -216,6 +233,10 @@
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/respond.min.js"></script>
 
+{% if CUSTOM_JS %}
+    <script src="{{ SITEURL }}/{{ CUSTOM_JS }}"></script>
+{% endif %}
+
 {% if BANNER %}
     <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bodypadding.js"></script>
 {% endif %}
@@ -223,6 +244,10 @@
 {% include 'includes/disqus_script.html' %}
 {% include 'includes/ga.html' %}
 {% include 'includes/piwik.html' %}
+
+{% if 'liquid_tags.notebook' in PLUGINS %}
+    {% include 'includes/liquid_tags_nb_footer.html' %}
+{% endif %}
 
 {% block scripts %}{% endblock %}
 </body>

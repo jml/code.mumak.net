@@ -25,3 +25,11 @@ body {
     font-size: 12pt;
     line-height: 1.4em;
 }
+
+div.social-banner {
+    text-align: center;
+}
+
+.social-banner li {
+    padding: 1em;
+}

@@ -1,12 +1,7 @@
-Title: Jonathan Lange
+Title: jml <small>tries to…</small>
 save_as: index.html
 Status: hidden
 Template: home
-HIDE_SIDEBAR: True
 
-Home page placeholder.
-
-The body text of this is ignored, and instead the "template" home.html that
-lives in the `jml-tweaks` branch of
-[jml/pelican-themes](https://github.com/jml/pelican-themes) is used instead.
+[Make software]({filename}/pages/software-portfolio.md) that is a delight to use. Eliminate obstacles and junk. Understand how things connect. Learn from everyone.
 

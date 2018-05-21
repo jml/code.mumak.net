@@ -36,7 +36,7 @@ but they are easy enough to add.
 
 Releasing Python code is way different though. At `Glyph`_'s recommendation, I tried `flit`_, which seems to work OK.
 
-Thanks to dstufft, glyph, dreid, AlexGaynor, wsanchez, Alex_Gaynor and others
+Thanks to dstufft, glyph, dreid, AlexGaynor, wsanchez, and others
 who patiently answered my questions while I was writing this,
 and who in some cases wrote much of the actual software I am building on top of.
 

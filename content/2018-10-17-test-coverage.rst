@@ -14,12 +14,14 @@ that followed `DRMacIver's recent post`_.
 
 Here's my current working hypothesis:
 
- * every new project should have 100% test coverage
- * every existing project should have a ratchet that enforces increasing coverage
- * "100% coverage" means that every line is either:
-   * covered by the test suite
-   * *or* has some markup in code saying that it is explicitly not covered, and why that's the case
- * these should be enforced in CI
+* every new project should have 100% test coverage
+* every existing project should have a ratchet that enforces increasing coverage
+* "100% coverage" means that every line is either:
+
+  * covered by the test suite
+  * *or* has some markup in code saying that it is explicitly not covered, and why that's the case
+
+* these should be enforced in CI
 
 The justification is that "the test of all knowledge is experiment" [0]_.
 While we should absolutely make our code easy to reason about, and prove as
@@ -45,13 +47,13 @@ I tagged this post with Haskell, because I think all of this is theoretically
 possible to achieve on a Haskell project, but requires *way* too much tooling
 to set up.
 
- * ``hpc`` is great, but it is not particularly user friendly.
- * Existing code coverage SaaS services don't support expression-level coverage.
- * ``hpc`` has mechanisms for excluding code from coverage, but it's not by marking up your code
- * ``hpc`` has some theoretically correct but pragmatically unfortunate
-   defaults, e.g. it'll report partial coverage for an ``otherwise`` guard,
-   because it's never run through when ``otherwise`` is ``False``
- * There are no good ratchet tools
+* ``hpc`` is great, but it is not particularly user friendly.
+* Existing code coverage SaaS services don't support expression-level coverage.
+* ``hpc`` has mechanisms for excluding code from coverage, but it's not by marking up your code
+* ``hpc`` has some theoretically correct but pragmatically unfortunate
+  defaults, e.g. it'll report partial coverage for an ``otherwise`` guard,
+  because it's never run through when ``otherwise`` is ``False``
+* There are no good ratchet tools
 
 As a bit of an experiment, I set up a test coverage ratchet with
 `graphql-api`_. I wanted both to test out my new enthusiasm for aiming for

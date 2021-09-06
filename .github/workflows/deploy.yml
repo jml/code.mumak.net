@@ -46,7 +46,7 @@ jobs:
       - name: Checkout Pelican legacy plugins
         uses: actions/checkout@v2.3.4
         with:
-          repository: getpelican/plugins
+          repository: getpelican/pelican-plugins
           path: plugins
 
       - name: Checkout Flex theme

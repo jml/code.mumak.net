@@ -4,3 +4,5 @@ typogrify
 pelican
 pelican-alias
 Pillow
+pelican-render-math
+pelican-related-posts

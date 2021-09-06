@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Jonathan Lange'
-COPYRIGHT = u'Jonathan M. Lange, except &ldquo;pixel jml&rdquo; image &copy; 2014 Bice Dibley, used with permission'
+COPYRIGHT = u'Jonathan M. Lange'
 SITENAME = u'jml :: Jonathan Lange'
 SITEURL = ''
 
@@ -12,8 +12,6 @@ PATH = 'content'
 TIMEZONE = 'Europe/London'
 
 DEFAULT_LANG = u'en'
-
-INDEX_SAVE_AS = 'blog/index.html'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -40,11 +38,12 @@ DEFAULT_PAGINATION = 20
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
-    'pelican_alias',
     'pelican_comment_system',
-    'related_posts',
-    'render_math',
     'i18n_subsites',
+
+    'pelican_alias',
+    'pelican.plugins.related_posts',
+    'pelican.plugins.render_math',
 ]
 PELICAN_COMMENT_SYSTEM = True
 JINJA_ENVIRONMENT = {
@@ -52,14 +51,12 @@ JINJA_ENVIRONMENT = {
 }
 
 # Theme
-THEME = 'themes/pelican-bootstrap3'
+THEME = 'Flex'
 DOCUTIL_CSS = True
-BOOTSTRAP_THEME = 'cosmo'
-BOOTSTRAP_FLUID = True
 SHOW_ARTICLE_CATEGORY = False
 TYPOGRIFY = True
 ABOUT_ME = '''
-Programmer in London, UK
+Software engineer and engineering manager in London, UK
 '''
 EMAIL_ADDRESS = '_@jml.io'
 CUSTOM_CSS = 'static/custom.css'
@@ -102,11 +99,6 @@ EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
     'extra/custom.css': {'path': 'static/custom.css'},
 }
-EXTRA_TEMPLATES_PATHS = [
-    # pelican-bootstrap3 doesn't have a 'home' template, so I have to maintain
-    # one myself.
-    'templates',
-]
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

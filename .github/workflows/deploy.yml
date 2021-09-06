@@ -54,11 +54,11 @@ jobs:
         with:
           repository: alexandrevicenzi/Flex
           ref: v2.4.0
-          path: themes/flex
+          path: themes/Flex
 
       - name: Install Flex theme
         run: |
-          pelican-themes -i themes/flex
+          pelican-themes -i themes/Flex
 
       - name: Build blog
         run: |

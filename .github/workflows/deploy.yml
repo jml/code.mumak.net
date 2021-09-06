@@ -56,6 +56,10 @@ jobs:
           ref: v2.4.0
           path: themes/flex
 
+      - name: Install Flex theme
+        run: |
+          pelican-themes -i themes/flex
+
       - name: Build blog
         run: |
           pelican content -o output -s publishconf.py --fatal warnings

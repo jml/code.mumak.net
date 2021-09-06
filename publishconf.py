@@ -19,7 +19,7 @@ FEED_RSS = 'rss.xml'
 FEED_MAX_ITEMS = 10  # dlvr.it has a cap on RSS feed size
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 

@@ -6,6 +6,7 @@ AUTHOR = 'Jonathan Lange'
 COPYRIGHT = u'Jonathan M. Lange'
 SITENAME = u'jml :: Jonathan Lange'
 SITEURL = ''
+SITELOGO = 'images/jml-2019.jpg'
 
 PATH = 'content'
 
